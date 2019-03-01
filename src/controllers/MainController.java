@@ -50,7 +50,7 @@ public class MainController implements ActionListener {
 		mp = new MainPanel(this,globalListener);
 		ap = new AboutPanel(this);
 		lap = new LoginAdminPanel(this);
-		lsp = new LoginStudentPanel(this);
+		lsp = new LoginStudentPanel(this, globalListener);
 		
 		
 		panelMain = mp.getContentPane();
@@ -75,6 +75,10 @@ public class MainController implements ActionListener {
 		frame.getContentPane().setVisible(false);
 		frame.setContentPane(panel);
 		frame.getContentPane().setVisible(true);
+	}
+	
+	public LoginStudentPanel getLoginStudentPanel() {
+		return lsp;
 	}
 	
 	

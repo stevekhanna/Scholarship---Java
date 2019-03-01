@@ -27,6 +27,8 @@ public class LoginStudentPanel extends MyPanel{
 	private JTextField fldUsername;
 	private JPasswordField fldPassword;
 	
+	private ActionListener globalListener;
+	
 
 	/**
 	 * Constructor with one argument of ActionListener actionListener.
@@ -34,19 +36,16 @@ public class LoginStudentPanel extends MyPanel{
 	 * other methods of this class for display.
 	 * @param actionListener
 	 */
-	public LoginStudentPanel (ActionListener actionListener) {
+	public LoginStudentPanel (ActionListener actionListener, ActionListener globalListener) {
 		this.packageListener = actionListener;
+		this.globalListener = globalListener;
 
 		contentPane.setName("Login Student Panel");
-		//displaying contents of each panels
 		displayNorth();
 		displaySouth();
 		displayCenter();
 	}
 	
-	/**
-	 * Method to display content of north panel, which is label.
-	 */
 	private void displayNorth(){
 		lblLogin = new MyLabel("Login", textColor, Size.defaultLblTitleFontSize);
 		north.add(lblLogin, "cell 0 0,center");
@@ -55,28 +54,19 @@ public class LoginStudentPanel extends MyPanel{
 		north.add(lblUser, "cell 0 1,center");
 	}
 	
-	/**
-	 * Method to display contents of south panel. This panel contains 
-	 * the back button which goes back to main menu.
-	 */
 	private void displaySouth(){
 		btnBack = new MyButton("Back", btnTxtColor, btnBackgroundColor, Size.defaultBtnFontSize);
 		south.add(btnBack, "cell 0 0");
-		// setting an action for back button
 		btnBack.addActionListener(packageListener);
 		btnBack.setName("Back_LoginStudentPanel");
 		
 		btnLogin = new MyButton("Login", btnTxtColor, btnBackgroundColor, Size.defaultBtnFontSize);
 		south.add(btnLogin, "cell 1 0, right");
-		// setting an action for back button
-		btnLogin.addActionListener(packageListener);
-		btnLogin.setName("Login_LoginAdminPanel");
+		btnLogin.addActionListener(globalListener);
+		btnLogin.setName("Login_LoginStudentPanel");
 
 	}
 	
-	/**
-	 * Method to display content of center panel. It will set up the text pane.
-	 */
 	private void displayCenter(){
 		
 		lblEmail = new MyLabel("Your UofC Email", textColor, Size.defaultBtnFontSize);
@@ -90,6 +80,14 @@ public class LoginStudentPanel extends MyPanel{
 		
 		fldPassword = new MyPasswordField("", Size.defaultBtnFontSize);
 		center.add(fldPassword, "cell 0 3, center");
-		
+	}
+	
+	
+	public String getEmail() {
+		return fldUsername.getText();
+	}
+	
+	public String getPassword() {
+		return fldPassword.getText();
 	}
 }

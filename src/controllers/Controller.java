@@ -14,6 +14,7 @@ public class Controller implements ActionListener{
 	private JFrame frame;
 	
 	private MainController mc;
+	private UserController uc;
 	
 	public Controller(){
 		createFrame();
@@ -22,6 +23,7 @@ public class Controller implements ActionListener{
 	/** creates the controllers and file IO utility */
 	public void run(){
 		mc = new MainController(frame,this);
+		uc = new UserController(frame,this);
 		mc.start();
 	}
 	
@@ -38,6 +40,14 @@ public class Controller implements ActionListener{
 		frame.setMinimumSize(new Dimension(300,300));
 		frame.setVisible(true);
 	}
+	
+	
+	private boolean checkLogin() {
+		System.out.println(mc.getLoginStudentPanel().getEmail());
+		System.out.println(mc.getLoginStudentPanel().getPassword());
+		uc.start(mc.getLoginStudentPanel().getEmail());
+		return false;
+	}
 
 	/**
 	 * Action listener that switches panels based on the button clicked
@@ -51,10 +61,12 @@ public class Controller implements ActionListener{
 		switch(name){
 		
 		/** initializes a new game */
-		case"NewGame_MainPanel":
+		case"Login_LoginStudentPanel":
 			/** Starts the SetUpController */
-			
+			checkLogin();
 			break;
+		case"Back_ShowPanel":
+			mc.start();
 		default:break;
 		}
 	}
