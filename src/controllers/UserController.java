@@ -7,7 +7,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import displayMain.AboutPanel;
 import displayUser.*;
 
 public class UserController implements ActionListener {
@@ -51,5 +50,6 @@ public class UserController implements ActionListener {
 			break;
 		}
 	}
+	
 
 }

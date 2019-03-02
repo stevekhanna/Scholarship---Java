@@ -1,13 +1,16 @@
 package controllers;
 
 import java.awt.Dimension;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import myJStuff.Size;
+import myJStuff.*;
+import util.*;
+import userInfo.*;
 
 public class Controller implements ActionListener{
 	
@@ -15,6 +18,8 @@ public class Controller implements ActionListener{
 	
 	private MainController mc;
 	private UserController uc;
+	
+	private List<User> students;
 	
 	public Controller(){
 		createFrame();
@@ -24,6 +29,9 @@ public class Controller implements ActionListener{
 	public void run(){
 		mc = new MainController(frame,this);
 		uc = new UserController(frame,this);
+		
+		LoadStudents ls = new LoadStudents();
+		students = ls.loadStudents();
 		mc.start();
 	}
 	
@@ -43,9 +51,13 @@ public class Controller implements ActionListener{
 	
 	
 	private boolean checkLogin() {
-		System.out.println(mc.getLoginStudentPanel().getEmail());
-		System.out.println(mc.getLoginStudentPanel().getPassword());
-		uc.start(mc.getLoginStudentPanel().getEmail());
+		String email=mc.getLoginStudentPanel().getEmail();
+		String password = mc.getLoginStudentPanel().getPassword();
+		for( User s : students) {
+			if (s.getEmail().equalsIgnoreCase(email) && s.getPassword().equals(password)) {
+				uc.start(mc.getLoginStudentPanel().getEmail());	
+			}
+		}
 		return false;
 	}
 
