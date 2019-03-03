@@ -1,4 +1,4 @@
-package userInfo;
+package dataData;
 
 public class Student extends User{
 	
@@ -10,5 +10,10 @@ public class Student extends User{
 	
 	public String toFile() {
 		return getUCID()+":"+getEmail()+":"+getPassword()+":"+getName();
+	}
+	
+	
+	public String getFaculty() {
+		return faculty;
 	}
 }

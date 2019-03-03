@@ -7,8 +7,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import dataData.*;
 import displayUser.*;
-import userInfo.*;
 
 public class UserController implements ActionListener {
 	

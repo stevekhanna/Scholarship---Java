@@ -8,9 +8,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import dataData.*;
 import myJStuff.*;
 import util.*;
-import userInfo.*;
 
 public class Controller implements ActionListener{
 	
@@ -94,7 +94,7 @@ public class Controller implements ActionListener{
 		switch(name){
 		case"Login_LoginStudentPanel":
 			if(checkStudentLogin()) {
-				uc.start(currentUser);	
+				uc.start(currentUser);
 			}
 			break;
 		case"Login_LoginAdminPanel":
