@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import dataData.*;
+import objects.*;
 
 public class LoadUsers{
 	/**
 	 * Instance variables
 	 */
-	private List<User> students;
-	private List<User> admins;
+	private List<Student> students;
+	private List<Admin> admins;
 
 	private final String studentFile = "src/data/students.txt";
 	private final String adminFile = "src/data/admins.txt";
@@ -24,7 +24,7 @@ public class LoadUsers{
 	public LoadUsers(){
 	}
 	
-	public List<User> loadStudents(){
+	public List<Student> loadStudents(){
 		students = new ArrayList<>();
 		try {
 			System.out.println("Loading Student data from file: "+studentFile);
@@ -41,7 +41,7 @@ public class LoadUsers{
 		return students;
 	}
 	
-	public List<User> loadAdmins(){
+	public List<Admin> loadAdmins(){
 		admins = new ArrayList<>();
 		try {
 			System.out.println("Loading Admin data from file: "+adminFile);

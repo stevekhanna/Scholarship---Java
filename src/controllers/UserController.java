@@ -7,8 +7,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import dataData.*;
 import displayUser.*;
+import objects.*;
 
 public class UserController implements ActionListener {
 	
@@ -26,7 +26,14 @@ public class UserController implements ActionListener {
 		this.frame = frame;
 	}
 	
-	public void start(User currentUser) {
+	public void startAsAdmin(Admin currentUser) {
+		sp = new StudentPanel(this, globalListener);
+		showPanel = sp.getContentPane();
+	
+		switchUserPanel();
+	}
+	
+	public void startAsStudent(Student currentUser) {
 		sp = new StudentPanel(this, globalListener);
 		showPanel = sp.getContentPane();
 	

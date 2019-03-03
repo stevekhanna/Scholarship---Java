@@ -1,4 +1,4 @@
-package dataData;
+package objects;
 
 public class Student extends User{
 	
