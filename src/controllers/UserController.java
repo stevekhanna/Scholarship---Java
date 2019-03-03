@@ -14,7 +14,7 @@ public class UserController implements ActionListener {
 	private ActionListener globalListener;
 	private JFrame frame;
 	
-	private ShowPanel sp;
+	private StudentPanel sp;
 	
 	
 	private JPanel showPanel;
@@ -25,7 +25,7 @@ public class UserController implements ActionListener {
 	}
 	
 	public void start(String name) {
-		sp = new ShowPanel(this, globalListener);
+		sp = new StudentPanel(this, globalListener);
 		
 		showPanel = sp.getContentPane();
 		sp.setLblLoggedin(name);

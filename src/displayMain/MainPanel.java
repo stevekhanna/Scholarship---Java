@@ -1,6 +1,5 @@
 package displayMain;
 
-import java.awt.Dimension;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -12,8 +11,6 @@ public class MainPanel extends MyPanel{
 	/**
 	 * Instance variables.
 	 */	
-	
-	private ActionListener globalListener;
 	//buttons for center panel
 	private JButton btnLoginAdmin;
 	private JButton btnLoginStudent;
@@ -26,9 +23,8 @@ public class MainPanel extends MyPanel{
 	//button for south panel
 	private JButton btnTest;
 	
-	public MainPanel(ActionListener packageListener, ActionListener globalListener) {
+	public MainPanel(ActionListener packageListener) {
 		this.packageListener = packageListener;
-		this.globalListener = globalListener;
 		
 		contentPane.setName("Main Panel");
 		//displaying contents of each panels

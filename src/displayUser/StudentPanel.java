@@ -6,7 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import myJStuff.*;
-public class ShowPanel extends MyPanel{
+public class StudentPanel extends MyPanel{
 	
 	private ActionListener globalListener;
 	
@@ -14,7 +14,7 @@ public class ShowPanel extends MyPanel{
 	
 	JButton btnBack;
 	
-	public ShowPanel(ActionListener packageListener, ActionListener globalListener) {
+	public StudentPanel(ActionListener packageListener, ActionListener globalListener) {
 		this.packageListener = packageListener;
 		this.globalListener = globalListener;
 		

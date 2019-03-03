@@ -18,24 +18,24 @@ public class Controller implements ActionListener{
 	
 	private MainController mc;
 	private UserController uc;
-	
+
 	private List<User> students;
+	private List<User> admins;
 	
 	public Controller(){
 		createFrame();
 	}
 	
-	/** creates the controllers and file IO utility */
 	public void run(){
 		mc = new MainController(frame,this);
 		uc = new UserController(frame,this);
 		
-		LoadStudents ls = new LoadStudents();
-		students = ls.loadStudents();
+		LoadUsers lu = new LoadUsers();
+		students = lu.loadStudents();
+		admins = lu.loadAdmins();
 		mc.start();
 	}
 	
-	/** algorithm to create the frame facilitating all panels */
 	private void createFrame(){
 		int width = Size.screenWidth;
 		int height = Size.screenHeight;
@@ -50,14 +50,31 @@ public class Controller implements ActionListener{
 	}
 	
 	
-	private boolean checkLogin() {
+	private boolean checkStudentLogin() {
+		System.out.print("Check Student Login:  ");
 		String email=mc.getLoginStudentPanel().getEmail();
 		String password = mc.getLoginStudentPanel().getPassword();
 		for( User s : students) {
 			if (s.getEmail().equalsIgnoreCase(email) && s.getPassword().equals(password)) {
-				uc.start(mc.getLoginStudentPanel().getEmail());	
+				System.out.println("Success");
+				return true;
 			}
 		}
+		System.out.println("Fail");
+		return false;
+	}
+	
+	private boolean checkAdminLogin() {
+		System.out.print("Check Admin Login:  ");
+		String email=mc.getLoginAdminPanel().getEmail();
+		String password = mc.getLoginAdminPanel().getPassword();
+		for( User s : admins) {
+			if (s.getEmail().equalsIgnoreCase(email) && s.getPassword().equals(password)) {
+				System.out.println("Success");
+				return true;
+			}
+		}
+		System.out.println("Fail");
 		return false;
 	}
 
@@ -71,11 +88,15 @@ public class Controller implements ActionListener{
 		String name = source.getName();
 		
 		switch(name){
-		
-		/** initializes a new game */
 		case"Login_LoginStudentPanel":
-			/** Starts the SetUpController */
-			checkLogin();
+			if(checkStudentLogin()) {
+				uc.start(mc.getLoginStudentPanel().getEmail());	
+			}
+			break;
+		case"Login_LoginAdminPanel":
+			if(checkAdminLogin()) {
+				uc.start(mc.getLoginAdminPanel().getEmail());
+			}
 			break;
 		case"Back_ShowPanel":
 			mc.start();
