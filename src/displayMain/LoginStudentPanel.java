@@ -86,6 +86,7 @@ public class LoginStudentPanel extends MyPanel{
 		return fldUsername.getText();
 	}
 	
+	@SuppressWarnings("deprecation")
 	public String getPassword() {
 		return fldPassword.getText();
 	}

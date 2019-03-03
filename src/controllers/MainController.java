@@ -47,9 +47,9 @@ public class MainController implements ActionListener {
 	 * related to the main menu.
 	 */
 	public void start(){
-		mp = new MainPanel(this,globalListener);
+		mp = new MainPanel(this);
 		ap = new AboutPanel(this);
-		lap = new LoginAdminPanel(this);
+		lap = new LoginAdminPanel(this, globalListener);
 		lsp = new LoginStudentPanel(this, globalListener);
 		
 		
@@ -79,6 +79,10 @@ public class MainController implements ActionListener {
 	
 	public LoginStudentPanel getLoginStudentPanel() {
 		return lsp;
+	}
+	
+	public LoginAdminPanel getLoginAdminPanel() {
+		return lap;
 	}
 	
 	

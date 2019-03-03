@@ -6,7 +6,6 @@ public class Student extends User{
 	
 	public Student(int ucid, String email, String password, String name) {
 		super(ucid, email, password, name);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public String toFile() {
