@@ -8,8 +8,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import dataData.*;
 import myJStuff.*;
+import objects.*;
 import util.*;
 
 public class Controller implements ActionListener{
@@ -19,10 +19,11 @@ public class Controller implements ActionListener{
 	private MainController mc;
 	private UserController uc;
 
-	private List<User> students;
-	private List<User> admins;
+	private List<Student> students;
+	private List<Admin> admins;
 	
-	private User currentUser;
+	private Admin currentAdmin;
+	private Student currentStudent;
 	
 	public Controller(){
 		createFrame();
@@ -56,10 +57,10 @@ public class Controller implements ActionListener{
 		System.out.print("Check Student Login:  ");
 		String email=mc.getLoginStudentPanel().getEmail();
 		String password = mc.getLoginStudentPanel().getPassword();
-		for( User s : students) {
+		for( Student s : students) {
 			if (s.getEmail().equalsIgnoreCase(email) && s.getPassword().equals(password)) {
 				System.out.println("Success");
-				currentUser = s;
+				currentStudent = s;
 				return true;
 			}
 		}
@@ -71,10 +72,10 @@ public class Controller implements ActionListener{
 		System.out.print("Check Admin Login:  ");
 		String email=mc.getLoginAdminPanel().getEmail();
 		String password = mc.getLoginAdminPanel().getPassword();
-		for( User s : admins) {
+		for( Admin s : admins) {
 			if (s.getEmail().equalsIgnoreCase(email) && s.getPassword().equals(password)) {
 				System.out.println("Success");
-				currentUser = s;
+				currentAdmin = s;
 				return true;
 			}
 		}
@@ -94,16 +95,17 @@ public class Controller implements ActionListener{
 		switch(name){
 		case"Login_LoginStudentPanel":
 			if(checkStudentLogin()) {
-				uc.start(currentUser);
+				uc.startAsStudent(currentStudent);
 			}
 			break;
 		case"Login_LoginAdminPanel":
 			if(checkAdminLogin()) {
-				uc.start(currentUser);
+				uc.startAsAdmin(currentAdmin);
 			}
 			break;
 		case"Back_ShowPanel":
-			currentUser=null;
+			currentAdmin=null;
+			currentStudent=null;
 			mc.start();
 		default:break;
 		}

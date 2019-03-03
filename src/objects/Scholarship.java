@@ -1,4 +1,4 @@
-package dataData;
+package objects;
 /**
  * Scholarship class contains all attributes for scholarship
  * @author Steve Khanna
