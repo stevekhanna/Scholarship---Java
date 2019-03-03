@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import dataData.*;
 import displayUser.*;
 
 public class UserController implements ActionListener {
@@ -16,6 +17,7 @@ public class UserController implements ActionListener {
 	
 	private StudentPanel sp;
 	
+	private User currentUser;
 	
 	private JPanel showPanel;
 	
@@ -24,13 +26,16 @@ public class UserController implements ActionListener {
 		this.frame = frame;
 	}
 	
-	public void start(String name) {
+	public void start(User currentUser) {
 		sp = new StudentPanel(this, globalListener);
-		
 		showPanel = sp.getContentPane();
-		sp.setLblLoggedin(name);
+	
+		switchUserPanel();
+	}
+	
+	private void switchUserPanel() {
+		sp.setLblLoggedin(currentUser.getName());
 		switchPanel(showPanel);
-		
 	}
 
 	private void switchPanel(JPanel panel){

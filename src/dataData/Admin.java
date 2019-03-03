@@ -1,4 +1,4 @@
-package userInfo;
+package dataData;
 
 public class Admin extends User{
 

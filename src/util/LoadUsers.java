@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import userInfo.*;
+import dataData.*;
 
 public class LoadUsers{
 	/**

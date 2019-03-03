@@ -8,9 +8,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import dataData.*;
 import myJStuff.*;
 import util.*;
-import userInfo.*;
 
 public class Controller implements ActionListener{
 	
@@ -21,6 +21,8 @@ public class Controller implements ActionListener{
 
 	private List<User> students;
 	private List<User> admins;
+	
+	private User currentUser;
 	
 	public Controller(){
 		createFrame();
@@ -57,6 +59,7 @@ public class Controller implements ActionListener{
 		for( User s : students) {
 			if (s.getEmail().equalsIgnoreCase(email) && s.getPassword().equals(password)) {
 				System.out.println("Success");
+				currentUser = s;
 				return true;
 			}
 		}
@@ -71,6 +74,7 @@ public class Controller implements ActionListener{
 		for( User s : admins) {
 			if (s.getEmail().equalsIgnoreCase(email) && s.getPassword().equals(password)) {
 				System.out.println("Success");
+				currentUser = s;
 				return true;
 			}
 		}
@@ -90,15 +94,16 @@ public class Controller implements ActionListener{
 		switch(name){
 		case"Login_LoginStudentPanel":
 			if(checkStudentLogin()) {
-				uc.start(mc.getLoginStudentPanel().getEmail());	
+				uc.start(currentUser);
 			}
 			break;
 		case"Login_LoginAdminPanel":
 			if(checkAdminLogin()) {
-				uc.start(mc.getLoginAdminPanel().getEmail());
+				uc.start(currentUser);
 			}
 			break;
 		case"Back_ShowPanel":
+			currentUser=null;
 			mc.start();
 		default:break;
 		}
