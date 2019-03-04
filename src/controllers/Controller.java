@@ -107,7 +107,11 @@ public class Controller implements ActionListener{
 				ac.start(currentAdmin);
 			}
 			break;
-		case"Back_ShowPanel":
+		case"Back_AdminPanel":
+			currentAdmin=null;
+			currentStudent=null;
+			mc.start();
+		case"Back_StudentPanel":
 			currentAdmin=null;
 			currentStudent=null;
 			mc.start();

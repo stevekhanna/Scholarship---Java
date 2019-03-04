@@ -32,10 +32,10 @@ public class StudentPanel extends MyPanel{
 		north.add(lblStudent, "cell 0 1,center");}
 	
 	private void displaySouth() {
-		btnBack = new MyButton("Back", btnTxtColor, btnBackgroundColor, Size.defaultBtnFontSize);
+		btnBack = new MyButton("Log out", btnTxtColor, btnBackgroundColor, Size.defaultBtnFontSize);
 		south.add(btnBack, "cell 0 0");
 		btnBack.addActionListener(globalListener);
-		btnBack.setName("Back_ShowPanel");
+		btnBack.setName("Back_StudentPanel");
 	}
 	
 	
