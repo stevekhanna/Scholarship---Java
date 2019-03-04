@@ -8,7 +8,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import displayMain.*;
-
+/**
+ * Controller used to manage the login of students and admins
+ * @author pierce
+ *
+ */
 public class MainController implements ActionListener {
 	/**
 	 * Instance variables
@@ -29,11 +33,10 @@ public class MainController implements ActionListener {
 	private JPanel panelLoginStudent;
 	
 	/**
-	 * Constructor with two arguments.
-	 * This constructor will initialize the frame and actionListener
+	 * Constructor
 	 *  and set the bounds.
-	 * @param frame 
-	 * @param globalListener
+	 * @param frame - JFrame
+	 * @param globalListener - ActionListener
 	 */
 	public MainController(JFrame frame, ActionListener globalListener){
 		//listener = new Listener();
@@ -43,8 +46,9 @@ public class MainController implements ActionListener {
 	}
 	
 	/**
-	 * This method will initialize all the panels 
-	 * related to the main menu.
+	 * Starts the controller
+	 * Initialize all of the panels
+	 * Switch to the main panel
 	 */
 	public void start(){
 		mp = new MainPanel(this);
@@ -59,16 +63,11 @@ public class MainController implements ActionListener {
 		panelLoginStudent = lsp.getContentPane();
 					
 		switchPanel(panelMain);
-		//Uncomment this to remove the test button from the main panel
-		//mp.hideTestButton();
 	}
 	
 	/**
-	 * This method will switch the frame to the passed JPanel
-	 * Sets current content pane to invisible
-	 * Sets the frame to the new JPanel
-	 * Sets new content pane to visible
-	 * @param panel
+	 * Sets the fram to a new JPanel
+	 * @param panel - JPanel
 	 */
 	private void switchPanel(JPanel panel){
 		System.out.println("SWITCHING: "+panel.getName());
@@ -77,27 +76,29 @@ public class MainController implements ActionListener {
 		frame.getContentPane().setVisible(true);
 	}
 	
+	/**
+	 * Get the LoginStudentPanel panel
+	 * @return - LoginStudentPanel
+	 */
 	public LoginStudentPanel getLoginStudentPanel() {
 		return lsp;
 	}
-	
+	/**
+	 * Get the LoginAdminPanel
+	 * @return LoginAdminPanel
+	 */
 	public LoginAdminPanel getLoginAdminPanel() {
 		return lap;
 	}
 	
 	
 	/**
-	 * This method will assign an action to each button in the displayMain Package
-	 * When a button is pressed, the name String of the button is stored as a local variable
-	 * A switch statement is used to compare the name with other string values 
-	 * to find the correct button.
-	 * @param e, ActionEvent e
+	 * ActionListener that does something when a button is pressed that is assigned top this action listener
+	 * Any buttons that are assigned to the package listener
 	 */
 	public void actionPerformed(ActionEvent e){
-		//Gets the name (NOT TEXT) of the button that was pressed
 		JButton source = (JButton)e.getSource();
 		String name = source.getName();
-		//Finds the button that was pressed and does the needed commands
 		switch(name){
 		case "Back_LoginAdminPanel":
 			switchPanel(panelMain); 
