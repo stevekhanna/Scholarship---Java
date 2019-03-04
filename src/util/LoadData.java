@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 import objects.*;
 
-public class LoadUsers{
+public class LoadData{
 	/**
 	 * Instance variables
 	 */
@@ -22,7 +22,7 @@ public class LoadUsers{
 	/**
 	 * default constructor
 	 */
-	public LoadUsers(){
+	public LoadData(){
 	}
 	
 	public List<Student> loadStudents(){

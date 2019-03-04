@@ -1,6 +1,7 @@
 package controllers;
 
 import java.awt.Dimension;
+import java.util.HashMap;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,6 +23,7 @@ public class Controller implements ActionListener{
 
 	private List<Student> students;
 	private List<Admin> admins;
+	private HashMap<Integer, Scholarship> scMap;
 	
 	private Admin currentAdmin;
 	private Student currentStudent;
@@ -35,9 +37,10 @@ public class Controller implements ActionListener{
 		sc = new StudentController(frame,this);
 		ac = new AdminController(frame,this);
 		
-		LoadUsers lu = new LoadUsers();
-		students = lu.loadStudents();
-		admins = lu.loadAdmins();
+		LoadData ld = new LoadData();
+		students = ld.loadStudents();
+		admins = ld.loadAdmins();
+		scMap = ld.loadScholarships();
 		
 		
 		mc.start();
@@ -99,12 +102,12 @@ public class Controller implements ActionListener{
 		switch(name){
 		case"Login_LoginStudentPanel":
 			if(checkStudentLogin()) {
-				sc.start(currentStudent);
+				sc.start(currentStudent, scMap);
 			}
 			break;
 		case"Login_LoginAdminPanel":
 			if(checkAdminLogin()) {
-				ac.start(currentAdmin);
+				ac.start(currentAdmin, scMap);
 			}
 			break;
 		case"Back_ShowPanel":
