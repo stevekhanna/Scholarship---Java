@@ -7,42 +7,31 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import displayUser.*;
+import displayStudent.*;
 import objects.*;
 
-public class UserController implements ActionListener {
+public class StudentController implements ActionListener {
 	
 	private ActionListener globalListener;
 	private JFrame frame;
 	
 	private StudentPanel sp;
 	
-	private User currentUser;
+	private Student currentStudent;
 	
-	private JPanel showPanel;
+	private JPanel studentPanel;
 	
-	public UserController(JFrame frame, ActionListener globalListener) {
+	public StudentController(JFrame frame, ActionListener globalListener) {
 		this.globalListener = globalListener;
 		this.frame = frame;
 	}
 	
-	public void startAsAdmin(Admin currentUser) {
+	public void start(Student currentUser) {
+		this.currentStudent = currentStudent;
 		sp = new StudentPanel(this, globalListener);
-		showPanel = sp.getContentPane();
-	
-		switchUserPanel();
-	}
-	
-	public void startAsStudent(Student currentUser) {
-		sp = new StudentPanel(this, globalListener);
-		showPanel = sp.getContentPane();
-	
-		switchUserPanel();
-	}
-	
-	private void switchUserPanel() {
-		sp.setLblLoggedin(currentUser.getName());
-		switchPanel(showPanel);
+		studentPanel = sp.getContentPane();
+		
+		switchPanel(studentPanel);
 	}
 
 	private void switchPanel(JPanel panel){

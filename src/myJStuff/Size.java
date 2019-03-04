@@ -12,5 +12,7 @@ public class Size {
 
 	public static final int defaultLblTitleFontSize = 65;
 	public static final int defaultLblSubTitleFontSize = 40;
+	
+	public static final int defaultLblFontSize = 20;
 
 }
