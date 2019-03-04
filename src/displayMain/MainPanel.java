@@ -23,6 +23,10 @@ public class MainPanel extends MyPanel{
 	//button for south panel
 	private JButton btnTest;
 	
+	/**
+	 * constructor for the main panel, with 1 argument
+	 * @param packageListener listener for all buttons
+	 */
 	public MainPanel(ActionListener packageListener) {
 		this.packageListener = packageListener;
 		
@@ -33,17 +37,26 @@ public class MainPanel extends MyPanel{
 		displayCenter();
 	}
 	
+	/**
+	 * displays top part of main panel, with title
+	 */
 	private void displayNorth(){
 		String title = "U of C Scholarship Program";
 		lblTitle = new MyLabel(title, textColor, Size.defaultLblTitleFontSize);
 		north.add(lblTitle, "cell 0 0, center");
 	}
 
-	
+	/**
+	 * empty method
+	 */
 	private void displaySouth(){
 		
 	}
 	
+	
+	/**
+	 * displays center part of main panel, containing 4 buttons for Admin/Student login, sign up or about
+	 */
 	private void displayCenter(){
 		btnLoginAdmin = new MyButton("Admin Login");
 		center.add(btnLoginAdmin, "cell 0 0, center");

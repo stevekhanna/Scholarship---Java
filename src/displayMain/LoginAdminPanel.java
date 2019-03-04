@@ -24,6 +24,11 @@ public class LoginAdminPanel extends MyPanel{
 	
 	private ActionListener globalListener;
 	
+	/**
+	 * constructor for the admin login panel, with 2 arguments
+	 * @param actionListener listener for the back button
+	 * @param globalListener listener to switch in between panels by the controller
+	 */
 	public LoginAdminPanel (ActionListener actionListener, ActionListener globalListener) {
 		this.packageListener = actionListener;
 		this.globalListener = globalListener;
@@ -34,6 +39,9 @@ public class LoginAdminPanel extends MyPanel{
 		displayCenter();
 	}
 	
+	/**
+	 * displays top part of admin login panel, containing 2 labels.
+	 */
 	private void displayNorth(){
 		lblLogin = new MyLabel("Login", textColor, Size.defaultLblTitleFontSize);
 		north.add(lblLogin, "cell 0 0, center");
@@ -42,6 +50,9 @@ public class LoginAdminPanel extends MyPanel{
 		north.add(lblUser, "cell 0 1, center");
 	}
 	
+	/**
+	 * displays bottom part of admin login panel, containing a back and a login button.
+	 */
 	private void displaySouth(){
 		btnBack = new MyButton("Back", btnTxtColor, btnBackgroundColor, Size.defaultBtnFontSize);
 		south.add(btnBack, "cell 0 0");
@@ -55,8 +66,10 @@ public class LoginAdminPanel extends MyPanel{
 
 	}
 	
+	/**
+	 * displays center part of admin login panel, containing labels and textfields for email and password.
+	 */
 	private void displayCenter(){
-		
 		lblEmail = new MyLabel("Your UofC Email", textColor, Size.defaultBtnFontSize);
 		center.add(lblEmail, "cell 0 0, center");
 		
@@ -71,12 +84,20 @@ public class LoginAdminPanel extends MyPanel{
 		
 	}
 	
+	/**
+	 * get the email from the text field.
+	 * @return the email in the text field.
+	 */
 	public String getEmail() {
 		return fldUsername.getText();
 	}
 	
+	/**
+	 * get the password from the text field.
+	 * @return the password in the text field.
+	 */
 	@SuppressWarnings("deprecation")
-	public String getPassword() {
+		public String getPassword() {
 		return fldPassword.getText();
 	}
 }

@@ -45,6 +45,9 @@ public class LoginStudentPanel extends MyPanel{
 		displayCenter();
 	}
 	
+	/**
+	 * displays top part of student log in panel with 2 labels
+	 */
 	private void displayNorth(){
 		lblLogin = new MyLabel("Login", textColor, Size.defaultLblTitleFontSize);
 		north.add(lblLogin, "cell 0 0,center");
@@ -52,7 +55,9 @@ public class LoginStudentPanel extends MyPanel{
 		lblUser = new MyLabel("Student", textColor, Size.defaultLblSubTitleFontSize);
 		north.add(lblUser, "cell 0 1,center");
 	}
-	
+	/**
+	 * displays bottom part of student log in panel with back and login buttons
+	 */
 	private void displaySouth(){
 		btnBack = new MyButton("Back", btnTxtColor, btnBackgroundColor, Size.defaultBtnFontSize);
 		south.add(btnBack, "cell 0 0");
@@ -66,6 +71,9 @@ public class LoginStudentPanel extends MyPanel{
 
 	}
 	
+	/**
+	 * displays center part of student log in panel, with textfields for email and password
+	 */
 	private void displayCenter(){
 		
 		lblEmail = new MyLabel("Your UofC Email", textColor, Size.defaultBtnFontSize);
@@ -81,11 +89,18 @@ public class LoginStudentPanel extends MyPanel{
 		center.add(fldPassword, "cell 0 3, center");
 	}
 	
-	
+	/**
+	 * get the email from the text field
+	 * @return the email string
+	 */
 	public String getEmail() {
 		return fldUsername.getText();
 	}
 	
+	/**
+	 * get the password from the text field
+	 * @return the password string
+	 */
 	@SuppressWarnings("deprecation")
 	public String getPassword() {
 		return fldPassword.getText();
