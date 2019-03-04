@@ -52,13 +52,20 @@ public class StudentPanel extends MyPanel{
 	 * @param scholarship
 	 */
 	public void displayScholarship(Scholarship scholarship) {
-		String[] attributes = scholarship.returnFull().split(":");
-		ArrayList<MyLabel> lblList = new ArrayList<MyLabel>();
-		lblList.add(new MyLabel("Scholarship:", Colors.black, Size.defaultLblFontSize));
-		for (int i = 0; i < 9; i++) {
-				lblList.add(new MyLabel(attributes[i] + ":"));
-				String coord = String.format("cell %d %d", i, y); 
-				center.add(lblList.get(i), coord);
+		String name = scholarship.getName();
+		String gPA = Double.toString(scholarship.getGpaRequirement());
+		String toS = scholarship.getTypeOfStudy();
+		ArrayList<String> labelName = new ArrayList<String>();
+		labelName.add(name);
+		labelName.add(gPA);
+		labelName.add(toS);
+		JLabel lbl;
+		int i = 0;
+		for(String lblNm: labelName) {
+			lbl = new MyLabel(lblNm,Colors.black,Size.defaultLblFontSize);
+			String cellNum = Integer.toString(i);
+			center.add(lbl, String.format("cell "+cellNum+" %d, center",y));
+			i++;
 		}
 		y++;
 	}
