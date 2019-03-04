@@ -2,6 +2,12 @@ package run;
 
 import controllers.Controller;
 
+/**
+ * 
+ * @author Pierce de Jong
+ * This is the class to run the program
+ *
+ */
 
 public class Run {
 	

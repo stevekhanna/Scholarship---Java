@@ -9,6 +9,14 @@ import java.util.Scanner;
 
 import objects.*;
 
+
+/**
+ * 
+ * @authors Steve Khanna Pierce de Jong
+ * Load Data class contains methods that initializes all necessary data
+ * read from txt files and makes it available for other classes to use
+ *
+ */
 public class LoadData{
 	/**
 	 * Instance variables
@@ -24,6 +32,13 @@ public class LoadData{
 	 */
 	public LoadData(){
 	}
+	
+	/**
+	 * Load Student method loads all student data from text file
+	 * @return List of type student containing all info about 
+	 * students.
+	 * @catch File not found exception if file does not exist
+	 */
 	
 	public List<Student> loadStudents(){
 		students = new ArrayList<>();
@@ -42,6 +57,13 @@ public class LoadData{
 		return students;
 	}
 	
+	/**
+	 * Load Admins method loads all admin data from text file
+	 * @return List of type admins containing all info about 
+	 * admins.
+	 * @catch File not found exception if file does not exist
+	 */
+	
 	public List<Admin> loadAdmins(){
 		admins = new ArrayList<>();
 		try {
@@ -59,6 +81,12 @@ public class LoadData{
 		return admins;
 	}
 	
+	/**
+	 * Load Scholarships method loads all scholarship data from text file
+	 * @return HashMap of type <Integer, Scholarship> with key = ID 
+	 * pertaining to a specific scholarship and value = the scholarship itself
+	 * @catch File not found exception if file does not exist
+	 */
 	public HashMap<Integer, Scholarship> loadScholarships(){
 		scMap = new HashMap<Integer, Scholarship>();
 		try {
