@@ -2,6 +2,7 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,9 +17,8 @@ public class StudentController implements ActionListener {
 	private JFrame frame;
 	
 	private StudentPanel sp;
-	
 	private Student currentStudent;
-	
+	private HashMap <Integer, Scholarship> scMap;
 	private JPanel studentPanel;
 	
 	public StudentController(JFrame frame, ActionListener globalListener) {
@@ -26,12 +26,19 @@ public class StudentController implements ActionListener {
 		this.frame = frame;
 	}
 	
-	public void start(Student currentUser) {
+	public void start(Student currentUser, HashMap<Integer, Scholarship> scMap) {
+		this.scMap = scMap;
 		this.currentStudent = currentStudent;
 		sp = new StudentPanel(this, globalListener);
 		studentPanel = sp.getContentPane();
 		
 		switchPanel(studentPanel);
+	}
+	
+	public void scholarshipLoop(HashMap<Integer, Scholarship> scMap) {
+		for(Integer ID: scMap.keySet()) {
+			Scholarship value = scMap.get(ID);
+		}
 	}
 
 	private void switchPanel(JPanel panel){
