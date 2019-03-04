@@ -37,10 +37,10 @@ public class AdminPanel extends MyPanel{
 	}
 	
 	private void displaySouth() {
-		btnBack = new MyButton("Back", btnTxtColor, btnBackgroundColor, Size.defaultBtnFontSize);
+		btnBack = new MyButton("Log out", btnTxtColor, btnBackgroundColor, Size.defaultBtnFontSize);
 		south.add(btnBack, "cell 0 0");
 		btnBack.addActionListener(globalListener);
-		btnBack.setName("Back_ShowPanel");
+		btnBack.setName("Back_AdminPanel");
 	}
 	
 	

@@ -1,2 +1,1 @@
-30006609:pierce.dejong@ucalgary.ca:pierce:Pierce de Jong
-12345678:test@ucalgary.ca:password:Tester 123
+12345678:student@ucalgary.ca:password:STUDENT ACCOUNT

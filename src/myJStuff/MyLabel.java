@@ -40,7 +40,7 @@ public class MyLabel extends JLabel{
 	 * @param string - the font displayed
 	 */
 	public MyLabel(String string) {
-		this(string, Colors.white, 25);
+		this(string, Colors.black, 25);
 	}
 
 	/**
@@ -50,6 +50,6 @@ public class MyLabel extends JLabel{
 	 * @param i - size of the font
 	 */
 	public MyLabel(String string, int i) {
-		this(string, Colors.white, i);
+		this(string, Colors.black, i);
 	}
 }
