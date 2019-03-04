@@ -2,10 +2,6 @@ package myJStuff;
 
 import java.awt.Dimension;
 
-/**
- * @author Elvin Limpin 30018832
- */
-
 import javax.swing.JTextField;
 
 public class MyTextField extends JTextField {

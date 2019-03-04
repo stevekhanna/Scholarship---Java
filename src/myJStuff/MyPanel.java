@@ -11,6 +11,15 @@ import javax.swing.border.EmptyBorder;
 
 import net.miginfocom.swing.MigLayout;
 
+/**
+ * 
+ * @author pierce
+ * 
+ * Abstract class that is used by all of the panels
+ * Creates a MigLayout panel with a north, south, east, west, and center panels
+ * These are used by the displayPanels to add lbls and buttons to the screen
+ *
+ */
 public abstract class MyPanel {
 
 	protected ActionListener packageListener;
@@ -31,6 +40,8 @@ public abstract class MyPanel {
 	
 	protected final static String location = "src/resources/";
 	
+	
+	// Height and width of the screen
 	protected static final int width = 900;
 	protected static final int height = 600;
 	
@@ -88,7 +99,10 @@ public abstract class MyPanel {
 		   e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * Getter
+	 * @return JPanel - content pane
+	 */
 	public JPanel getContentPane(){
 		return contentPane;
 	}
