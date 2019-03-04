@@ -31,18 +31,18 @@ public class ScholarshipPanel extends MyPanel {
 		
 	}
 
-	private void displayScholarship(Scholarship inSc) {
-		String[] scArray = inSc.returnFull().split(":");
+	/**
+	 * displays the scholarship.
+	 * @param scholarship
+	 */
+	public void displayScholarship(Scholarship scholarship) {
+		String[] attributes = scholarship.returnFull().split(":");
 		ArrayList<MyLabel> lblList = new ArrayList<MyLabel>();
-		lblList.add(new MyLabel("Scholarship:", textColor, Size.defaultLblTitleFontSize));
+		lblList.add(new MyLabel("Scholarship:", Colors.black, Size.defaultLblFontSize));
 		for (int i = 0; i < 9; i++) {
-			if (scArray[i] != "") {
-				lblList.add(new MyLabel(scArray[i] + ":"));
-				int x = 0;
-				String coord = String.format("cell %d %d", x, y); 
+				lblList.add(new MyLabel(attributes[i] + ":"));
+				String coord = String.format("cell %d %d", i, y); 
 				center.add(lblList.get(i), coord);
-				x++;
-			}
 		}
 		y++;
 	}
