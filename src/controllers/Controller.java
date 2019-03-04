@@ -17,7 +17,8 @@ public class Controller implements ActionListener{
 	private JFrame frame;
 	
 	private MainController mc;
-	private UserController uc;
+	private StudentController sc;
+	private AdminController ac;
 
 	private List<Student> students;
 	private List<Admin> admins;
@@ -31,11 +32,14 @@ public class Controller implements ActionListener{
 	
 	public void run(){
 		mc = new MainController(frame,this);
-		uc = new UserController(frame,this);
+		sc = new StudentController(frame,this);
+		ac = new AdminController(frame,this);
 		
 		LoadUsers lu = new LoadUsers();
 		students = lu.loadStudents();
 		admins = lu.loadAdmins();
+		
+		
 		mc.start();
 	}
 	
@@ -95,12 +99,12 @@ public class Controller implements ActionListener{
 		switch(name){
 		case"Login_LoginStudentPanel":
 			if(checkStudentLogin()) {
-				uc.startAsStudent(currentStudent);
+				sc.start(currentStudent);
 			}
 			break;
 		case"Login_LoginAdminPanel":
 			if(checkAdminLogin()) {
-				uc.startAsAdmin(currentAdmin);
+				ac.start(currentAdmin);
 			}
 			break;
 		case"Back_ShowPanel":
