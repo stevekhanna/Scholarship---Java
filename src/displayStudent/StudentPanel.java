@@ -1,11 +1,13 @@
 package displayStudent;
 
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import myJStuff.*;
+import objects.Scholarship;
 public class StudentPanel extends MyPanel{
 	
 	private ActionListener globalListener;
@@ -43,7 +45,26 @@ public class StudentPanel extends MyPanel{
 	public void setLblLoggedin(String name) {
 		lblLoggedin.setText(name);
 	}
-	
+
+	private int y =0;
+	public void displayScholarship(Scholarship scholarship) {
+		String name = scholarship.getName();
+		String gPA = Double.toString(scholarship.getGpaRequirement());
+		String toS = scholarship.getTypeOfStudy();
+		ArrayList<String> labelName = new ArrayList<String>();
+		labelName.add(name);
+		labelName.add(gPA);
+		labelName.add(toS);
+		JLabel lbl;
+		int i = 0;
+		for(String lblNm: labelName) {
+			lbl = new MyLabel(lblNm,Colors.black,Size.defaultLblFontSize);
+			String cellNum = Integer.toString(i);
+			center.add(lbl, String.format("cell "+cellNum+" %d, center",y));
+			i++;
+		}
+		y++;
+	}
 	
 
 }

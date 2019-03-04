@@ -32,12 +32,16 @@ public class StudentController implements ActionListener {
 		sp = new StudentPanel(this, globalListener);
 		studentPanel = sp.getContentPane();
 		
+		
 		switchPanel(studentPanel);
+		scholarshipLoop(scMap);
 	}
 	
 	public void scholarshipLoop(HashMap<Integer, Scholarship> scMap) {
 		for(Integer ID: scMap.keySet()) {
 			Scholarship value = scMap.get(ID);
+			sp.displayScholarship(value);
+			
 		}
 	}
 
