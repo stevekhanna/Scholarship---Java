@@ -1,5 +1,10 @@
 package myJStuff;
 
+/**
+ * Static final ints that are used across the propgram
+ * @author pierce
+ *
+ */
 public class Size {
 	
 
