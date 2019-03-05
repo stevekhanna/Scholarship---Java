@@ -77,13 +77,13 @@ public class LoginStudentPanel extends MyPanel{
 	private void displayCenter(){
 		
 		lblEmail = new MyLabel("Your UofC Email", textColor, Size.defaultBtnFontSize);
-		center.add(lblEmail, "cell 0 0");
+		center.add(lblEmail, "cell 0 0,center");
 		
 		fldUsername = new MyTextField("", Size.defaultBtnFontSize);
 		center.add(fldUsername, "cell 0 1, center");
 		
 		lblPassword = new MyLabel("Your Password", textColor, Size.defaultBtnFontSize);
-		center.add(lblPassword, "cell 0 2");
+		center.add(lblPassword, "cell 0 2,center");
 		
 		fldPassword = new MyPasswordField("", Size.defaultBtnFontSize);
 		center.add(fldPassword, "cell 0 3, center");
