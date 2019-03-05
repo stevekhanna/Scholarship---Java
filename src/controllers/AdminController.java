@@ -58,7 +58,7 @@ public class AdminController implements ActionListener {
 		adminPanel = ap.getContentPane();
 		
 		switchPanel(adminPanel);
-
+		scholarshipLoop(scMap);
 	}
 	
 	/**
@@ -68,6 +68,7 @@ public class AdminController implements ActionListener {
 	public void scholarshipLoop(HashMap<Integer, Scholarship> scMap) {
 		for(Integer ID: scMap.keySet()) {
 			Scholarship value = scMap.get(ID);
+			ap.displayScholarship(value);
 		}
 	}
 

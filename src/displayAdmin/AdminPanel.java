@@ -1,14 +1,17 @@
 package displayAdmin;
 
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+import myJStuff.Colors;
 import myJStuff.MyButton;
 import myJStuff.MyLabel;
 import myJStuff.MyPanel;
 import myJStuff.Size;
+import objects.Scholarship;
 /**
  * Admin panel displays all admin related stuff
  * @author stevekhanna
@@ -21,11 +24,13 @@ public class AdminPanel extends MyPanel{
 	 */
 	private ActionListener globalListener;
 	
-	JLabel lblLoggedin;
+	private JLabel lblLoggedin;
 	
-	JLabel lblAdmin;
+	private JLabel lblAdmin;
 	
-	JButton btnBack;
+	private JButton btnBack;
+	
+	private int y;
 	
 	/**
 	 * Admin Panel constructor
@@ -67,6 +72,29 @@ public class AdminPanel extends MyPanel{
 	 */
 	public void setLblLoggedin(String name) {
 		lblLoggedin.setText(name);
+	}
+	
+	/**
+	 * displays the scholarship.
+	 * @param scholarship
+	 */
+	public void displayScholarship(Scholarship scholarship) {
+		String name = scholarship.getName();
+		String gPA = Double.toString(scholarship.getGpaRequirement());
+		String toS = scholarship.getTypeOfStudy();
+		ArrayList<String> labelName = new ArrayList<String>();
+		labelName.add(name);
+		labelName.add(gPA);
+		labelName.add(toS);
+		JLabel lbl;
+		int i = 0;
+		for(String lblNm: labelName) {
+			lbl = new MyLabel(lblNm,Colors.black,Size.defaultLblFontSize);
+			String cellNum = Integer.toString(i);
+			center.add(lbl, String.format("cell "+cellNum+" %d, center",y));
+			i++;
+		}
+		y++;
 	}
 	
 	
