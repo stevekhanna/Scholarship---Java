@@ -54,7 +54,7 @@ public class StudentController implements ActionListener {
 	 * @param currentUser - Student
 	 * @param scMap - HashMap 
 	 */
-	public void start(Student currentUser, HashMap<Integer, Scholarship> scMap) {
+	public void start(Student currentStudent, HashMap<Integer, Scholarship> scMap) {
 		this.scMap = scMap;
 		this.currentStudent = currentStudent;
 		sp = new StudentPanel(this, globalListener);
