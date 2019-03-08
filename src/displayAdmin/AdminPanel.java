@@ -40,6 +40,7 @@ public class AdminPanel extends MyPanel{
 	public AdminPanel(ActionListener packageListener, ActionListener globalListener) {
 		this.packageListener = packageListener;
 		this.globalListener = globalListener;
+		contentPane.setName("Admin Panel");
 		
 		displayNorth();
 		displaySouth();
@@ -62,7 +63,7 @@ public class AdminPanel extends MyPanel{
 		btnBack = new MyButton("Log out", btnTxtColor, btnBackgroundColor, Size.defaultBtnFontSize);
 		south.add(btnBack, "cell 0 0");
 		btnBack.addActionListener(globalListener);
-		btnBack.setName("Back_AdminPanel");
+		btnBack.setName("Logout_AdminPanel");
 	}
 	
 	

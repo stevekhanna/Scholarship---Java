@@ -1,128 +1,124 @@
 package controllers;
 
+import java.awt.Dimension;
+import java.util.HashMap;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
-import displayMain.*;
-/**
- * Controller used to manage the login of students and admins
- * @author pierce
- *
- */
-public class MainController implements ActionListener {
-	/**
-	 * Instance variables
-	 */
-	
-	private ActionListener globalListener;
+import myJStuff.*;
+import objects.*;
+import util.*;
+
+public class MainController implements ActionListener{
 	
 	private JFrame frame;
 	
-	private MainPanel mp;
-	private AboutPanel ap;
-	private LoginAdminPanel lap;
-	private LoginStudentPanel lsp;
+	private LoginController mc;
+	private StudentController sc;
+	private AdminController ac;
+
+	private List<Student> students;
+	private List<Admin> admins;
+	private HashMap<Integer, Scholarship> scMap;
 	
-	private JPanel panelMain;
-	private JPanel panelAbout;	
-	private JPanel panelLoginAdmin;
-	private JPanel panelLoginStudent;
+	private Admin currentAdmin;
+	private Student currentStudent;
 	
-	/**
-	 * Constructor
-	 *  and set the bounds.
-	 * @param frame - JFrame
-	 * @param globalListener - ActionListener
-	 */
-	public MainController(JFrame frame, ActionListener globalListener){
-		//listener = new Listener();
-		this.globalListener = globalListener;		
-		//setting up the frame 
-		this.frame = frame;
+	public MainController(){
+		createFrame();
 	}
 	
-	/**
-	 * Starts the controller
-	 * Initialize all of the panels
-	 * Switch to the main panel
-	 */
-	public void start(){
-		mp = new MainPanel(this);
-		ap = new AboutPanel(this);
-		lap = new LoginAdminPanel(this, globalListener);
-		lsp = new LoginStudentPanel(this, globalListener);
+	public void run(){
+		mc = new LoginController(frame,this);
+		sc = new StudentController(frame,this);
+		ac = new AdminController(frame,this);
+		
+		LoadData ld = new LoadData();
+		students = ld.loadStudents();
+		admins = ld.loadAdmins();
+		scMap = ld.loadScholarships();
 		
 		
-		panelMain = mp.getContentPane();
-		panelAbout = ap.getContentPane();
-		panelLoginAdmin = lap.getContentPane();
-		panelLoginStudent = lsp.getContentPane();
-					
-		switchPanel(panelMain);
+		mc.start();
 	}
 	
-	/**
-	 * Sets the fram to a new JPanel
-	 * @param panel - JPanel
-	 */
-	private void switchPanel(JPanel panel){
-		System.out.println("SWITCHING: "+panel.getName());
-		frame.getContentPane().setVisible(false);
-		frame.setContentPane(panel);
-		frame.getContentPane().setVisible(true);
-	}
-	
-	/**
-	 * Get the LoginStudentPanel panel
-	 * @return - LoginStudentPanel
-	 */
-	public LoginStudentPanel getLoginStudentPanel() {
-		return lsp;
-	}
-	/**
-	 * Get the LoginAdminPanel
-	 * @return LoginAdminPanel
-	 */
-	public LoginAdminPanel getLoginAdminPanel() {
-		return lap;
+	private void createFrame(){
+		int width = Size.screenWidth;
+		int height = Size.screenHeight;
+		
+		frame = new JFrame();
+		// Set the position and size of the screen from top right(x pos, y pos, width, height)
+		frame.setBounds(250, 100, width, height);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(true);
+		frame.setMinimumSize(new Dimension(300,300));
+		frame.setVisible(true);
 	}
 	
 	
+	private boolean checkStudentLogin() {
+		System.out.print("Check Student Login:  ");
+		String email=mc.getLoginStudentPanel().getEmail();
+		String password = mc.getLoginStudentPanel().getPassword();
+		for( Student s : students) {
+			if (s.getEmail().equalsIgnoreCase(email) && s.getPassword().equals(password)) {
+				System.out.println("Success");
+				currentStudent = s;
+				return true;
+			}
+		}
+		System.out.println("Fail");
+		return false;
+	}
+	
+	private boolean checkAdminLogin() {
+		System.out.print("Check Admin Login:  ");
+		String email=mc.getLoginAdminPanel().getEmail();
+		String password = mc.getLoginAdminPanel().getPassword();
+		for( Admin s : admins) {
+			if (s.getEmail().equalsIgnoreCase(email) && s.getPassword().equals(password)) {
+				System.out.println("Success");
+				currentAdmin = s;
+				return true;
+			}
+		}
+		System.out.println("Fail");
+		return false;
+	}
+
 	/**
-	 * ActionListener that does something when a button is pressed that is assigned top this action listener
-	 * Any buttons that are assigned to the package listener
-	 */
-	public void actionPerformed(ActionEvent e){
+	 * Action listener that switches panels based on the button clicked
+	 * @param e - Action Event
+	 * */
+	@Override
+	public void actionPerformed(ActionEvent e) {
 		JButton source = (JButton)e.getSource();
 		String name = source.getName();
+		
 		switch(name){
-		case "Back_LoginAdminPanel":
-			switchPanel(panelMain); 
+		case"Login_LoginStudentPanel":
+			if(checkStudentLogin()) {
+				sc.start(currentStudent, scMap);
+			}
 			break;
-		case "Back_LoginStudentPanel":
-			switchPanel(panelMain); 
+		case"Login_LoginAdminPanel":
+			if(checkAdminLogin()) {
+				ac.start(currentAdmin, scMap);
+			}
 			break;
-		case "LoginAdmin_MainPanel":
-			switchPanel(panelLoginAdmin); 
-			break;
-		case "Back_AboutPanel":
-			switchPanel(panelMain); 
-			break;
-		case "About_MainPanel":
-			switchPanel(panelAbout); 
-			break;
-		case "LoginStudent_MainPanel":
-			switchPanel(panelLoginStudent);
-			break;
-		default:
-			switchPanel(panelMain);
-			break;
+		case"Logout_AdminPanel":
+			currentAdmin=null;
+			currentStudent=null;
+			mc.start();
+		case"Logout_StudentPanel":
+			currentAdmin=null;
+			currentStudent=null;
+			mc.start();
+		default:break;
 		}
-       
 	}
-    
 }
