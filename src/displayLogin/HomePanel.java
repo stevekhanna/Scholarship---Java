@@ -1,4 +1,4 @@
-package displayMain;
+package displayLogin;
 
 import java.awt.event.ActionListener;
 
@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 
 import myJStuff.*;
 
-public class MainPanel extends MyPanel{
+public class HomePanel extends MyPanel{
 	/**
 	 * Instance variables.
 	 */	
@@ -24,13 +24,13 @@ public class MainPanel extends MyPanel{
 	private JButton btnTest;
 	
 	/**
-	 * constructor for the main panel, with 1 argument
+	 * constructor for the Home panel, with 1 argument
 	 * @param packageListener listener for all buttons
 	 */
-	public MainPanel(ActionListener packageListener) {
+	public HomePanel(ActionListener packageListener) {
 		this.packageListener = packageListener;
 		
-		contentPane.setName("Main Panel");
+		contentPane.setName("Home Panel");
 		//displaying contents of each panels
 		displayNorth();
 		displaySouth();
@@ -38,7 +38,7 @@ public class MainPanel extends MyPanel{
 	}
 	
 	/**
-	 * displays top part of main panel, with title
+	 * displays top part of Home panel, with title
 	 */
 	private void displayNorth(){
 		String title = "U of C Scholarship Program";
@@ -61,22 +61,22 @@ public class MainPanel extends MyPanel{
 		btnLoginAdmin = new MyButton("Admin Login");
 		center.add(btnLoginAdmin, "cell 0 0, center");
 		btnLoginAdmin.addActionListener(packageListener);
-		btnLoginAdmin.setName("LoginAdmin_MainPanel");
+		btnLoginAdmin.setName("LoginAdmin_HomePanel");
 		
 		btnLoginStudent = new MyButton("Student Login");
 		center.add(btnLoginStudent, "cell 0 1, center");
 		btnLoginStudent.addActionListener(packageListener);
-		btnLoginStudent.setName("LoginStudent_MainPanel");
+		btnLoginStudent.setName("LoginStudent_HomePanel");
 		
 		btnSignup = new MyButton("Sign up");
 		center.add(btnSignup, "cell 0 2, center");
 		btnSignup.addActionListener(packageListener);
-		btnSignup.setName("Signup_MainPanel");
+		btnSignup.setName("Signup_HomePanel");
 
 		btnAbout = new MyButton("About");
 		center.add(btnAbout, "cell 0 3, center");
 		btnAbout.addActionListener(packageListener);
-		btnAbout.setName("About_MainPanel");
+		btnAbout.setName("About_HomePanel");
 		
 	}
 	/**

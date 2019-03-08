@@ -1,6 +1,6 @@
 package run;
 
-import controllers.Controller;
+import controllers.MainController;
 
 /**
  * 
@@ -12,7 +12,7 @@ import controllers.Controller;
 public class Run {
 	
 	public static void main(String[] args){
-		Controller c = new Controller();
+		MainController c = new MainController();
 		c.run();
 	}
 }

@@ -1,4 +1,4 @@
-package displayMain;
+package displayLogin;
 
 import myJStuff.*;
 

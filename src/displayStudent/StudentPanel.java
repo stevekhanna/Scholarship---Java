@@ -38,6 +38,7 @@ public class StudentPanel extends MyPanel{
 	public StudentPanel(ActionListener packageListener, ActionListener globalListener) {
 		this.packageListener = packageListener;
 		this.globalListener = globalListener;
+		contentPane.setName("Student Panel");
 		
 		displayNorth();
 		displaySouth();
@@ -60,7 +61,7 @@ public class StudentPanel extends MyPanel{
 		btnBack = new MyButton("Log out", btnTxtColor, btnBackgroundColor, Size.defaultBtnFontSize);
 		south.add(btnBack, "cell 0 0");
 		btnBack.addActionListener(globalListener);
-		btnBack.setName("Back_StudentPanel");
+		btnBack.setName("Logout_StudentPanel");
 	}
 	
 	
