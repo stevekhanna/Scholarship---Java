@@ -8,19 +8,16 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import displayLogin.*;
+import myJStuff.MyController;
 /**
  * Controller used to manage the login of students and admins
  * @author pierce
  *
  */
-public class LoginController implements ActionListener {
+public class LoginController extends MyController {
 	/**
 	 * Instance variables
 	 */
-	
-	private ActionListener globalListener;
-	
-	private JFrame frame;
 	
 	private HomePanel hp;
 	private AboutPanel ap;
@@ -38,11 +35,8 @@ public class LoginController implements ActionListener {
 	 * @param frame - JFrame
 	 * @param globalListener - ActionListener
 	 */
-	public LoginController(JFrame frame, ActionListener globalListener){
-		//listener = new Listener();
-		this.globalListener = globalListener;		
-		//setting up the frame 
-		this.frame = frame;
+	public LoginController(ActionListener globalListener,JFrame frame){
+		super(globalListener, frame);
 	}
 	
 	/**
@@ -63,17 +57,6 @@ public class LoginController implements ActionListener {
 		panelLoginStudent = lsp.getContentPane();
 					
 		switchPanel(panelHome);
-	}
-	
-	/**
-	 * Sets the fram to a new JPanel
-	 * @param panel - JPanel
-	 */
-	private void switchPanel(JPanel panel){
-		System.out.println("SWITCHING: "+panel.getName());
-		frame.getContentPane().setVisible(false);
-		frame.setContentPane(panel);
-		frame.getContentPane().setVisible(true);
 	}
 	
 	/**
