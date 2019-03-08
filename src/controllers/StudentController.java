@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import displayStudent.*;
+import myJStuff.MyController;
 import objects.*;
 
 /**
@@ -16,14 +17,8 @@ import objects.*;
  * @author pierce
  *
  */
-public class StudentController implements ActionListener {
-	
-	
-	// Used as a call back to the Controller class to switch between controllers
-	private ActionListener globalListener;
-	
-	//The program frame
-	private JFrame frame;
+public class StudentController extends MyController {
+
 	
 	// List of all of the Panels
 	private StudentPanel sp;
@@ -43,9 +38,8 @@ public class StudentController implements ActionListener {
 	 * @param frame - JFrame
 	 * @param globalListener - ActionListener
 	 */
-	public StudentController(JFrame frame, ActionListener globalListener) {
-		this.globalListener = globalListener;
-		this.frame = frame;
+	public StudentController(ActionListener globalListener,JFrame frame) {
+		super(globalListener, frame);
 	}
 	
 	/**
@@ -76,16 +70,6 @@ public class StudentController implements ActionListener {
 		}
 	}
 
-	/**
-	 * Switch the current panel
-	 * @param panel - JPanel
-	 */
-	private void switchPanel(JPanel panel){
-		System.out.println("SWITCHING: "+panel.getName());
-		frame.getContentPane().setVisible(false);
-		frame.setContentPane(panel);
-		frame.getContentPane().setVisible(true);
-	}
 	@Override
 	/**
 	 * ActionListener that does something when a button is pressed that is assigned top this action listener

@@ -17,7 +17,7 @@ public class MainController implements ActionListener{
 	
 	private JFrame frame;
 	
-	private LoginController mc;
+	private LoginController lc;
 	private StudentController sc;
 	private AdminController ac;
 
@@ -33,9 +33,9 @@ public class MainController implements ActionListener{
 	}
 	
 	public void run(){
-		mc = new LoginController(frame,this);
-		sc = new StudentController(frame,this);
-		ac = new AdminController(frame,this);
+		lc = new LoginController(this,frame);
+		sc = new StudentController(this,frame);
+		ac = new AdminController(this,frame);
 		
 		LoadData ld = new LoadData();
 		students = ld.loadStudents();
@@ -43,7 +43,7 @@ public class MainController implements ActionListener{
 		scMap = ld.loadScholarships();
 		
 		
-		mc.start();
+		lc.start();
 	}
 	
 	private void createFrame(){
@@ -62,8 +62,8 @@ public class MainController implements ActionListener{
 	
 	private boolean checkStudentLogin() {
 		System.out.print("Check Student Login:  ");
-		String email=mc.getLoginStudentPanel().getEmail();
-		String password = mc.getLoginStudentPanel().getPassword();
+		String email=lc.getLoginStudentPanel().getEmail();
+		String password = lc.getLoginStudentPanel().getPassword();
 		for( Student s : students) {
 			if (s.getEmail().equalsIgnoreCase(email) && s.getPassword().equals(password)) {
 				System.out.println("Success");
@@ -77,8 +77,8 @@ public class MainController implements ActionListener{
 	
 	private boolean checkAdminLogin() {
 		System.out.print("Check Admin Login:  ");
-		String email=mc.getLoginAdminPanel().getEmail();
-		String password = mc.getLoginAdminPanel().getPassword();
+		String email=lc.getLoginAdminPanel().getEmail();
+		String password = lc.getLoginAdminPanel().getPassword();
 		for( Admin s : admins) {
 			if (s.getEmail().equalsIgnoreCase(email) && s.getPassword().equals(password)) {
 				System.out.println("Success");
@@ -113,11 +113,11 @@ public class MainController implements ActionListener{
 		case"Logout_AdminPanel":
 			currentAdmin=null;
 			currentStudent=null;
-			mc.start();
+			lc.start();
 		case"Logout_StudentPanel":
 			currentAdmin=null;
 			currentStudent=null;
-			mc.start();
+			lc.start();
 		default:break;
 		}
 	}

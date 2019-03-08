@@ -10,19 +10,14 @@ import javax.swing.JPanel;
 
 import displayAdmin.*;
 import objects.*;
+import myJStuff.MyController;
 
 /**
  * Controller used to manage what the admin can do when logged in
  * @author pierce
  *
  */
-public class AdminController implements ActionListener {
-	
-	// Used as a call back to the Controller class to switch between controllers
-	private ActionListener globalListener;
-	
-	//The program frame
-	private JFrame frame;
+public class AdminController extends MyController {
 	
 	// All of the panels that the controller 
 	private AdminPanel ap;
@@ -41,9 +36,8 @@ public class AdminController implements ActionListener {
 	 * @param frame - JFrame
 	 * @param globalListener - ActionListener
 	 */
-	public AdminController(JFrame frame, ActionListener globalListener) {
-		this.globalListener = globalListener;
-		this.frame = frame;
+	public AdminController(ActionListener globalListener, JFrame frame) {
+		super(globalListener, frame);
 	}
 	
 	/**
@@ -70,17 +64,6 @@ public class AdminController implements ActionListener {
 			Scholarship value = scMap.get(ID);
 			ap.displayScholarship(value);
 		}
-	}
-
-	/**
-	 * Switches the current panel
-	 * @param panel - JPanel - panel to go to
-	 */
-	private void switchPanel(JPanel panel){
-		System.out.println("SWITCHING: "+panel.getName());
-		frame.getContentPane().setVisible(false);
-		frame.setContentPane(panel);
-		frame.getContentPane().setVisible(true);
 	}
 	
 	@Override
