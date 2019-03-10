@@ -22,6 +22,7 @@ public class StudentController extends MyController {
 	
 	// List of all of the Panels
 	private StudentPanel sp;
+	private ScholarshipPanel scp;
 	
 	
 	// The current user
@@ -32,6 +33,7 @@ public class StudentController extends MyController {
 	
 	// List of panels
 	private JPanel studentPanel;
+	private JPanel scholarshipPanel;
 	
 	/**
 	 * Constructor
@@ -52,7 +54,9 @@ public class StudentController extends MyController {
 		this.scMap = scMap;
 		this.currentStudent = currentStudent;
 		sp = new StudentPanel(this, globalListener);
+		scp = new ScholarshipPanel(this);
 		studentPanel = sp.getContentPane();
+		scholarshipPanel = scp.getContentPane();
 		
 		
 		switchPanel(studentPanel);
@@ -79,7 +83,12 @@ public class StudentController extends MyController {
 		JButton source = (JButton)e.getSource();
 		String name = source.getName();
 		switch(name) {
+		case "Back_ScholarshipPanel":
+			switchPanel(studentPanel);
+			break;
 		case "":
+			// Call the method to display the correct scholarship
+			switchPanel(scholarshipPanel);
 			break;
 		default:
 			break;
