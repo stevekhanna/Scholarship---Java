@@ -48,7 +48,7 @@ public class LoadData{
 			while(fileScanner.hasNextLine()){
 				String currentLine = fileScanner.nextLine();
 				String[] parts = currentLine.split(":");
-				students.add(new Student(Integer.parseInt(parts[0]),parts[1],parts[2],parts[3]));
+				students.add(new Student(Integer.parseInt(parts[0]),parts[1],parts[2],parts[3],parts[4],(Double.parseDouble(parts[5])),(Integer.parseInt(parts[6])),parts[7],parts[8]));
 			}
 			fileScanner.close();
 		} catch (FileNotFoundException e) {
@@ -96,7 +96,7 @@ public class LoadData{
 				String currentLine = fileScanner.nextLine();
 				currentLine = currentLine.replaceAll("\t", ":");
 				String [] parts = currentLine.split(":");
-				Scholarship name = new Scholarship(parts[0], parts[1],parts[2],parts[3],parts[4],parts[5],parts[6],parts[7],parts[8]);
+				Scholarship name = new Scholarship(parts[0], parts[1],parts[2],parts[3],parts[4],parts[5],parts[6],parts[7],parts[8],parts[9]);
 				int ID = name.getScholarshipId();
 				scMap.put(ID, name);
 			}
