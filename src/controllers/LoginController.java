@@ -95,7 +95,7 @@ public class LoginController extends MyController {
 		case "Back_AboutPanel":
 			switchPanel(panelHome); 
 			break;
-		case "About_LoginPanel":
+		case "About_HomePanel":
 			switchPanel(panelAbout); 
 			break;
 		case "LoginStudent_HomePanel":
