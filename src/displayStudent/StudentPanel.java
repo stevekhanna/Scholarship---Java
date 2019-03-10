@@ -21,12 +21,12 @@ public class StudentPanel extends MyPanel{
 	 * Instance Variables
 	 */
 	private ActionListener globalListener;
-	private int y =0;
 	JLabel lblLoggedin;
-	
-	JLabel lblStudent;
+	JLabel lblName;
+	JLabel lblEmail;
 	
 	JButton btnBack;
+	JButton btnScholarship;
 	
 	/**
 	 * Constructor with arguement of ActionListener packageListener
@@ -42,6 +42,7 @@ public class StudentPanel extends MyPanel{
 		
 		displayNorth();
 		displaySouth();
+		displayCenter();
 	}
 	
 	
@@ -49,11 +50,17 @@ public class StudentPanel extends MyPanel{
 	 * Method to display button at the north end of the screen
 	 */
 	private void displayNorth(){
-		lblLoggedin = new MyLabel("Logged in", textColor, Size.defaultLblTitleFontSize);
-		north.add(lblLoggedin, "cell 0 0,center");
-
-		lblStudent = new MyLabel("Student", textColor, Size.defaultLblFontSize);
-		north.add(lblStudent, "cell 0 1,center");}
+		lblLoggedin = new MyLabel("Logged in as Student", textColor, Size.defaultLblFontSize);
+		north.add(lblLoggedin, "cell 0 0,left");
+	}
+	
+	private void displayCenter() {
+		lblName = new MyLabel("Name", textColor, Size.defaultLblFontSize);
+		center.add(lblName, "cell 0 0,center");
+		
+		lblEmail = new MyLabel("Email", textColor, Size.defaultLblFontSize);
+		center.add(lblName, "cell 0 0,center");
+	}
 	/**
 	 * Method to display button button at the south of the screen
 	 */
@@ -62,38 +69,18 @@ public class StudentPanel extends MyPanel{
 		south.add(btnBack, "cell 0 0");
 		btnBack.addActionListener(globalListener);
 		btnBack.setName("Logout_StudentPanel");
+		
+		btnScholarship = new MyButton("View All Scholarships", btnTxtColor, btnBackgroundColor, Size.defaultBtnFontSize);
+		south.add(btnScholarship, "cell 1 0");
+		btnScholarship.addActionListener(globalListener);
+		btnScholarship.setName("Scholarships_StudentPanel");
 	}
 	
-	
-	/**
-	 * 
-	 * @param name sets the label name to this name
-	 */
-	public void setLblLoggedin(String name) {
-		lblLoggedin.setText(name);
-	}
-	/**
-	 * displays the scholarship.
-	 * @param scholarship
-	 */
-	public void displayScholarship(Scholarship scholarship) {
-		String name = scholarship.getName();
-		String gPA = Double.toString(scholarship.getGpaRequirement());
-		String toS = scholarship.getTypeOfStudy();
-		ArrayList<String> labelName = new ArrayList<String>();
-		labelName.add(name);
-		labelName.add(gPA);
-		labelName.add(toS);
-		JLabel lbl;
-		int i = 0;
-		for(String lblNm: labelName) {
-			lbl = new MyLabel(lblNm,Colors.black,Size.defaultLblFontSize);
-			String cellNum = Integer.toString(i);
-			center.add(lbl, String.format("cell "+cellNum+" %d, center",y));
-			i++;
-		}
-		y++;
+	public void setName(String name) {
+		lblName.setText(name);
 	}
 	
-
+	public void setEmail(String email) {
+		lblEmail.setText(email);
+	}
 }

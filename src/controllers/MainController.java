@@ -20,6 +20,7 @@ public class MainController implements ActionListener{
 	private LoginController lc;
 	private StudentController sc;
 	private AdminController ac;
+	private ScholarshipController spc;
 
 	private List<Student> students;
 	private List<Admin> admins;
@@ -36,12 +37,12 @@ public class MainController implements ActionListener{
 		lc = new LoginController(this,frame);
 		sc = new StudentController(this,frame);
 		ac = new AdminController(this,frame);
+		spc = new ScholarshipController(this,frame);
 		
 		LoadData ld = new LoadData();
 		students = ld.loadStudents();
 		admins = ld.loadAdmins();
 		scMap = ld.loadScholarships();
-		
 		
 		lc.start();
 	}
@@ -68,6 +69,7 @@ public class MainController implements ActionListener{
 			if (s.getEmail().equalsIgnoreCase(email) && s.getPassword().equals(password)) {
 				System.out.println("Success");
 				currentStudent = s;
+				currentAdmin = null;
 				return true;
 			}
 		}
@@ -83,6 +85,7 @@ public class MainController implements ActionListener{
 			if (s.getEmail().equalsIgnoreCase(email) && s.getPassword().equals(password)) {
 				System.out.println("Success");
 				currentAdmin = s;
+				currentStudent = null;
 				return true;
 			}
 		}
@@ -107,6 +110,22 @@ public class MainController implements ActionListener{
 			break;
 		case"Login_LoginAdminPanel":
 			if(checkAdminLogin()) {
+				ac.start(currentAdmin, scMap);
+			}
+			break;
+		case"Scholarships_StudentPanel":
+			spc.start(false,scMap);
+			break;
+		case"Scholarships_AdminPanel":
+			spc.start(true,scMap);
+			break;
+		// Going back from viewing all scholarships to the users main page
+		case"Back_ScholarshipsPanel":
+			// If the current user is a student go to the student controller
+			if (currentStudent!=null) {
+				sc.start(currentStudent, scMap);
+			// Else go to the 
+			}else {
 				ac.start(currentAdmin, scMap);
 			}
 			break;

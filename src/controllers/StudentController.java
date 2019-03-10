@@ -59,19 +59,13 @@ public class StudentController extends MyController {
 		scholarshipPanel = scp.getContentPane();
 		
 		
-		switchPanel(studentPanel);
-		scholarshipLoop(scMap);
+		switchToStudentPanel();
 	}
-	/**
-	 * Loop through the list of scholarships and add them to the screen
-	 * @param scMap
-	 */
-	public void scholarshipLoop(HashMap<Integer, Scholarship> scMap) {
-		for(Integer ID: scMap.keySet()) {
-			Scholarship value = scMap.get(ID);
-			sp.displayScholarship(value);
-			
-		}
+	
+	public void switchToStudentPanel() {
+		sp.setName(currentStudent.getName());
+		sp.setEmail(currentStudent.getEmail());
+		switchPanel(studentPanel);
 	}
 
 	@Override

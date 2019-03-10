@@ -51,19 +51,13 @@ public class AdminController extends MyController {
 		ap = new AdminPanel(this, globalListener);
 		adminPanel = ap.getContentPane();
 		
-		switchPanel(adminPanel);
-		scholarshipLoop(scMap);
+		switchToAdminPanel();
 	}
 	
-	/**
-	 * Loop through all of the scholarships and add them to the page
-	 * @param scMap
-	 */
-	public void scholarshipLoop(HashMap<Integer, Scholarship> scMap) {
-		for(Integer ID: scMap.keySet()) {
-			Scholarship value = scMap.get(ID);
-			ap.displayScholarship(value);
-		}
+	public void switchToAdminPanel() {
+		ap.setName(currentAdmin.getName());
+		ap.setEmail(currentAdmin.getEmail());
+		switchPanel(adminPanel);
 	}
 	
 	@Override
