@@ -21,9 +21,10 @@ public class Scholarship {
 	private String Department;
 	private int numAllowed;
 	private String description;
+	private double money;
 
 	/**
-	 * Default scholarship construtor
+	 * Default scholarship constructor
 	 */
 	public Scholarship() {
 		this.name = "Sch1";
@@ -35,6 +36,7 @@ public class Scholarship {
 		this.Department = "CPSC";
 		this.numAllowed = 100;
 		this.description = "This is a generic scholarship";
+		this.setMoney(0.00);
 
 	}
 	
@@ -49,10 +51,11 @@ public class Scholarship {
 	 * @param Dept
 	 * @param nums
 	 * @param desc
+	 * @param money
 	 * This is used when a new scholarship is created
 	 */
 	public Scholarship(String name, String sId, String gReq, String faculty, String YOS, String TOS, String Dept,
-			String nums, String desc) {
+			String nums, String desc, String money) {
 		this.name = name;
 		this.scholarshipId = Integer.parseInt(sId);
 		this.gpaRequirement = Double.parseDouble(gReq);
@@ -62,6 +65,7 @@ public class Scholarship {
 		this.Department = Dept;
 		this.numAllowed = Integer.parseInt(nums);
 		this.description = desc;
+		this.money = Double.parseDouble(money);
 
 	}
 	
@@ -72,7 +76,7 @@ public class Scholarship {
 
 	public String returnFull() {
 		return (name + ":" + scholarshipId + ":" + gpaRequirement + ":" + faculty + ":" + yearOfStudy + ":"
-				+ typeOfStudy + ":" + Department + ":" + numAllowed + ":" + description);
+				+ typeOfStudy + ":" + Department + ":" + numAllowed + ":" + description + ":" +money);
 	}
 	/**
 	 * 
@@ -148,6 +152,14 @@ public class Scholarship {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public double getMoney() {
+		return money;
+	}
+
+	public void setMoney(double money) {
+		this.money = money;
 	}
 
 }
