@@ -21,12 +21,13 @@ public class StudentPanel extends MyPanel{
 	 * Instance Variables
 	 */
 	private ActionListener globalListener;
-	private int y =0;
 	JLabel lblLoggedin;
 	
 	JLabel lblStudent;
 	
 	JButton btnBack;
+	
+	JButton btnScholarship;
 	
 	/**
 	 * Constructor with arguement of ActionListener packageListener
@@ -62,6 +63,11 @@ public class StudentPanel extends MyPanel{
 		south.add(btnBack, "cell 0 0");
 		btnBack.addActionListener(globalListener);
 		btnBack.setName("Logout_StudentPanel");
+		
+		btnScholarship = new MyButton("View All Scholarships", btnTxtColor, btnBackgroundColor, Size.defaultBtnFontSize);
+		south.add(btnScholarship, "cell 1 0");
+		btnScholarship.addActionListener(globalListener);
+		btnScholarship.setName("Scholarships_StudentPanel");
 	}
 	
 	
@@ -72,28 +78,4 @@ public class StudentPanel extends MyPanel{
 	public void setLblLoggedin(String name) {
 		lblLoggedin.setText(name);
 	}
-	/**
-	 * displays the scholarship.
-	 * @param scholarship
-	 */
-	public void displayScholarship(Scholarship scholarship) {
-		String name = scholarship.getName();
-		String gPA = Double.toString(scholarship.getGpaRequirement());
-		String toS = scholarship.getTypeOfStudy();
-		ArrayList<String> labelName = new ArrayList<String>();
-		labelName.add(name);
-		labelName.add(gPA);
-		labelName.add(toS);
-		JLabel lbl;
-		int i = 0;
-		for(String lblNm: labelName) {
-			lbl = new MyLabel(lblNm,Colors.black,Size.defaultLblFontSize);
-			String cellNum = Integer.toString(i);
-			center.add(lbl, String.format("cell "+cellNum+" %d, center",y));
-			i++;
-		}
-		y++;
-	}
-	
-
 }

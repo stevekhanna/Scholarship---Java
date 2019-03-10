@@ -29,8 +29,7 @@ public class AdminPanel extends MyPanel{
 	private JLabel lblAdmin;
 	
 	private JButton btnBack;
-	
-	private int y;
+	private JButton btnScholarship;
 	
 	/**
 	 * Admin Panel constructor
@@ -64,40 +63,10 @@ public class AdminPanel extends MyPanel{
 		south.add(btnBack, "cell 0 0");
 		btnBack.addActionListener(globalListener);
 		btnBack.setName("Logout_AdminPanel");
+		
+		btnScholarship = new MyButton("View All Scholarships", btnTxtColor, btnBackgroundColor, Size.defaultBtnFontSize);
+		south.add(btnScholarship, "cell 1 0");
+		btnScholarship.addActionListener(globalListener);
+		btnScholarship.setName("Scholarships_AdminPanel");
 	}
-	
-	
-	/**
-	 * 
-	 * @param name sets the label name to this name
-	 */
-	public void setLblLoggedin(String name) {
-		lblLoggedin.setText(name);
-	}
-	
-	/**
-	 * displays the scholarship.
-	 * @param scholarship
-	 */
-	public void displayScholarship(Scholarship scholarship) {
-		String name = scholarship.getName();
-		String gPA = Double.toString(scholarship.getGpaRequirement());
-		String toS = scholarship.getTypeOfStudy();
-		ArrayList<String> labelName = new ArrayList<String>();
-		labelName.add(name);
-		labelName.add(gPA);
-		labelName.add(toS);
-		JLabel lbl;
-		int i = 0;
-		for(String lblNm: labelName) {
-			lbl = new MyLabel(lblNm,Colors.black,Size.defaultLblFontSize);
-			String cellNum = Integer.toString(i);
-			center.add(lbl, String.format("cell "+cellNum+" %d, center",y));
-			i++;
-		}
-		y++;
-	}
-	
-	
-
 }

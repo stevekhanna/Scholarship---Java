@@ -60,18 +60,6 @@ public class StudentController extends MyController {
 		
 		
 		switchPanel(studentPanel);
-		scholarshipLoop(scMap);
-	}
-	/**
-	 * Loop through the list of scholarships and add them to the screen
-	 * @param scMap
-	 */
-	public void scholarshipLoop(HashMap<Integer, Scholarship> scMap) {
-		for(Integer ID: scMap.keySet()) {
-			Scholarship value = scMap.get(ID);
-			sp.displayScholarship(value);
-			
-		}
 	}
 
 	@Override
