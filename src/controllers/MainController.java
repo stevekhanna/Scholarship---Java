@@ -121,6 +121,7 @@ public class MainController implements ActionListener{
 			break;
 		// Going back from viewing all scholarships to the users main page
 		case"Back_ScholarshipsPanel":
+			scMap = spc.getScMap();
 			// If the current user is a student go to the student controller
 			if (currentStudent!=null) {
 				sc.start(currentStudent, scMap);

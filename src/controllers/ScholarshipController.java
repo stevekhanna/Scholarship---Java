@@ -21,6 +21,8 @@ public class ScholarshipController extends MyController{
 	private ScholarshipPanel sp;
 	private ScholarshipsPanel ssp;
 	
+	private HashMap<Integer, Scholarship> scMap;
+	
 	
 	private boolean isAdmin;
 	
@@ -30,12 +32,14 @@ public class ScholarshipController extends MyController{
 	
 	public void start(boolean isAdmin, HashMap<Integer, Scholarship> scMap) {
 		this.isAdmin = isAdmin;
+		this.scMap = scMap;
 		
 		sp = new ScholarshipPanel(this);
 		ssp = new ScholarshipsPanel(this,globalListener);
 		scholarshipPanel = sp.getContentPane();
 		scholarshipsPanel = ssp.getContentPane();
 		
+
 		scholarshipLoop(scMap);
 		switchPanel(scholarshipsPanel);
 	}
@@ -50,6 +54,11 @@ public class ScholarshipController extends MyController{
 			ssp.displayScholarship(value);
 			
 		}
+	}
+	
+	
+	public HashMap<Integer, Scholarship> getScMap(){
+		return scMap;
 	}
 
 	@Override
