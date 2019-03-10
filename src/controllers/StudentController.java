@@ -59,6 +59,12 @@ public class StudentController extends MyController {
 		scholarshipPanel = scp.getContentPane();
 		
 		
+		switchToStudentPanel();
+	}
+	
+	public void switchToStudentPanel() {
+		sp.setName(currentStudent.getName());
+		sp.setEmail(currentStudent.getEmail());
 		switchPanel(studentPanel);
 	}
 

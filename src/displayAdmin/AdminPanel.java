@@ -26,7 +26,8 @@ public class AdminPanel extends MyPanel{
 	
 	private JLabel lblLoggedin;
 	
-	private JLabel lblAdmin;
+	private JLabel lblName;
+	private JLabel lblEmail;
 	
 	private JButton btnBack;
 	private JButton btnScholarship;
@@ -43,16 +44,22 @@ public class AdminPanel extends MyPanel{
 		
 		displayNorth();
 		displaySouth();
+		displayCenter();
 	}
 	/**
 	 * displayNorth method displays button at the north end of the screen
 	 */
 	private void displayNorth(){
-		lblLoggedin = new MyLabel("Logged in", textColor, Size.defaultLblTitleFontSize);
-		north.add(lblLoggedin, "cell 0 0,center");
-
-		lblAdmin = new MyLabel("Admin", textColor, Size.defaultLblFontSize);
-		north.add(lblAdmin, "cell 0 1,center");
+		lblLoggedin = new MyLabel("Logged in as Admin", textColor, Size.defaultLblFontSize);
+		north.add(lblLoggedin, "cell 0 0,left");
+	}
+	
+	private void displayCenter() {
+		lblName = new MyLabel("Name", textColor, Size.defaultLblFontSize);
+		center.add(lblName, "cell 0 0,center");
+		
+		lblEmail = new MyLabel("Email", textColor, Size.defaultLblFontSize);
+		center.add(lblName, "cell 0 0,center");
 	}
 	
 	/**
@@ -68,5 +75,13 @@ public class AdminPanel extends MyPanel{
 		south.add(btnScholarship, "cell 1 0");
 		btnScholarship.addActionListener(globalListener);
 		btnScholarship.setName("Scholarships_AdminPanel");
+	}
+	
+	public void setName(String name) {
+		lblName.setText(name);
+	}
+	
+	public void setEmail(String email) {
+		lblEmail.setText(email);
 	}
 }

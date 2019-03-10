@@ -22,11 +22,10 @@ public class StudentPanel extends MyPanel{
 	 */
 	private ActionListener globalListener;
 	JLabel lblLoggedin;
-	
-	JLabel lblStudent;
+	JLabel lblName;
+	JLabel lblEmail;
 	
 	JButton btnBack;
-	
 	JButton btnScholarship;
 	
 	/**
@@ -43,6 +42,7 @@ public class StudentPanel extends MyPanel{
 		
 		displayNorth();
 		displaySouth();
+		displayCenter();
 	}
 	
 	
@@ -50,11 +50,17 @@ public class StudentPanel extends MyPanel{
 	 * Method to display button at the north end of the screen
 	 */
 	private void displayNorth(){
-		lblLoggedin = new MyLabel("Logged in", textColor, Size.defaultLblTitleFontSize);
-		north.add(lblLoggedin, "cell 0 0,center");
-
-		lblStudent = new MyLabel("Student", textColor, Size.defaultLblFontSize);
-		north.add(lblStudent, "cell 0 1,center");}
+		lblLoggedin = new MyLabel("Logged in as Student", textColor, Size.defaultLblFontSize);
+		north.add(lblLoggedin, "cell 0 0,left");
+	}
+	
+	private void displayCenter() {
+		lblName = new MyLabel("Name", textColor, Size.defaultLblFontSize);
+		center.add(lblName, "cell 0 0,center");
+		
+		lblEmail = new MyLabel("Email", textColor, Size.defaultLblFontSize);
+		center.add(lblName, "cell 0 0,center");
+	}
 	/**
 	 * Method to display button button at the south of the screen
 	 */
@@ -70,12 +76,11 @@ public class StudentPanel extends MyPanel{
 		btnScholarship.setName("Scholarships_StudentPanel");
 	}
 	
+	public void setName(String name) {
+		lblName.setText(name);
+	}
 	
-	/**
-	 * 
-	 * @param name sets the label name to this name
-	 */
-	public void setLblLoggedin(String name) {
-		lblLoggedin.setText(name);
+	public void setEmail(String email) {
+		lblEmail.setText(email);
 	}
 }

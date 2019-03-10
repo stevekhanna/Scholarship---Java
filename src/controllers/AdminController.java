@@ -51,6 +51,12 @@ public class AdminController extends MyController {
 		ap = new AdminPanel(this, globalListener);
 		adminPanel = ap.getContentPane();
 		
+		switchToAdminPanel();
+	}
+	
+	public void switchToAdminPanel() {
+		ap.setName(currentAdmin.getName());
+		ap.setEmail(currentAdmin.getEmail());
 		switchPanel(adminPanel);
 	}
 	
