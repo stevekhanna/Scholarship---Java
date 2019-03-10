@@ -1,13 +1,11 @@
 package displayStudent;
 
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import myJStuff.*;
-import objects.Scholarship;
 
 /**
  * Student Panel class displays a list of scholarships and 

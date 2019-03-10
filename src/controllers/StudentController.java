@@ -87,7 +87,6 @@ public class StudentController extends MyController {
 			switchPanel(studentPanel);
 			break;
 		case "":
-			// Call the method to display the correct scholarship
 			switchPanel(scholarshipPanel);
 			break;
 		default:
