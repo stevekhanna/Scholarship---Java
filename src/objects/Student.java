@@ -1,4 +1,7 @@
 package objects;
+
+import java.util.List;
+
 /**
  * 
  * @author Pierce de Jong
@@ -18,6 +21,7 @@ public class Student extends User{
 	private int yearOfStudy;
 	private String typeOfStudy;
 	private String department;
+	private List<Integer> scholarshipsAppliedTo;
 	
 	
 	/**
@@ -33,13 +37,14 @@ public class Student extends User{
 	 * @param department
 	 */
 	public Student(int ucid, String email, String password, String name, String faculty,
-			double gpa, int yearOfStudy, String typeOfStudy, String department) {
+			double gpa, int yearOfStudy, String typeOfStudy, String department, List<Integer> scholarshipsAppliedTo) {
 		super(ucid, email, password, name);
 		this.faculty = faculty;
 		this.gpa = gpa;
 		this.yearOfStudy = yearOfStudy;
 		this.typeOfStudy= typeOfStudy;
 		this.department= department;
+		this.scholarshipsAppliedTo=scholarshipsAppliedTo;
 	}
 	
 	/**
@@ -90,4 +95,29 @@ public class Student extends User{
 	public void setDepartment(String department) {
 		this.department = department;
 	}
+
+	public List<Integer> getScholarshipsAppliedTo() {
+		return scholarshipsAppliedTo;
+	}
+	
+	public boolean addScholarship(int id) {
+		if (scholarshipsAppliedTo.contains(id)) {
+			return false;
+		}
+		else {
+			scholarshipsAppliedTo.add(id);
+			return true;
+		}
+	}
+	
+	public boolean addScholarshipByPriority(int id, int priority) {
+		if (scholarshipsAppliedTo.contains(id)) {
+			return false;
+		}
+		else {
+			scholarshipsAppliedTo.add(priority,id);
+			return true;
+		}
+	}
+	
 }
