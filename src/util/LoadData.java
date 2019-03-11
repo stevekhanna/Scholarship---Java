@@ -48,7 +48,20 @@ public class LoadData{
 			while(fileScanner.hasNextLine()){
 				String currentLine = fileScanner.nextLine();
 				String[] parts = currentLine.split(":");
-				students.add(new Student(Integer.parseInt(parts[0]),parts[1],parts[2],parts[3],parts[4],(Double.parseDouble(parts[5])),(Integer.parseInt(parts[6])),parts[7],parts[8]));
+				List<Integer> scholarshipsAppliedTo = new ArrayList<Integer>();
+				if (parts.length>9) {
+					String[] queue = parts[9].split(",");
+					for(int i =0; i<queue.length; i++) {
+						scholarshipsAppliedTo.add(Integer.parseInt(queue[i]));
+					}
+				}
+				else {
+					scholarshipsAppliedTo=null;
+				}
+				
+				students.add(new Student(Integer.parseInt(parts[0]),parts[1],parts[2],parts[3],
+						parts[4],(Double.parseDouble(parts[5])),(Integer.parseInt(parts[6])),
+						parts[7],parts[8],scholarshipsAppliedTo));
 			}
 			fileScanner.close();
 		} catch (FileNotFoundException e) {
