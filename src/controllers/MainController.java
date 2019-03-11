@@ -119,6 +119,9 @@ public class MainController implements ActionListener{
 		case"Scholarships_AdminPanel":
 			spc.start(true,scMap);
 			break;
+		case"Apply_ScholarshipsPanel":
+			System.out.println(source.getActionCommand());
+			break;
 		// Going back from viewing all scholarships to the users main page
 		case"Back_ScholarshipsPanel":
 			scMap = spc.getScMap();

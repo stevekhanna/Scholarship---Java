@@ -65,10 +65,15 @@ public class ScholarshipsPanel extends MyPanel{
 		labelName.add(gPA);
 		labelName.add(toS);
 		JLabel lbl;
+		JButton btnApply = new MyButton("Apply", Size.defaultLblFontSize);
+		btnApply.setActionCommand(Integer.toString(scholarship.getScholarshipId()));
+		btnApply.setName("Apply_ScholarshipsPanel");
+		btnApply.addActionListener(globalLisenter);
+		center.add(btnApply, String.format("cell 0 %d, center",y));
 		int i = 0;
 		for(String lblNm: labelName) {
 			lbl = new MyLabel(lblNm,Colors.black,Size.defaultLblFontSize);
-			String cellNum = Integer.toString(i);
+			String cellNum = Integer.toString(i+1);
 			center.add(lbl, String.format("cell "+cellNum+" %d, center",y));
 			i++;
 		}

@@ -52,7 +52,6 @@ public class ScholarshipController extends MyController{
 		for(Integer ID: scMap.keySet()) {
 			Scholarship value = scMap.get(ID);
 			ssp.displayScholarship(value);
-			
 		}
 	}
 	
