@@ -15,11 +15,11 @@ import myJStuff.MyController;
 public class ScholarshipController extends MyController{
 	
 	private JPanel viewScholarshipPanel;
-	private JPanel scholarshipsPanel;
+	private JPanel allScholarshipsPanel;
 	
 	
 	private ViewScholarshipPanel vsp;
-	private ScholarshipsPanel sp;
+	private AllScholarshipsPanel asp;
 	
 	private HashMap<Integer, Scholarship> scMap;
 	
@@ -35,12 +35,12 @@ public class ScholarshipController extends MyController{
 		this.scMap = scMap;
 		
 		vsp = new ViewScholarshipPanel(this,globalListener,this.isAdmin);
-		sp = new ScholarshipsPanel(this,globalListener);
+		asp = new AllScholarshipsPanel(this,globalListener);
 		viewScholarshipPanel = vsp.getContentPane();
-		scholarshipsPanel = sp.getContentPane();
+		allScholarshipsPanel = asp.getContentPane();
 		
 		scholarshipLoop(scMap);
-		switchPanel(scholarshipsPanel);
+		switchPanel(allScholarshipsPanel);
 	}
 	
 	/**
@@ -50,7 +50,7 @@ public class ScholarshipController extends MyController{
 	public void scholarshipLoop(HashMap<Integer, Scholarship> scMap) {
 		for(Integer ID: scMap.keySet()) {
 			Scholarship value = scMap.get(ID);
-			sp.displayScholarship(value);
+			asp.displayScholarship(value);
 		}
 	}
 	
@@ -70,13 +70,13 @@ public class ScholarshipController extends MyController{
 		String name = source.getName();
 		
 		switch(name){
-		case"ViewScholarship_ScholarshipsPanel":
+		case"ViewScholarship_AllScholarshipsPanel":
 			int id = Integer.parseInt(source.getActionCommand());
 			Scholarship s = scMap.get(id);
 			switchToViewScholarshipPanel(s);
 			break;
 		case"Back_ViewScholarshipPanel":
-			switchPanel(scholarshipsPanel);
+			switchPanel(allScholarshipsPanel);
 		default:
 			break;
 		}

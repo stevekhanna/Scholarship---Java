@@ -72,7 +72,7 @@ public class AdminPanel extends MyPanel{
 		btnBack.setName("Logout_AdminPanel");
 		
 		btnScholarship = new MyButton("View All Scholarships", btnTxtColor, btnBackgroundColor, Size.defaultBtnFontSize);
-		south.add(btnScholarship, "cell 1 0");
+		//south.add(btnScholarship, "cell 1 0");
 		btnScholarship.addActionListener(globalListener);
 		btnScholarship.setName("Scholarships_AdminPanel");
 	}

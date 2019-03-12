@@ -24,5 +24,9 @@ public class MyLabel extends JLabel{
 	public MyLabel(String text) {
 		this(text, Colors.black, 25);
 	}
+	
+	public MyLabel(String text, int size) {
+		this(text, Colors.black, size);
+	}
 
 }
