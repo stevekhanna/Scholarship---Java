@@ -65,18 +65,18 @@ public class ScholarshipsPanel extends MyPanel{
 		labelName.add(gPA);
 		labelName.add(toS);
 		JLabel lbl;
-		JButton btnApply = new MyButton("Apply", Size.defaultLblFontSize);
-		btnApply.setActionCommand(Integer.toString(scholarship.getScholarshipId()));
-		btnApply.setName("Apply_ScholarshipsPanel");
-		btnApply.addActionListener(globalLisenter);
-		center.add(btnApply, String.format("cell 0 %d, center",y));
 		int i = 0;
 		for(String lblNm: labelName) {
 			lbl = new MyLabel(lblNm,Colors.black,Size.defaultLblFontSize);
 			String cellNum = Integer.toString(i+1);
-			center.add(lbl, String.format("cell "+cellNum+" %d, center",y));
+			center.add(lbl, String.format("cell "+cellNum+" %d, left",y));
 			i++;
 		}
+		JButton btnView = new MyButton("View", Size.defaultLblFontSize);
+		btnView.setActionCommand(Integer.toString(scholarship.getScholarshipId()));
+		btnView.setName("ViewScholarship_ScholarshipsPanel");
+		btnView.addActionListener(packageListener);
+		center.add(btnView, String.format("cell 4 %d, center",y));
 		y++;
 	}
 }

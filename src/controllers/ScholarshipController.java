@@ -14,12 +14,12 @@ import myJStuff.MyController;
 
 public class ScholarshipController extends MyController{
 	
-	private JPanel scholarshipPanel;
+	private JPanel viewScholarshipPanel;
 	private JPanel scholarshipsPanel;
 	
 	
-	private ScholarshipPanel sp;
-	private ScholarshipsPanel ssp;
+	private ViewScholarshipPanel vsp;
+	private ScholarshipsPanel sp;
 	
 	private HashMap<Integer, Scholarship> scMap;
 	
@@ -34,12 +34,11 @@ public class ScholarshipController extends MyController{
 		this.isAdmin = isAdmin;
 		this.scMap = scMap;
 		
-		sp = new ScholarshipPanel(this);
-		ssp = new ScholarshipsPanel(this,globalListener);
-		scholarshipPanel = sp.getContentPane();
-		scholarshipsPanel = ssp.getContentPane();
+		vsp = new ViewScholarshipPanel(this,globalListener,this.isAdmin);
+		sp = new ScholarshipsPanel(this,globalListener);
+		viewScholarshipPanel = vsp.getContentPane();
+		scholarshipsPanel = sp.getContentPane();
 		
-
 		scholarshipLoop(scMap);
 		switchPanel(scholarshipsPanel);
 	}
@@ -51,8 +50,13 @@ public class ScholarshipController extends MyController{
 	public void scholarshipLoop(HashMap<Integer, Scholarship> scMap) {
 		for(Integer ID: scMap.keySet()) {
 			Scholarship value = scMap.get(ID);
-			ssp.displayScholarship(value);
+			sp.displayScholarship(value);
 		}
+	}
+	
+	private void switchToViewScholarshipPanel(Scholarship scholarship) {
+		vsp.dispalyScholarship(scholarship);
+		switchPanel(viewScholarshipPanel);
 	}
 	
 	
@@ -62,7 +66,20 @@ public class ScholarshipController extends MyController{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		JButton source = (JButton)e.getSource();
+		String name = source.getName();
+		
+		switch(name){
+		case"ViewScholarship_ScholarshipsPanel":
+			int id = Integer.parseInt(source.getActionCommand());
+			Scholarship s = scMap.get(id);
+			switchToViewScholarshipPanel(s);
+			break;
+		case"Back_ViewScholarshipPanel":
+			switchPanel(scholarshipsPanel);
+		default:
+			break;
+		}
 		
 	}
 
