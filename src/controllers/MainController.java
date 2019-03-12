@@ -17,10 +17,9 @@ public class MainController implements ActionListener{
 	
 	private JFrame frame;
 	
-	private LoginController lc;
-	private StudentController sc;
-	private AdminController ac;
-	private ScholarshipController spc;
+	private LoginController lController;
+	private StudentController sController;
+	private AdminController aController;
 
 	private List<Student> students;
 	private List<Admin> admins;
@@ -34,17 +33,16 @@ public class MainController implements ActionListener{
 	}
 	
 	public void run(){
-		lc = new LoginController(this,frame);
-		sc = new StudentController(this,frame);
-		ac = new AdminController(this,frame);
-		spc = new ScholarshipController(this,frame);
+		lController = new LoginController(this,frame);
+		sController = new StudentController(this,frame);
+		aController = new AdminController(this,frame);
 		
 		LoadData ld = new LoadData();
 		students = ld.loadStudents();
 		admins = ld.loadAdmins();
 		scMap = ld.loadScholarships();
 		
-		lc.start();
+		lController.start();
 	}
 	
 	private void createFrame(){
@@ -63,8 +61,8 @@ public class MainController implements ActionListener{
 	
 	private boolean checkStudentLogin() {
 		System.out.print("Check Student Login:  ");
-		String email=lc.getLoginStudentPanel().getEmail();
-		String password = lc.getLoginStudentPanel().getPassword();
+		String email=lController.getLoginStudentPanel().getEmail();
+		String password = lController.getLoginStudentPanel().getPassword();
 		for( Student s : students) {
 			if (s.getEmail().equalsIgnoreCase(email) && s.getPassword().equals(password)) {
 				System.out.println("Success");
@@ -79,8 +77,8 @@ public class MainController implements ActionListener{
 	
 	private boolean checkAdminLogin() {
 		System.out.print("Check Admin Login:  ");
-		String email=lc.getLoginAdminPanel().getEmail();
-		String password = lc.getLoginAdminPanel().getPassword();
+		String email=lController.getLoginAdminPanel().getEmail();
+		String password = lController.getLoginAdminPanel().getPassword();
 		for( Admin s : admins) {
 			if (s.getEmail().equalsIgnoreCase(email) && s.getPassword().equals(password)) {
 				System.out.println("Success");
@@ -105,47 +103,25 @@ public class MainController implements ActionListener{
 		switch(name){
 		case"Login_LoginStudentPanel":
 			if(checkStudentLogin()) {
-				sc.start(currentStudent, scMap);
+				sController.start(currentStudent, scMap);
 			}
 			break;
 		case"Login_LoginAdminPanel":
 			if(checkAdminLogin()) {
-				ac.start(currentAdmin, scMap);
+				aController.start(currentAdmin, scMap);
 			}
-			break;
-		case"Scholarships_StudentPanel":
-			spc.start(false,scMap);
 			break;
 		case"Scholarships_AdminPanel":
-			spc.start(true,scMap);
-			break;
-		case"Apply_ViewScholarshipPanel":
-			System.out.println(source.getActionCommand());
-			if(currentStudent.addScholarship(Integer.parseInt(source.getActionCommand()))) {
-				System.out.println(scMap.get(Integer.parseInt(source.getActionCommand())).getName()+" added to applied");
-			}else {
-				System.out.println(scMap.get(Integer.parseInt(source.getActionCommand())).getName()+" failed");
-			}
-			break;
-		// Going back from viewing all scholarships to the users main page
-		case"Back_ScholarshipsPanel":
-			scMap = spc.getScMap();
-			// If the current user is a student go to the student controller
-			if (currentStudent!=null) {
-				sc.start(currentStudent, scMap);
-			// Else go to the 
-			}else {
-				ac.start(currentAdmin, scMap);
-			}
+			//spc.start(true,scMap);
 			break;
 		case"Logout_AdminPanel":
 			currentAdmin=null;
 			currentStudent=null;
-			lc.start();
+			lController.start();
 		case"Logout_StudentPanel":
 			currentAdmin=null;
 			currentStudent=null;
-			lc.start();
+			lController.start();
 		default:break;
 		}
 	}

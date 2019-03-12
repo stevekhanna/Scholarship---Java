@@ -1,13 +1,11 @@
 package displayStudent;
 
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import myJStuff.*;
-import objects.Scholarship;
 
 /**
  * Student Panel class displays a list of scholarships and 
@@ -72,8 +70,8 @@ public class StudentPanel extends MyPanel{
 		
 		btnScholarship = new MyButton("View All Scholarships", btnTxtColor, btnBackgroundColor, Size.defaultBtnFontSize);
 		south.add(btnScholarship, "cell 1 0");
-		btnScholarship.addActionListener(globalListener);
-		btnScholarship.setName("Scholarships_StudentPanel");
+		btnScholarship.addActionListener(packageListener);
+		btnScholarship.setName("ViewAllScholarships_StudentPanel");
 	}
 	
 	public void setName(String name) {

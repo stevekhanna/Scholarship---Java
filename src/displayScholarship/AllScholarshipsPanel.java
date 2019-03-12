@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import myJStuff.*;
 import objects.Scholarship;
 
-public class ScholarshipsPanel extends MyPanel{
+public class AllScholarshipsPanel extends MyPanel{
 	
 	private ActionListener globalLisenter;
 	
@@ -18,7 +18,7 @@ public class ScholarshipsPanel extends MyPanel{
 	
 	private int y;
 
-	public ScholarshipsPanel(ActionListener actionListener, ActionListener globalListener) {
+	public AllScholarshipsPanel(ActionListener actionListener, ActionListener globalListener) {
 		this.packageListener = actionListener;
 		this.globalLisenter = globalListener;
 		contentPane.setName("Scholarships Panel");
@@ -42,7 +42,7 @@ public class ScholarshipsPanel extends MyPanel{
 		south.add(btnBack, "cell 0 0");
 		// Global listener to switch between the controllers
 		btnBack.addActionListener(globalLisenter);
-		btnBack.setName("Back_ScholarshipsPanel");
+		btnBack.setName("Back_AllScholarshipsPanel");
 
 	}
 	
@@ -74,7 +74,7 @@ public class ScholarshipsPanel extends MyPanel{
 		}
 		JButton btnView = new MyButton("View", Size.defaultLblFontSize);
 		btnView.setActionCommand(Integer.toString(scholarship.getScholarshipId()));
-		btnView.setName("ViewScholarship_ScholarshipsPanel");
+		btnView.setName("ViewScholarship_AllScholarshipsPanel");
 		btnView.addActionListener(packageListener);
 		center.add(btnView, String.format("cell 4 %d, center",y));
 		y++;
