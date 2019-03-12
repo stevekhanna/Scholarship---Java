@@ -36,7 +36,7 @@ public class ViewScholarshipPanel extends MyPanel{
 	 * shows the bottom part of the About panel.
 	 */
 	private void displaySouth(){
-		btnBack = new MyButton("Back", btnTxtColor, btnBackgroundColor, Size.defaultBtnFontSize);
+		btnBack = new MyButton("Back", Size.defaultBtnFontSize);
 		south.add(btnBack, "cell 0 0, left");
 		btnBack.addActionListener(packageListener);
 		btnBack.setName("Back_ViewScholarshipPanel");
@@ -45,7 +45,7 @@ public class ViewScholarshipPanel extends MyPanel{
 			btnApply = new MyButton("Apply", Size.defaultLblFontSize);
 			btnApply.setName("Apply_ViewScholarshipPanel");
 			btnApply.addActionListener(globalListener);
-			center.add(btnApply, "cell 0 1, right");
+			south.add(btnApply, "cell 1 0, right");
 		}
 		
 	}
@@ -59,6 +59,16 @@ public class ViewScholarshipPanel extends MyPanel{
 	public void dispalyScholarship(Scholarship scholarship) {
 		btnApply.setActionCommand(Integer.toString(scholarship.getScholarshipId()));
 		lblTitle.setText(scholarship.getName());
+		String x = scholarship.returnFull();
+		x = x.substring(x.indexOf(":")+1); // remove the name
+		x = x.substring(x.indexOf(":")+1); //remove the id
+		String[] s = x.split(":");
+		int y = 0;
+		for (String string: s) {
+			JLabel lbl = new MyLabel(string);
+			center.add(lbl, String.format("cell 0 %d, center", y));
+			y++;
+		}
 	
 	}
 }
