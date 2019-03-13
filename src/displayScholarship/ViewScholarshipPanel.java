@@ -28,7 +28,7 @@ public class ViewScholarshipPanel extends MyPanel{
 	}
 
 	private void displayNorth(){
-		lblTitle = new MyLabel("Scholarship Panel", textColor, Size.defaultLblTitleFontSize);
+		lblTitle = new MyLabel("Scholarship Panel", Size.defaultLblTitleFontSize);
 		north.add(lblTitle, "cell 0 0");
 	}
 	

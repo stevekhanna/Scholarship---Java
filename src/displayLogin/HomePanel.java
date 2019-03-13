@@ -42,7 +42,7 @@ public class HomePanel extends MyPanel{
 	 */
 	private void displayNorth(){
 		String title = "U of C Scholarship Program";
-		lblTitle = new MyLabel(title, textColor, Size.defaultLblTitleFontSize);
+		lblTitle = new MyLabel(title, Size.defaultLblTitleFontSize);
 		north.add(lblTitle, "cell 0 0, center");
 	}
 

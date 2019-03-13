@@ -28,7 +28,7 @@ public class AllScholarshipsPanel extends MyPanel{
 	}
 
 	private void displayNorth(){
-		lblTitle = new MyLabel("Scholarships", textColor, Size.defaultLblTitleFontSize);
+		lblTitle = new MyLabel("Scholarships", Size.defaultLblTitleFontSize);
 		north.add(lblTitle, "cell 0 0");
 	}
 	
@@ -38,7 +38,7 @@ public class AllScholarshipsPanel extends MyPanel{
 	private void displaySouth(){
 		
 		// This button goes back to either the student or admin controller from the scholarships controller
-		btnBack = new MyButton("Back", btnTxtColor, btnBackgroundColor, Size.defaultBtnFontSize);
+		btnBack = new MyButton("Back", Size.defaultBtnFontSize);
 		south.add(btnBack, "cell 0 0");
 		// Global listener to switch between the controllers
 		btnBack.addActionListener(globalLisenter);
