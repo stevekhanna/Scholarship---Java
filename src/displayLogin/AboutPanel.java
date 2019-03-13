@@ -30,7 +30,7 @@ public class AboutPanel extends MyPanel{
 	 * shows the top part of the About panel.
 	 */
 	private void displayNorth(){
-		lblAbout = new MyLabel("About", textColor, Size.defaultLblTitleFontSize);
+		lblAbout = new MyLabel("About", Size.defaultLblTitleFontSize);
 		north.add(lblAbout, "cell 0 0");
 	}
 	
@@ -38,7 +38,7 @@ public class AboutPanel extends MyPanel{
 	 * shows the bottom part of the About panel.
 	 */
 	private void displaySouth(){
-		btnBack = new MyButton("Back", btnTxtColor, btnBackgroundColor, Size.defaultBtnFontSize);
+		btnBack = new MyButton("Back", Size.defaultBtnFontSize);
 		south.add(btnBack, "cell 0 0");
 		btnBack.addActionListener(packageListener);
 		btnBack.setName("Back_AboutPanel");

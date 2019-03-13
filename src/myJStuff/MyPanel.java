@@ -24,13 +24,6 @@ public abstract class MyPanel {
 
 	protected ActionListener packageListener;
 	
-	protected Color textColor;
-	protected Color backgroundColor;
-	protected Color selectColor;
-	protected Color btnTxtColor;
-	protected Color btnBackgroundColor;
-
-	
 	protected JPanel contentPane = new JPanel();
 	protected JPanel north;
 	protected JPanel south;

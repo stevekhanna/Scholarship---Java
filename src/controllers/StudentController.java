@@ -26,6 +26,7 @@ public class StudentController extends MyController {
 	// List of all of the Panels
 	private StudentPanel sp;
 	private AppliedPanel ap;
+	private AppliedToPanel atp;
 	
 	
 	// The current user
@@ -37,7 +38,7 @@ public class StudentController extends MyController {
 	// List of panels
 	private JPanel studentPanel;
 	private JPanel appliedPanel;
-	
+	private JPanel appliedToPanel;
 	/**
 	 * Constructor
 	 * @param frame - JFrame
@@ -59,9 +60,11 @@ public class StudentController extends MyController {
 		this.currentStudent = currentStudent;
 		sp = new StudentPanel(this, globalListener);
 		ap = new AppliedPanel(this);
+		atp = new AppliedToPanel(this);
+		
 		studentPanel = sp.getContentPane();
 		appliedPanel = ap.getContentPane();
-		
+		appliedToPanel = atp.getContentPane();
 		
 		switchToStudentPanel();
 	}
@@ -96,21 +99,34 @@ public class StudentController extends MyController {
 		JButton source = (JButton)e.getSource();
 		String name = source.getName();
 		switch(name) {
-		case"ViewAllScholarships_StudentPanel":
+		// Start the scholarship panel and view all of the scholarships
+		case"AllScholarships_StudentPanel":
 			sController.start(false,scMap);
 			break;
-			// Going back from viewing all scholarships to the users main page
+		// Going back from viewing all scholarships to the users main page
 		case"Back_AllScholarshipsPanel":
+			// Get an updated version of all of the scholarship
 			scMap = sController.getScMap();
 			// If the current user is a student go to the student controller
 			switchToStudentPanel();
 			break;
+		// When a student hits the apply button in the scholarship controller - ViewScholarshipPanel
 		case"Apply_ViewScholarshipPanel":
+			// Get the id of the scholarship from the button
 			int id = Integer.parseInt(source.getActionCommand());
+			// Try to apply the scholarship and display the result to the AppliedPanel
 			ap.success(applyToScholarship(id));
+			// Switch to the Applied Panel=
 			switchPanel(appliedPanel);
 			break;
+		case"AppliedTo_StudentPanel":
+			switchPanel(appliedToPanel);
+			break;
 		case"Back_AppliedPanel":
+			switchToStudentPanel();
+			break;
+			
+		case"Back_AppliedToPanel":
 			switchToStudentPanel();
 			break;
 		default:

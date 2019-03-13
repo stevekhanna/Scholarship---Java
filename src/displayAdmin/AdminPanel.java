@@ -50,28 +50,28 @@ public class AdminPanel extends MyPanel{
 	 * displayNorth method displays button at the north end of the screen
 	 */
 	private void displayNorth(){
-		lblLoggedin = new MyLabel("Logged in as Admin", textColor, Size.defaultLblFontSize);
+		lblLoggedin = new MyLabel("Logged in as Admin", Size.defaultLblFontSize);
 		north.add(lblLoggedin, "cell 0 0,left");
 	}
 	
 	private void displayCenter() {
-		lblName = new MyLabel("Name", textColor, Size.defaultLblFontSize);
+		lblName = new MyLabel("Name", Size.defaultLblFontSize);
 		center.add(lblName, "cell 0 0,center");
 		
-		lblEmail = new MyLabel("Email", textColor, Size.defaultLblFontSize);
-		center.add(lblName, "cell 0 0,center");
+		lblEmail = new MyLabel("Email", Size.defaultLblFontSize);
+		center.add(lblEmail, "cell 0 1,center");
 	}
 	
 	/**
 	 * displaySouth method displays button at the south end of the screen
 	 */
 	private void displaySouth() {
-		btnBack = new MyButton("Log out", btnTxtColor, btnBackgroundColor, Size.defaultBtnFontSize);
+		btnBack = new MyButton("Log out", Size.defaultBtnFontSize);
 		south.add(btnBack, "cell 0 0");
 		btnBack.addActionListener(globalListener);
 		btnBack.setName("Logout_AdminPanel");
 		
-		btnScholarship = new MyButton("View All Scholarships", btnTxtColor, btnBackgroundColor, Size.defaultBtnFontSize);
+		btnScholarship = new MyButton("View All Scholarships", Size.defaultBtnFontSize);
 		//south.add(btnScholarship, "cell 1 0");
 		btnScholarship.addActionListener(globalListener);
 		btnScholarship.setName("Scholarships_AdminPanel");

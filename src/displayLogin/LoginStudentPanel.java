@@ -49,22 +49,22 @@ public class LoginStudentPanel extends MyPanel{
 	 * displays top part of student log in panel with 2 labels
 	 */
 	private void displayNorth(){
-		lblLogin = new MyLabel("Login", textColor, Size.defaultLblTitleFontSize);
+		lblLogin = new MyLabel("Login", Size.defaultLblTitleFontSize);
 		north.add(lblLogin, "cell 0 0,center");
 		
-		lblUser = new MyLabel("Student", textColor, Size.defaultLblSubTitleFontSize);
+		lblUser = new MyLabel("Student", Size.defaultLblSubTitleFontSize);
 		north.add(lblUser, "cell 0 1,center");
 	}
 	/**
 	 * displays bottom part of student log in panel with back and login buttons
 	 */
 	private void displaySouth(){
-		btnBack = new MyButton("Back", btnTxtColor, btnBackgroundColor, Size.defaultBtnFontSize);
+		btnBack = new MyButton("Back", Size.defaultBtnFontSize);
 		south.add(btnBack, "cell 0 0");
 		btnBack.addActionListener(packageListener);
 		btnBack.setName("Back_LoginStudentPanel");
 		
-		btnLogin = new MyButton("Login", btnTxtColor, btnBackgroundColor, Size.defaultBtnFontSize);
+		btnLogin = new MyButton("Login", Size.defaultBtnFontSize);
 		south.add(btnLogin, "cell 1 0, right");
 		btnLogin.addActionListener(globalListener);
 		btnLogin.setName("Login_LoginStudentPanel");
@@ -76,13 +76,13 @@ public class LoginStudentPanel extends MyPanel{
 	 */
 	private void displayCenter(){
 		
-		lblEmail = new MyLabel("Your UofC Email", textColor, Size.defaultBtnFontSize);
+		lblEmail = new MyLabel("Your UofC Email", Size.defaultBtnFontSize);
 		center.add(lblEmail, "cell 0 0,center");
 		
 		fldUsername = new MyTextField("", Size.defaultBtnFontSize);
 		center.add(fldUsername, "cell 0 1, center");
 		
-		lblPassword = new MyLabel("Your Password", textColor, Size.defaultBtnFontSize);
+		lblPassword = new MyLabel("Your Password", Size.defaultBtnFontSize);
 		center.add(lblPassword, "cell 0 2,center");
 		
 		fldPassword = new MyPasswordField("", Size.defaultBtnFontSize);
