@@ -3,6 +3,7 @@ package controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -29,6 +30,8 @@ public class AdminController extends MyController {
 	// List of all of the scholarships
 	private HashMap <Integer, Scholarship> scMap;
 	
+	private List<Student> students;
+	
 	// Create a JPanel to reference the AdminPanel class
 	private JPanel adminPanel;
 	private JPanel allStudentsPanel;
@@ -49,9 +52,10 @@ public class AdminController extends MyController {
 	 * @param currentAdmin - Admin - current user
 	 * @param scMap - HashMap<Integer, Scholarship> - list of scholarships
 	 */
-	public void start(Admin currentAdmin, HashMap<Integer, Scholarship> scMap) {
+	public void start(Admin currentAdmin, HashMap<Integer, Scholarship> scMap, List<Student> students) {
 		this.scMap = scMap;
 		this.currentAdmin = currentAdmin;
+		this.students = students;
 		ap = new AdminPanel(this, globalListener);
 		asp = new AllStudentsPanel(this);
 		vsp = new ViewStudentPanel(this);
@@ -60,13 +64,46 @@ public class AdminController extends MyController {
 		allStudentsPanel = asp.getContentPane();
 		viewStudentPanel = vsp.getContentPane();
 		
+		addAllStudents();
+		
 		switchToAdminPanel();
 	}
 	
-	public void switchToAdminPanel() {
+	/**
+	 * Set the correct email and name for the current admin
+	 * Switch to AdminPanel
+	 */
+	private void switchToAdminPanel() {
 		ap.setName(currentAdmin.getName());
 		ap.setEmail(currentAdmin.getEmail());
 		switchPanel(adminPanel);
+	}
+	
+	private void switchToViewStudent(int ucid) {
+		Student s = findStudentByUcid(ucid);
+		vsp.setStudent(s);
+		switchPanel(viewStudentPanel);
+	}
+	
+	/**
+	 * Loop through the students and add each one as a row to the AllStudentsPanel
+	 * Create a button to view the student and all of the scholarships that student has applied for
+	 * 
+	 * 	**This should only be called ONCE during the start method and never again**
+	 */
+	private void addAllStudents() {
+		for(Student s: students) {
+			asp.addStudent(s);
+		}
+	}
+	
+	private Student findStudentByUcid(int ucid) {
+		for(Student s: students) {
+			if(s.getUCID() == ucid) {
+				return s;
+			}
+		}
+		return null;
 	}
 	
 	@Override
@@ -80,9 +117,17 @@ public class AdminController extends MyController {
 		case "AllStudents_AdminPanel":
 			switchPanel(allStudentsPanel);
 			break;
-			
+		case"ViewStudent_AllStudentsPanel":
+			// Get the ucid of the student from the button that was pressed
+			int ucid = Integer.parseInt(source.getActionCommand());
+			// Find the student and switch to the ViewStudentPanel
+			switchToViewStudent(ucid);
+			break;
 		case "Back_AllStudentsPanel":
 			switchPanel(adminPanel);
+			break;
+		case "Back_ViewStudentPanel":
+			switchPanel(allStudentsPanel);
 			break;
 		default:
 			break;

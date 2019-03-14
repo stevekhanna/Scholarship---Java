@@ -14,6 +14,8 @@ public class ViewStudentPanel extends MyPanel{
 	
 	private JButton btnBack;
 	
+	int row = 0;
+	
 	public ViewStudentPanel(ActionListener packageListener) {
 		this.packageListener = packageListener;
 		
@@ -31,6 +33,7 @@ public class ViewStudentPanel extends MyPanel{
 		btnBack = new MyButton("Back", Size.defaultBtnFontSize);
 		south.add(btnBack,"cell 0 0, left");
 		btnBack.setName("Back_ViewStudentPanel");
+		btnBack.addActionListener(packageListener);
 	}
 	
 	private void displayCenter() {
@@ -40,6 +43,7 @@ public class ViewStudentPanel extends MyPanel{
 	
 	public void setStudent(Student student) {
 		// The labels text should be set here.
+		lblName.setText(student.getName());
 	}
 
 }

@@ -14,12 +14,16 @@ public class AllStudentsPanel extends MyPanel{
 	
 	private JButton btnBack;
 	
+	int studentRow;
+	
 	public AllStudentsPanel(ActionListener packageListener) {
 		this.packageListener = packageListener;
 		
 		displayNorth();
 		displaySouth();
 		displayCenter();
+		
+		studentRow = 0;
 	}
 	
 	private void displayNorth() {
@@ -41,6 +45,20 @@ public class AllStudentsPanel extends MyPanel{
 	
 	public void addStudent(Student student) {
 		
+		JLabel lbl = new MyLabel(Integer.toString(student.getUCID()));
+		center.add(lbl,String.format("cell 0 %d, left", studentRow));
+		
+		lbl = new MyLabel(student.getName());
+		center.add(lbl,String.format("cell 1 %d, left", studentRow));
+		
+		JButton btn = new MyButton("View Account");
+		center.add(btn,String.format("cell 2 %d, left", studentRow));
+		btn.setName("ViewStudent_AllStudentsPanel");
+		btn.addActionListener(packageListener);
+		btn.setActionCommand(Integer.toString(student.getUCID()));
+		
+		
+		studentRow++;
 	}
 
 }
