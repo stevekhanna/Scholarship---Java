@@ -21,6 +21,8 @@ public class AdminController extends MyController {
 	
 	// All of the panels that the controller 
 	private AdminPanel ap;
+	private AllStudentsPanel asp;
+	private ViewStudentPanel vsp;
 	
 	// Current User
 	private Admin currentAdmin;
@@ -29,6 +31,8 @@ public class AdminController extends MyController {
 	
 	// Create a JPanel to reference the AdminPanel class
 	private JPanel adminPanel;
+	private JPanel allStudentsPanel;
+	private JPanel viewStudentPanel;
 	
 	
 	/**
@@ -49,7 +53,12 @@ public class AdminController extends MyController {
 		this.scMap = scMap;
 		this.currentAdmin = currentAdmin;
 		ap = new AdminPanel(this, globalListener);
+		asp = new AllStudentsPanel(this);
+		vsp = new ViewStudentPanel(this);
+		
 		adminPanel = ap.getContentPane();
+		allStudentsPanel = asp.getContentPane();
+		viewStudentPanel = vsp.getContentPane();
 		
 		switchToAdminPanel();
 	}
@@ -68,7 +77,12 @@ public class AdminController extends MyController {
 		JButton source = (JButton)e.getSource();
 		String name = source.getName();
 		switch(name) {
-		case "":
+		case "AllStudents_AdminPanel":
+			switchPanel(allStudentsPanel);
+			break;
+			
+		case "Back_AllStudentsPanel":
+			switchPanel(adminPanel);
 			break;
 		default:
 			break;

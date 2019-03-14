@@ -1,17 +1,11 @@
 package displayAdmin;
 
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-import myJStuff.Colors;
-import myJStuff.MyButton;
-import myJStuff.MyLabel;
-import myJStuff.MyPanel;
-import myJStuff.Size;
-import objects.Scholarship;
+import myJStuff.*;
 /**
  * Admin panel displays all admin related stuff
  * @author stevekhanna
@@ -31,6 +25,8 @@ public class AdminPanel extends MyPanel{
 	
 	private JButton btnBack;
 	private JButton btnScholarship;
+	
+	private JButton btnStudents;
 	
 	/**
 	 * Admin Panel constructor
@@ -52,14 +48,24 @@ public class AdminPanel extends MyPanel{
 	private void displayNorth(){
 		lblLoggedin = new MyLabel("Logged in as Admin", Size.defaultLblFontSize);
 		north.add(lblLoggedin, "cell 0 0,left");
+		
+		lblName = new MyLabel("Name", Size.defaultLblFontSize);
+		north.add(lblName, "cell 0 1,center");
+		
+		lblEmail = new MyLabel("Email", Size.defaultLblFontSize);
+		north.add(lblEmail, "cell 0 2,center");
 	}
 	
 	private void displayCenter() {
-		lblName = new MyLabel("Name", Size.defaultLblFontSize);
-		center.add(lblName, "cell 0 0,center");
+		btnScholarship = new MyButton("View All Scholarships", Size.defaultBtnFontSize);
+		//center.add(btnScholarship, "cell 0 0, center");
+		btnScholarship.addActionListener(globalListener);
+		btnScholarship.setName("Scholarships_AdminPanel");
 		
-		lblEmail = new MyLabel("Email", Size.defaultLblFontSize);
-		center.add(lblEmail, "cell 0 1,center");
+		btnStudents = new MyButton("View All Students", Size.defaultBtnFontSize);
+		center.add(btnStudents,"cell 0 1, center");
+		btnStudents.addActionListener(packageListener);
+		btnStudents.setName("AllStudents_AdminPanel");
 	}
 	
 	/**
@@ -70,11 +76,7 @@ public class AdminPanel extends MyPanel{
 		south.add(btnBack, "cell 0 0");
 		btnBack.addActionListener(globalListener);
 		btnBack.setName("Logout_AdminPanel");
-		
-		btnScholarship = new MyButton("View All Scholarships", Size.defaultBtnFontSize);
-		//south.add(btnScholarship, "cell 1 0");
-		btnScholarship.addActionListener(globalListener);
-		btnScholarship.setName("Scholarships_AdminPanel");
+	
 	}
 	
 	public void setName(String name) {
