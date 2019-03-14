@@ -108,7 +108,7 @@ public class MainController implements ActionListener{
 			break;
 		case"Login_LoginAdminPanel":
 			if(checkAdminLogin()) {
-				aController.start(currentAdmin, scMap);
+				aController.start(currentAdmin, scMap, students);
 			}
 			break;
 		case"Scholarships_AdminPanel":
