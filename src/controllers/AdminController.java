@@ -37,6 +37,8 @@ public class AdminController extends MyController {
 	private JPanel allStudentsPanel;
 	private JPanel viewStudentPanel;
 	
+	private ScholarshipController sController;
+	
 	
 	/**
 	 * Constructor
@@ -45,6 +47,8 @@ public class AdminController extends MyController {
 	 */
 	public AdminController(ActionListener globalListener, JFrame frame) {
 		super(globalListener, frame);
+		
+		sController = new ScholarshipController(this,frame);
 	}
 	
 	/**
@@ -113,6 +117,10 @@ public class AdminController extends MyController {
 	public void actionPerformed(ActionEvent e) {
 		JButton source = (JButton)e.getSource();
 		String name = source.getName();
+		
+		// Button Name naming convention. Metod/Panel going to_the panel the button is on
+		// E.g. TestPanel_HomePanel
+		// switch to the TestPanel and the button was pressed on the HomePanel
 		switch(name) {
 		case "AllStudents_AdminPanel":
 			switchPanel(allStudentsPanel);
@@ -128,6 +136,15 @@ public class AdminController extends MyController {
 			break;
 		case "Back_ViewStudentPanel":
 			switchPanel(allStudentsPanel);
+			break;
+		case"Back_AllScholarshipsPanel":
+			// Get an updated version of all of the scholarship
+			scMap = sController.getScMap();
+			// If the current user is a student go to the student controller
+			switchToAdminPanel();
+			break;
+		case "AllScholarships_AdminPanel":
+			sController.start(true, scMap);
 			break;
 		default:
 			break;

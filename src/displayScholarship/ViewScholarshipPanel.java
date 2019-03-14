@@ -17,10 +17,12 @@ public class ViewScholarshipPanel extends MyPanel{
 	private JLabel lblTitle;
 	private JButton btnBack;
 	private JButton btnApply;
+	private JButton btnEdit;
 
 	public ViewScholarshipPanel(ActionListener actionListener,ActionListener globalListener, boolean isAdmin) {
 		this.packageListener = actionListener;
 		this.globalListener = globalListener;
+		this.isAdmin = isAdmin;
 		contentPane.setName("Scholarship Panel");
 		displayNorth();
 		displaySouth();
@@ -41,11 +43,18 @@ public class ViewScholarshipPanel extends MyPanel{
 		btnBack.addActionListener(packageListener);
 		btnBack.setName("Back_ViewScholarshipPanel");
 		
+		System.out.println(isAdmin);
+		
 		if(!isAdmin) {
-			btnApply = new MyButton("Apply", Size.defaultLblFontSize);
+			btnApply = new MyButton("Apply");
 			btnApply.setName("Apply_ViewScholarshipPanel");
 			btnApply.addActionListener(globalListener);
 			south.add(btnApply, "cell 1 0, right");
+		}else {
+			btnEdit = new MyButton("Edit");
+			btnEdit.setName("EditScholarship_ViewScholarshipPanel");
+			btnEdit.addActionListener(globalListener);
+			south.add(btnEdit, "cell 1 0, right");
 		}
 		
 	}
@@ -57,7 +66,11 @@ public class ViewScholarshipPanel extends MyPanel{
 	}
 	
 	public void dispalyScholarship(Scholarship scholarship) {
-		btnApply.setActionCommand(Integer.toString(scholarship.getScholarshipId()));
+		if(!isAdmin) {
+			btnApply.setActionCommand(Integer.toString(scholarship.getScholarshipId()));
+		}else {
+			btnEdit.setActionCommand(Integer.toString(scholarship.getScholarshipId()));
+		}
 		lblTitle.setText(scholarship.getName());
 		String x = scholarship.returnFull();
 		x = x.substring(x.indexOf(":")+1); // remove the name
