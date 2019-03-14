@@ -91,10 +91,10 @@
     <end type="TARGET" refId="4"/>  
   </generalization>  
   <association id="12">    
-    <bendpoint x="395" y="989"/>    
+    <bendpoint x="392" y="992"/>    
     <end type="SOURCE" refId="3" navigable="false">      
       <attribute id="13" name="scMap">        
-        <position height="0" width="0" x="-224" y="299"/>      
+        <position height="19" width="44" x="379" y="1040"/>      
       </attribute>      
       <multiplicity id="14" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="-224" y="299"/>      
@@ -104,10 +104,10 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="15">    
-    <bendpoint x="928" y="950"/>    
+    <bendpoint x="964" y="954"/>    
     <end type="SOURCE" refId="1" navigable="false">      
       <attribute id="16" name="scMap">        
-        <position height="0" width="0" x="-224" y="299"/>      
+        <position height="19" width="44" x="912" y="1040"/>      
       </attribute>      
       <multiplicity id="17" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="-224" y="299"/>      
@@ -204,8 +204,8 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="45">    
-    <bendpoint x="68" y="346"/>    
-    <bendpoint x="263" y="1149"/>    
+    <bendpoint x="196" y="362"/>    
+    <bendpoint x="200" y="1396"/>    
     <end type="SOURCE" refId="9" navigable="false">      
       <attribute id="46" name="scMap"/>      
       <multiplicity id="47" minimum="0" maximum="2147483647"/>    
