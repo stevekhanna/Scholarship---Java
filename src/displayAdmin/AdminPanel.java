@@ -58,9 +58,9 @@ public class AdminPanel extends MyPanel{
 	
 	private void displayCenter() {
 		btnScholarship = new MyButton("View All Scholarships", Size.defaultBtnFontSize);
-		//center.add(btnScholarship, "cell 0 0, center");
-		btnScholarship.addActionListener(globalListener);
-		btnScholarship.setName("Scholarships_AdminPanel");
+		center.add(btnScholarship, "cell 0 0, center");
+		btnScholarship.addActionListener(packageListener);
+		btnScholarship.setName("AllScholarships_AdminPanel");
 		
 		btnStudents = new MyButton("View All Students", Size.defaultBtnFontSize);
 		center.add(btnStudents,"cell 0 1, center");
