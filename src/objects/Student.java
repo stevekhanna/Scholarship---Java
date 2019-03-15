@@ -120,6 +120,7 @@ public class Student extends User{
 		}
 	}
 	
+	@Override
 	public String toString() {
 		String appliedToSch = "";
 		for(Integer i : scholarshipsAppliedTo) {
@@ -127,12 +128,12 @@ public class Student extends User{
 				appliedToSch += i+"";
 			}
 			else {
-				appliedToSch += i+",";
+				appliedToSch += i+":";
 			}
 		}
-		return (getUCID()+"\t"+getEmail()+"\t"+getPassword()+"\t"+getName()
-		+"\t"+faculty+"\t"+gpa+"\t"+yearOfStudy+"\t"+typeOfStudy+"\t"+department
-		+"\t"+appliedToSch);
+		return (getUCID()+","+getEmail()+","+getPassword()+","+getName()
+		+","+faculty+","+gpa+","+yearOfStudy+","+typeOfStudy+","+department
+		+","+appliedToSch);
 	}
 	
 }

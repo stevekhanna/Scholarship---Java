@@ -45,12 +45,13 @@ public class LoadData{
 		try {
 			System.out.println("Loading Student data from file: "+studentFile);
 			Scanner fileScanner = new Scanner(new File(studentFile));
+			String ignoreLine = fileScanner.nextLine();
 			while(fileScanner.hasNextLine()){
 				String currentLine = fileScanner.nextLine();
-				String[] parts = currentLine.split("\t");
+				String[] parts = currentLine.split(",");
 				List<Integer> scholarshipsAppliedTo = new ArrayList<Integer>();
 				if (parts.length>9) {
-					String[] queue = parts[9].split(",");
+					String[] queue = parts[9].split(":");
 					for(int i =0; i<queue.length; i++) {
 						scholarshipsAppliedTo.add(Integer.parseInt(queue[i]));
 					}
@@ -82,9 +83,10 @@ public class LoadData{
 		try {
 			System.out.println("Loading Admin data from file: "+adminFile);
 			Scanner fileScanner = new Scanner(new File(adminFile));
+			String ignoreLine = fileScanner.nextLine();
 			while(fileScanner.hasNextLine()){
 				String currentLine = fileScanner.nextLine();
-				String[] parts = currentLine.split("\t");
+				String[] parts = currentLine.split(",");
 				admins.add(new Admin(Integer.parseInt(parts[0]),parts[1],parts[2],parts[3]));
 			}
 			fileScanner.close();
@@ -105,12 +107,13 @@ public class LoadData{
 		try {
 			System.out.println("Loading Scholarship data from file: "+scholarshipFile);
 			Scanner fileScanner = new Scanner(new File(scholarshipFile));
+			String ignoreLine = fileScanner.nextLine();
 			while(fileScanner.hasNextLine()) {
 				String currentLine = fileScanner.nextLine();
-				String [] parts = currentLine.split("\t");
+				String [] parts = currentLine.split(",");
 				List<Integer> studentUcids = new ArrayList<Integer>();
 				if (parts.length>10) {
-					String[] queue = parts[10].split(",");
+					String[] queue = parts[10].split(":");
 					for(int i =0; i<queue.length; i++) {
 						studentUcids.add(Integer.parseInt(queue[i]));
 					}

@@ -177,6 +177,7 @@ public class Scholarship {
 		}
 	}
 	
+	@Override
 	public String toString() {
 		
 		String listOfStudents = "";
@@ -185,13 +186,11 @@ public class Scholarship {
 				listOfStudents += i+"";
 			}
 			else {
-				listOfStudents += i+",";
+				listOfStudents += i+":";
 			}
 		}
-		System.out.println("Pen15 "+listOfStudents);
-		
-		return (name + "\t" + scholarshipId + "\t" + gpaRequirement + "\t" + faculty + "\t" + yearOfStudy + "\t"
-				+ typeOfStudy + "\t" + Department + "\t" + numAllowed + "\t" + description + "\t" +money+ "\t" +listOfStudents);
+		return (name + "," + scholarshipId + "," + gpaRequirement + "," + faculty + "," + yearOfStudy + ","
+				+ typeOfStudy + "," + Department + "," + numAllowed + "," + description + "," +money+ "," +listOfStudents);
 	}
 
 }

@@ -24,8 +24,9 @@ public class Admin extends User{
 	 * @returns String with colon separators 
 	 * all the attributes of that instance
 	 */
+	@Override
 	public String toString() {
-		return getUCID()+"\t"+getEmail()+"\t"+getPassword()+"\t"+getName();
+		return getUCID()+","+getEmail()+","+getPassword()+","+getName();
 	}
 	
 }
