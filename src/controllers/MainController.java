@@ -28,6 +28,8 @@ public class MainController implements ActionListener{
 	private Admin currentAdmin;
 	private Student currentStudent;
 	
+	private Util util;
+	
 	public MainController(){
 		createFrame();
 	}
@@ -43,6 +45,8 @@ public class MainController implements ActionListener{
 		scMap = ld.loadScholarships();
 		
 		lController.start();
+		
+		util = new Util(students,admins,scMap);
 	}
 	
 	private void createFrame(){
@@ -103,7 +107,7 @@ public class MainController implements ActionListener{
 		switch(name){
 		case"Login_LoginStudentPanel":
 			if(checkStudentLogin()) {
-				sController.start(currentStudent, scMap);
+				sController.start(currentStudent, scMap, util);
 			}
 			break;
 		case"Login_LoginAdminPanel":

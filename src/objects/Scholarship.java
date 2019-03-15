@@ -1,5 +1,7 @@
 package objects;
 
+import java.util.List;
+
 /**
  * Scholarship class contains all attributes for scholarship
  * 
@@ -22,6 +24,8 @@ public class Scholarship {
 	private int numAllowed;
 	private String description;
 	private double money;
+	
+	private List<Integer> studentUcids;
 
 	/**
 	 * Default scholarship constructor

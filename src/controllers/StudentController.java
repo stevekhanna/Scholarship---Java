@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import displayStudent.*;
 import myJStuff.MyController;
 import objects.*;
+import util.*;
 
 /**
  * Controller used to manage what the student can do when logged in
@@ -28,6 +29,7 @@ public class StudentController extends MyController {
 	private AppliedPanel ap;
 	private AppliedToPanel atp;
 	
+	private Util util;
 	
 	// The current user
 	private Student currentStudent;
@@ -47,6 +49,7 @@ public class StudentController extends MyController {
 	public StudentController(ActionListener globalListener,JFrame frame) {
 		super(globalListener, frame);
 		sController = new ScholarshipController(this,frame);
+
 	}
 	
 	/**
@@ -55,9 +58,10 @@ public class StudentController extends MyController {
 	 * @param currentUser - Student
 	 * @param scMap - HashMap 
 	 */
-	public void start(Student currentStudent, HashMap<Integer, Scholarship> scMap) {
+	public void start(Student currentStudent, HashMap<Integer, Scholarship> scMap, Util util) {
 		this.scMap = scMap;
 		this.currentStudent = currentStudent;
+		this.util = util;
 		sp = new StudentPanel(this, globalListener);
 		ap = new AppliedPanel(this);
 		atp = new AppliedToPanel(this);
@@ -78,7 +82,8 @@ public class StudentController extends MyController {
 	private boolean applyToScholarship(int scholarshipID) {
 		Scholarship s = scMap.get(scholarshipID);
 		if(currentStudent != null) {
-			if(currentStudent.addScholarship(scholarshipID)) {
+			if(currentStudent.addScholarship(scholarshipID)) { 
+				util.saveStudent(currentStudent);
 				System.out.println(s.getName()+" added to applied");
 				return true;
 			}else {
