@@ -165,5 +165,10 @@ public class Scholarship {
 	public void setMoney(double money) {
 		this.money = money;
 	}
+	
+	public String toString() {
+		return (name + "\t" + scholarshipId + "\t" + gpaRequirement + "\t" + faculty + "\t" + yearOfStudy + "\t"
+				+ typeOfStudy + "\t" + Department + "\t" + numAllowed + "\t" + description + "\t" +money);
+	}
 
 }
