@@ -45,7 +45,7 @@ public class ViewStudentPanel extends MyPanel{
 			lblStudentAttribute.add(new MyLabel("default"));
 			center.add(lblStudentAttribute.get(i), String.format("cell 1 %d, left", i));
 			JLabel name = new MyLabel(studentAttributeName[i]+": ");
-			center.add(name, String.format("cell 0 %d, left", i));
+			center.add(name, String.format("cell 0 %d, right", i));
 		}
 		
 	}

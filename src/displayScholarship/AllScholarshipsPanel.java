@@ -18,10 +18,7 @@ public class AllScholarshipsPanel extends MyPanel{
 	private JButton btnBack;
 	private JButton btnSearch;
 	private JTextField fldSearch;
-	private JLabel lblSearch;
 	private JLabel lblSearchError;
-
-
 	
 	private int y;
 
