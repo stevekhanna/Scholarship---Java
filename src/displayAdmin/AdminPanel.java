@@ -76,6 +76,7 @@ public class AdminPanel extends MyPanel{
 		south.add(btnBack, "cell 0 0");
 		btnBack.addActionListener(globalListener);
 		btnBack.setName("Logout_AdminPanel");
+		
 	
 	}
 	

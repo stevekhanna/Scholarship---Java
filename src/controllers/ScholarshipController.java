@@ -54,6 +54,15 @@ public class ScholarshipController extends MyController{
 		}
 	}
 	
+	private Scholarship searchForScholarship(String name) {
+		for(Integer ID: scMap.keySet()) {
+			if(scMap.get(ID).getName().equals(name)) {
+				return scMap.get(ID);
+			}
+		}	
+		return null;
+	}
+	
 	private void switchToViewScholarshipPanel(Scholarship scholarship) {
 		vsp.dispalyScholarship(scholarship);
 		switchPanel(viewScholarshipPanel);
@@ -77,6 +86,27 @@ public class ScholarshipController extends MyController{
 			break;
 		case"Back_ViewScholarshipPanel":
 			switchPanel(allScholarshipsPanel);
+			break;
+		case"Search_AllScholarshipsPanel":
+			String x = asp.getSearchResult();
+			
+		// Case for search button 
+			Scholarship sr = searchForScholarship(x);
+			
+			if(sr != null) {
+				switchToViewScholarshipPanel(sr);
+				asp.displayErrorMessage( "");
+
+	
+			}else {
+				//Display label saying could'nt find scholarship
+				asp.displayErrorMessage("Error, could not find scholarship with name " + x);
+			}
+			break;
+		
+			
+		// Have the scholarship
+		// switchToViewScholarhipPanel( The scholarship that you found)
 		default:
 			break;
 		}
