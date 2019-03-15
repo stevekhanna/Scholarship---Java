@@ -120,4 +120,19 @@ public class Student extends User{
 		}
 	}
 	
+	public String toString() {
+		String appliedToSch = "";
+		for(Integer i : scholarshipsAppliedTo) {
+			if(i== scholarshipsAppliedTo.get(scholarshipsAppliedTo.size()-1)) {
+				appliedToSch += i+"";
+			}
+			else {
+				appliedToSch += i+",";
+			}
+		}
+		return (getUCID()+"\t"+getEmail()+"\t"+getPassword()+"\t"+getName()
+		+"\t"+faculty+"\t"+gpa+"\t"+yearOfStudy+"\t"+typeOfStudy+"\t"+department
+		+"\t"+appliedToSch);
+	}
+	
 }

@@ -47,7 +47,7 @@ public class LoadData{
 			Scanner fileScanner = new Scanner(new File(studentFile));
 			while(fileScanner.hasNextLine()){
 				String currentLine = fileScanner.nextLine();
-				String[] parts = currentLine.split(":");
+				String[] parts = currentLine.split("\t");
 				List<Integer> scholarshipsAppliedTo = new ArrayList<Integer>();
 				if (parts.length>9) {
 					String[] queue = parts[9].split(",");
@@ -84,7 +84,7 @@ public class LoadData{
 			Scanner fileScanner = new Scanner(new File(adminFile));
 			while(fileScanner.hasNextLine()){
 				String currentLine = fileScanner.nextLine();
-				String[] parts = currentLine.split(":");
+				String[] parts = currentLine.split("\t");
 				admins.add(new Admin(Integer.parseInt(parts[0]),parts[1],parts[2],parts[3]));
 			}
 			fileScanner.close();
@@ -107,8 +107,7 @@ public class LoadData{
 			Scanner fileScanner = new Scanner(new File(scholarshipFile));
 			while(fileScanner.hasNextLine()) {
 				String currentLine = fileScanner.nextLine();
-				currentLine = currentLine.replaceAll("\t", ":");
-				String [] parts = currentLine.split(":");
+				String [] parts = currentLine.split("\t");
 				Scholarship name = new Scholarship(parts[0], parts[1],parts[2],parts[3],parts[4],parts[5],parts[6],parts[7],parts[8],parts[9]);
 				int ID = name.getScholarshipId();
 				scMap.put(ID, name);

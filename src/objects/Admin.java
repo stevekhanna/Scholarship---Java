@@ -24,8 +24,8 @@ public class Admin extends User{
 	 * @returns String with colon separators 
 	 * all the attributes of that instance
 	 */
-	public String toFile() {
-		return getUCID()+":"+getEmail()+":"+getPassword()+":"+getName();
+	public String toString() {
+		return getUCID()+"\t"+getEmail()+"\t"+getPassword()+"\t"+getName();
 	}
 	
 }
