@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 import myJStuff.*;
 import objects.Scholarship;
@@ -15,6 +16,12 @@ public class AllScholarshipsPanel extends MyPanel{
 	
 	private JLabel lblTitle;
 	private JButton btnBack;
+	private JButton btnSearch;
+	private JTextField fldSearch;
+	private JLabel lblSearch;
+	private JLabel lblSearchError;
+
+
 	
 	private int y;
 
@@ -39,13 +46,34 @@ public class AllScholarshipsPanel extends MyPanel{
 		
 		// This button goes back to either the student or admin controller from the scholarships controller
 		btnBack = new MyButton("Back", Size.defaultBtnFontSize);
-		south.add(btnBack, "cell 0 0");
+		south.add(btnBack, "cell 0 1");
 		// Global listener to switch between the controllers
 		btnBack.addActionListener(globalLisenter);
 		btnBack.setName("Back_AllScholarshipsPanel");
+		
+		btnSearch = new MyButton("Search", Size.defaultBtnFontSize);
+		south.add(btnSearch, "cell 2 1");
+		// Global listener to switch between the controllers
+		btnSearch.addActionListener(packageListener);
+		btnSearch.setName("Search_AllScholarshipsPanel");
 
+		
+		fldSearch = new MyTextField("", Size.defaultBtnFontSize);
+		south.add(fldSearch, "cell 1 1, center");
+		
+		lblSearchError = new MyLabel("", Size.defaultLblFontSize);
+		south.add(lblSearchError, "cell 1 0, center");	
+		
+		
 	}
 	
+	public void displayErrorMessage(String error) {
+		lblSearchError.setText(error);
+	}
+	
+	public String getSearchResult() {
+		return fldSearch.getText();
+	}
 	/**
 	 * Empty method, displays center of panel.
 	 */

@@ -91,6 +91,8 @@ public class LoginAdminPanel extends MyPanel{
 	public String getEmail() {
 		return fldUsername.getText();
 	}
+	//same thing for searching
+	
 	
 	/**
 	 * get the password from the text field.
