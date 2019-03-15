@@ -21,12 +21,12 @@ public class LoadData{
 	/**
 	 * Instance variables
 	 */
-	private List<Student> students;
+	protected List<Student> students;
 	private List<Admin> admins;
 	private HashMap<Integer, Scholarship> scMap; 
-	private final String studentFile = "src/data/students.txt";
-	private final String adminFile = "src/data/admins.txt";
-	private final String scholarshipFile ="src/data/scholarships.txt";
+	private final String studentFile = FileLocations.studentFile;
+	private final String adminFile = FileLocations.adminFiles;
+	private final String scholarshipFile = FileLocations.scholarshipFile;
 	/**
 	 * default constructor
 	 */
