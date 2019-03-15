@@ -38,7 +38,7 @@ public class Util {
 			writer.println(studentFormat);
 			for(Student student: students) {
 				//String[] entries = student.toString().split(",");
-				writer.println(student.toString()+'\n');
+				writer.println(student.toString());
 			}
 			writer.close();
 		}
@@ -73,8 +73,7 @@ public class Util {
 			PrintWriter writer = new PrintWriter(adminFile, "UTF-8");
 			writer.println(adminFormat);
 			for(Admin admin: admins) {
-				//String[] entries = admin.toString().split(",");
-				writer.println(admin.toString()+'\n');
+				writer.println(admin.toString());
 			}
 			writer.close();
 		}
@@ -111,8 +110,7 @@ public class Util {
 			PrintWriter writer = new PrintWriter(scholarshipFile, "UTF-8");
 			writer.println(scholarshipFormat);
 			for(int i = 1; i<=scMap.size(); i++) {
-				//String[] entries = scMap.get(i).toString().split(",");
-				writer.write(scMap.get(i).toString()+'\n');
+				writer.println(scMap.get(i).toString());
 			}
 			writer.close();
 		}
