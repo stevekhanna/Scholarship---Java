@@ -95,12 +95,11 @@ public class ScholarshipController extends MyController{
 			
 			if(sr != null) {
 				switchToViewScholarshipPanel(sr);
-				asp.displayErrorMessage( "");
-
-	
+				asp.setErrorMessage("");
+				asp.setSearchResult("");
 			}else {
 				//Display label saying could'nt find scholarship
-				asp.displayErrorMessage("Error, could not find scholarship with name " + x);
+				asp.setErrorMessage("Error, could not find scholarship with name " + x);
 			}
 			break;
 		

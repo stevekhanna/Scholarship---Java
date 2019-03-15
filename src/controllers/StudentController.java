@@ -97,6 +97,23 @@ public class StudentController extends MyController {
 			return false;
 		}
 	}
+	
+	/**
+	 * Find all of the scholarships that have the same type of study as the current student
+	 * @param studyType - String 
+	 * @return HasMap <Integer, Scholarship>
+	 */
+	private HashMap <Integer, Scholarship> availableScholarships(String studyType){
+		HashMap <Integer, Scholarship> map = new HashMap<Integer, Scholarship>();
+		
+		for(int i=1; i<=scMap.size();i++) {
+			if(scMap.get(i).getTypeOfStudy().equals(studyType)) {
+				map.put(i, scMap.get(i));
+			}
+		}
+		
+		return map;
+	}
 
 	@Override
 	/**
@@ -109,8 +126,9 @@ public class StudentController extends MyController {
 		switch(name) {
 		// Start the scholarship panel and view all of the scholarships
 		case"AllScholarships_StudentPanel":
-			//TODO SWAG
-			sController.start(false,scMap);
+			String study = currentStudent.getTypeOfStudy();
+			
+			sController.start(false,availableScholarships(study));
 			break;
 		// Going back from viewing all scholarships to the users main page
 		case"Back_AllScholarshipsPanel":

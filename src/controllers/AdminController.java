@@ -72,6 +72,7 @@ public class AdminController extends MyController {
 		allStudentsPanel = asp.getContentPane();
 		viewStudentPanel = vsp.getContentPane();
 		
+		// Add all of the students to the AllStudentsPanel
 		addAllStudents();
 		
 		switchToAdminPanel();

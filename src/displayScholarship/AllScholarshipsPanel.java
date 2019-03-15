@@ -67,13 +67,18 @@ public class AllScholarshipsPanel extends MyPanel{
 		
 	}
 	
-	public void displayErrorMessage(String error) {
+	public void setErrorMessage(String error) {
 		lblSearchError.setText(error);
 	}
 	
 	public String getSearchResult() {
 		return fldSearch.getText();
 	}
+	
+	public void setSearchResult(String search) {
+		fldSearch.setText(search);
+	}
+	
 	/**
 	 * Empty method, displays center of panel.
 	 */
