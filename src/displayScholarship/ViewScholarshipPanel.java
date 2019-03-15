@@ -1,6 +1,7 @@
 package displayScholarship;
 
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -9,11 +10,12 @@ import myJStuff.*;
 import objects.Scholarship;
 
 public class ViewScholarshipPanel extends MyPanel{
+	private final int NUM_OF_ATTRIBUTES = 8;
 	
 	private ActionListener globalListener;
-	
+
 	private boolean isAdmin;
-	
+	private ArrayList<JLabel> lblAttribute = new ArrayList<JLabel>();
 	private JLabel lblTitle;
 	private JButton btnBack;
 	private JButton btnApply;
@@ -63,6 +65,13 @@ public class ViewScholarshipPanel extends MyPanel{
 	 * Empty method, displays center of panel.
 	 */
 	private void displayCenter(){
+		String[] attributeName = {"GPA","Faculty","Year of Study", "Type of Study", "Department", "Number Available", "Description", "Amount"};
+		for (int i=0; i<NUM_OF_ATTRIBUTES; i++) {
+			lblAttribute.add(new MyLabel("default"));
+			center.add(lblAttribute.get(i), String.format("cell 1 %d, center", i));
+			JLabel name = new MyLabel(attributeName[i]+": ");
+			center.add(name, String.format("cell 0 %d, left", i));
+		}
 	}
 	
 	public void dispalyScholarship(Scholarship scholarship) {
@@ -78,10 +87,10 @@ public class ViewScholarshipPanel extends MyPanel{
 		String[] s = x.split(":");
 		int y = 0;
 		for (String string: s) {
-			JLabel lbl = new MyLabel(string);
-			center.add(lbl, String.format("cell 0 %d, center", y));
+			lblAttribute.get(y).setText(string);
 			y++;
 		}
+
 	
 	}
 }
