@@ -59,7 +59,7 @@ public class Scholarship {
 	 * This is used when a new scholarship is created
 	 */
 	public Scholarship(String name, String sId, String gReq, String faculty, String YOS, String TOS, String Dept,
-			String nums, String desc, String money) {
+			String nums, String desc, String money,List<Integer> studentUcids) {
 		this.name = name;
 		this.scholarshipId = Integer.parseInt(sId);
 		this.gpaRequirement = Double.parseDouble(gReq);
@@ -70,6 +70,7 @@ public class Scholarship {
 		this.numAllowed = Integer.parseInt(nums);
 		this.description = desc;
 		this.money = Double.parseDouble(money);
+		this.studentUcids= studentUcids;
 
 	}
 	
@@ -166,9 +167,31 @@ public class Scholarship {
 		this.money = money;
 	}
 	
+	public boolean addStudent(int id) {
+		if (studentUcids.contains(id)) {
+			return false;
+		}
+		else {
+			studentUcids.add(id);
+			return true;
+		}
+	}
+	
 	public String toString() {
+		
+		String listOfStudents = "";
+		for(Integer i : studentUcids) {
+			if(i== studentUcids.get(studentUcids.size()-1)) {
+				listOfStudents += i+"";
+			}
+			else {
+				listOfStudents += i+",";
+			}
+		}
+		System.out.println("Pen15 "+listOfStudents);
+		
 		return (name + "\t" + scholarshipId + "\t" + gpaRequirement + "\t" + faculty + "\t" + yearOfStudy + "\t"
-				+ typeOfStudy + "\t" + Department + "\t" + numAllowed + "\t" + description + "\t" +money);
+				+ typeOfStudy + "\t" + Department + "\t" + numAllowed + "\t" + description + "\t" +money+ "\t" +listOfStudents);
 	}
 
 }

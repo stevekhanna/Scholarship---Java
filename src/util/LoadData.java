@@ -56,7 +56,7 @@ public class LoadData{
 					}
 				}
 				else {
-					scholarshipsAppliedTo=null;
+					scholarshipsAppliedTo=new ArrayList<Integer>();
 				}
 				
 				students.add(new Student(Integer.parseInt(parts[0]),parts[1],parts[2],parts[3],
@@ -108,7 +108,17 @@ public class LoadData{
 			while(fileScanner.hasNextLine()) {
 				String currentLine = fileScanner.nextLine();
 				String [] parts = currentLine.split("\t");
-				Scholarship name = new Scholarship(parts[0], parts[1],parts[2],parts[3],parts[4],parts[5],parts[6],parts[7],parts[8],parts[9]);
+				List<Integer> studentUcids = new ArrayList<Integer>();
+				if (parts.length>10) {
+					String[] queue = parts[10].split(",");
+					for(int i =0; i<queue.length; i++) {
+						studentUcids.add(Integer.parseInt(queue[i]));
+					}
+				}
+				else {
+					studentUcids=new ArrayList<Integer>();
+				}
+				Scholarship name = new Scholarship(parts[0], parts[1],parts[2],parts[3],parts[4],parts[5],parts[6],parts[7],parts[8],parts[9],studentUcids);
 				int ID = name.getScholarshipId();
 				scMap.put(ID, name);
 			}
