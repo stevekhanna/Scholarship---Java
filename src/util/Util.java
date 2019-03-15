@@ -17,6 +17,10 @@ public class Util {
 	private final String scholarshipFile = FileLocations.scholarshipFile;
 	
 	
+	private final String studentFormat = "UCID,Email,Password,Name,Faculty,GPA,Year of study,Type of study,Department,Applied to";
+	private final String adminFormat = "UCID,Email,Password,Name";
+	private final String scholarshipFormat = "Name,ID,GPA,Faculty,Year of Study,Type of study,Department,Numbers allowed,Description,Money,Students applied";
+	
 	public Util(List<Student> students, List<Admin> admins, HashMap<Integer, Scholarship> scMap) {
 		this.students = students;
 		this.admins = admins;
@@ -31,8 +35,10 @@ public class Util {
 		// write all of the students to the file
 		try {
 			PrintWriter writer = new PrintWriter(studentFile, "UTF-8");
+			writer.println(studentFormat);
 			for(Student student: students) {
-				writer.println(student.toString());
+				//String[] entries = student.toString().split(",");
+				writer.println(student.toString()+'\n');
 			}
 			writer.close();
 		}
@@ -65,8 +71,10 @@ public class Util {
 	public void writeAdmins() {
 		try {
 			PrintWriter writer = new PrintWriter(adminFile, "UTF-8");
+			writer.println(adminFormat);
 			for(Admin admin: admins) {
-				writer.println(admin.toString());
+				//String[] entries = admin.toString().split(",");
+				writer.println(admin.toString()+'\n');
 			}
 			writer.close();
 		}
@@ -101,9 +109,10 @@ public class Util {
 	public void writeScholarships() {
 		try {
 			PrintWriter writer = new PrintWriter(scholarshipFile, "UTF-8");
+			writer.println(scholarshipFormat);
 			for(int i = 1; i<=scMap.size(); i++) {
-				System.out.println("Test" + scMap.get(i).toString());
-				writer.println(scMap.get(i).toString());
+				//String[] entries = scMap.get(i).toString().split(",");
+				writer.write(scMap.get(i).toString()+'\n');
 			}
 			writer.close();
 		}
@@ -118,7 +127,6 @@ public class Util {
 	public void saveScholarship(Scholarship scholarship) {
 		int id = scholarship.getScholarshipId();
 		scMap.put(id, scholarship);
-		System.out.println(scMap.get(id).toString());
 		writeScholarships();
 	}
 }
