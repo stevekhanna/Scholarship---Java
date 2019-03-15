@@ -83,7 +83,10 @@ public class StudentController extends MyController {
 		Scholarship s = scMap.get(scholarshipID);
 		if(currentStudent != null) {
 			if(currentStudent.addScholarship(scholarshipID)) { 
+				// Should add ucid to the scholarship list of students that have applied
+				scMap.get(scholarshipID).addStudent(currentStudent.getUCID());
 				util.saveStudent(currentStudent);
+				util.saveScholarship(scMap.get(scholarshipID));
 				System.out.println(s.getName()+" added to applied");
 				return true;
 			}else {
@@ -106,6 +109,7 @@ public class StudentController extends MyController {
 		switch(name) {
 		// Start the scholarship panel and view all of the scholarships
 		case"AllScholarships_StudentPanel":
+			//TODO SWAG
 			sController.start(false,scMap);
 			break;
 		// Going back from viewing all scholarships to the users main page

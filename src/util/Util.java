@@ -101,7 +101,8 @@ public class Util {
 	public void writeScholarships() {
 		try {
 			PrintWriter writer = new PrintWriter(scholarshipFile, "UTF-8");
-			for(int i = 0; i<scMap.size(); i++) {
+			for(int i = 1; i<=scMap.size(); i++) {
+				System.out.println("Test" + scMap.get(i).toString());
 				writer.println(scMap.get(i).toString());
 			}
 			writer.close();
@@ -117,6 +118,7 @@ public class Util {
 	public void saveScholarship(Scholarship scholarship) {
 		int id = scholarship.getScholarshipId();
 		scMap.put(id, scholarship);
+		System.out.println(scMap.get(id).toString());
 		writeScholarships();
 	}
 }
