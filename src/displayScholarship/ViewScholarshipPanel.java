@@ -68,9 +68,9 @@ public class ViewScholarshipPanel extends MyPanel{
 		String[] attributeName = {"GPA","Faculty","Year of Study", "Type of Study", "Department", "Number Available", "Description", "Amount"};
 		for (int i=0; i<NUM_OF_ATTRIBUTES; i++) {
 			lblAttribute.add(new MyLabel("default"));
-			center.add(lblAttribute.get(i), String.format("cell 1 %d, center", i));
+			center.add(lblAttribute.get(i), String.format("cell 1 %d, left", i));
 			JLabel name = new MyLabel(attributeName[i]+": ");
-			center.add(name, String.format("cell 0 %d, left", i));
+			center.add(name, String.format("cell 0 %d, right", i));
 		}
 	}
 	
