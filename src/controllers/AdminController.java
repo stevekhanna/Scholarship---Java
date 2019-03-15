@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 import displayAdmin.*;
 import objects.*;
+import util.*;
 import myJStuff.MyController;
 
 /**
@@ -39,6 +40,8 @@ public class AdminController extends MyController {
 	
 	private ScholarshipController sController;
 	
+	private Util util;
+	
 	
 	/**
 	 * Constructor
@@ -56,10 +59,11 @@ public class AdminController extends MyController {
 	 * @param currentAdmin - Admin - current user
 	 * @param scMap - HashMap<Integer, Scholarship> - list of scholarships
 	 */
-	public void start(Admin currentAdmin, HashMap<Integer, Scholarship> scMap, List<Student> students) {
+	public void start(Admin currentAdmin, HashMap<Integer, Scholarship> scMap, List<Student> students, Util util) {
 		this.scMap = scMap;
 		this.currentAdmin = currentAdmin;
 		this.students = students;
+		this.util = util;
 		ap = new AdminPanel(this, globalListener);
 		asp = new AllStudentsPanel(this);
 		vsp = new ViewStudentPanel(this);
