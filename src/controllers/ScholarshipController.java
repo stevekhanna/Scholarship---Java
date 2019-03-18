@@ -70,7 +70,18 @@ public class ScholarshipController extends MyController{
 	
 	private void switchToViewScholarshipPanel(Scholarship scholarship) {
 		vsp.dispalyScholarship(scholarship);
+		if(isAdmin) {
+			vsp.disaplyStudentsApplied(getScholarshipStudents(scholarship));
+		}
 		switchPanel(viewScholarshipPanel);
+	}
+	
+	private String getScholarshipStudents(Scholarship s) {
+		String x = "";
+		for(int i: s.getStudentsUcids()) {
+			x+=i+", ";
+		}
+		return x;
 	}
 	
 	

@@ -20,6 +20,9 @@ public class ViewScholarshipPanel extends MyPanel{
 	private JButton btnBack;
 	private JButton btnApply;
 	private JButton btnEdit;
+	
+	private JLabel lblStudents;
+	private JLabel lblStudentsTitle;
 
 	public ViewScholarshipPanel(ActionListener actionListener,ActionListener globalListener, boolean isAdmin) {
 		this.packageListener = actionListener;
@@ -72,13 +75,23 @@ public class ViewScholarshipPanel extends MyPanel{
 			JLabel name = new MyLabel(attributeName[i]+": ");
 			center.add(name, String.format("cell 0 %d, right", i));
 		}
+		
+		lblStudentsTitle = new MyLabel("");
+		center.add(lblStudentsTitle,"cell 0 8,right");
+		
+		lblStudents = new MyLabel("");
+		center.add(lblStudents,"cell 1 8,left");
 	}
 	
 	public void dispalyScholarship(Scholarship scholarship) {
 		if(!isAdmin) {
 			btnApply.setActionCommand(Integer.toString(scholarship.getScholarshipId()));
+			lblStudentsTitle.setText("");
+			lblStudents.setText("");
 		}else {
 			btnEdit.setActionCommand(Integer.toString(scholarship.getScholarshipId()));
+			lblStudentsTitle.setText("Students:");
+			lblStudents.setText("");
 		}
 		lblTitle.setText(scholarship.getName());
 		String x = scholarship.returnFull();
@@ -90,7 +103,9 @@ public class ViewScholarshipPanel extends MyPanel{
 			lblAttribute.get(y).setText(string);
 			y++;
 		}
-
+	}
 	
+	public void disaplyStudentsApplied(String students) {
+		lblStudents.setText(students);
 	}
 }
