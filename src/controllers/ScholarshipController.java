@@ -16,10 +16,12 @@ public class ScholarshipController extends MyController{
 	
 	private JPanel viewScholarshipPanel;
 	private JPanel allScholarshipsPanel;
+	private JPanel editScholarshipPanel;
 	
 	
 	private ViewScholarshipPanel vsp;
 	private AllScholarshipsPanel asp;
+	private EditScholarshipPanel esp;
 	
 	private HashMap<Integer, Scholarship> scMap;
 	
@@ -36,8 +38,11 @@ public class ScholarshipController extends MyController{
 		
 		vsp = new ViewScholarshipPanel(this,globalListener,this.isAdmin);
 		asp = new AllScholarshipsPanel(this,globalListener);
+		esp = new EditScholarshipPanel(this,globalListener);
+		
 		viewScholarshipPanel = vsp.getContentPane();
 		allScholarshipsPanel = asp.getContentPane();
+		editScholarshipPanel = esp.getContentPane();
 		
 		scholarshipLoop(scMap);
 		switchPanel(allScholarshipsPanel);
@@ -72,6 +77,10 @@ public class ScholarshipController extends MyController{
 	public HashMap<Integer, Scholarship> getScMap(){
 		return scMap;
 	}
+	
+	public EditScholarshipPanel getEdits() {
+		return esp;
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -86,6 +95,15 @@ public class ScholarshipController extends MyController{
 			break;
 		case"Back_ViewScholarshipPanel":
 			switchPanel(allScholarshipsPanel);
+			break;
+		case"Back_EditScholarshipPanel":
+			switchPanel(allScholarshipsPanel);
+			break;
+		case "EditScholarship_ViewScholarshipPanel":
+			int i = Integer.parseInt(source.getActionCommand());
+			Scholarship sc = scMap.get(i);
+			esp.setScholarship(sc);
+			switchPanel(editScholarshipPanel);
 			break;
 		case"Search_AllScholarshipsPanel":
 			String x = asp.getSearchResult();

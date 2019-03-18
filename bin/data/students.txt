@@ -1,3 +1,0 @@
-12345678	student@ucalgary.ca	password	STUDENT ACCOUNT	Arts	3.5	3	Bachelor	GRST	1
-11111111	q	q	Q Student	Arts	3.5	3	Bachelor	GRST	1,2
-33333333	a	a	PHD Student	Arts	3.5	3	PHD	GRST	1,2

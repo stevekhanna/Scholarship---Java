@@ -1,5 +1,0 @@
-Google	1	3.57	Science	3	Bachelor	Arts	100	This is a generic scholarship	75000.0	11111111,12345678
-RBC	2	3.8	Science	3	Bachelor	CPSC	100	RBC's Student Scholarship	1000.0	11111111
-Facebook	3	3.8	Science	3	PHD	CPSC	100	RBC's Student Scholarship	1000.0	11111111
-Steve Scholarship	4	3.8	Science	3	Bachelor	CPSC	100	RBC's Student Scholarship	1000.0	11111111
-UofC	5	3.8	Science	3	PHD	CPSC	100	RBC's Student Scholarship	1000.0	11111111

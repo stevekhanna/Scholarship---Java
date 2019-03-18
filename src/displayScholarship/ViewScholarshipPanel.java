@@ -55,7 +55,7 @@ public class ViewScholarshipPanel extends MyPanel{
 		}else {
 			btnEdit = new MyButton("Edit");
 			btnEdit.setName("EditScholarship_ViewScholarshipPanel");
-			btnEdit.addActionListener(globalListener);
+			btnEdit.addActionListener(packageListener);
 			south.add(btnEdit, "cell 1 0, right");
 		}
 		
