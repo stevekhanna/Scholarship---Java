@@ -160,6 +160,7 @@ public class AdminController extends MyController {
 			s.setName(sController.getEdits().getName());
 			s.setGpaRequirement(sController.getEdits().getGpa());
 			s.setDescription(sController.getEdits().getDescxription());
+			util.saveScholarship(s);
 			switchToAdminPanel();
 			break;
 		default:
