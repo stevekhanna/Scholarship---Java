@@ -60,8 +60,9 @@ public class ScholarshipController extends MyController{
 	}
 	
 	private Scholarship searchForScholarship(String name) {
+		
 		for(Integer ID: scMap.keySet()) {
-			if(scMap.get(ID).getName().equals(name)) {
+			if(scMap.get(ID).getName().equalsIgnoreCase(name)) {
 				return scMap.get(ID);
 			}
 		}	
@@ -117,7 +118,12 @@ public class ScholarshipController extends MyController{
 				asp.setSearchResult("");
 			}else {
 				//Display label saying could'nt find scholarship
-				asp.setErrorMessage("Error, could not find scholarship with name " + x);
+				if(x.equals("")) {
+					asp.setErrorMessage("Error, please enter a valid name");
+				}else {
+					asp.setErrorMessage("Error, could not find scholarship with name " + x);
+				}
+				
 			}
 			break;
 		
