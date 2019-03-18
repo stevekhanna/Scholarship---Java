@@ -16,6 +16,8 @@ public class ViewStudentPanel extends MyPanel{
 	private ArrayList<JLabel> lblStudentAttribute = new ArrayList<JLabel>();
 	private JButton btnBack;
 	
+	private JLabel lblScholarshipsTitle;
+	private JLabel lblScholarships;
 	int row = 0;
 	
 	public ViewStudentPanel(ActionListener packageListener) {
@@ -48,10 +50,16 @@ public class ViewStudentPanel extends MyPanel{
 			center.add(name, String.format("cell 0 %d, right", i));
 		}
 		
+		lblScholarshipsTitle = new MyLabel("Scholarships:");
+		center.add(lblScholarshipsTitle,"cell 0 8,right");
+		
+		lblScholarships = new MyLabel("No Scholarships Applied To");
+		center.add(lblScholarships,"cell 1 8,left");
+		
 	}
 	
 	
-	public void setStudent(Student student) {
+	public void setStudent(Student student, String scholarships) {
 		// The labels text should be set here.
 		lblName.setText(student.getName());
 		lblStudentAttribute.get(0).setText(Integer.toString(student.getUCID()));
@@ -61,6 +69,7 @@ public class ViewStudentPanel extends MyPanel{
 		lblStudentAttribute.get(4).setText(Integer.toString(student.getYearOfStudy()));
 		lblStudentAttribute.get(5).setText(student.getTypeOfStudy());
 		lblStudentAttribute.get(6).setText(student.getDepartment());
+		lblScholarships.setText(scholarships);
 	}
 
 }
