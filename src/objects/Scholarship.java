@@ -177,6 +177,10 @@ public class Scholarship {
 		}
 	}
 	
+	public List<Integer> getStudentsUcids() {
+		return studentUcids;
+	}
+	
 	@Override
 	public String toString() {
 		

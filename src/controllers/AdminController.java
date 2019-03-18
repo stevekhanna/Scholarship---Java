@@ -90,7 +90,8 @@ public class AdminController extends MyController {
 	
 	private void switchToViewStudent(int ucid) {
 		Student s = findStudentByUcid(ucid);
-		vsp.setStudent(s);
+		String x = scholarshipsAppliedTo(s);
+		vsp.setStudent(s,x);
 		switchPanel(viewStudentPanel);
 	}
 	
@@ -104,6 +105,17 @@ public class AdminController extends MyController {
 		for(Student s: students) {
 			asp.addStudent(s);
 		}
+	}
+	
+	private String scholarshipsAppliedTo(Student s) {
+		String scholarships="";
+		
+		for(Integer ID: scMap.keySet()) {
+			if(scMap.get(ID).getStudentsUcids().contains(s.getUCID())) {
+				scholarships+=scMap.get(ID).getName()+", ";
+			}
+		}
+		return scholarships;
 	}
 	
 	private Student findStudentByUcid(int ucid) {
