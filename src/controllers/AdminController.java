@@ -115,6 +115,10 @@ public class AdminController extends MyController {
 		return null;
 	}
 	
+	private void saveScholarship() {
+		
+	}
+	
 	@Override
 	/**
 	 * ActionListener for when a button is pressed that is assigned to the packageController
@@ -150,6 +154,13 @@ public class AdminController extends MyController {
 			break;
 		case "AllScholarships_AdminPanel":
 			sController.start(true, scMap);
+			break;
+		case "SaveEdits_EditScholarshipPanel":
+			Scholarship s = scMap.get(Integer.parseInt(source.getActionCommand()));
+			s.setName(sController.getEdits().getName());
+			s.setGpaRequirement(sController.getEdits().getGpa());
+			s.setDescription(sController.getEdits().getDescxription());
+			switchToAdminPanel();
 			break;
 		default:
 			break;
