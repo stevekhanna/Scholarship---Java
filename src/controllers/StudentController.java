@@ -84,6 +84,10 @@ public class StudentController extends MyController {
 		if(currentStudent != null) {
 			if(currentStudent.addScholarship(scholarshipID)) { 
 				// Should add ucid to the scholarship list of students that have applied
+				if(currentStudent.getGpa()< scMap.get(scholarshipID).getGpaRequirement()) {
+					System.out.println(s.getName()+" failed");
+					return false;
+				}
 				scMap.get(scholarshipID).addStudent(currentStudent.getUCID());
 				util.saveStudent(currentStudent);
 				util.saveScholarship(scMap.get(scholarshipID));
