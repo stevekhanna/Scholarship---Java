@@ -14,7 +14,7 @@ public class Colors{
 	public static final Color grey 		= new Color(239,234,234);
 	public static final Color darkGrey 	= new Color(85,91,110);
 	
-	public static final Color defaultButtonTextColor 		= white;
+	public static final Color defaultButtonTextColor 		= grey;
 	public static final Color defaultButtonBackgroundColor 	= darkGrey;
 	public static final Color defaultBackgroundColor 		= grey;
 	public static final Color defaultBorderColor 			= grey;

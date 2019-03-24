@@ -9,6 +9,6 @@ public class MyFont extends Font{
 	 * @param size
 	 */
 	public MyFont(int size) {
-		super("Georgia", Font.PLAIN, size);
+		super("Avenir", Font.PLAIN, size);
 	}
 }
