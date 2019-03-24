@@ -84,9 +84,9 @@ public class StudentController extends MyController {
 		if(currentStudent != null) {
 			if(currentStudent.addScholarship(scholarshipID)) { 
 				// Should add ucid to the scholarship list of students that have applied
-				scMap.get(scholarshipID).addStudent(currentStudent.getUCID());
+				s.addStudent(currentStudent.getUCID());
 				util.saveStudent(currentStudent);
-				util.saveScholarship(scMap.get(scholarshipID));
+				util.saveScholarship(s);
 				System.out.println(s.getName()+" added to applied");
 				return true;
 			}else {
