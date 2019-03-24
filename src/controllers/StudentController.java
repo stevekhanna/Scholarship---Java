@@ -70,10 +70,23 @@ public class StudentController extends MyController {
 		appliedPanel = ap.getContentPane();
 		appliedToPanel = atp.getContentPane();
 		
+		addScholarshipsToAppliedPanel();
 		switchToStudentPanel();
 	}
 	
-	public void switchToStudentPanel() {
+	/**
+	 * Add all of the scholarships the student has applied to when logging in
+	 */
+	private void addScholarshipsToAppliedPanel() {
+		for(int i: scMap.keySet()) {
+			// If the scholarship has the current students ucid in it add it to the screen
+			if(scMap.get(i).getStudentsUcids().contains(currentStudent.getUCID())) {
+				atp.addScholarship(scMap.get(i));
+			}
+		}	
+	}
+	
+	private void switchToStudentPanel() {
 		sp.setName(currentStudent.getName());
 		sp.setEmail(currentStudent.getEmail());
 		switchPanel(studentPanel);
@@ -81,18 +94,25 @@ public class StudentController extends MyController {
 	
 	private boolean applyToScholarship(int scholarshipID) {
 		Scholarship s = scMap.get(scholarshipID);
-		if(currentStudent != null) {
-			if(currentStudent.addScholarship(scholarshipID)) { 
-				// Should add ucid to the scholarship list of students that have applied	
-				if(currentStudent.getGpa()< scMap.get(scholarshipID).getGpaRequirement()) {
-					System.out.println(s.getName()+" failed");
-					return false;
-				}else {
-					s.addStudent(currentStudent.getUCID());;
+		// Make sure current student is not null
+		if(currentStudent != null  && s!= null) {
+			// Check the student has the correct GPA req for the scholarship
+			if (currentStudent.getGpa()>= s.getGpaRequirement()) {
+				// Add the scholarship to the current student
+				if(currentStudent.addScholarship(scholarshipID)) {
+					// Add the Students UCID to the scholarship
+					s.addStudent(currentStudent.getUCID());
+					// Save the Student to the util file
 					util.saveStudent(currentStudent);
+					// Save the scholarships to the util file
 					util.saveScholarship(s);
+					// Add the scholarship to the appliedToPanel
+					atp.addScholarship(s);
 					System.out.println(s.getName()+" added to applied");	
 					return true;
+				}else {
+					System.out.println(s.getName()+" failed");
+					return false;
 				}
 			}else {
 				System.out.println(s.getName()+" failed");
