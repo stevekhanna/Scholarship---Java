@@ -83,16 +83,17 @@ public class StudentController extends MyController {
 		Scholarship s = scMap.get(scholarshipID);
 		if(currentStudent != null) {
 			if(currentStudent.addScholarship(scholarshipID)) { 
-				// Should add ucid to the scholarship list of students that have applied
+				// Should add ucid to the scholarship list of students that have applied	
 				if(currentStudent.getGpa()< scMap.get(scholarshipID).getGpaRequirement()) {
 					System.out.println(s.getName()+" failed");
 					return false;
+				}else {
+					s.addStudent(currentStudent.getUCID());;
+					util.saveStudent(currentStudent);
+					util.saveScholarship(s);
+					System.out.println(s.getName()+" added to applied");	
+					return true;
 				}
-				scMap.get(scholarshipID).addStudent(currentStudent.getUCID());
-				util.saveStudent(currentStudent);
-				util.saveScholarship(scMap.get(scholarshipID));
-				System.out.println(s.getName()+" added to applied");
-				return true;
 			}else {
 				System.out.println(s.getName()+" failed");
 				return false;
