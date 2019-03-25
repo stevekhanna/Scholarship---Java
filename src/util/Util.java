@@ -120,6 +120,19 @@ public class Util {
 	}
 	
 	
+	public void deleteScholarship(Scholarship scholarship) {
+		scMap.remove(scholarship.getScholarshipId());
+		for (int i: scholarship.getStudentsUcids()) {
+			for(Student s : students) {
+				if (s.getUCID() == i) {
+					s.removeScholarship(scholarship.getScholarshipId());
+				}
+			}
+		}
+		writeScholarships();
+		writeStudents();
+	}
+	
 	
 	
 	public void saveScholarship(Scholarship scholarship) {

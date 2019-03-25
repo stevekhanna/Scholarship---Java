@@ -128,7 +128,15 @@ public class AdminController extends MyController {
 	}
 	
 	private void deleteScholarship(Scholarship s) {
-		
+		util.deleteScholarship(s);
+		scMap.remove(s.getScholarshipId());
+		for (int i: s.getStudentsUcids()) {
+			for(Student student : students) {
+				if (student.getUCID() == i) {
+					student.removeScholarship(s.getScholarshipId());
+				}
+			}
+		}
 	}
 	private void saveScholarship(Scholarship s) {
 		s.setName(sController.getEdits().getName());

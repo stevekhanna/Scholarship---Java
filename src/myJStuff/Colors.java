@@ -8,11 +8,11 @@ import java.awt.Color;
 
 public class Colors{
 	
-	public static final Color black 	= new Color(38,38,38);
-	public static final Color purple 	= new Color(127,0,255);
-	public static final Color white 	= new Color(255,255,255);
-	public static final Color grey 		= new Color(239,234,234);
-	public static final Color darkGrey 	= new Color(85,91,110);
+	public static final Color black 	= Color.decode("#182538");
+	public static final Color purple 	= Color.decode("#7F00FF");
+	public static final Color white 	= Color.decode("#ffffff");
+	public static final Color grey 		= Color.decode("#f4eade");
+	public static final Color darkGrey 	= Color.decode("#182538");
 	
 	public static final Color defaultButtonTextColor 		= grey;
 	public static final Color defaultButtonBackgroundColor 	= darkGrey;

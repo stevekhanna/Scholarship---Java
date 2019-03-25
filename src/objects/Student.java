@@ -120,6 +120,17 @@ public class Student extends User{
 		}
 	}
 	
+	public boolean removeScholarship(int id){
+		if(scholarshipsAppliedTo.contains(id)) {
+			int index = scholarshipsAppliedTo.indexOf(id);
+			scholarshipsAppliedTo.remove(index);
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
 	@Override
 	public String toString() {
 		String appliedToSch = "";
