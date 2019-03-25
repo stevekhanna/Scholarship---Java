@@ -37,7 +37,7 @@ public class ScholarshipController extends MyController{
 		this.scMap = scMap;
 		
 		vsp = new ViewScholarshipPanel(this,globalListener,this.isAdmin);
-		asp = new AllScholarshipsPanel(this,globalListener);
+		asp = new AllScholarshipsPanel(this,globalListener,this.isAdmin);
 		esp = new EditScholarshipPanel(this,globalListener);
 		
 		viewScholarshipPanel = vsp.getContentPane();

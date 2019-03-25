@@ -30,6 +30,15 @@ public class MyButton extends JButton{
 		setBorder(new EmptyBorder(4,4,4,4));
 		setPreferredSize(new Dimension(Size.defaultBtnWidth,Size.defaultBtnHeight));
 	}
+	
+	public MyButton(String text, int fontSize, int width){
+		setText(text);
+		setForeground(Colors.defaultButtonTextColor);
+		setBackground(Colors.defaultButtonBackgroundColor);
+		setFont(new MyFont(fontSize));
+		setBorder(new EmptyBorder(4,4,4,4));
+		setPreferredSize(new Dimension(width,Size.defaultBtnHeight));
+	}
 	/**
 	 * Constructor to create a JButton with specific params
 	 * @param text - String

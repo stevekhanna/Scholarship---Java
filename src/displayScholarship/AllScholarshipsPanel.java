@@ -21,10 +21,13 @@ public class AllScholarshipsPanel extends MyPanel{
 	private JLabel lblSearchError;
 	
 	private int y;
+	
+	private boolean isAdmin;
 
-	public AllScholarshipsPanel(ActionListener actionListener, ActionListener globalListener) {
+	public AllScholarshipsPanel(ActionListener actionListener, ActionListener globalLisenter, boolean isAdmin) {
 		this.packageListener = actionListener;
-		this.globalLisenter = globalListener;
+		this.globalLisenter = globalLisenter;
+		this.isAdmin = isAdmin;
 		contentPane.setName("Scholarships Panel");
 		displayNorth();
 		displaySouth();
@@ -102,11 +105,20 @@ public class AllScholarshipsPanel extends MyPanel{
 			center.add(lbl, String.format("cell "+cellNum+" %d, left",y));
 			i++;
 		}
-		JButton btnView = new MyButton("View", Size.defaultLblFontSize);
+		JButton btnView = new MyButton("View", Size.defaultLblFontSize, Size.defaultBtnEditWidth);
 		btnView.setActionCommand(Integer.toString(scholarship.getScholarshipId()));
 		btnView.setName("ViewScholarship_AllScholarshipsPanel");
 		btnView.addActionListener(packageListener);
 		center.add(btnView, String.format("cell 4 %d, center",y));
+		
+		if(isAdmin) {
+			JButton btnDelete = new MyButton("Delete", Size.defaultLblFontSize, Size.defaultBtnEditWidth);
+			btnDelete.setActionCommand(Integer.toString(scholarship.getScholarshipId()));
+			btnDelete.setName("DeleteScholarship_AllScholarshipsPanel");
+			btnDelete.addActionListener(globalLisenter);
+			center.add(btnDelete, String.format("cell 5 %d, center",y));		
+		}
+
 		y++;
 	}
 }
