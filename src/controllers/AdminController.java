@@ -127,8 +127,18 @@ public class AdminController extends MyController {
 		return null;
 	}
 	
-	private void saveScholarship() {
-		
+	private void saveScholarship(Scholarship s) {
+		s.setName(sController.getEdits().getName());
+		s.setGpaRequirement(sController.getEdits().getGpa());
+		s.setDescription(sController.getEdits().getDescxription());
+		s.setFaculty(sController.getEdits().getFaculty());
+		s.setDepartment(sController.getEdits().getDepartment());
+		s.setYearOfStudy(sController.getEdits().getYearOfStudy());
+		s.setTypeOfStudy(sController.getEdits().getTypeOfStudy());
+		s.setNumAllowed(sController.getEdits().getNumAllowed());
+		s.setMoney(sController.getEdits().getMoney());
+	
+		util.saveScholarship(s);
 	}
 	
 	@Override
@@ -169,10 +179,7 @@ public class AdminController extends MyController {
 			break;
 		case "SaveEdits_EditScholarshipPanel":
 			Scholarship s = scMap.get(Integer.parseInt(source.getActionCommand()));
-			s.setName(sController.getEdits().getName());
-			s.setGpaRequirement(sController.getEdits().getGpa());
-			s.setDescription(sController.getEdits().getDescxription());
-			util.saveScholarship(s);
+			saveScholarship(s);
 			switchToAdminPanel();
 			break;
 		default:
