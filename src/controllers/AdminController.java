@@ -127,6 +127,10 @@ public class AdminController extends MyController {
 		return null;
 	}
 	
+	private void deleteScholarship(Scholarship s) {
+		
+	}
+	
 	private void saveScholarship() {
 		
 	}
@@ -154,6 +158,11 @@ public class AdminController extends MyController {
 			break;
 		case "Back_AllStudentsPanel":
 			switchPanel(adminPanel);
+			break;
+		case "DeleteScholarship_AllScholarshipsPanel":
+			Scholarship x = scMap.get(Integer.parseInt(source.getActionCommand()));
+			deleteScholarship(x);
+			switchToAdminPanel();
 			break;
 		case "Back_ViewStudentPanel":
 			switchPanel(allStudentsPanel);
