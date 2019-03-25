@@ -24,8 +24,6 @@ public class EditScholarshipPanel extends MyPanel{
 	private JTextField fldDescription;
 	private JTextField fldAmount;
 
-	
-	
 	private JLabel lblEditName;
 	private JLabel lblEditGpa;
 	private JLabel lblEditFaculty;
@@ -146,8 +144,6 @@ public class EditScholarshipPanel extends MyPanel{
 		fldNumAllowed.setText(s.getNumAllowed()+"");
 		fldDescription.setText(s.getDescription());
 		fldAmount.setText(s.getMoney()+"");
-		
-		
 		btnSave.setActionCommand(Integer.toString(s.getScholarshipId()));
 	}
 	
@@ -165,7 +161,12 @@ public class EditScholarshipPanel extends MyPanel{
 	}
 	
 	public int getYearOfStudy() {
-		return Integer.parseInt(fldYearOfStudy.getText());
+		try {
+			return Integer.parseInt(fldYearOfStudy.getText());
+		}catch(Exception e) {
+			return -1;
+		}
+		
 	}
 	public String getTypeOfStudy() {
 		return fldTypeOfStudy.getText();
