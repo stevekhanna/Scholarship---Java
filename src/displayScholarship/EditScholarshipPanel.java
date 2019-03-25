@@ -148,16 +148,29 @@ public class EditScholarshipPanel extends MyPanel{
 	}
 	
 	public String getName() {
-		return fldName.getText();
+		if(fldName.getText().contains(",")) {
+			return "";
+		}else {
+			return fldName.getText();
+		}
 	}
 	
 	public double getGpa() {
-		return Double.parseDouble(fldGpa.getText());
+		try{
+			return Double.parseDouble(fldGpa.getText());
+		}catch(Exception e){
+			return -1.0;
+		}
+		
 	}
 	
 	
 	public String getFaculty() {
-		return fldFaculty.getText();
+		if(fldFaculty.getText().contains(",")) {
+			return "";
+		}else {
+			return fldFaculty.getText();
+		}
 	}
 	
 	public int getYearOfStudy() {
@@ -166,24 +179,46 @@ public class EditScholarshipPanel extends MyPanel{
 		}catch(Exception e) {
 			return -1;
 		}
-		
 	}
 	public String getTypeOfStudy() {
-		return fldTypeOfStudy.getText();
+		if(fldTypeOfStudy.getText().contains(",")) {
+			return "";
+		}else {
+			return fldTypeOfStudy.getText();
+		}
 	}
 	public String getDepartment() {
-		return fldDepartment.getText();
+		if(fldDepartment.getText().contains(",")) {
+			return "";
+		}else {
+			return fldDepartment.getText();
+		}
 	}
 	public int getNumAllowed() {
-		return Integer.parseInt(fldNumAllowed.getText());
+		try {
+			return Integer.parseInt(fldNumAllowed.getText());
+		}catch(Exception e ) {
+			return -1;
+		}
+		
 	}
 
 	public String getDescription() {
-		return fldDescription.getText();
+		if (fldDescription.getText().contains(",")) {
+			return "";
+		}else {
+			return fldDescription.getText();
+		}
 	}
 	
 	public double getMoney() {
-		return Double.parseDouble(fldAmount.getText());
+		try {
+			return Double.parseDouble(fldAmount.getText());
+		}
+		catch(Exception e) {
+			return -1.0;
+		}
+		
 	}
 	
 }
