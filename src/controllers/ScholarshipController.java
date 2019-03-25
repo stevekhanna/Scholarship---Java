@@ -79,8 +79,15 @@ public class ScholarshipController extends MyController{
 	
 	private String getScholarshipStudents(Scholarship s) {
 		String x = "";
+		int j =0;
 		for(int i: s.getStudentsUcids()) {
-			x+=i+", ";
+			System.out.println(i);
+			if(j==s.getStudentsUcids().size()-1) {
+				x += i+"";
+			}else {
+				x+=i+", ";
+			}
+			j++;
 		}
 		return x;
 	}
