@@ -28,6 +28,7 @@ public class StudentController extends MyController {
 	private StudentPanel sp;
 	private AppliedPanel ap;
 	private AppliedToPanel atp;
+	private AccountPanel acc;
 	
 	private Util util;
 	
@@ -41,6 +42,7 @@ public class StudentController extends MyController {
 	private JPanel studentPanel;
 	private JPanel appliedPanel;
 	private JPanel appliedToPanel;
+	private JPanel accountPanel;
 	/**
 	 * Constructor
 	 * @param frame - JFrame
@@ -65,10 +67,12 @@ public class StudentController extends MyController {
 		sp = new StudentPanel(this, globalListener);
 		ap = new AppliedPanel(this);
 		atp = new AppliedToPanel(this);
+		acc = new AccountPanel(this);
 		
 		studentPanel = sp.getContentPane();
 		appliedPanel = ap.getContentPane();
 		appliedToPanel = atp.getContentPane();
+		accountPanel = acc.getContentPane();
 		
 		addScholarshipsToAppliedPanel();
 		switchToStudentPanel();
@@ -90,6 +94,12 @@ public class StudentController extends MyController {
 		sp.setName(currentStudent.getName());
 		sp.setEmail(currentStudent.getEmail());
 		switchPanel(studentPanel);
+	}
+	
+	private void switchToAccountPanel() {
+		acc.setName(currentStudent.getName());
+		acc.displayStudent(currentStudent);
+		switchPanel(accountPanel);
 	}
 	
 	private boolean applyToScholarship(int scholarshipID) {
@@ -177,10 +187,14 @@ public class StudentController extends MyController {
 		case"Back_AppliedPanel":
 			switchToStudentPanel();
 			break;
-			
 		case"Back_AppliedToPanel":
 			switchToStudentPanel();
 			break;
+		case"Account_StudentPanel":
+			switchToAccountPanel();
+			break;
+		case "Back_AccountPanel":
+			switchToStudentPanel();
 		default:
 			break;
 		}
