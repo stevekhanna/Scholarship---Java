@@ -33,6 +33,7 @@ public class EditScholarshipPanel extends MyPanel{
 	private JLabel lblEditNumAllowed;
 	private JLabel lblEditDescription;
 	private JLabel lblEditAmount;
+	private JLabel lblHeader;
 	
 	private JButton btnBack;
 	
@@ -47,7 +48,9 @@ public class EditScholarshipPanel extends MyPanel{
 	}
 	
 	private void displayNorth() {
-		
+		lblHeader = new MyLabel("Label", Size.defaultLblSubTitleFontSize);
+		lblHeader.setText("Edit Scholarship");
+		north.add(lblHeader, "cell 0 0,center");
 	}
 	
 	private void displayCenter() {
@@ -92,32 +95,32 @@ public class EditScholarshipPanel extends MyPanel{
 		
 		lblEditDepartment = new MyLabel("Label", Size.defaultLblFontSize);
 		lblEditDepartment.setText("Enter New Department: ");
-		center.add(lblEditDepartment, "cell 0 10");
+		center.add(lblEditDepartment, "cell 2 0");
 		
 
 		fldDepartment = new MyTextField("", Size.defaultLblFontSize);
-		center.add(fldDepartment, "cell 0 11");		
+		center.add(fldDepartment, "cell 2 1");		
 		
 		lblEditNumAllowed = new MyLabel("Label", Size.defaultLblFontSize);
 		lblEditNumAllowed.setText("Enter new Number of Scholarships Allowed: ");
-		center.add(lblEditNumAllowed, "cell 2 0");
+		center.add(lblEditNumAllowed, "cell 2 2");
 		
 		fldNumAllowed = new MyTextField("", Size.defaultLblFontSize);
-		center.add(fldNumAllowed, "cell 2 1");
+		center.add(fldNumAllowed, "cell 2 3");
 		
 		lblEditDescription = new MyLabel("Label", Size.defaultLblFontSize);
 		lblEditDescription.setText("Enter new Description of Scholarship: ");
-		center.add(lblEditDescription, "cell 2 2");
+		center.add(lblEditDescription, "cell 2 4");
 		
 		fldDescription = new MyTextField("",Size.defaultLblFontSize);
-		center.add(fldDescription,"cell 2 3");
+		center.add(fldDescription,"cell 2 5");
 		
 		lblEditAmount = new MyLabel("Label", Size.defaultLblFontSize);
 		lblEditAmount.setText("Enter new Scholarship Amount: ");
-		center.add(lblEditAmount, "cell 2 4");
+		center.add(lblEditAmount, "cell 2 6");
 		
 		fldAmount = new MyTextField("",Size.defaultLblFontSize);
-		center.add(fldAmount,"cell 2 5");
+		center.add(fldAmount,"cell 2 7");
 		
 		
 	}
