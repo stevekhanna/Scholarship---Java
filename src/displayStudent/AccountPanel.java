@@ -30,7 +30,7 @@ public class AccountPanel extends MyPanel {
 
 
 	private void displayNorth() {
-		lblName = new MyLabel("Name", Size.defaultLblFontSize);
+		lblName = new MyLabel("Name", Size.defaultLblTitleFontSize);
 		north.add(lblName, "cell 0 1,center");
 	}
 	
