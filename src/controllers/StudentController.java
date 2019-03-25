@@ -131,9 +131,9 @@ public class StudentController extends MyController {
 	private HashMap <Integer, Scholarship> availableScholarships(String studyType){
 		HashMap <Integer, Scholarship> map = new HashMap<Integer, Scholarship>();
 		
-		for(int i=1; i<=scMap.size();i++) {
+		for(int i: scMap.keySet()) {
 			if(scMap.get(i).getTypeOfStudy().equals(studyType)) {
-				map.put(i, scMap.get(i));
+				map.put(i,scMap.get(i));
 			}
 		}
 		
