@@ -138,17 +138,34 @@ public class AdminController extends MyController {
 			}
 		}
 	}
-	private void saveScholarship(Scholarship s) {
-		s.setName(sController.getEdits().getName());
-		s.setGpaRequirement(sController.getEdits().getGpa());
-		s.setDescription(sController.getEdits().getDescxription());
-		s.setFaculty(sController.getEdits().getFaculty());
-		s.setDepartment(sController.getEdits().getDepartment());
-		s.setYearOfStudy(sController.getEdits().getYearOfStudy());
-		s.setTypeOfStudy(sController.getEdits().getTypeOfStudy());
-		s.setNumAllowed(sController.getEdits().getNumAllowed());
-		s.setMoney(sController.getEdits().getMoney());
-		util.saveScholarship(s);
+	private boolean saveScholarship(Scholarship s) {
+		boolean invalid = ((sController.getEdits().getName().isEmpty())||
+				(sController.getEdits().getGpa()<=0 ||sController.getEdits().getGpa()>4)||
+				(sController.getEdits().getDescription().isEmpty())||
+				(sController.getEdits().getFaculty().isEmpty())||
+				(sController.getEdits().getDepartment().isEmpty())||
+				(sController.getEdits().getYearOfStudy())<=0||
+				(sController.getEdits().getTypeOfStudy().isEmpty())||
+				(sController.getEdits().getNumAllowed())<=0||
+				(sController.getEdits().getMoney())<=0);
+		
+		if(!invalid){
+			s.setName(sController.getEdits().getName());
+			s.setGpaRequirement(sController.getEdits().getGpa());
+			s.setDescription(sController.getEdits().getDescription());
+			s.setFaculty(sController.getEdits().getFaculty());
+			s.setDepartment(sController.getEdits().getDepartment());
+			s.setYearOfStudy(sController.getEdits().getYearOfStudy());
+			s.setTypeOfStudy(sController.getEdits().getTypeOfStudy());
+			s.setNumAllowed(sController.getEdits().getNumAllowed());
+			s.setMoney(sController.getEdits().getMoney());
+			util.saveScholarship(s);
+			return true;
+		}else{
+			return false;
+		}
+		
+		
 	}
 	
 	@Override
@@ -194,8 +211,9 @@ public class AdminController extends MyController {
 			break;
 		case "SaveEdits_EditScholarshipPanel":
 			Scholarship s = scMap.get(Integer.parseInt(source.getActionCommand()));
-			saveScholarship(s);
-			switchToAdminPanel();
+			if(saveScholarship(s)) {
+				switchToAdminPanel();
+			}
 			break;
 		default:
 			break;
