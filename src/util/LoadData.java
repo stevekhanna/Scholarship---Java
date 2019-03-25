@@ -48,6 +48,7 @@ public class LoadData{
 			String ignoreLine = fileScanner.nextLine();
 			while(fileScanner.hasNextLine()){
 				String currentLine = fileScanner.nextLine();
+				if (currentLine.isEmpty())break;
 				String[] parts = currentLine.split(",");
 				List<Integer> scholarshipsAppliedTo = new ArrayList<Integer>();
 				if (parts.length>9) {
@@ -86,6 +87,7 @@ public class LoadData{
 			String ignoreLine = fileScanner.nextLine();
 			while(fileScanner.hasNextLine()){
 				String currentLine = fileScanner.nextLine();
+				if (currentLine.isEmpty())break;
 				String[] parts = currentLine.split(",");
 				admins.add(new Admin(Integer.parseInt(parts[0]),parts[1],parts[2],parts[3]));
 			}
@@ -110,6 +112,7 @@ public class LoadData{
 			String ignoreLine = fileScanner.nextLine();
 			while(fileScanner.hasNextLine()) {
 				String currentLine = fileScanner.nextLine();
+				if (currentLine.isEmpty())break;
 				String [] parts = currentLine.split(",");
 				List<Integer> studentUcids = new ArrayList<Integer>();
 				if (parts.length>10) {
