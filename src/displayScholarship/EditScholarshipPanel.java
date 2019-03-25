@@ -177,7 +177,7 @@ public class EditScholarshipPanel extends MyPanel{
 		return Integer.parseInt(fldNumAllowed.getText());
 	}
 
-	public String getDescxription() {
+	public String getDescription() {
 		return fldDescription.getText();
 	}
 	
