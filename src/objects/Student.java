@@ -131,9 +131,15 @@ public class Student extends User{
 				appliedToSch += i+":";
 			}
 		}
-		return (getUCID()+","+getEmail()+","+getPassword()+","+getName()
-		+","+faculty+","+gpa+","+yearOfStudy+","+typeOfStudy+","+department
-		+","+appliedToSch);
+		
+		String returnString = getUCID()+","+getEmail()+","+getPassword()+","+getName()
+		+","+faculty+","+gpa+","+yearOfStudy+","+typeOfStudy+","+department;
+		
+		if (appliedToSch.compareTo("")!=0) {
+			returnString += "," + appliedToSch;
+		}
+		
+		return returnString;
 	}
 	
 }

@@ -1,5 +1,6 @@
 Name,ID,GPA,Faculty,Year of Study,Type of study,Department,Numbers allowed,Description,Money,Students applied
-Googlep,1,3.69,Kines,2,Masters,Sciencsade,100122,This is a genericsxada scholarship,65000.0,12345678:11111111
-RBC,2,3.8,Arts,3,Bachelor,GRST,100,RBC's Student Scholarship,1000.0,12345678
+Google,1,3.57,Arts,3,Bachelor,GRST,100,This is a generic scholarship,75000.0,11111111:30004567
+RBC,2,3.8,Arts,3,Bachelor,GRST,100,RBC's Student Scholarship,1000.0
 Tesla,3,3.6,Science,2,Bachelor,CPSC,120,Tesla's Student scholarship,11000.0,30004567
-Alberta Bright Minds,4,3.7,Science,3,Bachelor,CPSC,200,For all the bright minds,25000.0,
+Alberta Bright Minds,4,3.7,Science,3,Bachelor,CPSC,200,For all the bright minds,25000.0
+

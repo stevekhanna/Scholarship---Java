@@ -193,8 +193,15 @@ public class Scholarship {
 				listOfStudents += i+":";
 			}
 		}
-		return (name + "," + scholarshipId + "," + gpaRequirement + "," + faculty + "," + yearOfStudy + ","
-				+ typeOfStudy + "," + Department + "," + numAllowed + "," + description + "," +money+ "," +listOfStudents);
+		
+		String returnString = name + "," + scholarshipId + "," + gpaRequirement + "," + faculty + "," + yearOfStudy + ","
+				+ typeOfStudy + "," + Department + "," + numAllowed + "," + description + "," + money ;
+		
+		if (listOfStudents.compareTo("")!=0){
+			returnString += "," + listOfStudents;
+		}
+		
+		return (returnString);
 	}
 
 }
