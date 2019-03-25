@@ -78,10 +78,13 @@ public class ScholarshipController extends MyController{
 	}
 	
 	private String getScholarshipStudents(Scholarship s) {
+		
 		String x = "";
+		if (s.getStudentsUcids().isEmpty()){
+			return "No applications";
+		}
 		int j =0;
 		for(int i: s.getStudentsUcids()) {
-			System.out.println(i);
 			if(j==s.getStudentsUcids().size()-1) {
 				x += i+"";
 			}else {
