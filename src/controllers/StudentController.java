@@ -29,7 +29,7 @@ public class StudentController extends MyController {
 	private StudentPanel sp;
 	private AppliedPanel ap;
 	private AppliedToPanel atp;
-	private AccountPanel acc;
+	private AccountPanel acp;
 	
 	private Util util;
 	
@@ -68,12 +68,12 @@ public class StudentController extends MyController {
 		sp = new StudentPanel(this, globalListener);
 		ap = new AppliedPanel(this);
 		atp = new AppliedToPanel(this);
-		acc = new AccountPanel(this);
+		acp = new AccountPanel(this);
 		
 		studentPanel = sp.getContentPane();
 		appliedPanel = ap.getContentPane();
 		appliedToPanel = atp.getContentPane();
-		accountPanel = acc.getContentPane();
+		accountPanel = acp.getContentPane();
 		
 		addScholarshipsToAppliedPanel();
 		switchToStudentPanel();
@@ -98,8 +98,8 @@ public class StudentController extends MyController {
 	}
 	
 	private void switchToAccountPanel() {
-		acc.setName(currentStudent.getName());
-		acc.displayStudent(currentStudent);
+		acp.setName(currentStudent.getName());
+		acp.displayStudent(currentStudent);
 		switchPanel(accountPanel);
 	}
 	
