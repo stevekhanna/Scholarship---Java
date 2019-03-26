@@ -25,6 +25,7 @@ public class AdminController extends MyController {
 	private AdminPanel ap;
 	private AllStudentsPanel asp;
 	private ViewStudentPanel vsp;
+	private CreateScholarshipPanel csp;
 	
 	// Current User
 	private Admin currentAdmin;
@@ -37,6 +38,7 @@ public class AdminController extends MyController {
 	private JPanel adminPanel;
 	private JPanel allStudentsPanel;
 	private JPanel viewStudentPanel;
+	private JPanel createScholarshipPanel;
 	
 	private ScholarshipController sController;
 	
@@ -67,10 +69,12 @@ public class AdminController extends MyController {
 		ap = new AdminPanel(this, globalListener);
 		asp = new AllStudentsPanel(this);
 		vsp = new ViewStudentPanel(this);
+		csp = new CreateScholarshipPanel(this);
 		
 		adminPanel = ap.getContentPane();
 		allStudentsPanel = asp.getContentPane();
 		viewStudentPanel = vsp.getContentPane();
+		createScholarshipPanel = csp.getContentPane();
 		
 		// Add all of the students to the AllStudentsPanel
 		addAllStudents();
@@ -138,6 +142,7 @@ public class AdminController extends MyController {
 			}
 		}
 	}
+	
 	private boolean saveScholarship(Scholarship s) {
 		boolean invalid = ((sController.getEdits().getName().isEmpty())||
 				(sController.getEdits().getGpa()<=0 ||sController.getEdits().getGpa()>4)||
@@ -183,6 +188,16 @@ public class AdminController extends MyController {
 		case "AllStudents_AdminPanel":
 			switchPanel(allStudentsPanel);
 			break;
+		case "AddScholarship_AdminPanel":
+			switchPanel(createScholarshipPanel);
+			break;
+		case "Create_CreateScholarshipPanel":
+			
+			// STEVE CREATE THE SCHOLARSHIP ADD IT TO THE MAP AND SAVE IT IN THE UTIL
+			// IF IT WORKS START THE CONTROLLER BELOW
+			// sController.start(true, scMap);
+			// ELSE DO NOTHING FOR NOW AND STAY ON THE CREATE SCREEN
+			break;
 		case"ViewStudent_AllStudentsPanel":
 			// Get the ucid of the student from the button that was pressed
 			int ucid = Integer.parseInt(source.getActionCommand());
@@ -199,6 +214,9 @@ public class AdminController extends MyController {
 			break;
 		case "Back_ViewStudentPanel":
 			switchPanel(allStudentsPanel);
+			break;
+		case "Back_CreateScholarshipPanel":
+			switchToAdminPanel();
 			break;
 		case"Back_AllScholarshipsPanel":
 			// Get an updated version of all of the scholarship

@@ -25,7 +25,7 @@ public class AdminPanel extends MyPanel{
 	
 	private JButton btnBack;
 	private JButton btnScholarship;
-	
+	private JButton btnAddScholarship;
 	private JButton btnStudents;
 	
 	/**
@@ -57,15 +57,20 @@ public class AdminPanel extends MyPanel{
 	}
 	
 	private void displayCenter() {
+		btnStudents = new MyButton("View All Students", Size.defaultBtnFontSize);
+		center.add(btnStudents,"cell 0 0, center");
+		btnStudents.addActionListener(packageListener);
+		btnStudents.setName("AllStudents_AdminPanel");
+		
 		btnScholarship = new MyButton("View All Scholarships", Size.defaultBtnFontSize);
-		center.add(btnScholarship, "cell 0 0, center");
+		center.add(btnScholarship, "cell 0 1, center");
 		btnScholarship.addActionListener(packageListener);
 		btnScholarship.setName("AllScholarships_AdminPanel");
 		
-		btnStudents = new MyButton("View All Students", Size.defaultBtnFontSize);
-		center.add(btnStudents,"cell 0 1, center");
-		btnStudents.addActionListener(packageListener);
-		btnStudents.setName("AllStudents_AdminPanel");
+		btnAddScholarship = new MyButton("Add Scholarship", Size.defaultBtnFontSize);
+		center.add(btnAddScholarship,"cell 0 2, center");
+		btnAddScholarship.addActionListener(packageListener);
+		btnAddScholarship.setName("AddScholarship_AdminPanel");
 	}
 	
 	/**
