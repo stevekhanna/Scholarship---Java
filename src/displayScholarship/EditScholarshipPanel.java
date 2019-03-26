@@ -33,6 +33,7 @@ public class EditScholarshipPanel extends MyPanel{
 	private JLabel lblEditNumAllowed;
 	private JLabel lblEditDescription;
 	private JLabel lblEditAmount;
+	private JLabel lblHeader;
 	
 	private JButton btnBack;
 	
@@ -47,7 +48,9 @@ public class EditScholarshipPanel extends MyPanel{
 	}
 	
 	private void displayNorth() {
-		
+		lblHeader = new MyLabel("Label", Size.defaultLblSubTitleFontSize);
+		lblHeader.setText("Edit Scholarship");
+		north.add(lblHeader, "cell 0 0,center");
 	}
 	
 	private void displayCenter() {
@@ -92,32 +95,32 @@ public class EditScholarshipPanel extends MyPanel{
 		
 		lblEditDepartment = new MyLabel("Label", Size.defaultLblFontSize);
 		lblEditDepartment.setText("Enter New Department: ");
-		center.add(lblEditDepartment, "cell 0 10");
+		center.add(lblEditDepartment, "cell 2 0");
 		
 
 		fldDepartment = new MyTextField("", Size.defaultLblFontSize);
-		center.add(fldDepartment, "cell 0 11");		
+		center.add(fldDepartment, "cell 2 1");		
 		
 		lblEditNumAllowed = new MyLabel("Label", Size.defaultLblFontSize);
 		lblEditNumAllowed.setText("Enter new Number of Scholarships Allowed: ");
-		center.add(lblEditNumAllowed, "cell 2 0");
+		center.add(lblEditNumAllowed, "cell 2 2");
 		
 		fldNumAllowed = new MyTextField("", Size.defaultLblFontSize);
-		center.add(fldNumAllowed, "cell 2 1");
+		center.add(fldNumAllowed, "cell 2 3");
 		
 		lblEditDescription = new MyLabel("Label", Size.defaultLblFontSize);
 		lblEditDescription.setText("Enter new Description of Scholarship: ");
-		center.add(lblEditDescription, "cell 2 2");
+		center.add(lblEditDescription, "cell 2 4");
 		
 		fldDescription = new MyTextField("",Size.defaultLblFontSize);
-		center.add(fldDescription,"cell 2 3");
+		center.add(fldDescription,"cell 2 5");
 		
 		lblEditAmount = new MyLabel("Label", Size.defaultLblFontSize);
 		lblEditAmount.setText("Enter new Scholarship Amount: ");
-		center.add(lblEditAmount, "cell 2 4");
+		center.add(lblEditAmount, "cell 2 6");
 		
 		fldAmount = new MyTextField("",Size.defaultLblFontSize);
-		center.add(fldAmount,"cell 2 5");
+		center.add(fldAmount,"cell 2 7");
 		
 		
 	}
@@ -148,16 +151,29 @@ public class EditScholarshipPanel extends MyPanel{
 	}
 	
 	public String getName() {
-		return fldName.getText();
+		if(fldName.getText().contains(",")) {
+			return "";
+		}else {
+			return fldName.getText();
+		}
 	}
 	
 	public double getGpa() {
-		return Double.parseDouble(fldGpa.getText());
+		try{
+			return Double.parseDouble(fldGpa.getText());
+		}catch(Exception e){
+			return -1.0;
+		}
+		
 	}
 	
 	
 	public String getFaculty() {
-		return fldFaculty.getText();
+		if(fldFaculty.getText().contains(",")) {
+			return "";
+		}else {
+			return fldFaculty.getText();
+		}
 	}
 	
 	public int getYearOfStudy() {
@@ -166,24 +182,46 @@ public class EditScholarshipPanel extends MyPanel{
 		}catch(Exception e) {
 			return -1;
 		}
-		
 	}
 	public String getTypeOfStudy() {
-		return fldTypeOfStudy.getText();
+		if(fldTypeOfStudy.getText().contains(",")) {
+			return "";
+		}else {
+			return fldTypeOfStudy.getText();
+		}
 	}
 	public String getDepartment() {
-		return fldDepartment.getText();
+		if(fldDepartment.getText().contains(",")) {
+			return "";
+		}else {
+			return fldDepartment.getText();
+		}
 	}
 	public int getNumAllowed() {
-		return Integer.parseInt(fldNumAllowed.getText());
+		try {
+			return Integer.parseInt(fldNumAllowed.getText());
+		}catch(Exception e ) {
+			return -1;
+		}
+		
 	}
 
 	public String getDescription() {
-		return fldDescription.getText();
+		if (fldDescription.getText().contains(",")) {
+			return "";
+		}else {
+			return fldDescription.getText();
+		}
 	}
 	
 	public double getMoney() {
-		return Double.parseDouble(fldAmount.getText());
+		try {
+			return Double.parseDouble(fldAmount.getText());
+		}
+		catch(Exception e) {
+			return -1.0;
+		}
+		
 	}
 	
 }

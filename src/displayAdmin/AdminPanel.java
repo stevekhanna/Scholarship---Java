@@ -68,10 +68,9 @@ public class AdminPanel extends MyPanel{
 		btnScholarship.setName("AllScholarships_AdminPanel");
 		
 		btnAddScholarship = new MyButton("Add Scholarship", Size.defaultBtnFontSize);
-		center.add(btnAddScholarship,"cell 0 1, center");
+		center.add(btnAddScholarship,"cell 0 2, center");
 		btnAddScholarship.addActionListener(packageListener);
-		btnAddScholarship.setName("AddScholarship_AdminPanstatus"
-				+ "el");
+		btnAddScholarship.setName("AddScholarship_AdminPanel");
 	}
 	
 	/**
