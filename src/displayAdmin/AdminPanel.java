@@ -62,7 +62,7 @@ public class AdminPanel extends MyPanel{
 		btnStudents.addActionListener(packageListener);
 		btnStudents.setName("AllStudents_AdminPanel");
 		
-		btnScholarship = new MyButton("View All Scholarships", Size.defaultBtnFontSize);
+		btnScholarship = new MyButton("View All Scholarships", Size.defaultBtnFontSize, Size.defaultBtnWidth+50);
 		center.add(btnScholarship, "cell 0 1, center");
 		btnScholarship.addActionListener(packageListener);
 		btnScholarship.setName("AllScholarships_AdminPanel");
