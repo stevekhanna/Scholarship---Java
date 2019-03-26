@@ -194,4 +194,16 @@ public class CreateScholarshipPanel extends MyPanel{
 		
 	}
 	
+	public void clearAll() {
+		fldName.setText("");
+		fldGpa.setText("");
+		fldFaculty.setText("");
+		fldYearOfStudy.setText("");
+		fldTypeOfStudy.setText("");
+		fldDepartment.setText("");
+		fldNumAllowed.setText("");
+		fldDescription.setText("");
+		fldAmount.setText("");
+	}
+	
 }

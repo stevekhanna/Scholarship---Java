@@ -43,7 +43,7 @@ public class Util {
 			writer.close();
 		}
 		catch(Exception e) {
-			System.out.println("File could not be writted properly");
+			System.out.println("File could not be written properly");
 		}
 	}
 	/**
@@ -78,7 +78,7 @@ public class Util {
 			writer.close();
 		}
 		catch(Exception e) {
-			System.out.println("File could not be writted properly");
+			System.out.println("File could not be written properly");
 		}
 	}
 	
@@ -115,17 +115,20 @@ public class Util {
 			writer.close();
 		}
 		catch(Exception e) {
-			System.out.println("File could not be writted properly");
+			e.printStackTrace();
+			System.out.println("File could not be written properly");
 		}
 	}
 	
 	
 	public void deleteScholarship(Scholarship scholarship) {
 		scMap.remove(scholarship.getScholarshipId());
-		for (int i: scholarship.getStudentsUcids()) {
-			for(Student s : students) {
-				if (s.getUCID() == i) {
-					s.removeScholarship(scholarship.getScholarshipId());
+		if(scholarship.getStudentsUcids()!=null){
+			for (int i: scholarship.getStudentsUcids()) {
+				for(Student s : students) {
+					if (s.getUCID() == i) {
+						s.removeScholarship(scholarship.getScholarshipId());
+					}
 				}
 			}
 		}

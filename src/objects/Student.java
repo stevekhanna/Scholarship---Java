@@ -21,7 +21,7 @@ public class Student extends User{
 	private int yearOfStudy;
 	private String typeOfStudy;
 	private String department;
-	private List<Integer> scholarshipsAppliedTo;
+	private List<Integer> scholarshipsAppliedTo = null;
 	
 	
 	/**
@@ -134,14 +134,17 @@ public class Student extends User{
 	@Override
 	public String toString() {
 		String appliedToSch = "";
-		for(Integer i : scholarshipsAppliedTo) {
-			if(i== scholarshipsAppliedTo.get(scholarshipsAppliedTo.size()-1)) {
-				appliedToSch += i+"";
-			}
-			else {
-				appliedToSch += i+":";
+		if(scholarshipsAppliedTo != null) {
+			for(Integer i : scholarshipsAppliedTo) {
+				if(i== scholarshipsAppliedTo.get(scholarshipsAppliedTo.size()-1)) {
+					appliedToSch += i+"";
+				}
+				else {
+					appliedToSch += i+":";
+				}
 			}
 		}
+		
 		
 		String returnString = getUCID()+","+getEmail()+","+getPassword()+","+getName()
 		+","+faculty+","+gpa+","+yearOfStudy+","+typeOfStudy+","+department;
