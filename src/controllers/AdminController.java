@@ -113,13 +113,20 @@ public class AdminController extends MyController {
 	
 	private String scholarshipsAppliedTo(Student s) {
 		String scholarships="";
-		
-		for(Integer ID: scMap.keySet()) {
-			if(scMap.get(ID).getStudentsUcids().contains(s.getUCID())) {
-				scholarships+=scMap.get(ID).getName()+", ";
-			}
+		if(s.getScholarshipsAppliedTo().isEmpty()) {
+			System.out.println("empty");
 		}
-		return scholarships;
+		if((s.getScholarshipsAppliedTo()!=null) && (!(s.getScholarshipsAppliedTo().isEmpty()))) {
+			for(Integer ID: scMap.keySet()) {
+				if((scMap.get(ID).getStudentsUcids()!=null)&&(!scMap.get(ID).getStudentsUcids().isEmpty())&&(scMap.get(ID).getStudentsUcids().contains(s.getUCID()))){
+					scholarships+=scMap.get(ID).getName()+", ";
+				}
+			}
+			return scholarships.substring(0, scholarships.length() -2);
+		}else {
+			System.out.println("else");
+			return "No Scholarships Applied to";
+		}
 	}
 	
 	private Student findStudentByUcid(int ucid) {
