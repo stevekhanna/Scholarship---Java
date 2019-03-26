@@ -25,7 +25,7 @@ public class Scholarship {
 	private String description;
 	private double money;
 	
-	private List<Integer> studentUcids;
+	private List<Integer> studentUcids = null;
 
 	/**
 	 * Default scholarship constructor
@@ -185,14 +185,17 @@ public class Scholarship {
 	public String toString() {
 		
 		String listOfStudents = "";
-		for(Integer i : studentUcids) {
-			if(i== studentUcids.get(studentUcids.size()-1)) {
-				listOfStudents += i+"";
-			}
-			else {
-				listOfStudents += i+":";
+		if(studentUcids != null) {
+			for(Integer i : studentUcids) {
+				if(i== studentUcids.get(studentUcids.size()-1)) {
+					listOfStudents += i+"";
+				}
+				else {
+					listOfStudents += i+":";
+				}
 			}
 		}
+		
 		
 		String returnString = name + "," + scholarshipId + "," + gpaRequirement + "," + faculty + "," + yearOfStudy + ","
 				+ typeOfStudy + "," + Department + "," + numAllowed + "," + description + "," + money ;

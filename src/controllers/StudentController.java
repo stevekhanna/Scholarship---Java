@@ -85,8 +85,10 @@ public class StudentController extends MyController {
 	private void addScholarshipsToAppliedPanel() {
 		for(int i: scMap.keySet()) {
 			// If the scholarship has the current students ucid in it add it to the screen
-			if(scMap.get(i).getStudentsUcids().contains(currentStudent.getUCID())) {
-				atp.addScholarship(scMap.get(i));
+			if(scMap.get(i).getStudentsUcids()!=null) {
+				if(scMap.get(i).getStudentsUcids().contains(currentStudent.getUCID())) {
+					atp.addScholarship(scMap.get(i));
+				}
 			}
 		}	
 	}

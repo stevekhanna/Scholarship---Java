@@ -80,7 +80,7 @@ public class ScholarshipController extends MyController{
 	private String getScholarshipStudents(Scholarship s) {
 		
 		String x = "";
-		if (s.getStudentsUcids().isEmpty()){
+		if ((s.getStudentsUcids() == null)||(s.getStudentsUcids().isEmpty())){
 			return "No applications";
 		}
 		int j =0;

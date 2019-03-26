@@ -134,13 +134,16 @@ public class AdminController extends MyController {
 	private void deleteScholarship(Scholarship s) {
 		util.deleteScholarship(s);
 		scMap.remove(s.getScholarshipId());
-		for (int i: s.getStudentsUcids()) {
-			for(Student student : students) {
-				if (student.getUCID() == i) {
-					student.removeScholarship(s.getScholarshipId());
+		if (s.getStudentsUcids()!= null) {
+			for (int i: s.getStudentsUcids()) {
+				for(Student student : students) {
+					if (student.getUCID() == i) {
+						student.removeScholarship(s.getScholarshipId());
+					}
 				}
 			}
 		}
+		
 	}
 	
 	private boolean saveScholarship(Scholarship s) {
@@ -173,6 +176,44 @@ public class AdminController extends MyController {
 		
 	}
 	
+	private boolean createScholarship() {
+		Scholarship s = new Scholarship();
+		boolean invalid = ((csp.getName().isEmpty())||
+				(csp.getGpa()<=0 ||csp.getGpa()>4)||
+				(csp.getDescription().isEmpty())||
+				(csp.getFaculty().isEmpty())||
+				(csp.getDepartment().isEmpty())||
+				(csp.getYearOfStudy())<=0||
+				(csp.getTypeOfStudy().isEmpty())||
+				(csp.getNumAllowed())<=0||
+				(csp.getMoney())<=0);
+		
+		if(!invalid) {
+			s.setName(csp.getName());
+			s.setGpaRequirement(csp.getGpa());
+			s.setDescription(csp.getDescription());
+			s.setFaculty(csp.getFaculty());
+			s.setDepartment(csp.getDepartment());
+			s.setYearOfStudy(csp.getYearOfStudy());
+			s.setTypeOfStudy(csp.getTypeOfStudy());
+			s.setNumAllowed(csp.getNumAllowed());
+			s.setMoney(csp.getMoney());
+			int scholarshipId =0;
+			for(Integer val: scMap.keySet()) {
+				scholarshipId = val +1;
+			}
+			s.setScholarshipId(scholarshipId);
+			scMap.put(scholarshipId, s);
+			util.saveScholarship(s);
+			return true;
+		}else {
+			return false;
+		}
+		
+		
+		
+	}
+	
 	@Override
 	/**
 	 * ActionListener for when a button is pressed that is assigned to the packageController
@@ -189,11 +230,15 @@ public class AdminController extends MyController {
 			switchPanel(allStudentsPanel);
 			break;
 		case "AddScholarship_AdminPanel":
+			csp.clearAll();
 			switchPanel(createScholarshipPanel);
 			break;
 		case "Create_CreateScholarshipPanel":
 			
 			// STEVE CREATE THE SCHOLARSHIP ADD IT TO THE MAP AND SAVE IT IN THE UTIL
+			if(createScholarship()) {
+				sController.start(true, scMap);
+			}
 			// IF IT WORKS START THE CONTROLLER BELOW
 			// sController.start(true, scMap);
 			// ELSE DO NOTHING FOR NOW AND STAY ON THE CREATE SCREEN
