@@ -28,5 +28,4 @@ public class MyLabel extends JLabel{
 	public MyLabel(String text, int size) {
 		this(text, Colors.black, size);
 	}
-
 }

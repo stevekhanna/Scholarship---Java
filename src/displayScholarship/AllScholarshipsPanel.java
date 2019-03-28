@@ -20,7 +20,11 @@ public class AllScholarshipsPanel extends MyPanel{
 	private JTextField fldSearch;
 	private JLabel lblSearchError;
 	
-	private int y;
+	private JLabel lblName;
+	private JLabel lblEndDate;
+	private JLabel lblType;
+	
+	private int y = 1;
 	
 	private boolean isAdmin;
 
@@ -83,6 +87,8 @@ public class AllScholarshipsPanel extends MyPanel{
 	 * Empty method, displays center of panel.
 	 */
 	private void displayCenter(){
+		lblName = new MyLabel("Name", Colors.grey, Size.defaultLblFontSize);
+		center.add(lblName,"cell 0 0");
 	}
 	
 	/**
@@ -101,7 +107,7 @@ public class AllScholarshipsPanel extends MyPanel{
 		int i = 0;
 		for(String lblNm: labelName) {
 			lbl = new MyLabel(lblNm,Colors.black,Size.defaultLblFontSize);
-			String cellNum = Integer.toString(i+1);
+			String cellNum = Integer.toString(i);
 			center.add(lbl, String.format("cell "+cellNum+" %d, left",y));
 			i++;
 		}
