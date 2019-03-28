@@ -262,7 +262,7 @@ public class AdminController extends MyController {
 		case "DeleteScholarship_AllScholarshipsPanel":
 			Scholarship x = scMap.get(Integer.parseInt(source.getActionCommand()));
 			deleteScholarship(x);
-			switchToAdminPanel();
+			sController.start(true, scMap);
 			break;
 		case "Back_ViewStudentPanel":
 			switchPanel(allStudentsPanel);
@@ -282,7 +282,7 @@ public class AdminController extends MyController {
 		case "SaveEdits_EditScholarshipPanel":
 			Scholarship s = scMap.get(Integer.parseInt(source.getActionCommand()));
 			if(saveScholarship(s)) {
-				switchToAdminPanel();
+				sController.start(true, scMap);
 			}
 			break;
 		default:
