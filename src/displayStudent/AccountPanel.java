@@ -9,7 +9,6 @@ import myJStuff.*;
 import objects.*;
 
 public class AccountPanel extends MyPanel {
-	private Student student;
 	private JButton btnBack;
 	private JButton btnEdit;
 	private JLabel lblName;
@@ -49,6 +48,7 @@ public class AccountPanel extends MyPanel {
 		lblStudent[5][0] = new MyLabel("Year of Study:", Size.defaultLblFontSize);
 		lblStudent[6][0] = new MyLabel("Type of Study:", Size.defaultLblFontSize);
 		lblStudent[7][0] = new MyLabel("Department:", Size.defaultLblFontSize);
+		
 		lblStudent[0][1] = new MyLabel(""+student.getUCID(), Size.defaultLblFontSize);
 		lblStudent[1][1] = new MyLabel(student.getName(), Size.defaultLblFontSize);
 		lblStudent[2][1] = new MyLabel(student.getEmail(), Size.defaultLblFontSize);

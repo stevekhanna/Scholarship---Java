@@ -30,6 +30,7 @@ public class StudentController extends MyController {
 	private AppliedPanel ap;
 	private AppliedToPanel atp;
 	private AccountPanel acp;
+	private EditAccountPanel eacp;
 	
 	private Util util;
 	
@@ -44,6 +45,7 @@ public class StudentController extends MyController {
 	private JPanel appliedPanel;
 	private JPanel appliedToPanel;
 	private JPanel accountPanel;
+	private JPanel editAccountPanel;
 	/**
 	 * Constructor
 	 * @param frame - JFrame
@@ -69,11 +71,13 @@ public class StudentController extends MyController {
 		ap = new AppliedPanel(this);
 		atp = new AppliedToPanel(this);
 		acp = new AccountPanel(this);
+		eacp = new EditAccountPanel(this);
 		
 		studentPanel = sp.getContentPane();
 		appliedPanel = ap.getContentPane();
 		appliedToPanel = atp.getContentPane();
 		accountPanel = acp.getContentPane();
+		editAccountPanel = eacp.getContentPane();
 		
 		addScholarshipsToAppliedPanel();
 		switchToStudentPanel();
@@ -105,6 +109,11 @@ public class StudentController extends MyController {
 		switchPanel(accountPanel);
 	}
 	
+	private void switchToEditAccountPanel() {
+		eacp.setName(currentStudent.getName());
+		eacp.displayStudent(currentStudent);
+		switchPanel(editAccountPanel);
+	}	
 	private boolean applyToScholarship(int scholarshipID) {
 		Scholarship s = scMap.get(scholarshipID);
 		// Make sure current student is not null
@@ -198,11 +207,19 @@ public class StudentController extends MyController {
 		case"Account_StudentPanel":
 			switchToAccountPanel();
 			break;
-		case "Back_AccountPanel":
+		case"Back_AccountPanel":
 			switchToStudentPanel();
+			break;
+		case"EditAccount_AccountPanel":
+			switchToEditAccountPanel();
+			break;
+		case"Finish_AccountPanel":
+			break;
 		default:
 			break;
 		}
 		
-	}	
+	}
+
+	
 }
