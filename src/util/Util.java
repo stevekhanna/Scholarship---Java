@@ -109,7 +109,7 @@ public class Util {
 		try {
 			PrintWriter writer = new PrintWriter(scholarshipFile, "UTF-8");
 			writer.println(scholarshipFormat);
-			for(int i = 1; i<=scMap.size(); i++) {
+			for(int i : scMap.keySet()) {
 				writer.println(scMap.get(i).toString());
 			}
 			writer.close();
