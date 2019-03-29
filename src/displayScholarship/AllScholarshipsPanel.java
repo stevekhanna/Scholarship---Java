@@ -106,7 +106,7 @@ public class AllScholarshipsPanel extends MyPanel{
 		JLabel lbl;
 		int i = 0;
 		for(String lblNm: labelName) {
-			lbl = new MyLabel(lblNm,Colors.black,Size.defaultLblFontSize);
+			lbl = new MyLabel(lblNm,Colors.defaultTextColor,Size.defaultLblFontSize);
 			String cellNum = Integer.toString(i);
 			center.add(lbl, String.format("cell "+cellNum+" %d, left",y));
 			i++;

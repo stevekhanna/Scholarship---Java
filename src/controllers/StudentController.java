@@ -2,7 +2,9 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -136,7 +138,9 @@ public class StudentController extends MyController {
 		}
 	}
 	
-	
+	private void updatePriority(List<Integer> scholarships) {
+		
+	}
 	
 	/**
 	 * Find all of the scholarships that have the same type of study as the current student
@@ -173,7 +177,6 @@ public class StudentController extends MyController {
 		// Going back from viewing all scholarships to the users main page
 		case"Back_AllScholarshipsPanel":
 			// Get an updated version of all of the scholarship
-			scMap = sController.getScMap();
 			// If the current user is a student go to the student controller
 			switchToStudentPanel();
 			break;
@@ -200,6 +203,12 @@ public class StudentController extends MyController {
 			break;
 		case "Back_AccountPanel":
 			switchToStudentPanel();
+			break;
+		case "UpdatePriority":
+			List<Integer> x = new ArrayList<>();
+			updatePriority(x);
+			
+			break;
 		default:
 			break;
 		}

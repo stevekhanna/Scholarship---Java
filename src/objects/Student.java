@@ -120,6 +120,16 @@ public class Student extends User{
 		}
 	}
 	
+	public boolean changeScholarshipPriority(int id, int priority) {
+		if (scholarshipsAppliedTo.remove(id) != null) {
+			scholarshipsAppliedTo.add(priority,id);
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
 	public boolean removeScholarship(int id){
 		if(scholarshipsAppliedTo.contains(id)) {
 			int index = scholarshipsAppliedTo.indexOf(id);
