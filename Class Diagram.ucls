@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.3" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="controllers.AdminController" project="Scholarship" 
+    file="/Scholarship/src/controllers/AdminController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="914" y="518"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="controllers.LoginController" project="Scholarship" 
+    file="/Scholarship/src/controllers/LoginController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="162" y="65"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="controllers.StudentController" project="Scholarship" 
+    file="/Scholarship/src/controllers/StudentController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="429" y="500"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="objects.User" project="Scholarship" file="/Scholarship/src/objects/User.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1244" y="342"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="objects.Scholarship" project="Scholarship" 
+    file="/Scholarship/src/objects/Scholarship.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="664" y="1548"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="objects.Admin" project="Scholarship" file="/Scholarship/src/objects/Admin.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1036" y="125"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="objects.Student" project="Scholarship" 
+    file="/Scholarship/src/objects/Student.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1604" y="128"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="controllers.ScholarshipController" project="Scholarship" 
+    file="/Scholarship/src/controllers/ScholarshipController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="664" y="900"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="controllers.MainController" project="Scholarship" 
+    file="/Scholarship/src/controllers/MainController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="661" y="11"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="10">    
+    <bendpoint x="724" y="700"/>    
+    <bendpoint x="1836" y="704"/>    
+    <bendpoint x="1822" y="512"/>    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="11" name="currentStudent">        
+        <position height="0" width="0" x="86" y="0"/>      
+      </attribute>      
+      <multiplicity id="12" minimum="0" maximum="1">        
+        <position height="0" width="0" x="86" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="13">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="14" name="sController">        
+        <position height="0" width="0" x="-250" y="0"/>      
+      </attribute>      
+      <multiplicity id="15" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-250" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="16">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="17" name="currentAdmin">        
+        <position height="0" width="0" x="-376" y="-479"/>      
+      </attribute>      
+      <multiplicity id="18" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-376" y="-479"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="19">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="20" name="sController">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="21" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="22">    
+    <bendpoint x="964" y="954"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="23" name="scMap">        
+        <position height="19" width="44" x="912" y="1188"/>      
+      </attribute>      
+      <multiplicity id="24" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-224" y="447"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="25">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="26" name="aController">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="27" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="28">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="29" name="currentAdmin">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="30" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="31">    
+    <bendpoint x="1606" y="526"/>    
+    <bendpoint x="1606" y="456"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="32" name="students">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="33" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="34">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <association id="35">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="36" name="sController">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="37" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="38">    
+    <bendpoint x="1200" y="-44"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="39" name="students">        
+        <position height="19" width="54" x="1324" y="-39"/>      
+      </attribute>      
+      <multiplicity id="40" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="41">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <association id="42">    
+    <bendpoint x="196" y="362"/>    
+    <bendpoint x="200" y="1396"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="43" name="scMap">        
+        <position height="0" width="0" x="0" y="148"/>      
+      </attribute>      
+      <multiplicity id="44" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="148"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="45">    
+    <bendpoint x="392" y="992"/>    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="46" name="scMap">        
+        <position height="19" width="44" x="379" y="1188"/>      
+      </attribute>      
+      <multiplicity id="47" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-224" y="447"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="48">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="49" name="lController">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="50" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="51">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="52" name="scMap">        
+        <position height="0" width="0" x="533" y="545"/>      
+      </attribute>      
+      <multiplicity id="53" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="533" y="545"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="54">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="55" name="admins">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="56" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="57">    
+    <bendpoint x="1160" y="2"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="58" name="currentStudent">        
+        <position height="19" width="87" x="1260" y="59"/>      
+      </attribute>      
+      <multiplicity id="59" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
