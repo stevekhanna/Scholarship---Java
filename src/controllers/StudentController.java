@@ -9,9 +9,12 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 
 import displayStudent.*;
+import myJStuff.Colors;
 import myJStuff.MyController;
 import objects.*;
 import util.*;
@@ -235,8 +238,16 @@ public class StudentController extends MyController {
 			updatePriority(sId, x);
 			break;
 		case "Withdraw_AppliedToPanel":
-			int sID = Integer.parseInt(source.getActionCommand());
-			withdraw(sID);
+			Object[] options = { "YES", "NO" };
+			UIManager.put("OptionPane.background", Colors.defaultBackgroundColor);
+	        UIManager.put("OptionPane.messagebackground", Colors.defaultBackgroundColor);
+			int selectedOption = JOptionPane.showOptionDialog(null, "Are you sure you want to withdraw from this scholarship?", "Warning",
+					JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,
+					null, options, options[0]);
+			if(selectedOption == JOptionPane.YES_OPTION) {
+				int sID = Integer.parseInt(source.getActionCommand());
+				withdraw(sID);
+			}
 			break;
 		default:
 			break;

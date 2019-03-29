@@ -97,7 +97,7 @@ private JButton btnBack;
 			center.add(lbl, String.format("cell "+cellNum+" %d, left",y));
 			i++;
 		}
-		JButton btnWithdraw = new MyButton("Withdraw", Size.defaultBtnFontSize, Size.defaultBtnEditWidth);
+		JButton btnWithdraw = new MyButton("Withdraw", Size.defaultLblFontSize, Size.defaultBtnEditWidth+25);
 		center.add(btnWithdraw,String.format("cell 6 %d, left",y));
 		btnWithdraw.setName("Withdraw_AppliedToPanel");
 		btnWithdraw.addActionListener(packageListener);
