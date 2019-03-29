@@ -19,5 +19,5 @@ public class Colors{
 	public static final Color defaultButtonBackgroundColor 	= darkGrey;
 	public static final Color defaultBackgroundColor 		= beige;
 	public static final Color defaultBorderColor 			= beige;
-	public static final Color defaultTextColor				= darkGrey;
+	public static final Color defaultTextColor				= black;
 }
