@@ -39,14 +39,18 @@ public class MainController implements ActionListener{
 		sController = new StudentController(this,frame);
 		aController = new AdminController(this,frame);
 		
-		LoadData ld = new LoadData();
-		students = ld.loadStudents();
-		admins = ld.loadAdmins();
-		scMap = ld.loadScholarships();
+		loadData();
 		
 		lController.start();
 		
 		util = new Util(students,admins,scMap);
+	}
+	
+	private void loadData() {
+		LoadData ld = new LoadData();
+		students = ld.loadStudents();
+		admins = ld.loadAdmins();
+		scMap = ld.loadScholarships();
 	}
 	
 	private void createFrame(){
@@ -121,10 +125,12 @@ public class MainController implements ActionListener{
 		case"Logout_AdminPanel":
 			currentAdmin=null;
 			currentStudent=null;
+			loadData();
 			lController.start();
 		case"Logout_StudentPanel":
 			currentAdmin=null;
 			currentStudent=null;
+			loadData();
 			lController.start();
 		default:break;
 		}
