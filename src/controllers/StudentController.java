@@ -173,7 +173,6 @@ public class StudentController extends MyController {
 		// Going back from viewing all scholarships to the users main page
 		case"Back_AllScholarshipsPanel":
 			// Get an updated version of all of the scholarship
-			scMap = sController.getScMap();
 			// If the current user is a student go to the student controller
 			switchToStudentPanel();
 			break;
