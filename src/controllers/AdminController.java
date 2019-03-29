@@ -128,8 +128,11 @@ public class AdminController extends MyController {
 	 */
 	private String scholarshipsAppliedTo(Student s) {
 		String scholarships="";
+		//Loop through all of the scholarships the student has applied for
 		for(int i: s.getScholarshipsAppliedTo()) {
+			// Check to make sure the student has applied to the scholarships
 			if(scMap.get(i).getStudentsUcids().contains(s.getUCID()))
+				// Add the scholarship to the name
 				scholarships+=scMap.get(i).getName()+", ";
 		}
 		if(scholarships.equals(""))
@@ -137,7 +140,11 @@ public class AdminController extends MyController {
 		else
 			return scholarships.substring(0, scholarships.length()-2);
 	}
-	
+	/**
+	 * Find a Student by UCID
+	 * @param ucid 0 Integer
+	 * @return Student
+	 */
 	private Student findStudentByUcid(int ucid) {
 		for(Student s: students) {
 			if(s.getUCID() == ucid) {
@@ -146,23 +153,34 @@ public class AdminController extends MyController {
 		}
 		return null;
 	}
-	
+	/**
+	 * Deletes a scholarships and withdraw all students from that scholarships
+	 * @param s - Scholarship to delete
+	 */
 	private void deleteScholarship(Scholarship s) {
+		// Delete the scholarships
 		util.deleteScholarship(s);
+		// Remove the scholarships
 		scMap.remove(s.getScholarshipId());
+		// Error handling
 		if (s.getStudentsUcids()!= null) {
+			// Loop through all of the students that have applied to the scholarship
 			for (int i: s.getStudentsUcids()) {
-				for(Student student : students) {
-					if (student.getUCID() == i) {
-						student.removeScholarship(s.getScholarshipId());
-					}
-				}
+				// Find the student by UCID
+				Student x = findStudentByUcid(i);
+				// Remove the scholarship from 
+				x.removeScholarship(s.getScholarshipId());
 			}
 		}
-		
 	}
 	
+	/**
+	 * Saves the edits of a scholarship
+	 * @param s - Scholarship to be edited;
+	 * @return - true | save success - false | save failed
+	 */
 	private boolean saveScholarship(Scholarship s) {
+		// Validate that all of the edit fields have a value
 		boolean invalid = ((sController.getEdits().getName().isEmpty())||
 				(sController.getEdits().getGpa()<=0 ||sController.getEdits().getGpa()>4)||
 				(sController.getEdits().getDescription().isEmpty())||
@@ -172,8 +190,9 @@ public class AdminController extends MyController {
 				(sController.getEdits().getTypeOfStudy().isEmpty())||
 				(sController.getEdits().getNumAllowed())<=0||
 				(sController.getEdits().getMoney())<=0);
-		
+		// Check if the invalid
 		if(!invalid){
+			// If not invalid save all of the edits and return true
 			s.setName(sController.getEdits().getName());
 			s.setGpaRequirement(sController.getEdits().getGpa());
 			s.setDescription(sController.getEdits().getDescription());
@@ -186,14 +205,21 @@ public class AdminController extends MyController {
 			util.saveScholarship(s);
 			return true;
 		}else{
+			//return false
 			return false;
 		}
 		
 		
 	}
-	
+	/**
+	 * Create a scholarship and add it to the scMap
+	 * @return - true | save success - false | save failed
+	 */
 	private boolean createScholarship() {
+		// Generate an new blank scholarship
 		Scholarship s = new Scholarship();
+		
+		// Check that all of the inputs are valid
 		boolean invalid = ((csp.getName().isEmpty())||
 				(csp.getGpa()<=0 ||csp.getGpa()>4)||
 				(csp.getDescription().isEmpty())||
@@ -204,6 +230,7 @@ public class AdminController extends MyController {
 				(csp.getNumAllowed())<=0||
 				(csp.getMoney())<=0);
 		
+		// If they are not invalid save all of the data and add it the scMap
 		if(!invalid) {
 			s.setName(csp.getName());
 			s.setGpaRequirement(csp.getGpa());
@@ -218,8 +245,11 @@ public class AdminController extends MyController {
 			for(Integer val: scMap.keySet()) {
 				scholarshipId = val +1;
 			}
+			// Set the scholarship ID
 			s.setScholarshipId(scholarshipId);
+			// put it tin the scMap
 			scMap.put(scholarshipId, s);
+			// Save it
 			util.saveScholarship(s);
 			return true;
 		}else {
@@ -268,6 +298,7 @@ public class AdminController extends MyController {
 		case "Back_AllStudentsPanel":
 			switchPanel(adminPanel);
 			break;
+		// Delete a scholarship
 		case "DeleteScholarship_AllScholarshipsPanel":
 			Object[] options = { "YES", "NO" };
 			UIManager.put("OptionPane.background", Colors.defaultBackgroundColor);
