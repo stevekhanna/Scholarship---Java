@@ -9,6 +9,15 @@ public class MyFont extends Font{
 	 * @param size
 	 */
 	public MyFont(int size) {
-		super("Avenir", Font.PLAIN, size);
+		super(makeFont(), Font.PLAIN, size);
+	}
+	
+	private static String makeFont() {
+		String OS = System.getProperty("os.name").toLowerCase();
+		if(OS.indexOf("mac")>=0) {
+			return "Avenir";
+		}else {
+			return "Malgun Gothic";
+		}
 	}
 }
