@@ -62,6 +62,7 @@ private JButton btnBack;
 		center.removeAll();
 		center.repaint();
 		displayCenter();
+		y = 1;
 	}
 
 	public void addScholarship(Scholarship scholarship, int priority) {
