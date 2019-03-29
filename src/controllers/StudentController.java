@@ -71,6 +71,7 @@ public class StudentController extends MyController {
 		ap = new AppliedPanel(this);
 		atp = new AppliedToPanel(this);
 		acp = new AccountPanel(this);
+		atp.setTotalScholarships(currentStudent.getScholarshipsAppliedTo().size());
 		
 		studentPanel = sp.getContentPane();
 		appliedPanel = ap.getContentPane();
@@ -119,7 +120,7 @@ public class StudentController extends MyController {
 					// Save the scholarships to the util file
 					util.saveScholarship(s);
 					// Add the scholarship to the appliedToPanel
-					atp.addScholarship(s);
+					atp.addScholarship(s, currentStudent.getScholarshipsAppliedTo().size()+1);
 					System.out.println(s.getName()+" added to applied");	
 					return true;
 				}else {
