@@ -106,6 +106,7 @@ public class StudentController extends MyController {
 	private void switchToAccountPanel() {
 		acp.setName(currentStudent.getName());
 		acp.displayStudent(currentStudent);
+		acp.resetPasswordFileds();
 		switchPanel(accountPanel);
 	}
 	
@@ -247,6 +248,21 @@ public class StudentController extends MyController {
 			if(selectedOption == JOptionPane.YES_OPTION) {
 				int sID = Integer.parseInt(source.getActionCommand());
 				withdraw(sID);
+			}
+			break;
+		case "UpdatePassword_AccountPanel":
+			String p = acp.getNewPassword();
+			String cp = acp.getConfirmPassword();
+			if(p.equals("") || cp.equals("")) {
+				//STEVE MAKE A DIALOG BOX THAT SAYS PASSWOFRD MUST NOT BE EMPTY
+			}else if(!p.equals(cp)){
+				// STEVE MAKE A DIALGOG BOX THAT SAYS PASSWORD DO NTO MATCH
+			}else if(!p.matches("[a-zA-Z0-9]*")){
+				// STEVE MAKE A DIALOG BOX THAT SAYS NEW PASSWORD CAN ONLY CONTAIN LETTERS AND NUMBERS
+			}else {
+				// STEVE MAKE A DIALOG BOX THAT SAYS CONGRATS YOU HAVE UPDATED OYUR PASSWORD
+				// UPDATE THE STUDENTS PASSWORD FIELD AND SAVE THE STUDENT
+				acp.resetPasswordFileds();
 			}
 			break;
 		default:
