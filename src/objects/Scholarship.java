@@ -177,6 +177,10 @@ public class Scholarship {
 		}
 	}
 	
+	public boolean removeStudent(int ucid) {
+		return (studentUcids.remove((Integer)ucid));
+	}
+	
 	public List<Integer> getStudentsUcids() {
 		return studentUcids;
 	}

@@ -20,7 +20,11 @@ public class AllScholarshipsPanel extends MyPanel{
 	private JTextField fldSearch;
 	private JLabel lblSearchError;
 	
-	private int y;
+	private JLabel lblName;
+	private JLabel lblEndDate;
+	private JLabel lblType;
+	
+	private int y = 1;
 	
 	private boolean isAdmin;
 
@@ -83,6 +87,16 @@ public class AllScholarshipsPanel extends MyPanel{
 	 * Empty method, displays center of panel.
 	 */
 	private void displayCenter(){
+		lblName = new MyLabel("Name", Colors.grey, Size.defaultLblFontSize);
+		center.add(lblName,"cell 0 0");
+		lblName = new MyLabel("GPA Req.", Colors.grey, Size.defaultLblFontSize);
+		center.add(lblName,"cell 1 0");
+		lblName = new MyLabel("Faculty", Colors.grey, Size.defaultLblFontSize);
+		center.add(lblName,"cell 2 0");
+		lblName = new MyLabel("Department", Colors.grey, Size.defaultLblFontSize);
+		center.add(lblName,"cell 3 0");
+		lblName = new MyLabel("Amount", Colors.grey, Size.defaultLblFontSize);
+		center.add(lblName,"cell 4 0");
 	}
 	
 	/**
@@ -92,16 +106,20 @@ public class AllScholarshipsPanel extends MyPanel{
 	public void displayScholarship(Scholarship scholarship) {
 		String name = scholarship.getName();
 		String gPA = Double.toString(scholarship.getGpaRequirement());
-		String toS = scholarship.getTypeOfStudy();
+		String faculty = scholarship.getFaculty();
+		String amount = Double.toString(scholarship.getMoney());
+		String dept = scholarship.getDepartment();
 		ArrayList<String> labelName = new ArrayList<String>();
 		labelName.add(name);
 		labelName.add(gPA);
-		labelName.add(toS);
+		labelName.add(faculty);
+		labelName.add(dept);
+		labelName.add(amount);
 		JLabel lbl;
 		int i = 0;
 		for(String lblNm: labelName) {
-			lbl = new MyLabel(lblNm,Colors.black,Size.defaultLblFontSize);
-			String cellNum = Integer.toString(i+1);
+			lbl = new MyLabel(lblNm,Colors.defaultTextColor,Size.defaultLblFontSize);
+			String cellNum = Integer.toString(i);
 			center.add(lbl, String.format("cell "+cellNum+" %d, left",y));
 			i++;
 		}
@@ -109,14 +127,14 @@ public class AllScholarshipsPanel extends MyPanel{
 		btnView.setActionCommand(Integer.toString(scholarship.getScholarshipId()));
 		btnView.setName("ViewScholarship_AllScholarshipsPanel");
 		btnView.addActionListener(packageListener);
-		center.add(btnView, String.format("cell 4 %d, center",y));
+		center.add(btnView, String.format("cell 5 %d, center",y));
 		
 		if(isAdmin) {
 			JButton btnDelete = new MyButton("Delete", Size.defaultLblFontSize, Size.defaultBtnEditWidth);
 			btnDelete.setActionCommand(Integer.toString(scholarship.getScholarshipId()));
 			btnDelete.setName("DeleteScholarship_AllScholarshipsPanel");
 			btnDelete.addActionListener(globalLisenter);
-			center.add(btnDelete, String.format("cell 5 %d, center",y));		
+			center.add(btnDelete, String.format("cell 6 %d, center",y));		
 		}
 
 		y++;
