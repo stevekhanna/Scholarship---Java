@@ -145,6 +145,16 @@ public class StudentController extends MyController {
 		addScholarshipsToAppliedPanel();
 	}
 	
+	private void withdraw(int sId) {
+		currentStudent.removeScholarship(sId);
+		scMap.get(sId).removeStudent(currentStudent.getUCID());
+		util.saveScholarship(scMap.get(sId));
+		util.saveStudent(currentStudent);
+		atp.resetScholarships();
+		addScholarshipsToAppliedPanel();
+		
+	}
+	
 	/**
 	 * Find all of the scholarships that have the same type of study as the current student
 	 * @param studyType - String 
@@ -223,6 +233,10 @@ public class StudentController extends MyController {
 			int sId = Integer.parseInt(sourceBox.getActionCommand());
 			Integer x = (Integer) sourceBox.getSelectedItem();
 			updatePriority(sId, x);
+			break;
+		case "Withdraw_AppliedToPanel":
+			int sID = Integer.parseInt(source.getActionCommand());
+			withdraw(sID);
 			break;
 		default:
 			break;

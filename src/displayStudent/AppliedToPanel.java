@@ -97,6 +97,11 @@ private JButton btnBack;
 			center.add(lbl, String.format("cell "+cellNum+" %d, left",y));
 			i++;
 		}
+		JButton btnWithdraw = new MyButton("Withdraw", Size.defaultBtnFontSize, Size.defaultBtnEditWidth);
+		center.add(btnWithdraw,String.format("cell 6 %d, left",y));
+		btnWithdraw.setName("Withdraw_AppliedToPanel");
+		btnWithdraw.addActionListener(packageListener);
+		btnWithdraw.setActionCommand(scholarship.getScholarshipId()+"");
 		y++;
 	}
 }
