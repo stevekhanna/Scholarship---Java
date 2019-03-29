@@ -47,7 +47,7 @@ private JButton btnBack;
 		btnBack.setName("Back_AppliedToPanel");
 	}
 	
-	public void addScholarship(Scholarship scholarship) {
+	public void addScholarship(Scholarship scholarship, int priority) {
 		String name = scholarship.getName();
 		String money = Double.toString(scholarship.getMoney());
 		String toS = scholarship.getDepartment();
