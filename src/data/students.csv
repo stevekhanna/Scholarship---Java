@@ -1,6 +1,6 @@
 UCID,Email,Password,Name,Faculty,GPA,Year of study,Type of study,Department,Applied to
 12345678,student@ucalgary.ca,password,STUDENT ACCOUNT,Arts,3.5,3,Bachelor,GRST
-11111111,q,q,Q Student,Arts,3.7,3,Bachelor,GRST,1:6
+11111111,q,q,Q Student,Arts,3.7,3,Bachelor,GRST,1:6:3
 30004567,steve,steve,Steve Khanna,Science,3.6,4,Bachelor,CPSC,1:2:3
 18009006,pierce,pierce,Pierce de Jong,Science,3.9,3,Bachelor,CPSC
 87654321,name,name,Name,Science,3.7,5,PhD,CPSC
