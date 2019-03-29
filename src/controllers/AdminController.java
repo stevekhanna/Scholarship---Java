@@ -1,5 +1,6 @@
 package controllers;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
@@ -7,11 +8,14 @@ import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 
 import displayAdmin.*;
 import objects.*;
 import util.*;
+import myJStuff.Colors;
 import myJStuff.MyController;
 
 /**
@@ -260,9 +264,18 @@ public class AdminController extends MyController {
 			switchPanel(adminPanel);
 			break;
 		case "DeleteScholarship_AllScholarshipsPanel":
-			Scholarship x = scMap.get(Integer.parseInt(source.getActionCommand()));
-			deleteScholarship(x);
-			sController.start(true, scMap);
+			Object[] options = { "YES", "NO" };
+			UIManager.put("OptionPane.background", Colors.defaultBackgroundColor);
+	        UIManager.put("OptionPane.messagebackground", Colors.defaultBackgroundColor);
+			int selectedOption = JOptionPane.showOptionDialog(null, "Are you sure you want to delete this scholarship?", "Warning",
+					JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,
+					null, options, options[0]);
+			if(selectedOption == JOptionPane.YES_OPTION) {
+				Scholarship x = scMap.get(Integer.parseInt(source.getActionCommand()));
+				deleteScholarship(x);
+				sController.start(true, scMap);
+			}
+			
 			break;
 		case "Back_ViewStudentPanel":
 			switchPanel(allStudentsPanel);
