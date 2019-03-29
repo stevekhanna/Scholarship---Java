@@ -110,18 +110,18 @@ public class Student extends User{
 		}
 	}
 	
-	public boolean addScholarshipByPriority(int id, int priority) {
+	public boolean addScholarshipByPriority(int id, int index) {
 		if (scholarshipsAppliedTo.contains(id)) {
 			return false;
 		}
 		else {
-			scholarshipsAppliedTo.add(priority,id);
+			scholarshipsAppliedTo.add(index,id);
 			return true;
 		}
 	}
 	
 	public boolean changeScholarshipPriority(int id, int priority) {
-		if (scholarshipsAppliedTo.remove(id) != null) {
+		if (scholarshipsAppliedTo.remove((Integer) id)) {
 			scholarshipsAppliedTo.add(priority,id);
 			return true;
 		}
@@ -131,14 +131,7 @@ public class Student extends User{
 	}
 	
 	public boolean removeScholarship(int id){
-		if(scholarshipsAppliedTo.contains(id)) {
-			int index = scholarshipsAppliedTo.indexOf(id);
-			scholarshipsAppliedTo.remove(index);
-			return true;
-		}
-		else {
-			return false;
-		}
+		return scholarshipsAppliedTo.remove((Integer) id);
 	}
 	
 	@Override
