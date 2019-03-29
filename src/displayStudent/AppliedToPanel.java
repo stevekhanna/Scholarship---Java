@@ -52,7 +52,7 @@ private JButton btnBack;
 	public void setTotalScholarships(int i) {
 		totalScholarships = i;
 	}
-	
+
 	public void addScholarship(Scholarship scholarship, int priority) {
 		String name = scholarship.getName();
 		String money = Double.toString(scholarship.getMoney());

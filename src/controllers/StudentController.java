@@ -2,7 +2,9 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -84,14 +86,11 @@ public class StudentController extends MyController {
 	 * Add all of the scholarships the student has applied to when logging in
 	 */
 	private void addScholarshipsToAppliedPanel() {
-		for(int i: scMap.keySet()) {
-			// If the scholarship has the current students ucid in it add it to the screen
-			if(scMap.get(i).getStudentsUcids()!=null) {
-				if(scMap.get(i).getStudentsUcids().contains(currentStudent.getUCID())) {
-					atp.addScholarship(scMap.get(i));
-				}
-			}
-		}	
+		int x = 1;
+		for(int i: currentStudent.getScholarshipsAppliedTo()) {
+			atp.addScholarship(scMap.get(i),x);
+			x++;
+		}
 	}
 	
 	private void switchToStudentPanel() {
@@ -137,7 +136,9 @@ public class StudentController extends MyController {
 		}
 	}
 	
-	
+	private void updatePriority(List<Integer> scholarships) {
+		
+	}
 	
 	/**
 	 * Find all of the scholarships that have the same type of study as the current student
@@ -200,6 +201,12 @@ public class StudentController extends MyController {
 			break;
 		case "Back_AccountPanel":
 			switchToStudentPanel();
+			break;
+		case "UpdatePriority":
+			List<Integer> x = new ArrayList<>();
+			updatePriority(x);
+			
+			break;
 		default:
 			break;
 		}
