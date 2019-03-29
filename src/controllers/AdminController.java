@@ -265,8 +265,6 @@ public class AdminController extends MyController {
 			break;
 		case "DeleteScholarship_AllScholarshipsPanel":
 			Object[] options = { "YES", "NO" };
-			UIManager.put("OptionPane.background", Colors.defaultBackgroundColor);
-	        UIManager.put("OptionPane.messagebackground", Colors.defaultBackgroundColor);
 			int selectedOption = JOptionPane.showOptionDialog(null, "Are you sure you want to delete this scholarship?", "Warning",
 					JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,
 					null, options, options[0]);

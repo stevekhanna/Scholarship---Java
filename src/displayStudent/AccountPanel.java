@@ -44,11 +44,13 @@ public class AccountPanel extends MyPanel {
 	
 	private void displayCenter() {
 		// TODO Auto-generated method stub
-		center.setLayout(new MigLayout("", "[]", "[]"));
+		//center.setLayout(new MigLayout("", "[]", "[]"));
 	}
 	
 	
 	public void displayStudent(Student student) {
+		center.removeAll();
+		center.repaint();
 		lblStudent[0][0] = new MyLabel("UCID:", Size.defaultLblFontSize);
 		lblStudent[1][0] = new MyLabel("Email:", Size.defaultLblFontSize);
 		lblStudent[2][0] = new MyLabel("GPA:", Size.defaultLblFontSize);
@@ -69,11 +71,11 @@ public class AccountPanel extends MyPanel {
 		}
 		
 		lblPassword = new MyLabel("New Password",Size.defaultLblFontSize);
-		center.add(lblPassword,"cell 0 7");
+		center.add(lblPassword,"cell 0 7, right");
 		fldPassword = new MyPasswordField("",Size.defaultLblFontSize);
 		center.add(fldPassword, "cell 1 7,span");
 		lblConfirmPassword = new MyLabel("Confirm Password",Size.defaultLblFontSize);
-		center.add(lblConfirmPassword,"cell 0 8");
+		center.add(lblConfirmPassword,"cell 0 8,right");
 		fldConfirmPassword = new MyPasswordField("",Size.defaultLblFontSize);
 		center.add(fldConfirmPassword, "cell 1 8,span");
 		
