@@ -45,7 +45,6 @@ private JButton btnBack;
 		center.add(lblName,"cell 2 0");
 		lblName = new MyLabel("Priority", Colors.grey, Size.defaultLblFontSize);
 		center.add(lblName,"cell 3 0");
-		center.removeAll();
 	}
 	
 	private void displaySouth() {
@@ -72,18 +71,17 @@ private JButton btnBack;
 				strList.add((totalScholarships -i ));
 		}
 		Collections.sort(strList);
-		//strList.add(0,priority);
 		Object[] strArr = strList.toArray();      
-	    JComboBox<Object> cb=new JComboBox<Object>(strArr);  
-	    cb.setBounds(50, 50,90,20);
+	    JComboBox<Object> cb=new MyComboBox(strArr);
+	    cb.setSelectedIndex(priority);
 	    cb.addActionListener(packageListener);
 	    cb.setName("UpdatePriority_AppliedToPanel");
 	    cb.setActionCommand(scholarship.getScholarshipId()+"");
-	    JComboBox<Object> cb=new MyComboBox(strArr);  
-	    //cb.setBounds(50, 50,90,20);
-	    cb.setSelectedIndex(priority-1);
 	    center.add(cb, String.format("cell 3 %d, left",y));
-		String name = scholarship.getName();
+		
+	    
+	    
+	    String name = scholarship.getName();
 		String money = Double.toString(scholarship.getMoney());
 		String toS = scholarship.getDepartment();
 		ArrayList<String> labelName = new ArrayList<String>();

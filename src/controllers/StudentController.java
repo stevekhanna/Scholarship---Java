@@ -87,7 +87,7 @@ public class StudentController extends MyController {
 	 * Add all of the scholarships the student has applied to when logging in
 	 */
 	private void addScholarshipsToAppliedPanel() {
-		int x = 1;
+		int x = 0;
 		for(int i: currentStudent.getScholarshipsAppliedTo()) {
 			atp.addScholarship(scMap.get(i),x);
 			x++;
@@ -182,8 +182,6 @@ public class StudentController extends MyController {
 				
 			}
 		}
-
-		System.out.println(name);
 		switch(name) {
 		// Start the scholarship panel and view all of the scholarships
 		case"AllScholarships_StudentPanel":
@@ -225,7 +223,6 @@ public class StudentController extends MyController {
 			int sId = Integer.parseInt(sourceBox.getActionCommand());
 			Integer x = (Integer) sourceBox.getSelectedItem();
 			updatePriority(sId, x);
-			
 			break;
 		default:
 			break;
