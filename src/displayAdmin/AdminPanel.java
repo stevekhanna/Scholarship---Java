@@ -27,6 +27,7 @@ public class AdminPanel extends MyPanel{
 	private JButton btnScholarship;
 	private JButton btnAddScholarship;
 	private JButton btnStudents;
+	private JButton btnAccount;
 	
 	/**
 	 * Admin Panel constructor
@@ -74,6 +75,11 @@ public class AdminPanel extends MyPanel{
 		center.add(btnAddScholarship,"cell 0 2, center");
 		btnAddScholarship.addActionListener(packageListener);
 		btnAddScholarship.setName("AddScholarship_AdminPanel");
+		
+		btnAccount = new MyButton("My Account", Size.defaultBtnFontSize);
+		center.add(btnAccount,"cell 0 3, center");
+		btnAccount.addActionListener(packageListener);
+		btnAccount.setName("Account_AdminPanel");
 	}
 	
 	/**
