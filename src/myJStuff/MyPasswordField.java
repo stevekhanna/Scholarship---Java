@@ -11,6 +11,7 @@ public class MyPasswordField extends JPasswordField{
 	public MyPasswordField(int size) {
 		setText("");
 		setFont(new MyFont(size));
+		setPreferredSize(new Dimension(Size.defaultBtnWidth,Size.defaultBtnHeight));
 	}
 	
 	public MyPasswordField(String password, int fontSize) {
@@ -22,6 +23,7 @@ public class MyPasswordField extends JPasswordField{
 	public MyPasswordField(String password, int size, int length) {
 		setText(password);
 		setFont(new MyFont(size));
+		setPreferredSize(new Dimension(Size.defaultBtnWidth,Size.defaultBtnHeight));
 	}
 
 }
