@@ -22,10 +22,10 @@ public class MyLabel extends JLabel{
 	 * @param text - String to be displayed
 	 */
 	public MyLabel(String text) {
-		this(text, Colors.black, 25);
+		this(text, Colors.defaultTextColor, 25);
 	}
 	
 	public MyLabel(String text, int size) {
-		this(text, Colors.black, size);
+		this(text, Colors.defaultTextColor, size);
 	}
 }

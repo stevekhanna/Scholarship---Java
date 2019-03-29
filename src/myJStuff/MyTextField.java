@@ -15,7 +15,7 @@ public class MyTextField extends JTextField {
 		super(string, i);
 		this.setFont(new MyFont(i));
 		this.setPreferredSize(new Dimension(Size.defaultBtnWidth,Size.defaultBtnHeight));
-		this.setForeground(Colors.black);
+		this.setForeground(Colors.defaultTextColor);
 	}
 
 	private static final long serialVersionUID = 1L;
