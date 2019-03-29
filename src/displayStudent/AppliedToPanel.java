@@ -61,16 +61,14 @@ private JButton btnBack;
 		ArrayList<Integer> strList = new ArrayList<Integer>();
 		
 		for(int i = 0; i<totalScholarships; i++) {
-			if(!((totalScholarships-i)==priority)) {
 				strList.add((totalScholarships -i ));
-			}
 		}
 		Collections.sort(strList);
-		strList.add(0,priority);
+		//strList.add(0,priority);
 		Object[] strArr = strList.toArray();      
-	    JComboBox<Object> cb=new JComboBox<Object>(strArr);  
-	    cb.setBounds(50, 50,90,20);
-	    
+	    JComboBox<Object> cb=new MyComboBox(strArr);  
+	    //cb.setBounds(50, 50,90,20);
+	    cb.setSelectedIndex(priority-1);
 	    center.add(cb, String.format("cell 3 %d, left",y));
 		String name = scholarship.getName();
 		String money = Double.toString(scholarship.getMoney());
