@@ -2,8 +2,10 @@ package displayStudent;
 
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
 import myJStuff.*;
@@ -40,6 +42,8 @@ private JButton btnBack;
 		center.add(lblName,"cell 1 0");
 		lblName = new MyLabel("Department", Colors.grey, Size.defaultLblFontSize);
 		center.add(lblName,"cell 2 0");
+		lblName = new MyLabel("Priority", Colors.grey, Size.defaultLblFontSize);
+		center.add(lblName,"cell 3 0");
 	}
 	
 	private void displaySouth() {
@@ -54,6 +58,20 @@ private JButton btnBack;
 	}
 
 	public void addScholarship(Scholarship scholarship, int priority) {
+		ArrayList<Integer> strList = new ArrayList<Integer>();
+		
+		for(int i = 0; i<totalScholarships; i++) {
+			if(!((totalScholarships-i)==priority)) {
+				strList.add((totalScholarships -i ));
+			}
+		}
+		Collections.sort(strList);
+		strList.add(0,priority);
+		Object[] strArr = strList.toArray();      
+	    JComboBox<Object> cb=new JComboBox<Object>(strArr);  
+	    cb.setBounds(50, 50,90,20);
+	    
+	    center.add(cb, String.format("cell 3 %d, left",y));
 		String name = scholarship.getName();
 		String money = Double.toString(scholarship.getMoney());
 		String toS = scholarship.getDepartment();
