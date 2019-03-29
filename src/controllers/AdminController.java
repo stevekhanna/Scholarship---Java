@@ -19,9 +19,8 @@ import myJStuff.Colors;
 import myJStuff.MyController;
 
 /**
- * Controller used to manage what the admin can do when logged in
- * @author pierce
- *
+ * Controller used to manage what the Admin can do when logged in
+ * Manages all of the dislpalyAdminPanels and starting the scholarship controller as an admin
  */
 public class AdminController extends MyController {
 	
@@ -44,8 +43,11 @@ public class AdminController extends MyController {
 	private JPanel viewStudentPanel;
 	private JPanel createScholarshipPanel;
 	
+	// THis controls all of the dispalyScholarship panels
 	private ScholarshipController sController;
 	
+	
+	// Save and write all of the edited data to the csv files
 	private Util util;
 	
 	
@@ -83,6 +85,7 @@ public class AdminController extends MyController {
 		// Add all of the students to the AllStudentsPanel
 		addAllStudents();
 		
+		// CHange the current JPanel to the admin panel
 		switchToAdminPanel();
 	}
 	
@@ -96,6 +99,11 @@ public class AdminController extends MyController {
 		switchPanel(adminPanel);
 	}
 	
+	/**
+	 * Switch the current JPanel to the ViewStudentJPanel
+	 * Update the panel to display all of the students info
+	 * @param ucid - Integer - the seelcted students id number
+	 */
 	private void switchToViewStudent(int ucid) {
 		Student s = findStudentByUcid(ucid);
 		String x = scholarshipsAppliedTo(s);
@@ -106,31 +114,28 @@ public class AdminController extends MyController {
 	/**
 	 * Loop through the students and add each one as a row to the AllStudentsPanel
 	 * Create a button to view the student and all of the scholarships that student has applied for
-	 * 
-	 * 	**This should only be called ONCE during the start method and never again**
+	 * Called at the start of the Admin Controller
 	 */
 	private void addAllStudents() {
 		for(Student s: students) {
 			asp.addStudent(s);
 		}
 	}
-	
+	/**
+	 * Creates a String of all of the current scholarships the student has applied to
+	 * @param s - Student
+	 * @return - String of all of the scholarships a student has applied to
+	 */
 	private String scholarshipsAppliedTo(Student s) {
 		String scholarships="";
-		if(s.getScholarshipsAppliedTo().isEmpty()) {
-			System.out.println("empty");
+		for(int i: s.getScholarshipsAppliedTo()) {
+			if(scMap.get(i).getStudentsUcids().contains(s.getUCID()))
+				scholarships+=scMap.get(i).getName()+", ";
 		}
-		if((s.getScholarshipsAppliedTo()!=null) && (!(s.getScholarshipsAppliedTo().isEmpty()))) {
-			for(Integer ID: scMap.keySet()) {
-				if((scMap.get(ID).getStudentsUcids()!=null)&&(!scMap.get(ID).getStudentsUcids().isEmpty())&&(scMap.get(ID).getStudentsUcids().contains(s.getUCID()))){
-					scholarships+=scMap.get(ID).getName()+", ";
-				}
-			}
-			return scholarships.substring(0, scholarships.length() -2);
-		}else {
-			System.out.println("else");
-			return "No Scholarships Applied to";
-		}
+		if(scholarships.equals(""))
+			return "No scholarships Applied To";
+		else
+			return scholarships.substring(0, scholarships.length()-2);
 	}
 	
 	private Student findStudentByUcid(int ucid) {
