@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -136,8 +137,12 @@ public class StudentController extends MyController {
 		}
 	}
 	
-	private void updatePriority(List<Integer> scholarships) {
-		
+	private void updatePriority(int sId, int prio) {
+		currentStudent.changeScholarshipPriority(sId, prio-1);
+		util.saveStudent(currentStudent);
+		atp.resetScholarships();
+		addScholarshipsToAppliedPanel();
+		System.out.println("HELLLLLLLO");
 	}
 	
 	/**
@@ -163,8 +168,22 @@ public class StudentController extends MyController {
 	 * Any buttons that are assigned to the package listener
 	 */
 	public void actionPerformed(ActionEvent e) {
-		JButton source = (JButton)e.getSource();
-		String name = source.getName();
+		String name="";
+		JButton source = new JButton();
+		JComboBox sourceBox = new JComboBox();
+		try {
+			source = (JButton)e.getSource();
+			name = source.getName();
+		}catch(Exception x){
+			try {
+				sourceBox = (JComboBox)e.getSource();
+				name = sourceBox.getName();
+			}catch(Exception c){
+				
+			}
+		}
+
+		System.out.println(name);
 		switch(name) {
 		// Start the scholarship panel and view all of the scholarships
 		case"AllScholarships_StudentPanel":
@@ -202,9 +221,10 @@ public class StudentController extends MyController {
 		case "Back_AccountPanel":
 			switchToStudentPanel();
 			break;
-		case "UpdatePriority":
-			List<Integer> x = new ArrayList<>();
-			updatePriority(x);
+		case "UpdatePriority_AppliedToPanel":
+			int sId = Integer.parseInt(sourceBox.getActionCommand());
+			Integer x = (Integer) sourceBox.getSelectedItem();
+			updatePriority(sId, x);
 			
 			break;
 		default:
