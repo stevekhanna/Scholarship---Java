@@ -22,10 +22,11 @@ private JButton btnBack;
 	
 	public AppliedToPanel(ActionListener packageListener) {
 		this.packageListener = packageListener;
+		contentPane.setName("AppliedToPanel");
 		
 		displayNorth();
 		displaySouth();
-		dispalyCenter();
+		displayCenter();
 	}
 	
 	
@@ -34,7 +35,7 @@ private JButton btnBack;
 		north.add(lblSuccess, "cell 0 0,center");
 	}
 	
-	private void dispalyCenter() {
+	private void displayCenter() {
 		
 		lblName = new MyLabel("Name", Colors.grey, Size.defaultLblFontSize);
 		center.add(lblName,"cell 0 0");
@@ -56,6 +57,12 @@ private JButton btnBack;
 	public void setTotalScholarships(int i) {
 		totalScholarships = i;
 	}
+	
+	public void resetScholarships() {
+		center.removeAll();
+		center.repaint();
+		displayCenter();
+	}
 
 	public void addScholarship(Scholarship scholarship, int priority) {
 		ArrayList<Integer> strList = new ArrayList<Integer>();
@@ -64,13 +71,17 @@ private JButton btnBack;
 				strList.add((totalScholarships -i ));
 		}
 		Collections.sort(strList);
-		//strList.add(0,priority);
 		Object[] strArr = strList.toArray();      
-	    JComboBox<Object> cb=new MyComboBox(strArr);  
-	    //cb.setBounds(50, 50,90,20);
-	    cb.setSelectedIndex(priority-1);
+	    JComboBox<Object> cb=new MyComboBox(strArr);
+	    cb.setSelectedIndex(priority);
+	    cb.addActionListener(packageListener);
+	    cb.setName("UpdatePriority_AppliedToPanel");
+	    cb.setActionCommand(scholarship.getScholarshipId()+"");
 	    center.add(cb, String.format("cell 3 %d, left",y));
-		String name = scholarship.getName();
+		
+	    
+	    
+	    String name = scholarship.getName();
 		String money = Double.toString(scholarship.getMoney());
 		String toS = scholarship.getDepartment();
 		ArrayList<String> labelName = new ArrayList<String>();
