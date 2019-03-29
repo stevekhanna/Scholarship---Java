@@ -121,7 +121,8 @@ public class StudentController extends MyController {
 					// Save the scholarships to the util file
 					util.saveScholarship(s);
 					// Add the scholarship to the appliedToPanel
-					atp.addScholarship(s, currentStudent.getScholarshipsAppliedTo().size()+1);
+					atp.setTotalScholarships(currentStudent.getScholarshipsAppliedTo().size());
+					atp.addScholarship(s, currentStudent.getScholarshipsAppliedTo().size()-1);
 					System.out.println(s.getName()+" added to applied");	
 					return true;
 				}else {
@@ -142,7 +143,16 @@ public class StudentController extends MyController {
 		util.saveStudent(currentStudent);
 		atp.resetScholarships();
 		addScholarshipsToAppliedPanel();
-		System.out.println("HELLLLLLLO");
+	}
+	
+	private void withdraw(int sId) {
+		currentStudent.removeScholarship(sId);
+		scMap.get(sId).removeStudent(currentStudent.getUCID());
+		util.saveScholarship(scMap.get(sId));
+		util.saveStudent(currentStudent);
+		atp.resetScholarships();
+		addScholarshipsToAppliedPanel();
+		
 	}
 	
 	/**
@@ -223,6 +233,10 @@ public class StudentController extends MyController {
 			int sId = Integer.parseInt(sourceBox.getActionCommand());
 			Integer x = (Integer) sourceBox.getSelectedItem();
 			updatePriority(sId, x);
+			break;
+		case "Withdraw_AppliedToPanel":
+			int sID = Integer.parseInt(source.getActionCommand());
+			withdraw(sID);
 			break;
 		default:
 			break;
