@@ -29,6 +29,7 @@ public class AdminController extends MyController {
 	private AllStudentsPanel asp;
 	private ViewStudentPanel vsp;
 	private CreateScholarshipPanel csp;
+	private AccountPanel acp;
 	
 	// Current User
 	private Admin currentAdmin;
@@ -42,6 +43,7 @@ public class AdminController extends MyController {
 	private JPanel allStudentsPanel;
 	private JPanel viewStudentPanel;
 	private JPanel createScholarshipPanel;
+	private JPanel accountPanel;
 	
 	// THis controls all of the dispalyScholarship panels
 	private ScholarshipController sController;
@@ -76,11 +78,13 @@ public class AdminController extends MyController {
 		asp = new AllStudentsPanel(this);
 		vsp = new ViewStudentPanel(this);
 		csp = new CreateScholarshipPanel(this);
+		acp = new AccountPanel(this);
 		
 		adminPanel = ap.getContentPane();
 		allStudentsPanel = asp.getContentPane();
 		viewStudentPanel = vsp.getContentPane();
 		createScholarshipPanel = csp.getContentPane();
+		accountPanel = acp.getContentPane();
 		
 		// Add all of the students to the AllStudentsPanel
 		addAllStudents();
@@ -255,9 +259,13 @@ public class AdminController extends MyController {
 		}else {
 			return false;
 		}
-		
-		
-		
+	}
+	
+	public void switchToAccountPanel(){
+		acp.setName(currentAdmin.getName());
+		acp.displayStudent(currentAdmin);
+		acp.resetPasswordFileds();
+		switchPanel(accountPanel);
 	}
 	
 	@Override
@@ -317,6 +325,9 @@ public class AdminController extends MyController {
 		case "Back_CreateScholarshipPanel":
 			switchToAdminPanel();
 			break;
+		case "Back_AccountPanel":
+			switchToAdminPanel();
+			break;
 		case"Back_AllScholarshipsPanel":
 			// Get an updated version of all of the scholarship
 			scMap = sController.getScMap();
@@ -330,6 +341,39 @@ public class AdminController extends MyController {
 			Scholarship s = scMap.get(Integer.parseInt(source.getActionCommand()));
 			if(saveScholarship(s)) {
 				sController.start(true, scMap);
+			}
+			break;
+		case "Account_AdminPanel":
+			switchToAccountPanel();
+			break;
+		case "UpdatePassword_AccountPanel":
+			String p = acp.getNewPassword();
+			String cp = acp.getConfirmPassword();
+			Object[] okOption = { "OK" };
+			if(p.equals("") || cp.equals("")) {
+				JOptionPane.showOptionDialog(null, "Password field cannot be empty", "Warning",
+						JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,
+						null, okOption, okOption[0]);
+				//STEVE MAKE A DIALOG BOX THAT SAYS PASSWOFRD MUST NOT BE EMPTY
+			}else if(!p.equals(cp)){
+				JOptionPane.showOptionDialog(null, "Passwords do not match", "Warning",
+						JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,
+						null, okOption, okOption[0]);
+				// STEVE MAKE A DIALGOG BOX THAT SAYS PASSWORD DO NTO MATCH
+			}else if(!p.matches("[a-zA-Z0-9]*")){
+				JOptionPane.showOptionDialog(null, "Password can only contain letters and numbers", "Warning",
+						JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,
+						null, okOption, okOption[0]);
+				// STEVE MAKE A DIALOG BOX THAT SAYS NEW PASSWORD CAN ONLY CONTAIN LETTERS AND NUMBERS
+			}else {
+				JOptionPane.showOptionDialog(null, "Your password has successfully been changed", "Success!",
+						JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE,
+						null, okOption, okOption[0]);
+				// STEVE MAKE A DIALOG BOX THAT SAYS CONGRATS YOU HAVE UPDATED OYUR PASSWORD
+				// UPDATE THE STUDENTS PASSWORD FIELD AND SAVE THE STUDENT
+				currentAdmin.setPassword(p);
+				util.saveAdmin(currentAdmin);
+				acp.resetPasswordFileds();
 			}
 			break;
 		default:

@@ -97,12 +97,19 @@ public class StudentController extends MyController {
 		}
 	}
 	
+	/**
+	 * Update the StudentPanel with the currentStudents info
+	 * Switch to the studentPanel
+	 */
 	private void switchToStudentPanel() {
 		sp.setName(currentStudent.getName());
 		sp.setEmail(currentStudent.getEmail());
 		switchPanel(studentPanel);
 	}
-	
+	/**
+	 * Update the account panel to the current student
+	 * Switch to the accountPanel
+	 */
 	private void switchToAccountPanel() {
 		acp.setName(currentStudent.getName());
 		acp.displayStudent(currentStudent);
@@ -110,6 +117,13 @@ public class StudentController extends MyController {
 		switchPanel(accountPanel);
 	}
 	
+	/**
+	 * Apply to a scholarship as a student
+	 * Adds the scholarship ID to the students list of scholarship
+	 * Add the students UCID to the scholarship d list of students
+	 * @param scholarshipID - THE ID of the scholarship to apply to
+	 * @return
+	 */
 	private boolean applyToScholarship(int scholarshipID) {
 		Scholarship s = scMap.get(scholarshipID);
 		// Make sure current student is not null
@@ -141,7 +155,11 @@ public class StudentController extends MyController {
 			return false;
 		}
 	}
-	
+	/**
+	 * Updated the priority of a scholarship for the current student
+	 * @param sId - The scholarship ID
+	 * @param prio - The position you want the scholarships (1-total scholarships)
+	 */
 	private void updatePriority(int sId, int prio) {
 		currentStudent.changeScholarshipPriority(sId, prio-1);
 		util.saveStudent(currentStudent);
@@ -149,11 +167,19 @@ public class StudentController extends MyController {
 		addScholarshipsToAppliedPanel();
 	}
 	
+	/**
+	 * Withdraw from a scholarship
+	 * @param sId
+	 */
 	private void withdraw(int sId) {
+		// Remove the scholarship
 		currentStudent.removeScholarship(sId);
+		//Remove the student
 		scMap.get(sId).removeStudent(currentStudent.getUCID());
+		//Save both
 		util.saveScholarship(scMap.get(sId));
 		util.saveStudent(currentStudent);
+		// Reset the panel
 		atp.resetScholarships();
 		addScholarshipsToAppliedPanel();
 		
@@ -283,6 +309,5 @@ public class StudentController extends MyController {
 		default:
 			break;
 		}
-		
 	}	
 }
