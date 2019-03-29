@@ -9,13 +9,19 @@ import myJStuff.*;
 import objects.Student;
 
 public class AllStudentsPanel extends MyPanel{
-	
+	/**
+	 * instance variables
+	 */
 	private JLabel lblTitle;
 	
 	private JButton btnBack;
 	
 	int studentRow;
 	
+	/**
+	 * class constructor
+	 * @param packageListener listener for buttons
+	 */
 	public AllStudentsPanel(ActionListener packageListener) {
 		this.packageListener = packageListener;
 		
@@ -26,11 +32,17 @@ public class AllStudentsPanel extends MyPanel{
 		studentRow = 0;
 	}
 	
+	/**
+	 * displayNorth method displays heading of the panel
+	 */
 	private void displayNorth() {
 		lblTitle = new MyLabel("All Students", Size.defaultLblSubTitleFontSize);
 		north.add(lblTitle,"cell 0 0, center");
 	}
 	
+	/**
+	 * displaySouth method displays bottom of the panel (back button)
+	 */
 	private void displaySouth() {
 		btnBack = new MyButton("Back", Size.defaultBtnFontSize);
 		south.add(btnBack,"cell 0 0, left");
@@ -38,11 +50,17 @@ public class AllStudentsPanel extends MyPanel{
 		btnBack.addActionListener(packageListener);
 	}
 	
+	/**
+	 * empty method
+	 */
 	private void displayCenter() {
 		
 	}
 	
-	
+	/**
+	 * addStudent method adds 1 target student to the panel (used for a loop)
+	 * @param student the student to be added
+	 */
 	public void addStudent(Student student) {
 		
 		JLabel lbl = new MyLabel(Integer.toString(student.getUCID()));

@@ -9,7 +9,9 @@ import javax.swing.JTextField;
 import myJStuff.*;
 
 public class CreateScholarshipPanel extends MyPanel{
-	
+	/**
+	 * instance variables
+	 */
 	private JTextField fldName;
 	private JTextField fldGpa;
 	private JTextField fldFaculty;
@@ -36,6 +38,10 @@ public class CreateScholarshipPanel extends MyPanel{
 	
 	private JButton btnSave;
 	
+	/**
+	 * class constructor
+	 * @param packageListener listener for the panel
+	 */
 	public CreateScholarshipPanel(ActionListener packageListener){
 		this.packageListener = packageListener;
 		displayNorth();
@@ -43,11 +49,17 @@ public class CreateScholarshipPanel extends MyPanel{
 		displaySouth();
 	}
 	
+	/**
+	 * displayNorth method displays the heading of the panel 
+	 */
 	private void displayNorth() {
 		lblHeader = new MyLabel("Create Scholarship", Size.defaultLblSubTitleFontSize);
 		north.add(lblHeader, "cell 0 0,center");
 	}
 	
+	/**
+	 * displayCenter method displays labels of attributes of the scholarship to be added and fields to write in
+	 */
 	private void displayCenter() {
 		
 		
@@ -108,6 +120,9 @@ public class CreateScholarshipPanel extends MyPanel{
 		
 	}
 	
+	/**
+	 * displaySouth method displays 2 functional buttons (back and create)
+	 */
 	private void displaySouth() {
 		btnBack = new MyButton("Back", Size.defaultBtnFontSize);
 		south.add(btnBack, "cell 0 0, left");
@@ -120,6 +135,10 @@ public class CreateScholarshipPanel extends MyPanel{
 		btnSave.setName("Create_CreateScholarshipPanel");
 	}
 	
+	/**
+	 * method to get name from the text field
+	 * @return name of the scholarship as a string
+	 */
 	public String getName() {
 		if(fldName.getText().contains(",")) {
 			return "";
@@ -128,6 +147,10 @@ public class CreateScholarshipPanel extends MyPanel{
 		}
 	}
 	
+	/**
+	 * method to get GPA requirement from the text field
+	 * @return the GPA requirement as a double
+	 */
 	public double getGpa() {
 		try{
 			return Double.parseDouble(fldGpa.getText());
@@ -137,7 +160,10 @@ public class CreateScholarshipPanel extends MyPanel{
 		
 	}
 	
-	
+	/**
+	 * method to get the faculty requirement from the text field
+	 * @return faculty requirement as a string
+	 */
 	public String getFaculty() {
 		if(fldFaculty.getText().contains(",")) {
 			return "";
@@ -146,6 +172,10 @@ public class CreateScholarshipPanel extends MyPanel{
 		}
 	}
 	
+	/**
+	 * method to get the year requirement from the text field
+	 * @return the year of study requirement as an integer
+	 */
 	public int getYearOfStudy() {
 		try {
 			return Integer.parseInt(fldYearOfStudy.getText());
@@ -153,6 +183,11 @@ public class CreateScholarshipPanel extends MyPanel{
 			return -1;
 		}
 	}
+	
+	/**
+	 * method to get the type of study requirement from the text field
+	 * @return the type of study requirement as a string
+	 */
 	public String getTypeOfStudy() {
 		if(fldTypeOfStudy.getText().contains(",")) {
 			return "";
@@ -160,6 +195,11 @@ public class CreateScholarshipPanel extends MyPanel{
 			return fldTypeOfStudy.getText();
 		}
 	}
+	
+	/**
+	 * method to get the department requirement from the text field 
+	 * @return the department requirement as a string
+	 */
 	public String getDepartment() {
 		if(fldDepartment.getText().contains(",")) {
 			return "";
@@ -167,6 +207,11 @@ public class CreateScholarshipPanel extends MyPanel{
 			return fldDepartment.getText();
 		}
 	}
+	
+	/**
+	 * method to get the number of scholarships to be awarded
+	 * @return the number of scholarships as an integer
+	 */
 	public int getNumAllowed() {
 		try {
 			return Integer.parseInt(fldNumAllowed.getText());
@@ -176,6 +221,10 @@ public class CreateScholarshipPanel extends MyPanel{
 		
 	}
 
+	/**
+	 * method to get scholarship description from the text field
+	 * @return the description as a string
+	 */
 	public String getDescription() {
 		if (fldDescription.getText().contains(",")) {
 			return "";
@@ -184,6 +233,10 @@ public class CreateScholarshipPanel extends MyPanel{
 		}
 	}
 	
+	/**
+	 * method to get the value of the scholarship
+	 * @return the money rewarded as a double
+	 */
 	public double getMoney() {
 		try {
 			return Double.parseDouble(fldAmount.getText());
@@ -194,6 +247,9 @@ public class CreateScholarshipPanel extends MyPanel{
 		
 	}
 	
+	/**
+	 * method clears all text fields
+	 */
 	public void clearAll() {
 		fldName.setText("");
 		fldGpa.setText("");

@@ -14,7 +14,7 @@ import myJStuff.*;
 public class AdminPanel extends MyPanel{
 	
 	/**
-	 * Instance Vars.
+	 * Instance Variables.
 	 */
 	private ActionListener globalListener;
 	
@@ -57,6 +57,9 @@ public class AdminPanel extends MyPanel{
 		north.add(lblEmail, "cell 0 2,center");
 	}
 	
+	/**
+	 * displayCenter method displays 3 buttons in the center of the screen
+	 */
 	private void displayCenter() {
 		btnStudents = new MyButton("View All Students", Size.defaultBtnFontSize);
 		center.add(btnStudents,"cell 0 0, center");
@@ -91,10 +94,18 @@ public class AdminPanel extends MyPanel{
 	
 	}
 	
+	/**
+	 * method to set text for the name label
+	 * @param name the text for the label
+	 */
 	public void setName(String name) {
 		lblName.setText(name);
 	}
-	
+
+	/**
+	 * method to set text for the email label
+	 * @param email
+	 */
 	public void setEmail(String email) {
 		lblEmail.setText(email);
 	}
