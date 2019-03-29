@@ -16,6 +16,8 @@ private JButton btnBack;
 	private int y=1;
 	private JLabel lblName;
 	
+	private int totalScholarships;
+	
 	public AppliedToPanel(ActionListener packageListener) {
 		this.packageListener = packageListener;
 		
@@ -47,7 +49,11 @@ private JButton btnBack;
 		btnBack.setName("Back_AppliedToPanel");
 	}
 	
-	public void addScholarship(Scholarship scholarship) {
+	public void setTotalScholarships(int i) {
+		totalScholarships = i;
+	}
+	
+	public void addScholarship(Scholarship scholarship, int priority) {
 		String name = scholarship.getName();
 		String money = Double.toString(scholarship.getMoney());
 		String toS = scholarship.getDepartment();

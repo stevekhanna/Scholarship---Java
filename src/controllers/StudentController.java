@@ -69,6 +69,7 @@ public class StudentController extends MyController {
 		ap = new AppliedPanel(this);
 		atp = new AppliedToPanel(this);
 		acp = new AccountPanel(this);
+		atp.setTotalScholarships(currentStudent.getScholarshipsAppliedTo().size());
 		
 		studentPanel = sp.getContentPane();
 		appliedPanel = ap.getContentPane();
