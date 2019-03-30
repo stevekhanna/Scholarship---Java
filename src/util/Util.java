@@ -5,7 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 
 import objects.*;
-
+/**
+ * 
+ * @author Steve Khanna Pierce de Jong
+ *
+ */
 public class Util {
 	
 	private List<Student> students;

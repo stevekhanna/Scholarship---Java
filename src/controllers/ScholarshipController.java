@@ -98,15 +98,25 @@ public class ScholarshipController extends MyController{
 		}	
 		return null;
 	}
-	
+	/**
+	 * Switch the JPaenl to the ViewScholarshipPanel
+	 * @param scholarship - the scholarship to view
+	 */
 	private void switchToViewScholarshipPanel(Scholarship scholarship) {
+		// Display the scholarship
 		vsp.displayScholarship(scholarship);
+		// IF the current user is an admin dispaly all students that have applied
 		if(isAdmin) {
 			vsp.displayStudentsApplied(getScholarshipStudents(scholarship));
 		}
 		switchPanel(viewScholarshipPanel);
 	}
 	
+	/**
+	 * Get all of the students that have applied to a scholarship
+	 * @param s - Scholarship
+	 * @return - String of all of the student UCIDs
+	 */
 	private String getScholarshipStudents(Scholarship s) {
 		
 		String x = "";
@@ -125,23 +135,29 @@ public class ScholarshipController extends MyController{
 		return x;
 	}
 	
-	
-	public HashMap<Integer, Scholarship> getScMap(){
-		return scMap;
-	}
-	
+	/**
+	 * Get edit panel
+	 * Used to get the info for editing a panel
+	 * @return - JPanel
+	 */
 	public EditScholarshipPanel getEdits() {
 		return esp;
 	}
 
+	/**
+	 *  ALl buttons presses in the dispalyScholarship Package that have been given the packageListener actionListener
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		// Get the name of the button that was pressed
 		JButton source = (JButton)e.getSource();
 		String name = source.getName();
 		
 		switch(name){
 		case"ViewScholarship_AllScholarshipsPanel":
+			// Get the id of the scholarship to view
 			int id = Integer.parseInt(source.getActionCommand());
+			// Find the scholarship
 			Scholarship s = scMap.get(id);
 			switchToViewScholarshipPanel(s);
 			break;
@@ -152,17 +168,21 @@ public class ScholarshipController extends MyController{
 			switchPanel(allScholarshipsPanel);
 			break;
 		case "EditScholarship_ViewScholarshipPanel":
+			// Get the id of the scholarship to view
 			int i = Integer.parseInt(source.getActionCommand());
+			// Find the scholarship
 			Scholarship sc = scMap.get(i);
+			// Update the edit scholarship panel
 			esp.setScholarship(sc);
+			// Switch the panel
 			switchPanel(editScholarshipPanel);
 			break;
 		case"Search_AllScholarshipsPanel":
+			// Get the text of the search bar
 			String x = asp.getSearchResult();
-			
-		// Case for search button 
+			// Try to find the scholarship
 			Scholarship sr = searchForScholarship(x);
-			
+			// If the scholarship is not null display the scholarship page
 			if(sr != null) {
 				switchToViewScholarshipPanel(sr);
 				asp.setErrorMessage("");
@@ -174,17 +194,10 @@ public class ScholarshipController extends MyController{
 				}else {
 					asp.setErrorMessage("Error, could not find scholarship with name " + x);
 				}
-				
 			}
 			break;
-		
-			
-		// Have the scholarship
-		// switchToViewScholarhipPanel( The scholarship that you found)
 		default:
 			break;
 		}
-		
 	}
-
 }
