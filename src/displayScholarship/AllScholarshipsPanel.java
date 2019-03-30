@@ -12,6 +12,9 @@ import objects.Scholarship;
 
 public class AllScholarshipsPanel extends MyPanel{
 	
+	/**
+	 * instance variables
+	 */
 	private ActionListener globalLisenter;
 	
 	private JLabel lblTitle;
@@ -28,6 +31,12 @@ public class AllScholarshipsPanel extends MyPanel{
 	
 	private boolean isAdmin;
 
+	/**
+	 * class constructor
+	 * @param actionListener package listener
+	 * @param globalLisenter global listener
+	 * @param isAdmin whether it is the admin or student viewing the scholarships, granting additional power to admin
+	 */
 	public AllScholarshipsPanel(ActionListener actionListener, ActionListener globalLisenter, boolean isAdmin) {
 		this.packageListener = actionListener;
 		this.globalLisenter = globalLisenter;
@@ -38,13 +47,18 @@ public class AllScholarshipsPanel extends MyPanel{
 		displayCenter();
 	}
 
+	/**
+	 * displays heading of the panel
+	 */
 	private void displayNorth(){
 		lblTitle = new MyLabel("Scholarships", Size.defaultLblTitleFontSize);
 		north.add(lblTitle, "cell 0 0");
 	}
 	
 	/**
-	 * shows the bottom part of the About panel.
+	 * shows the bottom part of the scholarship list panel
+	 * with a back button, and a search button
+	 * search using the textfield
 	 */
 	private void displaySouth(){
 		
@@ -75,16 +89,18 @@ public class AllScholarshipsPanel extends MyPanel{
 		lblSearchError.setText(error);
 	}
 	
+	
 	public String getSearchResult() {
 		return fldSearch.getText();
 	}
+	
 	
 	public void setSearchResult(String search) {
 		fldSearch.setText(search);
 	}
 	
 	/**
-	 * Empty method, displays center of panel.
+	 * Display attribute names of the scholarships
 	 */
 	private void displayCenter(){
 		lblName = new MyLabel("Name", Colors.grey, Size.defaultLblFontSize);
@@ -100,8 +116,9 @@ public class AllScholarshipsPanel extends MyPanel{
 	}
 	
 	/**
-	 * displays the scholarship.
-	 * @param scholarship
+	 * displays the scholarship
+	 * if viewer is admin, show delete button for scholarship
+	 * @param scholarship scholarship to be displayed
 	 */
 	public void displayScholarship(Scholarship scholarship) {
 		String name = scholarship.getName();

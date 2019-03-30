@@ -100,9 +100,9 @@ public class ScholarshipController extends MyController{
 	}
 	
 	private void switchToViewScholarshipPanel(Scholarship scholarship) {
-		vsp.dispalyScholarship(scholarship);
+		vsp.displayScholarship(scholarship);
 		if(isAdmin) {
-			vsp.disaplyStudentsApplied(getScholarshipStudents(scholarship));
+			vsp.displayStudentsApplied(getScholarshipStudents(scholarship));
 		}
 		switchPanel(viewScholarshipPanel);
 	}

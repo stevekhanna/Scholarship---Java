@@ -11,7 +11,9 @@ import myJStuff.*;
 import objects.Scholarship;
 
 public class EditScholarshipPanel extends MyPanel{
-	
+	/**
+	 * instance variables
+	 */
 	private ActionListener globalListener;
 	
 	private JTextField fldName;
@@ -39,6 +41,11 @@ public class EditScholarshipPanel extends MyPanel{
 	
 	private JButton btnSave;
 	
+	/**
+	 * class constructor
+	 * @param packageListener
+	 * @param globalListener
+	 */
 	public EditScholarshipPanel(ActionListener packageListener, ActionListener globalListener){
 		this.packageListener = packageListener;
 		this.globalListener = globalListener;
@@ -47,12 +54,19 @@ public class EditScholarshipPanel extends MyPanel{
 		displaySouth();
 	}
 	
+	/**
+	 * displays the heading of the panel
+	 */
 	private void displayNorth() {
 		lblHeader = new MyLabel("Label", Size.defaultLblSubTitleFontSize);
 		lblHeader.setText("Edit Scholarship");
 		north.add(lblHeader, "cell 0 0,center");
 	}
 	
+	/**
+	 * displays text fields for updating attributes of the scholarship
+	 * default is old attributes
+	 */
 	private void displayCenter() {
 		
 		
@@ -125,6 +139,9 @@ public class EditScholarshipPanel extends MyPanel{
 		
 	}
 	
+	/**
+	 * displays the back button and button to save edits
+	 */
 	private void displaySouth() {
 		btnBack = new MyButton("Back", Size.defaultBtnFontSize);
 		south.add(btnBack, "cell 0 0, left");
@@ -137,6 +154,10 @@ public class EditScholarshipPanel extends MyPanel{
 		btnSave.setName("SaveEdits_EditScholarshipPanel");
 	}
 	
+	/**
+	 * set text fields to be of the old scholarship attributes
+	 * @param s
+	 */
 	public void setScholarship(Scholarship s) {
 		fldName.setText(s.getName());
 		fldGpa.setText(s.getGpaRequirement()+"");
@@ -150,6 +171,10 @@ public class EditScholarshipPanel extends MyPanel{
 		btnSave.setActionCommand(Integer.toString(s.getScholarshipId()));
 	}
 	
+	/**
+	 * getter for name of scholarship from text field
+	 * @return name of scholarship
+	 */
 	public String getName() {
 		if(fldName.getText().contains(",")) {
 			return "";
@@ -158,6 +183,10 @@ public class EditScholarshipPanel extends MyPanel{
 		}
 	}
 	
+	/**
+	 * getter for GPA from text field
+	 * @return GPA requirement
+	 */
 	public double getGpa() {
 		try{
 			return Double.parseDouble(fldGpa.getText());
@@ -167,7 +196,10 @@ public class EditScholarshipPanel extends MyPanel{
 		
 	}
 	
-	
+	/**
+	 * getter for faculty from text field
+	 * @return the faculty requirement
+	 */
 	public String getFaculty() {
 		if(fldFaculty.getText().contains(",")) {
 			return "";
@@ -176,6 +208,10 @@ public class EditScholarshipPanel extends MyPanel{
 		}
 	}
 	
+	/**
+	 * getter for year of study from text field
+	 * @return year requirement
+	 */
 	public int getYearOfStudy() {
 		try {
 			return Integer.parseInt(fldYearOfStudy.getText());
@@ -183,6 +219,11 @@ public class EditScholarshipPanel extends MyPanel{
 			return -1;
 		}
 	}
+	
+	/**
+	 * getter for type of study from text field
+	 * @return type of study requirement
+	 */
 	public String getTypeOfStudy() {
 		if(fldTypeOfStudy.getText().contains(",")) {
 			return "";
@@ -190,6 +231,11 @@ public class EditScholarshipPanel extends MyPanel{
 			return fldTypeOfStudy.getText();
 		}
 	}
+	
+	/**
+	 * getter for department from text field
+	 * @return department restriction
+	 */
 	public String getDepartment() {
 		if(fldDepartment.getText().contains(",")) {
 			return "";
@@ -197,6 +243,11 @@ public class EditScholarshipPanel extends MyPanel{
 			return fldDepartment.getText();
 		}
 	}
+	
+	/**
+	 * getter for number of scholarships awarded
+	 * @return scholarship count
+	 */
 	public int getNumAllowed() {
 		try {
 			return Integer.parseInt(fldNumAllowed.getText());
@@ -206,6 +257,10 @@ public class EditScholarshipPanel extends MyPanel{
 		
 	}
 
+	/**
+	 * getter for scholarship description from text field
+	 * @return description string
+	 */
 	public String getDescription() {
 		if (fldDescription.getText().contains(",")) {
 			return "";
@@ -214,6 +269,10 @@ public class EditScholarshipPanel extends MyPanel{
 		}
 	}
 	
+	/**
+	 * getter for value of the scholarship
+	 * @return monetary value
+	 */
 	public double getMoney() {
 		try {
 			return Double.parseDouble(fldAmount.getText());
