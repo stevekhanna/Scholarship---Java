@@ -16,8 +16,10 @@ public class MyFont extends Font{
 		String OS = System.getProperty("os.name").toLowerCase();
 		if(OS.indexOf("mac")>=0) {
 			return "Avenir";
-		}else {
+		}else if (OS.indexOf("win")>=0) {
 			return "Malgun Gothic";
+		}else {
+			return "NanumGothic";
 		}
 	}
 }
