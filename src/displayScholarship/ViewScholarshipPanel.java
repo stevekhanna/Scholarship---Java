@@ -10,6 +10,9 @@ import myJStuff.*;
 import objects.Scholarship;
 
 public class ViewScholarshipPanel extends MyPanel{
+	/**
+	 * instance variables
+	 */
 	private final int NUM_OF_ATTRIBUTES = 8;
 	
 	private ActionListener globalListener;
@@ -24,6 +27,12 @@ public class ViewScholarshipPanel extends MyPanel{
 	private JLabel lblStudents;
 	private JLabel lblStudentsTitle;
 
+	/**
+	 * class constructor
+	 * @param actionListener package listener
+	 * @param globalListener global listener
+	 * @param isAdmin whether the user has admin privileges or not
+	 */
 	public ViewScholarshipPanel(ActionListener actionListener,ActionListener globalListener, boolean isAdmin) {
 		this.packageListener = actionListener;
 		this.globalListener = globalListener;
@@ -34,13 +43,19 @@ public class ViewScholarshipPanel extends MyPanel{
 		displayCenter();
 	}
 
+	/**
+	 * displays heading of the panel
+	 */
 	private void displayNorth(){
 		lblTitle = new MyLabel("Scholarship Panel", Size.defaultLblTitleFontSize);
 		north.add(lblTitle, "cell 0 0");
 	}
 	
 	/**
-	 * shows the bottom part of the About panel.
+	 * displays the bottom part of the panel
+	 * with a back button and:
+	 * - apply button for student
+	 * - edit button for admin
 	 */
 	private void displaySouth(){
 		btnBack = new MyButton("Back", Size.defaultBtnFontSize);
@@ -65,7 +80,8 @@ public class ViewScholarshipPanel extends MyPanel{
 	}
 	
 	/**
-	 * Empty method, displays center of panel.
+	 * displays center of panel
+	 * with attributes of the current scholarship
 	 */
 	private void displayCenter(){
 		String[] attributeName = {"GPA","Faculty","Year of Study", "Type of Study", "Department", "Number Available", "Description", "Amount"};
@@ -83,7 +99,12 @@ public class ViewScholarshipPanel extends MyPanel{
 		center.add(lblStudents,"cell 1 8,left");
 	}
 	
-	public void dispalyScholarship(Scholarship scholarship) {
+	/**
+	 * displays target scholarship in center panel
+	 * 
+	 * @param scholarship scholarship to be displayed
+	 */
+	public void displayScholarship(Scholarship scholarship) {
 		if(!isAdmin) {
 			btnApply.setActionCommand(Integer.toString(scholarship.getScholarshipId()));
 			lblStudentsTitle.setText("");
@@ -105,7 +126,11 @@ public class ViewScholarshipPanel extends MyPanel{
 		}
 	}
 	
-	public void disaplyStudentsApplied(String students) {
+	/**
+	 * set to display all students who have applied for current scholarship
+	 * @param students list of IDs of students applied for the scholarship, separated by commas 
+	 */
+	public void displayStudentsApplied(String students) {
 		lblStudents.setText(students);
 	}
 }

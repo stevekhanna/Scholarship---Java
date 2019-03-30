@@ -11,6 +11,9 @@ import net.miginfocom.swing.MigLayout;
 import objects.*;
 
 public class AccountPanel extends MyPanel {
+	/**
+	 * instance variables
+	 */
 	private Student student;
 	private JButton btnBack;
 	private JButton btnPassword;
@@ -24,7 +27,10 @@ public class AccountPanel extends MyPanel {
 	private JPasswordField fldConfirmPassword;
 
 
-	
+	/**
+	 * class constructor
+	 * @param packageListener listener for panel
+	 */
 	public AccountPanel(ActionListener packageListener) {
 		this.packageListener = packageListener;
 		contentPane.setName("Account Panel");
@@ -36,7 +42,9 @@ public class AccountPanel extends MyPanel {
 
 
 
-
+	/**
+	 * displayNorth displays heading of the panel
+	 */
 	private void displayNorth() {
 		lblName = new MyLabel("Name", Size.defaultLblTitleFontSize);
 		north.add(lblName, "cell 0 1,center");
@@ -47,7 +55,11 @@ public class AccountPanel extends MyPanel {
 		//center.setLayout(new MigLayout("", "[]", "[]"));
 	}
 	
-	
+	/**
+	 * display account details of current student
+	 * with an option to update to new password
+	 * @param student
+	 */
 	public void displayStudent(Student student) {
 		center.removeAll();
 		center.repaint();
@@ -81,19 +93,34 @@ public class AccountPanel extends MyPanel {
 		
 	}
 	
+	/**
+	 * get the new password
+	 * @return the new password as a string
+	 */
 	public String getNewPassword() {
-		return fldPassword.getText();
+		return new String(fldPassword.getPassword());
 	}
 	
+	/**
+	 * get the new password a second time for confirmation
+	 * @return the confirmation string
+	 */
 	public String getConfirmPassword() {
-		return fldConfirmPassword.getText();
+		return new String(fldConfirmPassword.getPassword());
 	}
 	
-	public void resetPasswordFileds() {
+	/**
+	 * clear password fields
+	 */
+	public void resetPasswordFields() {
 		fldPassword.setText("");
 		fldConfirmPassword.setText("");
 	}
 
+	/**
+	 * displays the bottom of the panel
+	 * with back button and update password button
+	 */
 	private void displaySouth() {
 		btnBack = new MyButton("Back", Size.defaultBtnFontSize);
 		south.add(btnBack, "cell 0 0");
@@ -105,6 +132,10 @@ public class AccountPanel extends MyPanel {
 		btnPassword.setName("UpdatePassword_AccountPanel");
 	}
 	
+	/**
+	 * setter for the name of the panel
+	 * @param name label text
+	 */
 	public void setName(String name) {
 		lblName.setText(name);
 	}

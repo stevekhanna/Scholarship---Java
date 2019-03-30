@@ -13,13 +13,18 @@ import objects.Scholarship;
 
 public class AppliedToPanel extends MyPanel{
 private JButton btnBack;
-	
+	/**
+	 * instance variables
+	 */
 	private JLabel lblSuccess;
 	private int y=1;
 	private JLabel lblName;
 	
 	private int totalScholarships;
-	
+	/**
+	 * class constructor
+	 * @param packageListener listener for the panel
+	 */
 	public AppliedToPanel(ActionListener packageListener) {
 		this.packageListener = packageListener;
 		contentPane.setName("AppliedToPanel");
@@ -29,12 +34,17 @@ private JButton btnBack;
 		displayCenter();
 	}
 	
-	
+	/**
+	 * displays heading of the panel
+	 */
 	private void displayNorth() {
 		lblSuccess = new MyLabel("Scholarships you have applied to", Size.defaultLblFontSize);
 		north.add(lblSuccess, "cell 0 0,center");
 	}
 	
+	/**
+	 * displays attribute names
+	 */
 	private void displayCenter() {
 		
 		lblName = new MyLabel("Name", Colors.grey, Size.defaultLblFontSize);
@@ -47,6 +57,9 @@ private JButton btnBack;
 		center.add(lblName,"cell 3 0");
 	}
 	
+	/**
+	 * displays the back button
+	 */
 	private void displaySouth() {
 		btnBack = new MyButton("Back", Size.defaultBtnFontSize);
 		south.add(btnBack, "cell 0 0");
@@ -54,10 +67,17 @@ private JButton btnBack;
 		btnBack.setName("Back_AppliedToPanel");
 	}
 	
+	/**
+	 * setter for the number of scholarships to display
+	 * @param i amount of scholarships to display
+	 */
 	public void setTotalScholarships(int i) {
 		totalScholarships = i;
 	}
 	
+	/**
+	 * remove all scholarships from the panel
+	 */
 	public void resetScholarships() {
 		center.removeAll();
 		center.repaint();
@@ -65,6 +85,12 @@ private JButton btnBack;
 		y = 1;
 	}
 
+	/**
+	 * add scholarship successfully applied to by the student to center by priority
+	 * with an option to withdraw from said scholarship
+	 * @param scholarship scholarship to be added
+	 * @param priority priority of said scholarship
+	 */
 	public void addScholarship(Scholarship scholarship, int priority) {
 		ArrayList<Integer> strList = new ArrayList<Integer>();
 		
