@@ -1,7 +1,7 @@
 package myJStuff;
 
 /**
- * Static final ints that are used across the propgram
+ * Static final ints that are used across the program
  * @author pierce
  *
  */

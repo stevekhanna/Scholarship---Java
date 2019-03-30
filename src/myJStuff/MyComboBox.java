@@ -18,8 +18,5 @@ public class MyComboBox extends JComboBox<Object> {
 		setForeground(Colors.defaultButtonTextColor);
 		setBackground(Colors.defaultButtonBackgroundColor);
 		setFont(new MyFont(Size.defaultLblFontSize));
-		//setBorder(new EmptyBorder(4,4,4,4));
-		//setPreferredSize(new Dimension(Size.defaultBtnWidth,Size.defaultBtnHeight));
 	}
 }
-

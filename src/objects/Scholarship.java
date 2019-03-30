@@ -166,7 +166,11 @@ public class Scholarship {
 	public void setMoney(double money) {
 		this.money = money;
 	}
-	
+	/**
+	 * Add student to the scholarship
+	 * @param id of the student
+	 * @return boolean: if add was successful or not
+	 */
 	public boolean addStudent(int id) {
 		if (studentUcids.contains(id)) {
 			return false;
@@ -176,15 +180,26 @@ public class Scholarship {
 			return true;
 		}
 	}
-	
+	/**
+	 * Remove student from scholarship
+	 * @param ucid of the student 
+	 * @return boolean: if remove was successful
+	 */
 	public boolean removeStudent(int ucid) {
 		return (studentUcids.remove((Integer)ucid));
 	}
 	
+	/**
+	 * List of students that have applied for this scholarship
+	 * @return List of student ucids
+	 */
 	public List<Integer> getStudentsUcids() {
 		return studentUcids;
 	}
 	
+	/**
+	 * toString method for writing the scholarships properly to the file
+	 */
 	@Override
 	public String toString() {
 		
