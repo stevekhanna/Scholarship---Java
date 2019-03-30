@@ -14,37 +14,62 @@ import myJStuff.MyController;
 
 public class ScholarshipController extends MyController{
 	
+	/**
+	 * Instance Variables
+	 */
 	private JPanel viewScholarshipPanel;
 	private JPanel allScholarshipsPanel;
 	private JPanel editScholarshipPanel;
 	
-	
+	/**
+	 * This is all of the panels that are in the displaySchoalrship
+	 */
 	private ViewScholarshipPanel vsp;
 	private AllScholarshipsPanel asp;
 	private EditScholarshipPanel esp;
 	
+	
+	/**
+	 * HashMap of all of the scholarships
+	 */
 	private HashMap<Integer, Scholarship> scMap;
 	
-	
+	/**
+	 * If the scholarship controller is started as an admin or a student
+	 */
 	private boolean isAdmin;
 	
+	/**
+	 * Constructor
+	 * @param globalListener - ActionListener
+	 * @param frame - the JFrame
+	 */
 	public ScholarshipController(ActionListener globalListener,JFrame frame) {
 		super(globalListener, frame);
 	}
 	
+	/**
+	 * Start the scholarshipController and switch to ViewAllScholarshipsPanel
+	 * @param isAdmin - boolean
+	 * @param scMap - the HashMap of the scholarships
+	 */
 	public void start(boolean isAdmin, HashMap<Integer, Scholarship> scMap) {
 		this.isAdmin = isAdmin;
 		this.scMap = scMap;
 		
+		// Initialize all of the panels
 		vsp = new ViewScholarshipPanel(this,globalListener,this.isAdmin);
 		asp = new AllScholarshipsPanel(this,globalListener,this.isAdmin);
 		esp = new EditScholarshipPanel(this,globalListener);
 		
+		// Get the content panes
 		viewScholarshipPanel = vsp.getContentPane();
 		allScholarshipsPanel = asp.getContentPane();
 		editScholarshipPanel = esp.getContentPane();
 		
+		// Add all the scholarships to the allScholarshipsPanel
 		scholarshipLoop(scMap);
+		// Switch the current JPanel
 		switchPanel(allScholarshipsPanel);
 	}
 	
@@ -59,6 +84,11 @@ public class ScholarshipController extends MyController{
 		}
 	}
 	
+	/**
+	 * Find a scholarship by its name
+	 * @param name - String
+	 * @return - Scholarship
+	 */
 	private Scholarship searchForScholarship(String name) {
 		
 		for(Integer ID: scMap.keySet()) {

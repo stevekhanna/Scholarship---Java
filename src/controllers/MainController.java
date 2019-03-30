@@ -41,11 +41,16 @@ public class MainController implements ActionListener{
 		
 		loadData();
 		
+		// Start the login controller
 		lController.start();
 		
+		// Create an instance of the saveUtil class
 		util = new Util(students,admins,scMap);
 	}
 	
+	/**
+	 * Load all of the data from the CSV files
+	 */
 	private void loadData() {
 		LoadData ld = new LoadData();
 		students = ld.loadStudents();

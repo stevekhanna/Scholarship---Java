@@ -19,9 +19,8 @@ import myJStuff.Colors;
 import myJStuff.MyController;
 
 /**
- * Controller used to manage what the admin can do when logged in
- * @author pierce
- *
+ * Controller used to manage what the Admin can do when logged in
+ * Manages all of the dislpalyAdminPanels and starting the scholarship controller as an admin
  */
 public class AdminController extends MyController {
 	
@@ -30,6 +29,7 @@ public class AdminController extends MyController {
 	private AllStudentsPanel asp;
 	private ViewStudentPanel vsp;
 	private CreateScholarshipPanel csp;
+	private AccountPanel acp;
 	
 	// Current User
 	private Admin currentAdmin;
@@ -43,9 +43,13 @@ public class AdminController extends MyController {
 	private JPanel allStudentsPanel;
 	private JPanel viewStudentPanel;
 	private JPanel createScholarshipPanel;
+	private JPanel accountPanel;
 	
+	// THis controls all of the dispalyScholarship panels
 	private ScholarshipController sController;
 	
+	
+	// Save and write all of the edited data to the csv files
 	private Util util;
 	
 	
@@ -74,15 +78,18 @@ public class AdminController extends MyController {
 		asp = new AllStudentsPanel(this);
 		vsp = new ViewStudentPanel(this);
 		csp = new CreateScholarshipPanel(this);
+		acp = new AccountPanel(this);
 		
 		adminPanel = ap.getContentPane();
 		allStudentsPanel = asp.getContentPane();
 		viewStudentPanel = vsp.getContentPane();
 		createScholarshipPanel = csp.getContentPane();
+		accountPanel = acp.getContentPane();
 		
 		// Add all of the students to the AllStudentsPanel
 		addAllStudents();
 		
+		// CHange the current JPanel to the admin panel
 		switchToAdminPanel();
 	}
 	
@@ -96,6 +103,11 @@ public class AdminController extends MyController {
 		switchPanel(adminPanel);
 	}
 	
+	/**
+	 * Switch the current JPanel to the ViewStudentJPanel
+	 * Update the panel to display all of the students info
+	 * @param ucid - Integer - the seelcted students id number
+	 */
 	private void switchToViewStudent(int ucid) {
 		Student s = findStudentByUcid(ucid);
 		String x = scholarshipsAppliedTo(s);
@@ -106,33 +118,37 @@ public class AdminController extends MyController {
 	/**
 	 * Loop through the students and add each one as a row to the AllStudentsPanel
 	 * Create a button to view the student and all of the scholarships that student has applied for
-	 * 
-	 * 	**This should only be called ONCE during the start method and never again**
+	 * Called at the start of the Admin Controller
 	 */
 	private void addAllStudents() {
 		for(Student s: students) {
 			asp.addStudent(s);
 		}
 	}
-	
+	/**
+	 * Creates a String of all of the current scholarships the student has applied to
+	 * @param s - Student
+	 * @return - String of all of the scholarships a student has applied to
+	 */
 	private String scholarshipsAppliedTo(Student s) {
 		String scholarships="";
-		if(s.getScholarshipsAppliedTo().isEmpty()) {
-			System.out.println("empty");
+		//Loop through all of the scholarships the student has applied for
+		for(int i: s.getScholarshipsAppliedTo()) {
+			// Check to make sure the student has applied to the scholarships
+			if(scMap.get(i).getStudentsUcids().contains(s.getUCID()))
+				// Add the scholarship to the name
+				scholarships+=scMap.get(i).getName()+", ";
 		}
-		if((s.getScholarshipsAppliedTo()!=null) && (!(s.getScholarshipsAppliedTo().isEmpty()))) {
-			for(Integer ID: scMap.keySet()) {
-				if((scMap.get(ID).getStudentsUcids()!=null)&&(!scMap.get(ID).getStudentsUcids().isEmpty())&&(scMap.get(ID).getStudentsUcids().contains(s.getUCID()))){
-					scholarships+=scMap.get(ID).getName()+", ";
-				}
-			}
-			return scholarships.substring(0, scholarships.length() -2);
-		}else {
-			System.out.println("else");
-			return "No Scholarships Applied to";
-		}
+		if(scholarships.equals(""))
+			return "No scholarships Applied To";
+		else
+			return scholarships.substring(0, scholarships.length()-2);
 	}
-	
+	/**
+	 * Find a Student by UCID
+	 * @param ucid 0 Integer
+	 * @return Student
+	 */
 	private Student findStudentByUcid(int ucid) {
 		for(Student s: students) {
 			if(s.getUCID() == ucid) {
@@ -141,23 +157,34 @@ public class AdminController extends MyController {
 		}
 		return null;
 	}
-	
+	/**
+	 * Deletes a scholarships and withdraw all students from that scholarships
+	 * @param s - Scholarship to delete
+	 */
 	private void deleteScholarship(Scholarship s) {
+		// Delete the scholarships
 		util.deleteScholarship(s);
+		// Remove the scholarships
 		scMap.remove(s.getScholarshipId());
+		// Error handling
 		if (s.getStudentsUcids()!= null) {
+			// Loop through all of the students that have applied to the scholarship
 			for (int i: s.getStudentsUcids()) {
-				for(Student student : students) {
-					if (student.getUCID() == i) {
-						student.removeScholarship(s.getScholarshipId());
-					}
-				}
+				// Find the student by UCID
+				Student x = findStudentByUcid(i);
+				// Remove the scholarship from 
+				x.removeScholarship(s.getScholarshipId());
 			}
 		}
-		
 	}
 	
+	/**
+	 * Saves the edits of a scholarship
+	 * @param s - Scholarship to be edited;
+	 * @return - true | save success - false | save failed
+	 */
 	private boolean saveScholarship(Scholarship s) {
+		// Validate that all of the edit fields have a value
 		boolean invalid = ((sController.getEdits().getName().isEmpty())||
 				(sController.getEdits().getGpa()<=0 ||sController.getEdits().getGpa()>4)||
 				(sController.getEdits().getDescription().isEmpty())||
@@ -167,8 +194,9 @@ public class AdminController extends MyController {
 				(sController.getEdits().getTypeOfStudy().isEmpty())||
 				(sController.getEdits().getNumAllowed())<=0||
 				(sController.getEdits().getMoney())<=0);
-		
+		// Check if the invalid
 		if(!invalid){
+			// If not invalid save all of the edits and return true
 			s.setName(sController.getEdits().getName());
 			s.setGpaRequirement(sController.getEdits().getGpa());
 			s.setDescription(sController.getEdits().getDescription());
@@ -181,14 +209,21 @@ public class AdminController extends MyController {
 			util.saveScholarship(s);
 			return true;
 		}else{
+			//return false
 			return false;
 		}
 		
 		
 	}
-	
+	/**
+	 * Create a scholarship and add it to the scMap
+	 * @return - true | save success - false | save failed
+	 */
 	private boolean createScholarship() {
+		// Generate an new blank scholarship
 		Scholarship s = new Scholarship();
+		
+		// Check that all of the inputs are valid
 		boolean invalid = ((csp.getName().isEmpty())||
 				(csp.getGpa()<=0 ||csp.getGpa()>4)||
 				(csp.getDescription().isEmpty())||
@@ -199,6 +234,7 @@ public class AdminController extends MyController {
 				(csp.getNumAllowed())<=0||
 				(csp.getMoney())<=0);
 		
+		// If they are not invalid save all of the data and add it the scMap
 		if(!invalid) {
 			s.setName(csp.getName());
 			s.setGpaRequirement(csp.getGpa());
@@ -213,16 +249,23 @@ public class AdminController extends MyController {
 			for(Integer val: scMap.keySet()) {
 				scholarshipId = val +1;
 			}
+			// Set the scholarship ID
 			s.setScholarshipId(scholarshipId);
+			// put it tin the scMap
 			scMap.put(scholarshipId, s);
+			// Save it
 			util.saveScholarship(s);
 			return true;
 		}else {
 			return false;
 		}
-		
-		
-		
+	}
+	
+	public void switchToAccountPanel(){
+		acp.setName(currentAdmin.getName());
+		acp.displayStudent(currentAdmin);
+		acp.resetPasswordFileds();
+		switchPanel(accountPanel);
 	}
 	
 	@Override
@@ -263,6 +306,7 @@ public class AdminController extends MyController {
 		case "Back_AllStudentsPanel":
 			switchPanel(adminPanel);
 			break;
+		// Delete a scholarship
 		case "DeleteScholarship_AllScholarshipsPanel":
 			Object[] options = { "YES", "NO" };
 			int selectedOption = JOptionPane.showOptionDialog(null, "Are you sure you want to delete this scholarship?", "Warning",
@@ -281,6 +325,9 @@ public class AdminController extends MyController {
 		case "Back_CreateScholarshipPanel":
 			switchToAdminPanel();
 			break;
+		case "Back_AccountPanel":
+			switchToAdminPanel();
+			break;
 		case"Back_AllScholarshipsPanel":
 			// Get an updated version of all of the scholarship
 			scMap = sController.getScMap();
@@ -294,6 +341,39 @@ public class AdminController extends MyController {
 			Scholarship s = scMap.get(Integer.parseInt(source.getActionCommand()));
 			if(saveScholarship(s)) {
 				sController.start(true, scMap);
+			}
+			break;
+		case "Account_AdminPanel":
+			switchToAccountPanel();
+			break;
+		case "UpdatePassword_AccountPanel":
+			String p = acp.getNewPassword();
+			String cp = acp.getConfirmPassword();
+			Object[] okOption = { "OK" };
+			if(p.equals("") || cp.equals("")) {
+				JOptionPane.showOptionDialog(null, "Password field cannot be empty", "Warning",
+						JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,
+						null, okOption, okOption[0]);
+				//STEVE MAKE A DIALOG BOX THAT SAYS PASSWOFRD MUST NOT BE EMPTY
+			}else if(!p.equals(cp)){
+				JOptionPane.showOptionDialog(null, "Passwords do not match", "Warning",
+						JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,
+						null, okOption, okOption[0]);
+				// STEVE MAKE A DIALGOG BOX THAT SAYS PASSWORD DO NTO MATCH
+			}else if(!p.matches("[a-zA-Z0-9]*")){
+				JOptionPane.showOptionDialog(null, "Password can only contain letters and numbers", "Warning",
+						JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,
+						null, okOption, okOption[0]);
+				// STEVE MAKE A DIALOG BOX THAT SAYS NEW PASSWORD CAN ONLY CONTAIN LETTERS AND NUMBERS
+			}else {
+				JOptionPane.showOptionDialog(null, "Your password has successfully been changed", "Success!",
+						JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE,
+						null, okOption, okOption[0]);
+				// STEVE MAKE A DIALOG BOX THAT SAYS CONGRATS YOU HAVE UPDATED OYUR PASSWORD
+				// UPDATE THE STUDENTS PASSWORD FIELD AND SAVE THE STUDENT
+				currentAdmin.setPassword(p);
+				util.saveAdmin(currentAdmin);
+				acp.resetPasswordFileds();
 			}
 			break;
 		default:

@@ -11,6 +11,9 @@ import objects.Student;
 
 public class ViewStudentPanel extends MyPanel{
 	
+	/**
+	 * instance variables
+	 */
 	private final int NUM_OF_STUDENT_ATTRIBUTES = 7;
 	private JLabel lblName;
 	private ArrayList<JLabel> lblStudentAttribute = new ArrayList<JLabel>();
@@ -20,6 +23,10 @@ public class ViewStudentPanel extends MyPanel{
 	private JLabel lblScholarships;
 	int row = 0;
 	
+	/**
+	 * class constructor
+	 * @param packageListener listener for the panel
+	 */
 	public ViewStudentPanel(ActionListener packageListener) {
 		this.packageListener = packageListener;
 		
@@ -28,11 +35,17 @@ public class ViewStudentPanel extends MyPanel{
 		displayCenter();
 	}
 	
+	/**
+	 * displayNorth displays heading of the panel
+	 */
 	private void displayNorth() {
 		lblName = new MyLabel("Student Name", Size.defaultLblSubTitleFontSize);
 		north.add(lblName,"cell 0 0, center");
 	}
 	
+	/**
+	 * displaySouth displays the back button at the bottom
+	 */
 	private void displaySouth() {
 		btnBack = new MyButton("Back", Size.defaultBtnFontSize);
 		south.add(btnBack,"cell 0 0, left");
@@ -40,6 +53,9 @@ public class ViewStudentPanel extends MyPanel{
 		btnBack.addActionListener(packageListener);
 	}
 	
+	/**
+	 * displayCenter displays all available attributes of the current student
+	 */
 	private void displayCenter() {
 		String[] studentAttributeName = {"UCID", "Email", "Faculty", "GPA", "Year of Study", "Type of Study", "Department"};
 		// Here should be a bunch of labels should be created
@@ -58,7 +74,11 @@ public class ViewStudentPanel extends MyPanel{
 		
 	}
 	
-	
+	/**
+	 * method set the current student to be displayed with displayCenter
+	 * @param student the student to be displayed
+	 * @param scholarships the list of scholarships the student has applied to
+	 */
 	public void setStudent(Student student, String scholarships) {
 		// The labels text should be set here.
 		lblName.setText(student.getName());
@@ -73,13 +93,3 @@ public class ViewStudentPanel extends MyPanel{
 	}
 
 }
-/**
- *
- * @param ucid
- * @param email
- * @param faculty
- * @param gpa
- * @param yearOfStudy
- * @param typeOfStudy
- * @param department
- */

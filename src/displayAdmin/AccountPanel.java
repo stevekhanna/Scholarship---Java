@@ -1,4 +1,4 @@
-package displayStudent;
+package displayAdmin;
 
 import java.awt.event.ActionListener;
 
@@ -11,11 +11,10 @@ import net.miginfocom.swing.MigLayout;
 import objects.*;
 
 public class AccountPanel extends MyPanel {
-	private Student student;
 	private JButton btnBack;
 	private JButton btnPassword;
 	private JLabel lblName;
-	private JLabel[][] lblStudent = new JLabel[8][2];
+	private JLabel[][] lblAdmin = new JLabel[8][2];
 	
 	private JLabel lblPassword;
 	private JLabel lblConfirmPassword;
@@ -34,9 +33,6 @@ public class AccountPanel extends MyPanel {
 		displayCenter();
 	}
 
-
-
-
 	private void displayNorth() {
 		lblName = new MyLabel("Name", Size.defaultLblTitleFontSize);
 		north.add(lblName, "cell 0 1,center");
@@ -48,26 +44,16 @@ public class AccountPanel extends MyPanel {
 	}
 	
 	
-	public void displayStudent(Student student) {
+	public void displayStudent(Admin admin) {
 		center.removeAll();
 		center.repaint();
-		lblStudent[0][0] = new MyLabel("UCID:", Size.defaultLblFontSize);
-		lblStudent[1][0] = new MyLabel("Email:", Size.defaultLblFontSize);
-		lblStudent[2][0] = new MyLabel("GPA:", Size.defaultLblFontSize);
-		lblStudent[3][0] = new MyLabel("Faculty:", Size.defaultLblFontSize);
-		lblStudent[4][0] = new MyLabel("Year of Study:", Size.defaultLblFontSize);
-		lblStudent[5][0] = new MyLabel("Type of Study:", Size.defaultLblFontSize);
-		lblStudent[6][0] = new MyLabel("Department:", Size.defaultLblFontSize);
-		lblStudent[0][1] = new MyLabel(""+student.getUCID(), Size.defaultLblFontSize);
-		lblStudent[1][1] = new MyLabel(student.getEmail(), Size.defaultLblFontSize);
-		lblStudent[2][1] = new MyLabel(""+student.getGpa(), Size.defaultLblFontSize);
-		lblStudent[3][1] = new MyLabel(student.getFaculty(), Size.defaultLblFontSize);
-		lblStudent[4][1] = new MyLabel(""+student.getYearOfStudy(), Size.defaultLblFontSize);
-		lblStudent[5][1] = new MyLabel(student.getTypeOfStudy(), Size.defaultLblFontSize);
-		lblStudent[6][1] = new MyLabel(student.getDepartment(), Size.defaultLblFontSize);
-		for (int i = 0; i<7; i++) {
-			center.add(lblStudent[i][0], String.format("cell %d %d, right",0,i));
-			center.add(lblStudent[i][1], String.format("cell %d %d, left",1,i));
+		lblAdmin[0][0] = new MyLabel("UCID:", Size.defaultLblFontSize);
+		lblAdmin[1][0] = new MyLabel("Email:", Size.defaultLblFontSize);
+		lblAdmin[0][1] = new MyLabel(""+admin.getUCID(), Size.defaultLblFontSize);
+		lblAdmin[1][1] = new MyLabel(admin.getEmail(), Size.defaultLblFontSize);
+		for (int i = 0; i<2; i++) {
+			center.add(lblAdmin[i][0], String.format("cell %d %d, right",0,i));
+			center.add(lblAdmin[i][1], String.format("cell %d %d, left",1,i));
 		}
 		
 		lblPassword = new MyLabel("New Password",Size.defaultLblFontSize);
