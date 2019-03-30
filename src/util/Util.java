@@ -7,7 +7,11 @@ import java.util.List;
 import objects.*;
 /**
  * 
- * @author Steve Khanna Pierce de Jong
+ * @authors Steve Khanna, Pierce de Jong
+ * The Utility class for low coupling and high cohesion
+ * This class is used for saving all objects to their particular files
+ * once a change has been made. This is to make sure that when you delete a scholarship for example
+ * it doesn't show up in the students applied to panel if they have applied for it prior to it being deleted
  *
  */
 public class Util {
@@ -124,7 +128,10 @@ public class Util {
 		}
 	}
 	
-	
+	/**
+	 * Deletes that scholarship and rewrites the students and scholarship file
+	 * @param scholarship - the scholarship to delete
+	 */
 	public void deleteScholarship(Scholarship scholarship) {
 		scMap.remove(scholarship.getScholarshipId());
 		if(scholarship.getStudentsUcids()!=null){
@@ -141,7 +148,10 @@ public class Util {
 	}
 	
 	
-	
+	/**
+	 * Save scholarship in the map and write to scholarships file
+	 * @param scholarship - the scholarship to save
+	 */
 	public void saveScholarship(Scholarship scholarship) {
 		int id = scholarship.getScholarshipId();
 		scMap.put(id, scholarship);

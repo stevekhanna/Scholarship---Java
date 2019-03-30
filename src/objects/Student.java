@@ -99,7 +99,11 @@ public class Student extends User{
 	public List<Integer> getScholarshipsAppliedTo() {
 		return scholarshipsAppliedTo;
 	}
-	
+	/**
+	 * Add scholarship to students "appliedto" list
+	 * @param id of the scholarship to add
+	 * @return boolean if successful or not
+	 */
 	public boolean addScholarship(int id) {
 		if (scholarshipsAppliedTo.contains(id)) {
 			return false;
@@ -109,7 +113,12 @@ public class Student extends User{
 			return true;
 		}
 	}
-	
+	/**
+	 * Adds a new scholarship at priority set by student
+	 * @param id of scholarship
+	 * @param index where to add
+	 * @return boolean if successful or not
+	 */
 	public boolean addScholarshipByPriority(int id, int index) {
 		if (scholarshipsAppliedTo.contains(id)) {
 			return false;
@@ -119,7 +128,12 @@ public class Student extends User{
 			return true;
 		}
 	}
-	
+	/**
+	 * Change the scholarships priority
+	 * @param id of the scholarship
+	 * @param priority to change to
+	 * @return boolean if successful or not 
+	 */
 	public boolean changeScholarshipPriority(int id, int priority) {
 		if (scholarshipsAppliedTo.remove((Integer) id)) {
 			scholarshipsAppliedTo.add(priority,id);
@@ -130,10 +144,17 @@ public class Student extends User{
 		}
 	}
 	
+	/**
+	 * Remove scholarship from the students applied to
+	 * @param id of the scholarship to remove
+	 * @return if successful or not
+	 */
 	public boolean removeScholarship(int id){
 		return scholarshipsAppliedTo.remove((Integer) id);
 	}
-	
+	/**
+	 * toString method to format everything properly to write to the file
+	 */
 	@Override
 	public String toString() {
 		String appliedToSch = "";
