@@ -113,7 +113,7 @@ public class StudentController extends MyController {
 	private void switchToAccountPanel() {
 		acp.setName(currentStudent.getName());
 		acp.displayStudent(currentStudent);
-		acp.resetPasswordFileds();
+		acp.resetPasswordFields();
 		switchPanel(accountPanel);
 	}
 	
@@ -303,7 +303,7 @@ public class StudentController extends MyController {
 				// UPDATE THE STUDENTS PASSWORD FIELD AND SAVE THE STUDENT
 				currentStudent.setPassword(p);
 				util.saveStudent(currentStudent);
-				acp.resetPasswordFileds();
+				acp.resetPasswordFields();
 			}
 			break;
 		default:

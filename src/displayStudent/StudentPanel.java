@@ -9,7 +9,7 @@ import myJStuff.*;
 
 /**
  * Student Panel class displays a list of scholarships and 
- * ther person who is currently logged in 
+ * the person who is currently logged in 
  * @author Pierce de Jong, Steve Khanna
  *
  */
@@ -60,6 +60,9 @@ public class StudentPanel extends MyPanel{
 		north.add(lblEmail, "cell 0 2,center");
 	}
 	
+	/**
+	 * method displays the options the student can access
+	 */
 	private void displayCenter() {
 		btnAllScholarships = new MyButton("All Scholarships", Size.defaultBtnFontSize);
 		center.add(btnAllScholarships, "cell 0 0, center");
