@@ -284,23 +284,18 @@ public class StudentController extends MyController {
 				JOptionPane.showOptionDialog(null, "Password field cannot be empty", "Warning",
 						JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,
 						null, okOption, okOption[0]);
-				//STEVE MAKE A DIALOG BOX THAT SAYS PASSWOFRD MUST NOT BE EMPTY
 			}else if(!p.equals(cp)){
 				JOptionPane.showOptionDialog(null, "Passwords do not match", "Warning",
 						JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,
 						null, okOption, okOption[0]);
-				// STEVE MAKE A DIALGOG BOX THAT SAYS PASSWORD DO NTO MATCH
 			}else if(!p.matches("[a-zA-Z0-9]*")){
 				JOptionPane.showOptionDialog(null, "Password can only contain letters and numbers", "Warning",
 						JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,
 						null, okOption, okOption[0]);
-				// STEVE MAKE A DIALOG BOX THAT SAYS NEW PASSWORD CAN ONLY CONTAIN LETTERS AND NUMBERS
 			}else {
 				JOptionPane.showOptionDialog(null, "Your password has successfully been changed", "Success!",
 						JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE,
 						null, okOption, okOption[0]);
-				// STEVE MAKE A DIALOG BOX THAT SAYS CONGRATS YOU HAVE UPDATED OYUR PASSWORD
-				// UPDATE THE STUDENTS PASSWORD FIELD AND SAVE THE STUDENT
 				currentStudent.setPassword(p);
 				util.saveStudent(currentStudent);
 				acp.resetPasswordFields();
