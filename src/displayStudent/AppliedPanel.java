@@ -6,7 +6,12 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import myJStuff.*;
-
+/**
+ * 
+ * @author Steve Khanna, Montek Parmar
+ * Students applied panel: this is to show if the student has successfully applied to the scholarship or not
+ *
+ */
 public class AppliedPanel extends MyPanel{
 	/**
 	 * instance variables
@@ -47,10 +52,6 @@ public class AppliedPanel extends MyPanel{
 		south.add(btnBack, "cell 0 0");
 		btnBack.addActionListener(packageListener);
 		btnBack.setName("Back_AppliedPanel");
-	}
-	
-	//empty method
-	public void displayScholarship() {	
 	}
 	
 	/**

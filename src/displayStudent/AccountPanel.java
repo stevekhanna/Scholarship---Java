@@ -9,7 +9,12 @@ import javax.swing.JPasswordField;
 import myJStuff.*;
 import net.miginfocom.swing.MigLayout;
 import objects.*;
-
+/**
+ * 
+ * @author Steve Khanna, Tran Nguyen
+ * This is the students account panel 
+ *
+ */
 public class AccountPanel extends MyPanel {
 	/**
 	 * instance variables

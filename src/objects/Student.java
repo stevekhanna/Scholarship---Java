@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * 
- * @author Pierce de Jong
+ * @author Pierce de Jong, Steve Khanna
  * 
  * Student class extends user class 
  * contains student constructor to make a new student

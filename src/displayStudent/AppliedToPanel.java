@@ -10,7 +10,11 @@ import javax.swing.JLabel;
 
 import myJStuff.*;
 import objects.Scholarship;
-
+/**
+ * This is the students applied to panel: you can change the priority here
+ * @author Steve Khanna, Pierce de Jong
+ *
+ */
 public class AppliedToPanel extends MyPanel{
 private JButton btnBack;
 	/**
