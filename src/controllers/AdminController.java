@@ -330,7 +330,6 @@ public class AdminController extends MyController {
 			break;
 		case"Back_AllScholarshipsPanel":
 			// Get an updated version of all of the scholarship
-			scMap = sController.getScMap();
 			// If the current user is a student go to the student controller
 			switchToAdminPanel();
 			break;
