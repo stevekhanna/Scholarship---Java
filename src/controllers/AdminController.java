@@ -291,6 +291,7 @@ public class AdminController extends MyController {
 			
 			// STEVE CREATE THE SCHOLARSHIP ADD IT TO THE MAP AND SAVE IT IN THE UTIL
 			if(createScholarship()) {
+				sController.setStudents(students);
 				sController.start(true, scMap);
 			}
 			// IF IT WORKS START THE CONTROLLER BELOW
@@ -315,6 +316,7 @@ public class AdminController extends MyController {
 			if(selectedOption == JOptionPane.YES_OPTION) {
 				Scholarship x = scMap.get(Integer.parseInt(source.getActionCommand()));
 				deleteScholarship(x);
+				sController.setStudents(students);
 				sController.start(true, scMap);
 			}
 			
@@ -334,6 +336,7 @@ public class AdminController extends MyController {
 			switchToAdminPanel();
 			break;
 		case "AllScholarships_AdminPanel":
+			sController.setStudents(students);
 			sController.start(true, scMap);
 			break;
 		case "SaveEdits_EditScholarshipPanel":

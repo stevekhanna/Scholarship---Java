@@ -23,6 +23,7 @@ public class ViewScholarshipPanel extends MyPanel{
 	private JButton btnBack;
 	private JButton btnApply;
 	private JButton btnEdit;
+	private JButton btnStudents;
 	
 	private JLabel lblStudents;
 	private JLabel lblStudentsTitle;
@@ -95,8 +96,10 @@ public class ViewScholarshipPanel extends MyPanel{
 		lblStudentsTitle = new MyLabel("");
 		center.add(lblStudentsTitle,"cell 0 8,right");
 		
-		lblStudents = new MyLabel("");
-		center.add(lblStudents,"cell 1 8,left");
+		btnStudents = new MyButton("View Applied Students");
+		btnStudents.setName("ViewStudentsApplied_ViewScholarshipPanel");
+		btnStudents.addActionListener(packageListener);
+		center.add(btnStudents,"cell 1 8,left");
 	}
 	
 	/**
@@ -108,11 +111,11 @@ public class ViewScholarshipPanel extends MyPanel{
 		if(!isAdmin) {
 			btnApply.setActionCommand(Integer.toString(scholarship.getScholarshipId()));
 			lblStudentsTitle.setText("");
-			lblStudents.setText("");
+			btnStudents.setVisible(false);
 		}else {
 			btnEdit.setActionCommand(Integer.toString(scholarship.getScholarshipId()));
 			lblStudentsTitle.setText("Students:");
-			lblStudents.setText("");
+			btnStudents.setVisible(true);
 		}
 		lblTitle.setText(scholarship.getName());
 		String x = scholarship.returnFull();
@@ -124,13 +127,5 @@ public class ViewScholarshipPanel extends MyPanel{
 			lblAttribute.get(y).setText(string);
 			y++;
 		}
-	}
-	
-	/**
-	 * set to display all students who have applied for current scholarship
-	 * @param students list of IDs of students applied for the scholarship, separated by commas 
-	 */
-	public void displayStudentsApplied(String students) {
-		lblStudents.setText(students);
 	}
 }

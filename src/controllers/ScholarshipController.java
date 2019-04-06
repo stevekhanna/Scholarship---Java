@@ -3,6 +3,7 @@ package controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,6 +21,7 @@ public class ScholarshipController extends MyController{
 	private JPanel viewScholarshipPanel;
 	private JPanel allScholarshipsPanel;
 	private JPanel editScholarshipPanel;
+	private JPanel viewStudentsAppliedPanel;
 	
 	/**
 	 * This is all of the panels that are in the displaySchoalrship
@@ -27,17 +29,20 @@ public class ScholarshipController extends MyController{
 	private ViewScholarshipPanel vsp;
 	private AllScholarshipsPanel asp;
 	private EditScholarshipPanel esp;
+	private ViewStudentsAppliedPanel vsap;
 	
-	
+	private List<Student> students;
 	/**
 	 * HashMap of all of the scholarships
 	 */
 	private HashMap<Integer, Scholarship> scMap;
 	
+	private Scholarship currentScholarship;
+	
 	/**
 	 * If the scholarship controller is started as an admin or a student
 	 */
-	private boolean isAdmin;
+	private boolean isAdmin = false;
 	
 	/**
 	 * Constructor
@@ -61,16 +66,27 @@ public class ScholarshipController extends MyController{
 		vsp = new ViewScholarshipPanel(this,globalListener,this.isAdmin);
 		asp = new AllScholarshipsPanel(this,globalListener,this.isAdmin);
 		esp = new EditScholarshipPanel(this,globalListener);
+		vsap = new ViewStudentsAppliedPanel(this, globalListener);
 		
 		// Get the content panes
 		viewScholarshipPanel = vsp.getContentPane();
 		allScholarshipsPanel = asp.getContentPane();
 		editScholarshipPanel = esp.getContentPane();
+		viewStudentsAppliedPanel = vsap.getContentPane();
 		
 		// Add all the scholarships to the allScholarshipsPanel
 		scholarshipLoop(scMap);
 		// Switch the current JPanel
 		switchPanel(allScholarshipsPanel);
+	}
+	
+	/**
+	 * Set list of students only if admin
+	 * @param students
+	 */
+	public void setStudents(List<Student> students) {
+		this.students=students;
+		System.out.println(students.get(0).toString());
 	}
 	
 	/**
@@ -105,34 +121,21 @@ public class ScholarshipController extends MyController{
 	private void switchToViewScholarshipPanel(Scholarship scholarship) {
 		// Display the scholarship
 		vsp.displayScholarship(scholarship);
-		// IF the current user is an admin dispaly all students that have applied
-		if(isAdmin) {
-			vsp.displayStudentsApplied(getScholarshipStudents(scholarship));
-		}
+		// IF the current user is an admin display all students that have applied
 		switchPanel(viewScholarshipPanel);
 	}
 	
-	/**
-	 * Get all of the students that have applied to a scholarship
-	 * @param s - Scholarship
-	 * @return - String of all of the student UCIDs
-	 */
-	private String getScholarshipStudents(Scholarship s) {
-		
-		String x = "";
-		if ((s.getStudentsUcids() == null)||(s.getStudentsUcids().isEmpty())){
-			return "No applications";
-		}
-		int j =0;
-		for(int i: s.getStudentsUcids()) {
-			if(j==s.getStudentsUcids().size()-1) {
-				x += i+"";
-			}else {
-				x+=i+", ";
+	private void switchToViewStudentsAppliedPanel(Scholarship scholar) {
+		vsap.resetStudents();
+		System.out.println(students.get(0).toString());
+		for(Student s: students) {
+			if(scholar.getStudentsUcids().contains(s.getUCID())) {
+				vsap.addStudent(s);
+				
 			}
-			j++;
 		}
-		return x;
+		vsap.setScholarship(currentScholarship);
+		switchPanel(viewStudentsAppliedPanel);
 	}
 	
 	/**
@@ -158,8 +161,8 @@ public class ScholarshipController extends MyController{
 			// Get the id of the scholarship to view
 			int id = Integer.parseInt(source.getActionCommand());
 			// Find the scholarship
-			Scholarship s = scMap.get(id);
-			switchToViewScholarshipPanel(s);
+			currentScholarship = scMap.get(id);
+			switchToViewScholarshipPanel(currentScholarship);
 			break;
 		case"Back_ViewScholarshipPanel":
 			switchPanel(allScholarshipsPanel);
@@ -168,14 +171,15 @@ public class ScholarshipController extends MyController{
 			switchPanel(allScholarshipsPanel);
 			break;
 		case "EditScholarship_ViewScholarshipPanel":
-			// Get the id of the scholarship to view
-			int i = Integer.parseInt(source.getActionCommand());
-			// Find the scholarship
-			Scholarship sc = scMap.get(i);
-			// Update the edit scholarship panel
-			esp.setScholarship(sc);
+			esp.setScholarship(currentScholarship);
 			// Switch the panel
 			switchPanel(editScholarshipPanel);
+			break;
+		case "ViewStudentsApplied_ViewScholarshipPanel":
+			switchToViewStudentsAppliedPanel(currentScholarship);
+			break;
+		case "Back_ViewStudentsAppliedTo":
+			switchPanel(viewScholarshipPanel);
 			break;
 		case"Search_AllScholarshipsPanel":
 			// Get the text of the search bar
