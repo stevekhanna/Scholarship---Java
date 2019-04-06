@@ -22,6 +22,8 @@ public class Student extends User{
 	private String typeOfStudy;
 	private String department;
 	private List<Integer> scholarshipsAppliedTo = null;
+	private List<Integer> scholarshipsAcceptedTo = null;
+	private int[] scholarshipsWon;
 	
 	
 	/**
@@ -35,9 +37,12 @@ public class Student extends User{
 	 * @param yearOfStudy
 	 * @param typeOfStudy
 	 * @param department
+	 * @param scholarshipsAppliedTo
+	 * @param scholarshipsAcceptedTo
+	 * @param scholarshipsWon
 	 */
 	public Student(int ucid, String email, String password, String name, String faculty,
-			double gpa, int yearOfStudy, String typeOfStudy, String department, List<Integer> scholarshipsAppliedTo) {
+			double gpa, int yearOfStudy, String typeOfStudy, String department, List<Integer> scholarshipsAppliedTo, List<Integer> scholarshipsAcceptedTo, int[] scholarshipsWon) {
 		super(ucid, email, password, name);
 		this.faculty = faculty;
 		this.gpa = gpa;
@@ -45,6 +50,8 @@ public class Student extends User{
 		this.typeOfStudy= typeOfStudy;
 		this.department= department;
 		this.scholarshipsAppliedTo=scholarshipsAppliedTo;
+		this.scholarshipsAcceptedTo = scholarshipsAcceptedTo;
+		this.scholarshipsWon = scholarshipsWon;
 	}
 	
 	/**
@@ -168,13 +175,34 @@ public class Student extends User{
 				}
 			}
 		}
+		String acceptedToSch = "";
+		if(scholarshipsAcceptedTo != null) {
+			for(Integer i : scholarshipsAcceptedTo) {
+				if(i== scholarshipsAcceptedTo.get(scholarshipsAcceptedTo.size()-1)) {
+					acceptedToSch += i+"";
+				}
+				else {
+					acceptedToSch += i+":";
+				}
+			}
+		}
 		
+		String schWon="";
+		if (scholarshipsWon!=null) {
+			schWon = scholarshipsWon[0]+":"+scholarshipsWon[1];
+		}
 		
 		String returnString = getUCID()+","+getEmail()+","+getPassword()+","+getName()
 		+","+faculty+","+gpa+","+yearOfStudy+","+typeOfStudy+","+department;
 		
 		if (appliedToSch.compareTo("")!=0) {
 			returnString += "," + appliedToSch;
+		}
+		if(acceptedToSch.compareTo("")!=0) {
+			returnString += "," + acceptedToSch;
+		}
+		if(schWon.compareTo("")!=0) {
+			returnString +=","+schWon;
 		}
 		
 		return returnString;

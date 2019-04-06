@@ -51,11 +51,27 @@ public class LoadData{
 				if (currentLine.isEmpty())break;
 				String[] parts = currentLine.split(",");
 				List<Integer> scholarshipsAppliedTo = new ArrayList<Integer>();
+				List<Integer> scholarshipsAcceptedTo = new ArrayList<Integer>();
+				int[]scholarshipsWon = new int[2];
 				if (parts.length>9) {
 					String[] queue = parts[9].split(":");
 					for(int i =0; i<queue.length; i++) {
 						scholarshipsAppliedTo.add(Integer.parseInt(queue[i]));
 					}
+					if(parts.length>10) {
+						String[] acceptedToParts = parts[10].split(":");
+						for(int i =0; i<acceptedToParts.length; i++) {
+							scholarshipsAcceptedTo.add(Integer.parseInt(acceptedToParts[i]));
+						}
+					}
+					
+					if(parts.length>11) {
+						String[] schWonParts = parts[11].split(":");
+						for(int i =0; i<schWonParts.length; i++) {
+							scholarshipsWon[i]= (Integer.parseInt(schWonParts[i]));
+						}
+					}
+					
 				}
 				else {
 					scholarshipsAppliedTo=new ArrayList<Integer>();
@@ -63,7 +79,7 @@ public class LoadData{
 				
 				students.add(new Student(Integer.parseInt(parts[0]),parts[1],parts[2],parts[3],
 						parts[4],(Double.parseDouble(parts[5])),(Integer.parseInt(parts[6])),
-						parts[7],parts[8],scholarshipsAppliedTo));
+						parts[7],parts[8],scholarshipsAppliedTo,scholarshipsAcceptedTo, scholarshipsWon));
 			}
 			fileScanner.close();
 		} catch (FileNotFoundException e) {
