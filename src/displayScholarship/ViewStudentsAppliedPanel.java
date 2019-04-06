@@ -73,6 +73,8 @@ public class ViewStudentsAppliedPanel extends MyPanel{
 		center.add(lblName,"cell 3 0");
 		lblName = new MyLabel("Priority", Colors.grey, Size.defaultLblFontSize);
 		center.add(lblName,"cell 4 0");
+		lblName = new MyLabel("Accept Student", Colors.grey, Size.defaultLblFontSize);
+		center.add(lblName,"cell 5 0");
 	}
 	
 	/**
@@ -94,6 +96,12 @@ public class ViewStudentsAppliedPanel extends MyPanel{
 
 		lbl = new MyLabel("420");
 		center.add(lbl,String.format("cell 4 %d, left", studentRow));
+		
+		JButton btn = new MyButton("Accept Student", Size.defaultLblFontSize, Size.defaultBtnEditWidth);
+		btn.setName("Accept_ViewStudentsAppliedPanel");
+		btn.addActionListener(globalListener);
+		btn.setActionCommand(student.getUCID()+"");
+		center.add(btn,String.format("cell 5 %d, left", studentRow));
 		studentRow++;
 	}
 	
