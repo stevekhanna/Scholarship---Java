@@ -200,7 +200,7 @@ public class StudentController extends MyController {
 	private void accept(int sId) {
 		currentStudent.addToWon(sId);
 		currentStudent.removeScholarship(sId);
-		scMap.get(sId).removeStudent(currentStudent.getUCID());
+		scMap.get(sId).removeStudentFromAccepted(currentStudent.getUCID());
 		util.saveScholarship(scMap.get(sId));
 		util.saveStudent(currentStudent);
 		actp.resetScholarships();

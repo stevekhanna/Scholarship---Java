@@ -117,7 +117,7 @@ private JButton btnBack;
 		center.add(btnAccept,String.format("cell 6 %d, left",y));
 		btnAccept.setName("Accept_AcceptedToPanel");
 		btnAccept.addActionListener(packageListener);
-		btnAccept.setActionCommand(scholarship.getScholarshipId()+"");
+		btnAccept.setActionCommand(scholarship.getId()+"");
 		y++;
 	}
 }
