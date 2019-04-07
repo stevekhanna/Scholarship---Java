@@ -27,6 +27,7 @@ public class StudentPanel extends MyPanel{
 	JButton btnAllScholarships;
 	JButton btnAppliedTo;
 	JButton btnAccount;
+	JButton btnAcceptedTo;
 	
 	/**
 	 * Constructor with arguement of ActionListener packageListener
@@ -74,8 +75,13 @@ public class StudentPanel extends MyPanel{
 		btnAppliedTo.addActionListener(packageListener);
 		btnAppliedTo.setName("AppliedTo_StudentPanel");
 		
+		btnAcceptedTo = new MyButton("Accepted To Scholarships", Size.defaultBtnFontSize, Size.defaultBtnWidth+75);
+		center.add(btnAcceptedTo, "cell  0 2, center");
+		btnAcceptedTo.addActionListener(packageListener);
+		btnAcceptedTo.setName("AcceptedTo_StudentPanel");
+		
 		btnAccount = new MyButton("My Account", Size.defaultBtnFontSize);
-		center.add(btnAccount, "cell 0 2, center");
+		center.add(btnAccount, "cell 0 3, center");
 		btnAccount.addActionListener(packageListener);
 		btnAccount.setName("Account_StudentPanel");
 	}

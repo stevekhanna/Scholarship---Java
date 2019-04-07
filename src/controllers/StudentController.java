@@ -35,6 +35,7 @@ public class StudentController extends MyController {
 	private StudentPanel sp;
 	private AppliedPanel ap;
 	private AppliedToPanel atp;
+	private AcceptedToPanel actp;
 	private AccountPanel acp;
 	
 	private Util util;
@@ -50,6 +51,7 @@ public class StudentController extends MyController {
 	private JPanel appliedPanel;
 	private JPanel appliedToPanel;
 	private JPanel accountPanel;
+	private JPanel acceptedToPanel;
 	/**
 	 * Constructor
 	 * @param frame - JFrame
@@ -75,14 +77,18 @@ public class StudentController extends MyController {
 		ap = new AppliedPanel(this);
 		atp = new AppliedToPanel(this);
 		acp = new AccountPanel(this);
+		actp = new AcceptedToPanel(this);
 		atp.setTotalScholarships(currentStudent.getScholarshipsAppliedTo().size());
+		actp.setTotalScholarships(currentStudent.getScholarshipsAcceptedTo().size());
 		
 		studentPanel = sp.getContentPane();
 		appliedPanel = ap.getContentPane();
 		appliedToPanel = atp.getContentPane();
 		accountPanel = acp.getContentPane();
+		acceptedToPanel = actp.getContentPane();
 		
 		addScholarshipsToAppliedPanel();
+		addScholarshipsAcceptedToPanel();
 		switchToStudentPanel();
 	}
 	
@@ -93,6 +99,13 @@ public class StudentController extends MyController {
 		int x = 0;
 		for(int i: currentStudent.getScholarshipsAppliedTo()) {
 			atp.addScholarship(scMap.get(i),x);
+			x++;
+		}
+	}
+	private void addScholarshipsAcceptedToPanel() {
+		int x = 0;
+		for(int i: currentStudent.getScholarshipsAcceptedTo()) {
+			actp.addScholarship(scMap.get(i),x);
 			x++;
 		}
 	}
@@ -184,6 +197,16 @@ public class StudentController extends MyController {
 		addScholarshipsToAppliedPanel();
 		
 	}
+	private void accept(int sId) {
+		currentStudent.addToWon(sId);
+		currentStudent.removeScholarship(sId);
+		scMap.get(sId).removeStudent(currentStudent.getUCID());
+		util.saveScholarship(scMap.get(sId));
+		util.saveStudent(currentStudent);
+		actp.resetScholarships();
+		addScholarshipsAcceptedToPanel();
+		
+	}
 	
 	/**
 	 * Find all of the scholarships that have the same type of study as the current student
@@ -244,6 +267,12 @@ public class StudentController extends MyController {
 			// Switch to the Applied Panel=
 			switchPanel(appliedPanel);
 			break;
+		case"AcceptedTo_StudentPanel":
+			switchPanel(acceptedToPanel);
+			break;
+		case"Back_AcceptedToPanel":
+			switchToStudentPanel();
+			break;
 		case"AppliedTo_StudentPanel":
 			switchPanel(appliedToPanel);
 			break;
@@ -266,14 +295,22 @@ public class StudentController extends MyController {
 			break;
 		case "Withdraw_AppliedToPanel":
 			Object[] options = { "YES", "NO" };
-			UIManager.put("OptionPane.background", Colors.defaultBackgroundColor);
-	        UIManager.put("OptionPane.messagebackground", Colors.defaultBackgroundColor);
 			int selectedOption = JOptionPane.showOptionDialog(null, "Are you sure you want to withdraw from this scholarship?", "Warning",
 					JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,
 					null, options, options[0]);
 			if(selectedOption == JOptionPane.YES_OPTION) {
 				int sID = Integer.parseInt(source.getActionCommand());
 				withdraw(sID);
+			}
+			break;
+		case "Accept_AcceptedToPanel":
+			Object[] acceptOptions = { "YES", "NO" };
+			int accSelectedOption = JOptionPane.showOptionDialog(null, "Are you sure you want to withdraw from this scholarship?", "Warning",
+					JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,
+					null, acceptOptions, acceptOptions[0]);
+			if(accSelectedOption == JOptionPane.YES_OPTION) {
+				int sID = Integer.parseInt(source.getActionCommand());
+				accept(sID);
 			}
 			break;
 		case "UpdatePassword_AccountPanel":

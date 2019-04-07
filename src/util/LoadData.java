@@ -53,23 +53,32 @@ public class LoadData{
 				List<Integer> scholarshipsAppliedTo = new ArrayList<Integer>();
 				List<Integer> scholarshipsAcceptedTo = new ArrayList<Integer>();
 				int[]scholarshipsWon = new int[2];
+
 				if (parts.length>9) {
-					String[] queue = parts[9].split(":");
-					for(int i =0; i<queue.length; i++) {
-						scholarshipsAppliedTo.add(Integer.parseInt(queue[i]));
+					if (!parts[9].equals("noneApplied")) {
+						String[] queue = parts[9].split(":");
+						for(int i =0; i<queue.length; i++) {
+							scholarshipsAppliedTo.add(Integer.parseInt(queue[i]));
+						}
 					}
 					if(parts.length>10) {
-						String[] acceptedToParts = parts[10].split(":");
-						for(int i =0; i<acceptedToParts.length; i++) {
-							scholarshipsAcceptedTo.add(Integer.parseInt(acceptedToParts[i]));
+						if (!parts[10].equals("noneAccepted")) {
+							String[] acceptedToParts = parts[10].split(":");
+							for(int i =0; i<acceptedToParts.length; i++) {
+								scholarshipsAcceptedTo.add(Integer.parseInt(acceptedToParts[i]));
+							}
 						}
+						
 					}
 					
 					if(parts.length>11) {
-						String[] schWonParts = parts[11].split(":");
-						for(int i =0; i<schWonParts.length; i++) {
-							scholarshipsWon[i]= (Integer.parseInt(schWonParts[i]));
+						if(!parts[11].equals("noneWon")) {
+							String[] schWonParts = parts[11].split(":");
+							for(int i =0; i<schWonParts.length; i++) {
+								scholarshipsWon[i]= (Integer.parseInt(schWonParts[i]));
+							}
 						}
+						
 					}
 					
 				}
