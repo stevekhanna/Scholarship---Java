@@ -12,7 +12,7 @@ public class Size {
 	public final static int screenHeight = 600;
 	
 	public static final int defaultBtnWidth = 325;
-	public static final int defaultBtnEditWidth = 100;
+	public static final int defaultBtnEditWidth = 125;
 	public static final int defaultBtnHeight = 0;
 	public static final int defaultBtnFontSize = 25;
 

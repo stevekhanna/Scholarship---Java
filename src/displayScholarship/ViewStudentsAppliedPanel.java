@@ -100,7 +100,7 @@ public class ViewStudentsAppliedPanel extends MyPanel{
 		JButton btn = new MyButton("Accept Student", Size.defaultLblFontSize, Size.defaultBtnEditWidth);
 		btn.setName("Accept_ViewStudentsAppliedPanel");
 		btn.addActionListener(globalListener);
-		btn.setActionCommand(student.getUCID()+"");
+		btn.setActionCommand(student.getUCID()+":"+scholarship.getId());
 		center.add(btn,String.format("cell 5 %d, left", studentRow));
 		studentRow++;
 	}

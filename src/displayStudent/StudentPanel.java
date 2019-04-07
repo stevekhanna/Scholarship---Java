@@ -89,7 +89,7 @@ public class StudentPanel extends MyPanel{
 	 * Method to display button button at the south of the screen
 	 */
 	private void displaySouth() {
-		btnBack = new MyButton("Log out", Size.defaultBtnFontSize);
+		btnBack = new MyButton("Log out", Size.defaultBtnFontSize, Size.defaultBtnEditWidth);
 		south.add(btnBack, "cell 0 0");
 		btnBack.addActionListener(globalListener);
 		btnBack.setName("Logout_StudentPanel");
