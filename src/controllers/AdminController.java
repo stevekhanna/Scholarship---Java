@@ -135,7 +135,7 @@ public class AdminController extends MyController {
 		//Loop through all of the scholarships the student has applied for
 		for(int i: s.getScholarshipsAppliedTo()) {
 			// Check to make sure the student has applied to the scholarships
-			if(scMap.get(i).getStudentsUcids().contains(s.getUCID()))
+			if(scMap.get(i).getStudentsApplied().contains(s.getUCID()))
 				// Add the scholarship to the name
 				scholarships+=scMap.get(i).getName()+", ";
 		}
@@ -165,15 +165,15 @@ public class AdminController extends MyController {
 		// Delete the scholarships
 		util.deleteScholarship(s);
 		// Remove the scholarships
-		scMap.remove(s.getScholarshipId());
+		scMap.remove(s.getId());
 		// Error handling
-		if (s.getStudentsUcids()!= null) {
+		if (s.getStudentsApplied()!= null) {
 			// Loop through all of the students that have applied to the scholarship
-			for (int i: s.getStudentsUcids()) {
+			for (int i: s.getStudentsApplied()) {
 				// Find the student by UCID
 				Student x = findStudentByUcid(i);
 				// Remove the scholarship from 
-				x.removeScholarship(s.getScholarshipId());
+				x.removeScholarship(s.getId());
 			}
 		}
 	}
@@ -250,7 +250,7 @@ public class AdminController extends MyController {
 				scholarshipId = val +1;
 			}
 			// Set the scholarship ID
-			s.setScholarshipId(scholarshipId);
+			s.setId(scholarshipId);
 			// put it tin the scMap
 			scMap.put(scholarshipId, s);
 			// Save it
@@ -291,6 +291,7 @@ public class AdminController extends MyController {
 			
 			// STEVE CREATE THE SCHOLARSHIP ADD IT TO THE MAP AND SAVE IT IN THE UTIL
 			if(createScholarship()) {
+				sController.setStudents(students);
 				sController.start(true, scMap);
 			}
 			// IF IT WORKS START THE CONTROLLER BELOW
@@ -315,6 +316,7 @@ public class AdminController extends MyController {
 			if(selectedOption == JOptionPane.YES_OPTION) {
 				Scholarship x = scMap.get(Integer.parseInt(source.getActionCommand()));
 				deleteScholarship(x);
+				sController.setStudents(students);
 				sController.start(true, scMap);
 			}
 			
@@ -334,6 +336,7 @@ public class AdminController extends MyController {
 			switchToAdminPanel();
 			break;
 		case "AllScholarships_AdminPanel":
+			sController.setStudents(students);
 			sController.start(true, scMap);
 			break;
 		case "SaveEdits_EditScholarshipPanel":
