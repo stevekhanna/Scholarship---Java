@@ -125,7 +125,7 @@ public class LoadData{
 					studentUcids=new ArrayList<Integer>();
 				}
 				Scholarship name = new Scholarship(parts[0], parts[1],parts[2],parts[3],parts[4],parts[5],parts[6],parts[7],parts[8],parts[9],studentUcids);
-				int ID = name.getScholarshipId();
+				int ID = name.getId();
 				scMap.put(ID, name);
 			}
 			fileScanner.close();

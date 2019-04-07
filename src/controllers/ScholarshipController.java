@@ -129,7 +129,7 @@ public class ScholarshipController extends MyController{
 		vsap.resetStudents();
 		System.out.println(students.get(0).toString());
 		for(Student s: students) {
-			if(scholar.getStudentsUcids().contains(s.getUCID())) {
+			if(scholar.getStudentsApplied().contains(s.getUCID())) {
 				vsap.addStudent(s);
 				
 			}

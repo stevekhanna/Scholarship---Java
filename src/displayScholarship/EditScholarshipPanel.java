@@ -168,7 +168,7 @@ public class EditScholarshipPanel extends MyPanel{
 		fldNumAllowed.setText(s.getNumAllowed()+"");
 		fldDescription.setText(s.getDescription());
 		fldAmount.setText(s.getMoney()+"");
-		btnSave.setActionCommand(Integer.toString(s.getScholarshipId()));
+		btnSave.setActionCommand(Integer.toString(s.getId()));
 	}
 	
 	/**

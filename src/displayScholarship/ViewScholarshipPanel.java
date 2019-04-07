@@ -109,11 +109,11 @@ public class ViewScholarshipPanel extends MyPanel{
 	 */
 	public void displayScholarship(Scholarship scholarship) {
 		if(!isAdmin) {
-			btnApply.setActionCommand(Integer.toString(scholarship.getScholarshipId()));
+			btnApply.setActionCommand(Integer.toString(scholarship.getId()));
 			lblStudentsTitle.setText("");
 			btnStudents.setVisible(false);
 		}else {
-			btnEdit.setActionCommand(Integer.toString(scholarship.getScholarshipId()));
+			btnEdit.setActionCommand(Integer.toString(scholarship.getId()));
 			lblStudentsTitle.setText("Students:");
 			btnStudents.setVisible(true);
 		}

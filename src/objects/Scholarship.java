@@ -25,7 +25,8 @@ public class Scholarship {
 	private String description;
 	private double money;
 	
-	private List<Integer> studentUcids = null;
+	private List<Integer> studentsApplied;
+	private List<Integer> studentsAccepted;
 
 	/**
 	 * Default scholarship constructor
@@ -70,7 +71,7 @@ public class Scholarship {
 		this.numAllowed = Integer.parseInt(nums);
 		this.description = desc;
 		this.money = Double.parseDouble(money);
-		this.studentUcids= studentUcids;
+		this.studentsApplied= studentUcids;
 
 	}
 	
@@ -95,11 +96,11 @@ public class Scholarship {
 		this.name = name;
 	}
 
-	public int getScholarshipId() {
+	public int getId() {
 		return scholarshipId;
 	}
 
-	public void setScholarshipId(int scholarshipId) {
+	public void setId(int scholarshipId) {
 		this.scholarshipId = scholarshipId;
 	}
 
@@ -171,12 +172,12 @@ public class Scholarship {
 	 * @param id of the student
 	 * @return boolean: if add was successful or not
 	 */
-	public boolean addStudent(int id) {
-		if (studentUcids.contains(id)) {
+	public boolean addStudentToApplied(int id) {
+		if (studentsApplied.contains(id)) {
 			return false;
 		}
 		else {
-			studentUcids.add(id);
+			studentsApplied.add(id);
 			return true;
 		}
 	}
@@ -185,16 +186,43 @@ public class Scholarship {
 	 * @param ucid of the student 
 	 * @return boolean: if remove was successful
 	 */
-	public boolean removeStudent(int ucid) {
-		return (studentUcids.remove((Integer)ucid));
+	public boolean removeStudentFromApplied(int ucid) {
+		return (studentsApplied.remove((Integer)ucid));
+	}
+	
+	/**
+	 * Add student to the scholarship
+	 * @param id of the student
+	 * @return boolean: if add was successful or not
+	 */
+	public boolean addStudentToAccepted(int id) {
+		if (studentsAccepted.contains(id)) {
+			return false;
+		}
+		else {
+			studentsAccepted.add(id);
+			return true;
+		}
+	}
+	/**
+	 * Remove student from scholarship
+	 * @param ucid of the student 
+	 * @return boolean: if remove was successful
+	 */
+	public boolean removeStudentFromAccepted(int ucid) {
+		return (studentsAccepted.remove((Integer)ucid));
 	}
 	
 	/**
 	 * List of students that have applied for this scholarship
 	 * @return List of student ucids
 	 */
-	public List<Integer> getStudentsUcids() {
-		return studentUcids;
+	public List<Integer> getStudentsApplied() {
+		return studentsApplied;
+	}
+	
+	public List<Integer> getStudentsAccepted() {
+		return studentsAccepted;
 	}
 	
 	/**
@@ -204,9 +232,9 @@ public class Scholarship {
 	public String toString() {
 		
 		String listOfStudents = "";
-		if(studentUcids != null) {
-			for(Integer i : studentUcids) {
-				if(i== studentUcids.get(studentUcids.size()-1)) {
+		if(studentsApplied != null) {
+			for(Integer i : studentsApplied) {
+				if(i== studentsApplied.get(studentsApplied.size()-1)) {
 					listOfStudents += i+"";
 				}
 				else {

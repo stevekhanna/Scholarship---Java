@@ -107,7 +107,7 @@ private JButton btnBack;
 	    cb.setSelectedIndex(priority);
 	    cb.addActionListener(packageListener);
 	    cb.setName("UpdatePriority_AppliedToPanel");
-	    cb.setActionCommand(scholarship.getScholarshipId()+"");
+	    cb.setActionCommand(scholarship.getId()+"");
 	    center.add(cb, String.format("cell 3 %d, left",y));
 		
 	    
@@ -131,7 +131,7 @@ private JButton btnBack;
 		center.add(btnWithdraw,String.format("cell 6 %d, left",y));
 		btnWithdraw.setName("Withdraw_AppliedToPanel");
 		btnWithdraw.addActionListener(packageListener);
-		btnWithdraw.setActionCommand(scholarship.getScholarshipId()+"");
+		btnWithdraw.setActionCommand(scholarship.getId()+"");
 		y++;
 	}
 }

@@ -133,12 +133,12 @@ public class Util {
 	 * @param scholarship - the scholarship to delete
 	 */
 	public void deleteScholarship(Scholarship scholarship) {
-		scMap.remove(scholarship.getScholarshipId());
-		if(scholarship.getStudentsUcids()!=null){
-			for (int i: scholarship.getStudentsUcids()) {
+		scMap.remove(scholarship.getId());
+		if(scholarship.getStudentsApplied()!=null){
+			for (int i: scholarship.getStudentsApplied()) {
 				for(Student s : students) {
 					if (s.getUCID() == i) {
-						s.removeScholarship(scholarship.getScholarshipId());
+						s.removeScholarship(scholarship.getId());
 					}
 				}
 			}
@@ -153,7 +153,7 @@ public class Util {
 	 * @param scholarship - the scholarship to save
 	 */
 	public void saveScholarship(Scholarship scholarship) {
-		int id = scholarship.getScholarshipId();
+		int id = scholarship.getId();
 		scMap.put(id, scholarship);
 		writeScholarships();
 	}
