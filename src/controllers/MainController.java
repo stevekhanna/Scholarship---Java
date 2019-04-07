@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import myJStuff.*;
 import objects.*;
@@ -84,6 +85,10 @@ public class MainController implements ActionListener{
 				return true;
 			}
 		}
+		Object[] okOption = { "OK" };
+		JOptionPane.showOptionDialog(null, "Invalid login. Please try again", "Inavlid",
+				JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,
+				null, okOption, okOption[0]);
 		System.out.println("Fail");
 		return false;
 	}
@@ -100,6 +105,10 @@ public class MainController implements ActionListener{
 				return true;
 			}
 		}
+		Object[] okOption = { "OK" };
+		JOptionPane.showOptionDialog(null, "Invalid login. Please try again", "Invalid",
+				JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,
+				null, okOption, okOption[0]);
 		System.out.println("Fail");
 		return false;
 	}

@@ -45,7 +45,6 @@ public class Util {
 			PrintWriter writer = new PrintWriter(studentFile, "UTF-8");
 			writer.println(studentFormat);
 			for(Student student: students) {
-				//String[] entries = student.toString().split(",");
 				writer.println(student.toString());
 			}
 			writer.close();

@@ -1,5 +1,6 @@
 package objects;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -21,7 +22,9 @@ public class Student extends User{
 	private int yearOfStudy;
 	private String typeOfStudy;
 	private String department;
-	private List<Integer> scholarshipsAppliedTo = null;
+	private List<Integer> scholarshipsAppliedTo;
+	private List<Integer> scholarshipsAcceptedTo;
+	private int[] scholarshipsWon = new int []{-1,-1};
 	
 	
 	/**
@@ -35,9 +38,12 @@ public class Student extends User{
 	 * @param yearOfStudy
 	 * @param typeOfStudy
 	 * @param department
+	 * @param scholarshipsAppliedTo
+	 * @param scholarshipsAcceptedTo
+	 * @param scholarshipsWon
 	 */
 	public Student(int ucid, String email, String password, String name, String faculty,
-			double gpa, int yearOfStudy, String typeOfStudy, String department, List<Integer> scholarshipsAppliedTo) {
+			double gpa, int yearOfStudy, String typeOfStudy, String department, List<Integer> scholarshipsAppliedTo, List<Integer> scholarshipsAcceptedTo, int[] scholarshipsWon) {
 		super(ucid, email, password, name);
 		this.faculty = faculty;
 		this.gpa = gpa;
@@ -45,6 +51,8 @@ public class Student extends User{
 		this.typeOfStudy= typeOfStudy;
 		this.department= department;
 		this.scholarshipsAppliedTo=scholarshipsAppliedTo;
+		this.scholarshipsAcceptedTo = scholarshipsAcceptedTo;
+		this.scholarshipsWon = scholarshipsWon;
 	}
 	
 	/**
@@ -99,6 +107,24 @@ public class Student extends User{
 	public List<Integer> getScholarshipsAppliedTo() {
 		return scholarshipsAppliedTo;
 	}
+	public List<Integer> getScholarshipsAcceptedTo() {
+		return scholarshipsAcceptedTo;
+	}
+	public int[] getScholarshipsWon() {
+		return scholarshipsWon;
+	}
+	public boolean addToAccept(int id) {
+		if(scholarshipsAcceptedTo.contains(id)) {
+			return false;
+		}else {
+			if(scholarshipsAppliedTo.contains(id)) {
+				removeScholarship(id);
+				scholarshipsAcceptedTo.add(id);
+				return true;
+			}
+			return false;
+		}
+	}
 	/**
 	 * Add scholarship to students "appliedto" list
 	 * @param id of the scholarship to add
@@ -152,31 +178,56 @@ public class Student extends User{
 	public boolean removeScholarship(int id){
 		return scholarshipsAppliedTo.remove((Integer) id);
 	}
+	public boolean addToWon(int id) {
+		if(Arrays.stream(scholarshipsWon).anyMatch(i -> i == id)) {
+			return false;
+		}
+		if(scholarshipsWon[0]<=0) {
+			scholarshipsWon[0] = id;
+			return true;
+		}else if(scholarshipsWon[1]<=0){
+			scholarshipsWon[1] = id;
+		}else {
+			return false;
+		}
+		return false;
+	}
 	/**
 	 * toString method to format everything properly to write to the file
 	 */
 	@Override
 	public String toString() {
 		String appliedToSch = "";
-		if(scholarshipsAppliedTo != null) {
+		if(scholarshipsAppliedTo.isEmpty()) {
+			appliedToSch = "noneApplied";
+		}else {
 			for(Integer i : scholarshipsAppliedTo) {
-				if(i== scholarshipsAppliedTo.get(scholarshipsAppliedTo.size()-1)) {
-					appliedToSch += i+"";
-				}
-				else {
-					appliedToSch += i+":";
-				}
+				appliedToSch+=i+":";
+				
 			}
+			appliedToSch.substring(0, appliedToSch.length()-1);
 		}
 		
+		String acceptedToSch = "";
+		if(scholarshipsAcceptedTo.isEmpty()) {
+			acceptedToSch = "noneAccepted";
+		}else {
+			for(Integer i : scholarshipsAcceptedTo) {
+				acceptedToSch+=i+":";
+				
+			}
+			acceptedToSch.substring(0, acceptedToSch.length()-1);
+		}
+		String schWon="";
+		if (scholarshipsWon!=null) {
+			schWon = scholarshipsWon[0]+":"+scholarshipsWon[1];
+		}
+		if(scholarshipsWon[0]==0 && scholarshipsWon[1] ==0) {
+			schWon="noneWon";
+		}
 		
 		String returnString = getUCID()+","+getEmail()+","+getPassword()+","+getName()
-		+","+faculty+","+gpa+","+yearOfStudy+","+typeOfStudy+","+department;
-		
-		if (appliedToSch.compareTo("")!=0) {
-			returnString += "," + appliedToSch;
-		}
-		
+		+","+faculty+","+gpa+","+yearOfStudy+","+typeOfStudy+","+department+","+appliedToSch+","+acceptedToSch+","+schWon;
 		return returnString;
 	}
 	
