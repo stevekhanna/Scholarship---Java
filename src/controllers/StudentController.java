@@ -133,7 +133,7 @@ public class StudentController extends MyController {
 				// Add the scholarship to the current student
 				if(currentStudent.addScholarship(scholarshipID)) {
 					// Add the Students UCID to the scholarship
-					s.addStudent(currentStudent.getUCID());
+					s.addStudentToApplied(currentStudent.getUCID());
 					// Save the Student to the util file
 					util.saveStudent(currentStudent);
 					// Save the scholarships to the util file
@@ -175,7 +175,7 @@ public class StudentController extends MyController {
 		// Remove the scholarship
 		currentStudent.removeScholarship(sId);
 		//Remove the student
-		scMap.get(sId).removeStudent(currentStudent.getUCID());
+		scMap.get(sId).removeStudentFromApplied(currentStudent.getUCID());
 		//Save both
 		util.saveScholarship(scMap.get(sId));
 		util.saveStudent(currentStudent);
