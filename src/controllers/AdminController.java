@@ -261,7 +261,14 @@ public class AdminController extends MyController {
 		}
 	}
 	
-	public void switchToAccountPanel(){
+	private void acceptStudent(Student student, Scholarship scholarship){
+		student.addToAccept(scholarship.getId());
+		scholarship.addStudentToAccepted(student.getUCID());
+		util.saveStudent(student);
+		util.saveScholarship(scholarship);
+	}
+	
+	private void switchToAccountPanel(){
 		acp.setName(currentAdmin.getName());
 		acp.displayStudent(currentAdmin);
 		acp.resetPasswordFileds();
@@ -347,6 +354,13 @@ public class AdminController extends MyController {
 			break;
 		case "Account_AdminPanel":
 			switchToAccountPanel();
+			break;
+		case "Accept_ViewStudentsAppliedPanel":
+			String l = source.getActionCommand();
+			String[]split = l.split(":");
+			Student r = findStudentByUcid(Integer.parseInt(split[0]));
+			Scholarship d = scMap.get(Integer.parseInt(split[1]));
+			acceptStudent(r,d);
 			break;
 		case "UpdatePassword_AccountPanel":
 			String p = acp.getNewPassword();

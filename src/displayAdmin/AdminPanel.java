@@ -66,7 +66,7 @@ public class AdminPanel extends MyPanel{
 		btnStudents.addActionListener(packageListener);
 		btnStudents.setName("AllStudents_AdminPanel");
 		
-		btnScholarship = new MyButton("View All Scholarships", Size.defaultBtnFontSize, Size.defaultBtnWidth+50);
+		btnScholarship = new MyButton("View All Scholarships", Size.defaultBtnFontSize, Size.defaultBtnWidth);
 		center.add(btnScholarship, "cell 0 1, center");
 		btnScholarship.addActionListener(packageListener);
 		btnScholarship.setName("AllScholarships_AdminPanel");
@@ -86,7 +86,7 @@ public class AdminPanel extends MyPanel{
 	 * displaySouth method displays button at the south end of the screen
 	 */
 	private void displaySouth() {
-		btnBack = new MyButton("Log out", Size.defaultBtnFontSize);
+		btnBack = new MyButton("Log out", Size.defaultBtnFontSize, Size.defaultBtnEditWidth);
 		south.add(btnBack, "cell 0 0");
 		btnBack.addActionListener(globalListener);
 		btnBack.setName("Logout_AdminPanel");

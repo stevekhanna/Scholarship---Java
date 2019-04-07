@@ -31,6 +31,7 @@ public class ViewStudentsAppliedPanel extends MyPanel{
 	 * @param packageListener listener for buttons
 	 */
 	public ViewStudentsAppliedPanel(ActionListener packageListener, ActionListener globalListener) {
+		contentPane.setName("ViewStudsentAppliedPanel");
 		this.packageListener = packageListener;
 		this.globalListener = globalListener;
 		
@@ -100,7 +101,7 @@ public class ViewStudentsAppliedPanel extends MyPanel{
 		JButton btn = new MyButton("Accept Student", Size.defaultLblFontSize, Size.defaultBtnEditWidth);
 		btn.setName("Accept_ViewStudentsAppliedPanel");
 		btn.addActionListener(globalListener);
-		btn.setActionCommand(student.getUCID()+"");
+		btn.setActionCommand(student.getUCID()+":"+scholarship.getId());
 		center.add(btn,String.format("cell 5 %d, left", studentRow));
 		studentRow++;
 	}
