@@ -61,7 +61,7 @@ public class Scholarship {
 	 * This is used when a new scholarship is created
 	 */
 	public Scholarship(String name, String sId, String gReq, String faculty, String YOS, String TOS, String Dept,
-			String nums, String desc, String money,List<Integer> studentUcids) {
+			String nums, String desc, String money,List<Integer> studentsApplied, List<Integer> studentsAccepted) {
 		this.name = name;
 		this.scholarshipId = Integer.parseInt(sId);
 		this.gpaRequirement = Double.parseDouble(gReq);
@@ -72,9 +72,8 @@ public class Scholarship {
 		this.numAllowed = Integer.parseInt(nums);
 		this.description = desc;
 		this.money = Double.parseDouble(money);
-		this.studentsApplied= studentUcids;
-		
-		studentsAccepted = new ArrayList<>();
+		this.studentsApplied= studentsApplied;
+		this.studentsAccepted = studentsAccepted;
 
 	}
 	
@@ -234,25 +233,31 @@ public class Scholarship {
 	@Override
 	public String toString() {
 		
-		String listOfStudents = "";
-		if(studentsApplied != null) {
+		String appliedStudents = "";
+		if(studentsApplied.isEmpty()) {
+			appliedStudents = "noneApplied";
+		}else {
 			for(Integer i : studentsApplied) {
-				if(i== studentsApplied.get(studentsApplied.size()-1)) {
-					listOfStudents += i+"";
-				}
-				else {
-					listOfStudents += i+":";
-				}
+				appliedStudents+=i+":";
+				
 			}
+			appliedStudents = appliedStudents.substring(0, appliedStudents.length()-1);
+		}
+		
+		String acceptedStudents = "";
+		if(studentsAccepted.isEmpty()) {
+			acceptedStudents = "noneAccepted";
+		}else {
+			for(Integer i : studentsAccepted) {
+				acceptedStudents+=i+":";
+				
+			}
+			acceptedStudents = acceptedStudents.substring(0, acceptedStudents.length()-1);
 		}
 		
 		
 		String returnString = name + "," + scholarshipId + "," + gpaRequirement + "," + faculty + "," + yearOfStudy + ","
-				+ typeOfStudy + "," + Department + "," + numAllowed + "," + description + "," + money ;
-		
-		if (listOfStudents.compareTo("")!=0){
-			returnString += "," + listOfStudents;
-		}
+				+ typeOfStudy + "," + Department + "," + numAllowed + "," + description + "," + money +","+appliedStudents+","+acceptedStudents;
 		
 		return (returnString);
 	}
