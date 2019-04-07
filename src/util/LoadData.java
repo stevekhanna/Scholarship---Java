@@ -139,17 +139,29 @@ public class LoadData{
 				String currentLine = fileScanner.nextLine();
 				if (currentLine.isEmpty())break;
 				String [] parts = currentLine.split(",");
-				List<Integer> studentUcids = new ArrayList<Integer>();
+				List<Integer> studentsApplied = new ArrayList<Integer>();
+				List<Integer> studentsAccepted = new ArrayList<Integer>();
 				if (parts.length>10) {
-					String[] queue = parts[10].split(":");
-					for(int i =0; i<queue.length; i++) {
-						studentUcids.add(Integer.parseInt(queue[i]));
+					if (!parts[10].equals("noneApplied")) {
+						String[] queue = parts[10].split(":");
+						for(int i =0; i<queue.length; i++) {
+							studentsApplied.add(Integer.parseInt(queue[i]));
+						}
+					}
+					if(parts.length>11) {
+						if (!parts[11].equals("noneAccepted")) {
+							String[] acceptedToParts = parts[10].split(":");
+							for(int i =0; i<acceptedToParts.length; i++) {
+								studentsAccepted.add(Integer.parseInt(acceptedToParts[i]));
+							}
+						}
+						
 					}
 				}
 				else {
-					studentUcids=new ArrayList<Integer>();
+					studentsApplied=new ArrayList<Integer>();
 				}
-				Scholarship name = new Scholarship(parts[0], parts[1],parts[2],parts[3],parts[4],parts[5],parts[6],parts[7],parts[8],parts[9],studentUcids);
+				Scholarship name = new Scholarship(parts[0], parts[1],parts[2],parts[3],parts[4],parts[5],parts[6],parts[7],parts[8],parts[9],studentsApplied, studentsAccepted);
 				int ID = name.getId();
 				scMap.put(ID, name);
 			}

@@ -205,9 +205,9 @@ public class Student extends User{
 				appliedToSch+=i+":";
 				
 			}
-			appliedToSch.substring(0, appliedToSch.length()-1);
+			appliedToSch = appliedToSch.substring(0, appliedToSch.length()-1);
 		}
-		
+
 		String acceptedToSch = "";
 		if(scholarshipsAcceptedTo.isEmpty()) {
 			acceptedToSch = "noneAccepted";
@@ -216,7 +216,7 @@ public class Student extends User{
 				acceptedToSch+=i+":";
 				
 			}
-			acceptedToSch.substring(0, acceptedToSch.length()-1);
+			acceptedToSch= acceptedToSch.substring(0, acceptedToSch.length()-1);
 		}
 		String schWon="";
 		if (scholarshipsWon!=null) {
