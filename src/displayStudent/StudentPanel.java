@@ -70,12 +70,12 @@ public class StudentPanel extends MyPanel{
 		btnAllScholarships.addActionListener(packageListener);
 		btnAllScholarships.setName("AllScholarships_StudentPanel");
 		
-		btnAppliedTo = new MyButton("Applied To Scholarships", Size.defaultBtnFontSize, Size.defaultBtnWidth+75);
+		btnAppliedTo = new MyButton("Applied To Scholarships", Size.defaultBtnFontSize, Size.defaultBtnWidth);
 		center.add(btnAppliedTo, "cell  0 1, center");
 		btnAppliedTo.addActionListener(packageListener);
 		btnAppliedTo.setName("AppliedTo_StudentPanel");
 		
-		btnAcceptedTo = new MyButton("Accepted To Scholarships", Size.defaultBtnFontSize, Size.defaultBtnWidth+75);
+		btnAcceptedTo = new MyButton("Accepted To Scholarships", Size.defaultBtnFontSize, Size.defaultBtnWidth);
 		center.add(btnAcceptedTo, "cell  0 2, center");
 		btnAcceptedTo.addActionListener(packageListener);
 		btnAcceptedTo.setName("AcceptedTo_StudentPanel");
