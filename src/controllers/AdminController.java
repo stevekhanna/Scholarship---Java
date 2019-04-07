@@ -262,8 +262,10 @@ public class AdminController extends MyController {
 	}
 	
 	private void acceptStudent(Student student, Scholarship scholarship){
-		System.out.println(student.toString());
-		System.out.println(scholarship.toString());
+		student.addToAccept(scholarship.getId());
+		scholarship.addStudentToAccepted(student.getUCID());
+		util.saveStudent(student);
+		util.saveScholarship(scholarship);
 	}
 	
 	private void switchToAccountPanel(){

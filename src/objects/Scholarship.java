@@ -1,5 +1,6 @@
 package objects;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -72,6 +73,8 @@ public class Scholarship {
 		this.description = desc;
 		this.money = Double.parseDouble(money);
 		this.studentsApplied= studentUcids;
+		
+		studentsAccepted = new ArrayList<>();
 
 	}
 	
