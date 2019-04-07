@@ -1,6 +1,5 @@
 package controllers;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
@@ -10,12 +9,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.UIManager;
 
 import displayAdmin.*;
 import objects.*;
 import util.*;
-import myJStuff.Colors;
 import myJStuff.MyController;
 
 /**
@@ -266,6 +263,7 @@ public class AdminController extends MyController {
 		scholarship.addStudentToAccepted(student.getUCID());
 		util.saveStudent(student);
 		util.saveScholarship(scholarship);
+	
 	}
 	
 	private void switchToAccountPanel(){

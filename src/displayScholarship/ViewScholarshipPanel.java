@@ -24,8 +24,7 @@ public class ViewScholarshipPanel extends MyPanel{
 	private JButton btnApply;
 	private JButton btnEdit;
 	private JButton btnStudents;
-	
-	private JLabel lblStudents;
+
 	private JLabel lblStudentsTitle;
 
 	/**

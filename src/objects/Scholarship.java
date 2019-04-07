@@ -202,8 +202,13 @@ public class Scholarship {
 			return false;
 		}
 		else {
-			studentsAccepted.add(id);
-			return true;
+			if(studentsApplied.contains(id)) {
+				removeStudentFromApplied(id);
+				studentsAccepted.add(id);
+				return true;
+			}
+			
+			return false;
 		}
 	}
 	/**
