@@ -59,6 +59,9 @@ private JButton btnBack;
 		center.add(lblName,"cell 2 0");
 		lblName = new MyLabel("Priority", Colors.grey, Size.defaultLblFontSize);
 		center.add(lblName,"cell 3 0");
+		
+		addScrollToCenter();
+		
 	}
 	
 	/**

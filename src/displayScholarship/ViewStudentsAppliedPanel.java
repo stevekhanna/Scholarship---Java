@@ -76,6 +76,9 @@ public class ViewStudentsAppliedPanel extends MyPanel{
 		center.add(lblName,"cell 4 0");
 		lblName = new MyLabel("Accept Student", Colors.grey, Size.defaultLblFontSize);
 		center.add(lblName,"cell 5 0");
+		
+		addScrollToCenter();
+		
 	}
 	
 	/**
