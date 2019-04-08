@@ -111,6 +111,8 @@ public class AllScholarshipsPanel extends MyPanel{
 		center.add(lblName,"cell 3 0");
 		lblName = new MyLabel("Amount", Colors.grey, Size.defaultLblFontSize);
 		center.add(lblName,"cell 4 0");
+		
+		addScrollToCenter();
 	}
 	
 	/**

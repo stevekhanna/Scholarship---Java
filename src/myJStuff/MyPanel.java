@@ -2,9 +2,11 @@ package myJStuff;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.border.EmptyBorder;
@@ -77,6 +79,15 @@ public abstract class MyPanel {
 		west.setBackground(color);
 		center.setBackground(color);
 		contentPane.setBackground(color);
+	}
+	
+	protected void addScrollToCenter() {
+		JPanel NewScroller = new JPanel();
+		NewScroller.add(center);
+		JScrollPane scroller = new JScrollPane(NewScroller);
+		//scroller.setPreferredSize(new Dimension(200,200));
+		
+	    contentPane.add(scroller);
 	}
 	
 	protected void setTheme(){
