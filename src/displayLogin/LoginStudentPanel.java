@@ -60,12 +60,12 @@ public class LoginStudentPanel extends MyPanel{
 	 * displays bottom part of student log in panel with back and login buttons
 	 */
 	private void displaySouth(){
-		btnBack = new MyButton("Back", Size.defaultBtnFontSize);
+		btnBack = new MyButton("Back", Size.defaultBtnFontSize, Size.defaultBtnEditWidth);
 		south.add(btnBack, "cell 0 0");
 		btnBack.addActionListener(packageListener);
 		btnBack.setName("Back_LoginStudentPanel");
 		
-		btnLogin = new MyButton("Login", Size.defaultBtnFontSize);
+		btnLogin = new MyButton("Login", Size.defaultBtnFontSize, Size.defaultBtnEditWidth);
 		south.add(btnLogin, "cell 1 0, right");
 		btnLogin.addActionListener(globalListener);
 		btnLogin.setName("Login_LoginStudentPanel");

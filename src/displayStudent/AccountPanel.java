@@ -127,11 +127,11 @@ public class AccountPanel extends MyPanel {
 	 * with back button and update password button
 	 */
 	private void displaySouth() {
-		btnBack = new MyButton("Back", Size.defaultBtnFontSize);
+		btnBack = new MyButton("Back", Size.defaultBtnFontSize,Size.defaultBtnEditWidth);
 		south.add(btnBack, "cell 0 0");
 		btnBack.addActionListener(packageListener);
 		btnBack.setName("Back_AccountPanel");
-		btnPassword = new MyButton("Update Password", Size.defaultBtnFontSize);
+		btnPassword = new MyButton("Update Password", Size.defaultBtnFontSize,Size.defaultBtnEditWidth);
 		south.add(btnPassword, "cell 1 0, right");
 		btnPassword.addActionListener(packageListener);
 		btnPassword.setName("UpdatePassword_AccountPanel");

@@ -124,12 +124,12 @@ public class CreateScholarshipPanel extends MyPanel{
 	 * displaySouth method displays 2 functional buttons (back and create)
 	 */
 	private void displaySouth() {
-		btnBack = new MyButton("Back", Size.defaultBtnFontSize);
+		btnBack = new MyButton("Back", Size.defaultBtnFontSize, Size.defaultBtnEditWidth);
 		south.add(btnBack, "cell 0 0, left");
 		btnBack.addActionListener(packageListener);
 		btnBack.setName("Back_CreateScholarshipPanel");
 		
-		btnSave = new MyButton("Create", Size.defaultBtnFontSize);
+		btnSave = new MyButton("Create", Size.defaultBtnFontSize, Size.defaultBtnEditWidth);
 		south.add(btnSave, "cell 1 0 , right");
 		btnSave.addActionListener(packageListener);
 		btnSave.setName("Create_CreateScholarshipPanel");

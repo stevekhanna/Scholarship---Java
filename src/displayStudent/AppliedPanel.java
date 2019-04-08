@@ -48,8 +48,8 @@ public class AppliedPanel extends MyPanel{
 	 * displays the back button
 	 */
 	private void displaySouth() {
-		btnBack = new MyButton("Back", Size.defaultBtnFontSize);
-		south.add(btnBack, "cell 0 0");
+		btnBack = new MyButton("Continue", Size.defaultBtnFontSize,Size.defaultBtnEditWidth);
+		south.add(btnBack, "cell 0 0,right");
 		btnBack.addActionListener(packageListener);
 		btnBack.setName("Back_AppliedPanel");
 	}

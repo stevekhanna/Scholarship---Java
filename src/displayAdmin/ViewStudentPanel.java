@@ -47,7 +47,7 @@ public class ViewStudentPanel extends MyPanel{
 	 * displaySouth displays the back button at the bottom
 	 */
 	private void displaySouth() {
-		btnBack = new MyButton("Back", Size.defaultBtnFontSize);
+		btnBack = new MyButton("Back", Size.defaultBtnFontSize, Size.defaultBtnEditWidth);
 		south.add(btnBack,"cell 0 0, left");
 		btnBack.setName("Back_ViewStudentPanel");
 		btnBack.addActionListener(packageListener);

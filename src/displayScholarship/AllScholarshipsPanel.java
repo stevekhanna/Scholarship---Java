@@ -63,13 +63,13 @@ public class AllScholarshipsPanel extends MyPanel{
 	private void displaySouth(){
 		
 		// This button goes back to either the student or admin controller from the scholarships controller
-		btnBack = new MyButton("Back", Size.defaultBtnFontSize);
+		btnBack = new MyButton("Back", Size.defaultBtnFontSize,Size.defaultBtnEditWidth);
 		south.add(btnBack, "cell 0 1");
 		// Global listener to switch between the controllers
 		btnBack.addActionListener(globalLisenter);
 		btnBack.setName("Back_AllScholarshipsPanel");
 		
-		btnSearch = new MyButton("Search", Size.defaultBtnFontSize);
+		btnSearch = new MyButton("Search", Size.defaultBtnFontSize,Size.defaultBtnEditWidth);
 		south.add(btnSearch, "cell 2 1");
 		// Global listener to switch between the controllers
 		btnSearch.addActionListener(packageListener);
