@@ -24,6 +24,7 @@ public class AllStudentsPanel extends MyPanel{
 	 */
 	public AllStudentsPanel(ActionListener packageListener) {
 		this.packageListener = packageListener;
+		contentPane.setName("All Students Panel");
 		
 		displayNorth();
 		displaySouth();

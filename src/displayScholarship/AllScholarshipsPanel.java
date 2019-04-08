@@ -24,8 +24,6 @@ public class AllScholarshipsPanel extends MyPanel{
 	private JLabel lblSearchError;
 	
 	private JLabel lblName;
-	private JLabel lblEndDate;
-	private JLabel lblType;
 	
 	private int y = 1;
 	
@@ -41,7 +39,7 @@ public class AllScholarshipsPanel extends MyPanel{
 		this.packageListener = actionListener;
 		this.globalLisenter = globalLisenter;
 		this.isAdmin = isAdmin;
-		contentPane.setName("Scholarships Panel");
+		contentPane.setName("All Scholarships Panel");
 		displayNorth();
 		displaySouth();
 		displayCenter();

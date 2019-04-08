@@ -69,7 +69,7 @@ public class HomePanel extends MyPanel{
 		btnLoginStudent.setName("LoginStudent_HomePanel");
 		
 		btnSignup = new MyButton("Sign up");
-		center.add(btnSignup, "cell 0 2, center");
+		//center.add(btnSignup, "cell 0 2, center");
 		btnSignup.addActionListener(packageListener);
 		btnSignup.setName("Signup_HomePanel");
 

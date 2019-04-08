@@ -37,7 +37,7 @@ public class ViewScholarshipPanel extends MyPanel{
 		this.packageListener = actionListener;
 		this.globalListener = globalListener;
 		this.isAdmin = isAdmin;
-		contentPane.setName("Scholarship Panel");
+		contentPane.setName("View Scholarship Panel");
 		displayNorth();
 		displaySouth();
 		displayCenter();

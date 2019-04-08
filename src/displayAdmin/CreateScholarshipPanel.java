@@ -44,6 +44,7 @@ public class CreateScholarshipPanel extends MyPanel{
 	 */
 	public CreateScholarshipPanel(ActionListener packageListener){
 		this.packageListener = packageListener;
+		contentPane.setName("Create Scholarship Panel");
 		displayNorth();
 		displayCenter();
 		displaySouth();

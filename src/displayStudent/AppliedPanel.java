@@ -26,7 +26,7 @@ public class AppliedPanel extends MyPanel{
 	 */
 	public AppliedPanel(ActionListener packageListener) {
 		this.packageListener = packageListener;
-		
+		contentPane.setName("Applied Panel");
 		displayNorth();
 		displaySouth();
 		displayCenter();

@@ -49,6 +49,7 @@ public class EditScholarshipPanel extends MyPanel{
 	public EditScholarshipPanel(ActionListener packageListener, ActionListener globalListener){
 		this.packageListener = packageListener;
 		this.globalListener = globalListener;
+		contentPane.setName("Edit Scholarship Panel");
 		displayNorth();
 		displayCenter();
 		displaySouth();

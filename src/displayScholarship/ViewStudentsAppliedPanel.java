@@ -31,7 +31,7 @@ public class ViewStudentsAppliedPanel extends MyPanel{
 	 * @param packageListener listener for buttons
 	 */
 	public ViewStudentsAppliedPanel(ActionListener packageListener, ActionListener globalListener) {
-		contentPane.setName("ViewStudsentAppliedPanel");
+		contentPane.setName("View Students Applied Panel");
 		this.packageListener = packageListener;
 		this.globalListener = globalListener;
 		

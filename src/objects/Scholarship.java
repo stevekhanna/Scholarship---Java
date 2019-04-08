@@ -43,6 +43,8 @@ public class Scholarship {
 		this.numAllowed = 100;
 		this.description = "This is a generic scholarship";
 		this.setMoney(0.00);
+		this.studentsApplied = new ArrayList<>();
+		this.studentsAccepted = new ArrayList<>();
 
 	}
 	
