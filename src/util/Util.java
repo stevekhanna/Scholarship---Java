@@ -59,16 +59,13 @@ public class Util {
 	 */
 	public void saveStudent(Student student) {
 		// override the correct student in the list of students
-		int id = student.getUCID();
 		for(Student s: students) {
-			if (s.getUCID() == id) {
+			if (s.getUCID() == student.getUCID()) {
 				//change that value
 				s = student;
-				
 			}
 		}
 		writeStudents();
-		
 	}
 	/**
 	 * Rewrites all data from the list of admins to the correct file;

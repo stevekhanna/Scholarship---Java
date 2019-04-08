@@ -29,7 +29,7 @@ public class AllStudentsPanel extends MyPanel{
 		displaySouth();
 		displayCenter();
 		
-		studentRow = 0;
+		studentRow = 1;
 	}
 	
 	/**
@@ -44,7 +44,7 @@ public class AllStudentsPanel extends MyPanel{
 	 * displaySouth method displays bottom of the panel (back button)
 	 */
 	private void displaySouth() {
-		btnBack = new MyButton("Back", Size.defaultBtnFontSize);
+		btnBack = new MyButton("Back", Size.defaultBtnFontSize, Size.defaultBtnEditWidth);
 		south.add(btnBack,"cell 0 0, left");
 		btnBack.setName("Back_AllStudentsPanel");
 		btnBack.addActionListener(packageListener);
@@ -54,7 +54,12 @@ public class AllStudentsPanel extends MyPanel{
 	 * empty method
 	 */
 	private void displayCenter() {
-		
+		JLabel lblName = new MyLabel("UCID", Colors.grey, Size.defaultLblFontSize);
+		center.add(lblName,"cell 0 0");
+		lblName = new MyLabel("Name", Colors.grey, Size.defaultLblFontSize);
+		center.add(lblName,"cell 1 0");
+		lblName = new MyLabel("Account", Colors.grey, Size.defaultLblFontSize);
+		center.add(lblName,"cell 2 0");
 	}
 	
 	/**
@@ -69,7 +74,7 @@ public class AllStudentsPanel extends MyPanel{
 		lbl = new MyLabel(student.getName());
 		center.add(lbl,String.format("cell 1 %d, left", studentRow));
 		
-		JButton btn = new MyButton("View Account");
+		JButton btn = new MyButton("View Account", Size.defaultLblFontSize, Size.defaultBtnEditWidth);
 		center.add(btn,String.format("cell 2 %d, left", studentRow));
 		btn.setName("ViewStudent_AllStudentsPanel");
 		btn.addActionListener(packageListener);

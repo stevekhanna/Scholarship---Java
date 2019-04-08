@@ -86,7 +86,6 @@ public class ScholarshipController extends MyController{
 	 */
 	public void setStudents(List<Student> students) {
 		this.students=students;
-		System.out.println(students.get(0).toString());
 	}
 	
 	/**
@@ -128,7 +127,6 @@ public class ScholarshipController extends MyController{
 	private void switchToViewStudentsAppliedPanel(Scholarship scholar) {
 		vsap.resetStudents();
 		vsap.setScholarship(currentScholarship);
-		System.out.println(students.get(0).toString());
 		for(Student s: students) {
 			if(scholar.getStudentsApplied().contains(s.getUCID())) {
 				vsap.addStudent(s);

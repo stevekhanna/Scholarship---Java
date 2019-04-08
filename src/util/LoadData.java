@@ -150,7 +150,7 @@ public class LoadData{
 					}
 					if(parts.length>11) {
 						if (!parts[11].equals("noneAccepted")) {
-							String[] acceptedToParts = parts[10].split(":");
+							String[] acceptedToParts = parts[11].split(":");
 							for(int i =0; i<acceptedToParts.length; i++) {
 								studentsAccepted.add(Integer.parseInt(acceptedToParts[i]));
 							}

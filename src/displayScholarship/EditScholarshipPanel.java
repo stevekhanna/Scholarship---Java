@@ -143,12 +143,12 @@ public class EditScholarshipPanel extends MyPanel{
 	 * displays the back button and button to save edits
 	 */
 	private void displaySouth() {
-		btnBack = new MyButton("Back", Size.defaultBtnFontSize);
+		btnBack = new MyButton("Cancel", Size.defaultBtnFontSize,Size.defaultBtnEditWidth);
 		south.add(btnBack, "cell 0 0, left");
 		btnBack.addActionListener(packageListener);
 		btnBack.setName("Back_EditScholarshipPanel");
 		
-		btnSave = new MyButton("Save Edits", Size.defaultBtnFontSize);
+		btnSave = new MyButton("Update", Size.defaultBtnFontSize,Size.defaultBtnEditWidth);
 		south.add(btnSave, "cell 1 0, right");
 		btnSave.addActionListener(globalListener);
 		btnSave.setName("SaveEdits_EditScholarshipPanel");
