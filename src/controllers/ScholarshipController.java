@@ -22,6 +22,7 @@ public class ScholarshipController extends MyController{
 	private JPanel allScholarshipsPanel;
 	private JPanel editScholarshipPanel;
 	private JPanel viewStudentsAppliedPanel;
+	private JPanel viewStudentsAcceptedPanel;
 	
 	/**
 	 * This is all of the panels that are in the displaySchoalrship
@@ -29,7 +30,8 @@ public class ScholarshipController extends MyController{
 	private ViewScholarshipPanel vsp;
 	private AllScholarshipsPanel asp;
 	private EditScholarshipPanel esp;
-	private ViewStudentsAppliedPanel vsap;
+	private ViewStudentsAppliedPanel vsapp;
+	private ViewStudentsAcceptedPanel vsacp;
 	
 	private List<Student> students;
 	/**
@@ -66,13 +68,15 @@ public class ScholarshipController extends MyController{
 		vsp = new ViewScholarshipPanel(this,globalListener,this.isAdmin);
 		asp = new AllScholarshipsPanel(this,globalListener,this.isAdmin);
 		esp = new EditScholarshipPanel(this,globalListener);
-		vsap = new ViewStudentsAppliedPanel(this, globalListener);
+		vsapp = new ViewStudentsAppliedPanel(this, globalListener);
+		vsacp = new ViewStudentsAcceptedPanel(this, globalListener);
 		
 		// Get the content panes
 		viewScholarshipPanel = vsp.getContentPane();
 		allScholarshipsPanel = asp.getContentPane();
 		editScholarshipPanel = esp.getContentPane();
-		viewStudentsAppliedPanel = vsap.getContentPane();
+		viewStudentsAppliedPanel = vsapp.getContentPane();
+		viewStudentsAcceptedPanel = vsacp.getContentPane();
 		
 		// Add all the scholarships to the allScholarshipsPanel
 		scholarshipLoop(scMap);
@@ -105,7 +109,6 @@ public class ScholarshipController extends MyController{
 	 * @return - Scholarship
 	 */
 	private Scholarship searchForScholarship(String name) {
-		
 		for(Integer ID: scMap.keySet()) {
 			if(scMap.get(ID).getName().equalsIgnoreCase(name)) {
 				return scMap.get(ID);
@@ -125,15 +128,27 @@ public class ScholarshipController extends MyController{
 	}
 	
 	private void switchToViewStudentsAppliedPanel(Scholarship scholar) {
-		vsap.resetStudents();
-		vsap.setScholarship(currentScholarship);
+		vsapp.resetStudents();
+		vsapp.setScholarship(currentScholarship);
 		for(Student s: students) {
 			if(scholar.getStudentsApplied().contains(s.getUCID())) {
-				vsap.addStudent(s);
+				vsapp.addStudent(s);
 				
 			}
 		}	
 		switchPanel(viewStudentsAppliedPanel);
+	}
+	
+	private void switchToViewStudentsAcceptedPanel(Scholarship scholar) {
+		vsacp.resetStudents();
+		vsacp.setScholarship(currentScholarship);
+		for(Student s: students) {
+			if(scholar.getStudentsApplied().contains(s.getUCID())) {
+				vsacp.addStudent(s);
+				
+			}
+		}	
+		switchPanel(viewStudentsAcceptedPanel);
 	}
 	
 	/**
@@ -176,7 +191,13 @@ public class ScholarshipController extends MyController{
 		case "ViewStudentsApplied_ViewScholarshipPanel":
 			switchToViewStudentsAppliedPanel(currentScholarship);
 			break;
-		case "Back_ViewStudentsAppliedTo":
+		case "ViewStudentsAccepted_ViewScholarshipPanel":
+			switchToViewStudentsAcceptedPanel(currentScholarship);
+			break;
+		case "Back_ViewStudentsAppliedPanel":
+			switchPanel(viewScholarshipPanel);
+			break;
+		case "Back_ViewStudentsAcceptedPanel":
 			switchPanel(viewScholarshipPanel);
 			break;
 		case"Search_AllScholarshipsPanel":
