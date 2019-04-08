@@ -104,14 +104,22 @@ public class ScholarshipController extends MyController{
 	 * @param name - String
 	 * @return - Scholarship
 	 */
-	private Scholarship searchForScholarship(String name) {
+	private void filterScholarships(String name) {
+		HashMap<Integer, Scholarship> filteredMap = new HashMap<Integer, Scholarship>();
 		
+		//search through the map for the string that the user entered 
 		for(Integer ID: scMap.keySet()) {
-			if(scMap.get(ID).getName().equalsIgnoreCase(name)) {
-				return scMap.get(ID);
+			//if what the user entered, regardless of case, matches then put it into the filtered map 
+			if(scMap.get(ID).getName().toLowerCase().contains(name.toLowerCase())) {
+			filteredMap.put(ID,scMap.get(ID));
+
 			}
 		}	
-		return null;
+		asp.resetScholarships();
+		
+		//display the filtered matches in a new panel
+		scholarshipLoop(filteredMap);
+		switchPanel(allScholarshipsPanel);
 	}
 	/**
 	 * Switch the JPaenl to the ViewScholarshipPanel
@@ -183,20 +191,20 @@ public class ScholarshipController extends MyController{
 			// Get the text of the search bar
 			String x = asp.getSearchResult();
 			// Try to find the scholarship
-			Scholarship sr = searchForScholarship(x);
+			filterScholarships(x);
 			// If the scholarship is not null display the scholarship page
-			if(sr != null) {
-				switchToViewScholarshipPanel(sr);
-				asp.setErrorMessage("");
-				asp.setSearchResult("");
-			}else {
-				//Display label saying could'nt find scholarship
-				if(x.equals("")) {
-					asp.setErrorMessage("Error, please enter a valid name");
-				}else {
-					asp.setErrorMessage("Error, could not find scholarship with name " + x);
-				}
-			}
+//			if(sr != null) {
+//				switchToViewScholarshipPanel(sr);
+//				asp.setErrorMessage("");
+//				asp.setSearchResult("");
+//			}else {
+//				//Display label saying could'nt find scholarship
+//				if(x.equals("")) {
+//					asp.setErrorMessage("Error, please enter a valid name");
+//				}else {
+//					asp.setErrorMessage("Error, could not find scholarship with name " + x);
+//				}
+//			}
 			break;
 		default:
 			break;
