@@ -59,6 +59,8 @@ private JButton btnBack;
 		lblName = new MyLabel("Department", Colors.grey, Size.defaultLblFontSize);
 		center.add(lblName,"cell 3 0");
 		
+		addScrollToCenter();
+		
 	}
 	
 	/**

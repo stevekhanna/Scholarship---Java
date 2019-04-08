@@ -263,6 +263,7 @@ public class AdminController extends MyController {
 		scholarship.addStudentToAccepted(student.getUCID());
 		util.saveStudent(student);
 		util.saveScholarship(scholarship);
+		sController.start(true, scMap);
 	
 	}
 	

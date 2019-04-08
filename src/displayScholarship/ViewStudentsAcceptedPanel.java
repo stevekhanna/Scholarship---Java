@@ -17,6 +17,7 @@ public class ViewStudentsAcceptedPanel extends MyPanel{
 	 * instance variables
 	 */
 	private JLabel lblTitle;
+	private JLabel lblSubTitle;
 	
 	private JButton btnBack;
 	
@@ -46,8 +47,11 @@ public class ViewStudentsAcceptedPanel extends MyPanel{
 	 * displayNorth method displays heading of the panel
 	 */
 	private void displayNorth() {
-		lblTitle = new MyLabel("Students that have been accepted", Size.defaultLblSubTitleFontSize);
+		lblTitle = new MyLabel("Scholarship Name", Size.defaultLblSubTitleFontSize);
 		north.add(lblTitle,"cell 0 0, center");
+		
+		lblSubTitle = new MyLabel("Students that have been accepted", Size.defaultLblFontSize);
+		north.add(lblSubTitle,"cell 0 1, center");
 	}
 	
 	/**
@@ -56,7 +60,7 @@ public class ViewStudentsAcceptedPanel extends MyPanel{
 	private void displaySouth() {
 		btnBack = new MyButton("Back", Size.defaultBtnFontSize,Size.defaultBtnEditWidth);
 		south.add(btnBack,"cell 0 0, left");
-		btnBack.setName("Back_ViewStudentsAppliedTo");
+		btnBack.setName("Back_ViewStudentsAppliedPanel");
 		btnBack.addActionListener(packageListener);
 	}
 	
@@ -76,6 +80,9 @@ public class ViewStudentsAcceptedPanel extends MyPanel{
 		center.add(lblName,"cell 4 0");
 		lblName = new MyLabel("Accept Student", Colors.grey, Size.defaultLblFontSize);
 		center.add(lblName,"cell 5 0");
+		
+		addScrollToCenter();
+		
 	}
 	
 	/**

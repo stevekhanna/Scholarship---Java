@@ -61,6 +61,9 @@ public class AllStudentsPanel extends MyPanel{
 		center.add(lblName,"cell 1 0");
 		lblName = new MyLabel("Account", Colors.grey, Size.defaultLblFontSize);
 		center.add(lblName,"cell 2 0");
+		
+		addScrollToCenter();
+	
 	}
 	
 	/**
