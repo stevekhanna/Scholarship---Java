@@ -87,6 +87,7 @@ public abstract class MyPanel {
 		JScrollPane scroller = new JScrollPane(newScroller);
 		//scroller.setPreferredSize(new Dimension(200,200));
 		scroller.getViewport().getView().setBackground(Colors.defaultBackgroundColor);
+		newScroller.setBackground(Colors.defaultBackgroundColor);
 		
 	    contentPane.add(scroller);
 	}
