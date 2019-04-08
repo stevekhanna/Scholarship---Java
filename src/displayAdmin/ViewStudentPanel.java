@@ -29,7 +29,7 @@ public class ViewStudentPanel extends MyPanel{
 	 */
 	public ViewStudentPanel(ActionListener packageListener) {
 		this.packageListener = packageListener;
-		
+		contentPane.setName("View Student Panel");
 		displayNorth();
 		displaySouth();
 		displayCenter();

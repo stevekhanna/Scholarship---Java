@@ -31,7 +31,7 @@ private JButton btnBack;
 	 */
 	public AppliedToPanel(ActionListener packageListener) {
 		this.packageListener = packageListener;
-		contentPane.setName("AppliedToPanel");
+		contentPane.setName("Applied To Panel");
 		
 		displayNorth();
 		displaySouth();

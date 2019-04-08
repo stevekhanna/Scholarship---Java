@@ -7,7 +7,6 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 
 import myJStuff.*;
-import net.miginfocom.swing.MigLayout;
 import objects.*;
 
 public class AccountPanel extends MyPanel {
