@@ -62,22 +62,21 @@ public class ViewScholarshipPanel extends MyPanel{
 		btnBack.addActionListener(packageListener);
 		btnBack.setName("Back_ViewScholarshipPanel");
 		
-		System.out.println(isAdmin);
+		btnApplied = new MyButton("Applied Students",Size.defaultBtnFontSize);
+		btnApplied.setName("ViewStudentsApplied_ViewScholarshipPanel");
+		btnApplied.addActionListener(packageListener);
+		south.add(btnApplied,"cell 2 0");
+		btnAccepted = new MyButton("Accepted Students",Size.defaultBtnFontSize);
+		btnAccepted.setName("ViewStudentsAccepted_ViewScholarshipPanel");
+		btnAccepted.addActionListener(packageListener);
+		south.add(btnAccepted,"cell 3 0");
 		
 		if(!isAdmin) {
 			btnApply = new MyButton("Apply",Size.defaultBtnFontSize,Size.defaultBtnEditWidth);
 			btnApply.setName("Apply_ViewScholarshipPanel");
 			btnApply.addActionListener(globalListener);
-			south.add(btnApply, "cell 1 0, right");
+			south.add(btnApply, "cell 4 0, right");
 		}else {
-			btnApplied = new MyButton("Applied Students",Size.defaultBtnFontSize);
-			btnApplied.setName("ViewStudentsApplied_ViewScholarshipPanel");
-			btnApplied.addActionListener(packageListener);
-			south.add(btnApplied,"cell 2 0");
-			btnAccepted = new MyButton("Accepted Students",Size.defaultBtnFontSize);
-			btnAccepted.setName("ViewStudentsAccepted_ViewScholarshipPanel");
-			btnAccepted.addActionListener(packageListener);
-			south.add(btnAccepted,"cell 3 0");
 			btnEdit = new MyButton("Edit",Size.defaultBtnFontSize,Size.defaultBtnEditWidth);
 			btnEdit.setName("EditScholarship_ViewScholarshipPanel");
 			btnEdit.addActionListener(packageListener);
