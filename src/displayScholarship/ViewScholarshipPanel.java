@@ -23,9 +23,8 @@ public class ViewScholarshipPanel extends MyPanel{
 	private JButton btnBack;
 	private JButton btnApply;
 	private JButton btnEdit;
-	private JButton btnStudents;
-
-	private JLabel lblStudentsTitle;
+	private JButton btnApplied;
+	private JButton btnAccepted;
 
 	/**
 	 * class constructor
@@ -71,10 +70,18 @@ public class ViewScholarshipPanel extends MyPanel{
 			btnApply.addActionListener(globalListener);
 			south.add(btnApply, "cell 1 0, right");
 		}else {
+			btnApplied = new MyButton("Applied Students",Size.defaultBtnFontSize);
+			btnApplied.setName("ViewStudentsApplied_ViewScholarshipPanel");
+			btnApplied.addActionListener(packageListener);
+			south.add(btnApplied,"cell 2 0");
+			btnAccepted = new MyButton("Accepted Students",Size.defaultBtnFontSize);
+			btnAccepted.setName("ViewStudentsAccepted_ViewScholarshipPanel");
+			btnAccepted.addActionListener(packageListener);
+			south.add(btnAccepted,"cell 3 0");
 			btnEdit = new MyButton("Edit",Size.defaultBtnFontSize,Size.defaultBtnEditWidth);
 			btnEdit.setName("EditScholarship_ViewScholarshipPanel");
 			btnEdit.addActionListener(packageListener);
-			south.add(btnEdit, "cell 1 0, right");
+			south.add(btnEdit, "cell 4 0, right");
 		}
 		
 	}
@@ -91,14 +98,6 @@ public class ViewScholarshipPanel extends MyPanel{
 			JLabel name = new MyLabel(attributeName[i]+": ");
 			center.add(name, String.format("cell 0 %d, right", i));
 		}
-		
-		lblStudentsTitle = new MyLabel("");
-		center.add(lblStudentsTitle,"cell 0 8,right");
-		
-		btnStudents = new MyButton("View Applied Students",Size.defaultBtnFontSize,Size.defaultBtnEditWidth);
-		btnStudents.setName("ViewStudentsApplied_ViewScholarshipPanel");
-		btnStudents.addActionListener(packageListener);
-		center.add(btnStudents,"cell 1 8,left");
 	}
 	
 	/**
@@ -109,12 +108,12 @@ public class ViewScholarshipPanel extends MyPanel{
 	public void displayScholarship(Scholarship scholarship) {
 		if(!isAdmin) {
 			btnApply.setActionCommand(Integer.toString(scholarship.getId()));
-			lblStudentsTitle.setText("");
-			btnStudents.setVisible(false);
+			btnApplied.setVisible(false);
+			btnAccepted.setVisible(false);
 		}else {
 			btnEdit.setActionCommand(Integer.toString(scholarship.getId()));
-			lblStudentsTitle.setText("Students:");
-			btnStudents.setVisible(true);
+			btnApplied.setVisible(true);
+			btnAccepted.setVisible(true);
 		}
 		lblTitle.setText(scholarship.getName());
 		String x = scholarship.returnFull();
