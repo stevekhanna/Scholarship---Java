@@ -38,6 +38,7 @@ public class StudentController extends MyController {
 	private AppliedToPanel atp;
 	private AcceptedToPanel actp;
 	private AccountPanel acp;
+	private WonScholarshipsPanel wscp;
 	
 	private Util util;
 	
@@ -53,6 +54,7 @@ public class StudentController extends MyController {
 	private JPanel appliedToPanel;
 	private JPanel accountPanel;
 	private JPanel acceptedToPanel;
+	private JPanel wonScholarshipsPanel;
 	/**
 	 * Constructor
 	 * @param frame - JFrame
@@ -79,6 +81,7 @@ public class StudentController extends MyController {
 		atp = new AppliedToPanel(this);
 		acp = new AccountPanel(this);
 		actp = new AcceptedToPanel(this);
+		wscp = new WonScholarshipsPanel(this);
 		atp.setTotalScholarships(currentStudent.getScholarshipsAppliedTo().size());
 		
 		studentPanel = sp.getContentPane();
@@ -86,6 +89,7 @@ public class StudentController extends MyController {
 		appliedToPanel = atp.getContentPane();
 		accountPanel = acp.getContentPane();
 		acceptedToPanel = actp.getContentPane();
+		wonScholarshipsPanel = wscp.getContentPane();
 		
 		addScholarshipsToAppliedPanel();
 		addScholarshipsAcceptedToPanel();
@@ -360,6 +364,31 @@ public class StudentController extends MyController {
 				acp.resetPasswordFields();
 			}
 			break;
+		case "WonScholarships_StudentPanel":
+			wscp.resetScholarships();
+			boolean j = false;
+			for(int i = 0; i< 2; i ++) {
+				if(currentStudent.getScholarshipsWon()[i]>0 ) {
+					wscp.addScholarship(scMap.get(currentStudent.getScholarshipsWon()[i]));
+					j = true;
+				}
+			}
+			if (j) {
+				switchPanel(wonScholarshipsPanel);
+			} else {
+				Object[] noScholarshipsWon = { "OK" };
+				int nsw = JOptionPane.showOptionDialog(null, "No scholarships won", "Error",
+						JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE,
+						null, noScholarshipsWon, noScholarshipsWon[0]);
+				if(nsw == JOptionPane.YES_OPTION) {
+				}
+			}//will have a dialog box saying unavailable
+			break;
+		case "Back_WonScholarshipsPanel":
+			switchToStudentPanel();
+			break;
+		case "ViewReadOnly_WonScholarshipPanel":
+			
 		default:
 			break;
 		}

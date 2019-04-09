@@ -28,6 +28,7 @@ public class StudentPanel extends MyPanel{
 	JButton btnAppliedTo;
 	JButton btnAccount;
 	JButton btnAcceptedTo;
+	JButton btnWonScholarships;
 	
 	/**
 	 * Constructor with arguement of ActionListener packageListener
@@ -84,6 +85,11 @@ public class StudentPanel extends MyPanel{
 		center.add(btnAccount, "cell 0 3, center");
 		btnAccount.addActionListener(packageListener);
 		btnAccount.setName("Account_StudentPanel");
+		
+		btnWonScholarships = new MyButton("Won Scholarships", Size.defaultBtnFontSize);
+		center.add(btnWonScholarships, "cell 0 4, center");
+		btnWonScholarships.addActionListener(packageListener);
+		btnWonScholarships.setName("WonScholarships_StudentPanel");
 	}
 	/**
 	 * Method to display button button at the south of the screen
