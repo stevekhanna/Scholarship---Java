@@ -227,6 +227,9 @@ public class Student extends User{
 		if(scholarshipsWon[0]==0 && scholarshipsWon[1] ==0) {
 			schWon="noneWon";
 		}
+		if(scholarshipsWon[0]>0&& scholarshipsWon[1]>0) {
+			acceptedToSch = "noneAccepted";
+		}
 		
 		String returnString = getUCID()+","+getEmail()+","+getPassword()+","+getName()
 		+","+faculty+","+gpa+","+yearOfStudy+","+typeOfStudy+","+department+","+appliedToSch+","+acceptedToSch+","+schWon;

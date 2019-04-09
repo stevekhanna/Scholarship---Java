@@ -199,10 +199,11 @@ public class StudentController extends MyController {
 		
 	}
 	private void accept(int sId) {
-		currentStudent.addToWon(sId);
+		if(currentStudent.addToWon(sId)) {
+			scMap.get(sId).addStudentToWon(currentStudent.getUCID());
+		}
 		currentStudent.removeScholarship(sId);
 		scMap.get(sId).removeStudentFromAccepted(currentStudent.getUCID());
-		scMap.get(sId).addStudentToWon(currentStudent.getUCID());
 		util.saveScholarship(scMap.get(sId));
 		util.saveStudent(currentStudent);
 		actp.resetScholarships();
