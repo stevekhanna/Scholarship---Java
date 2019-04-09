@@ -1,3 +1,11 @@
-/data/
-/displayScholarship/
+/.DS_Store
 /controllers/
+/data/
+/displayAdmin/
+/displayLogin/
+/displayScholarship/
+/displayStudent/
+/myJStuff/
+/objects/
+/run/
+/util/
