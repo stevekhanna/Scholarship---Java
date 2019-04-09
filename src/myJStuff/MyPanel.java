@@ -37,7 +37,8 @@ public abstract class MyPanel {
 	
 	
 	// Height and width of the screen
-	protected static final int width = 900;
+	
+	protected static final int width = 1000;
 	protected static final int height = 600;
 	
 	protected EmptyBorder emptyBorder = new EmptyBorder(5, 5, 5, 5);
