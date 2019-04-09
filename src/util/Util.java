@@ -151,7 +151,6 @@ public class Util {
 	 */
 	public void saveScholarship(Scholarship scholarship) {
 		int id = scholarship.getId();
-		System.out.println("LINE 154 in UTIL ---------------------> "+scholarship.toString());
 		scMap.replace(id, scholarship);
 		writeScholarships();
 	}

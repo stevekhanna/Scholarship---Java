@@ -221,11 +221,6 @@ public class Scholarship {
 		}
 		else {
 			studentsWon.add(id);
-			System.out.println("TRUE IN 224 Sch");
-			for(Integer x: studentsWon) {
-				System.out.println("LINE 226 in SCH: "+toString());
-				
-			}
 			return true;
 		}
 	}
