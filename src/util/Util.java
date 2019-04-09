@@ -62,7 +62,7 @@ public class Util {
 		for(Student s: students) {
 			if (s.getUCID() == student.getUCID()) {
 				//change that value
-				s = student;
+				students.set(students.indexOf(s), student);
 			}
 		}
 		writeStudents();
