@@ -178,6 +178,9 @@ public class Student extends User{
 	public boolean removeScholarship(int id){
 		return scholarshipsAppliedTo.remove((Integer) id);
 	}
+	public boolean removeScholarshipFromAccept(int id){
+		return scholarshipsAcceptedTo.remove((Integer) id);
+	}
 	public boolean addToWon(int id) {
 		if(Arrays.stream(scholarshipsWon).anyMatch(i -> i == id)) {
 			return false;

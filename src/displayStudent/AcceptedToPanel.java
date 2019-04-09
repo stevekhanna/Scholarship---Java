@@ -108,7 +108,12 @@ private JButton btnBack;
 			i++;
 		}
 		JButton btnAccept = new MyButton("Accept", Size.defaultLblFontSize, Size.defaultBtnEditWidth+25);
+		JButton btnDecline = new MyButton("Decline", Size.defaultLblFontSize, Size.defaultBtnEditWidth+25);
 		center.add(btnAccept,String.format("cell 6 %d, left",y));
+		center.add(btnDecline,String.format("cell 7 %d, left",y));
+		btnDecline.setName("Decline_AcceptedToPanel");
+		btnDecline.addActionListener(packageListener);
+		btnDecline.setActionCommand(scholarship.getId()+"");
 		btnAccept.setName("Accept_AcceptedToPanel");
 		btnAccept.addActionListener(packageListener);
 		btnAccept.setActionCommand(scholarship.getId()+"");
