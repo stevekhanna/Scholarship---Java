@@ -141,6 +141,7 @@ public class LoadData{
 				String [] parts = currentLine.split(",");
 				List<Integer> studentsApplied = new ArrayList<Integer>();
 				List<Integer> studentsAccepted = new ArrayList<Integer>();
+				List<Integer> studentsWon = new ArrayList<Integer>();
 				if (parts.length>10) {
 					if (!parts[10].equals("noneApplied")) {
 						String[] queue = parts[10].split(":");
@@ -157,11 +158,20 @@ public class LoadData{
 						}
 						
 					}
+					if(parts.length>12) {
+						if (!parts[12].equals("noneWon")) {
+							String[] wonToParts = parts[12].split(":");
+							for(int i =0; i<wonToParts.length; i++) {
+								studentsWon.add(Integer.parseInt(wonToParts[i]));
+							}
+						}
+						
+					}
 				}
 				else {
 					studentsApplied=new ArrayList<Integer>();
 				}
-				Scholarship name = new Scholarship(parts[0], parts[1],parts[2],parts[3],parts[4],parts[5],parts[6],parts[7],parts[8],parts[9],studentsApplied, studentsAccepted);
+				Scholarship name = new Scholarship(parts[0], parts[1],parts[2],parts[3],parts[4],parts[5],parts[6],parts[7],parts[8],parts[9],studentsApplied, studentsAccepted, studentsWon);
 				int ID = name.getId();
 				scMap.put(ID, name);
 			}

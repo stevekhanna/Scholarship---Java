@@ -3,6 +3,7 @@ package controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -79,7 +80,6 @@ public class StudentController extends MyController {
 		acp = new AccountPanel(this);
 		actp = new AcceptedToPanel(this);
 		atp.setTotalScholarships(currentStudent.getScholarshipsAppliedTo().size());
-		actp.setTotalScholarships(currentStudent.getScholarshipsAcceptedTo().size());
 		
 		studentPanel = sp.getContentPane();
 		appliedPanel = ap.getContentPane();
@@ -142,7 +142,8 @@ public class StudentController extends MyController {
 		// Make sure current student is not null
 		if(currentStudent != null  && s!= null) {
 			// Check the student has the correct GPA req for the scholarship
-			if (currentStudent.getGpa()>= s.getGpaRequirement()) {
+			if (currentStudent.getGpa()>= s.getGpaRequirement() && !currentStudent.getScholarshipsAcceptedTo().contains(scholarshipID) &&!Arrays.stream(currentStudent.getScholarshipsWon()).anyMatch(i -> i == scholarshipID)
+					&& Arrays.stream(currentStudent.getScholarshipsWon()).anyMatch(i -> i <= 0)) {
 				// Add the scholarship to the current student
 				if(currentStudent.addScholarship(scholarshipID)) {
 					// Add the Students UCID to the scholarship
@@ -198,7 +199,9 @@ public class StudentController extends MyController {
 		
 	}
 	private void accept(int sId) {
-		currentStudent.addToWon(sId);
+		if(currentStudent.addToWon(sId)) {
+			scMap.get(sId).addStudentToWon(currentStudent.getUCID());
+		}
 		currentStudent.removeScholarship(sId);
 		scMap.get(sId).removeStudentFromAccepted(currentStudent.getUCID());
 		util.saveScholarship(scMap.get(sId));
@@ -305,7 +308,7 @@ public class StudentController extends MyController {
 			break;
 		case "Accept_AcceptedToPanel":
 			Object[] acceptOptions = { "YES", "NO" };
-			int accSelectedOption = JOptionPane.showOptionDialog(null, "Are you sure you want to withdraw from this scholarship?", "Warning",
+			int accSelectedOption = JOptionPane.showOptionDialog(null, "Are you sure you want to accept this scholarship?", "Warning",
 					JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,
 					null, acceptOptions, acceptOptions[0]);
 			if(accSelectedOption == JOptionPane.YES_OPTION) {
