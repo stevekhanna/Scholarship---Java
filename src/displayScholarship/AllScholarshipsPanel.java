@@ -112,9 +112,19 @@ public class AllScholarshipsPanel extends MyPanel{
 		lblName = new MyLabel("Amount", Colors.grey, Size.defaultLblFontSize);
 		center.add(lblName,"cell 4 0");
 		
-		addScrollToCenter();
+		//addScrollToCenter();
 	}
 	
+	/**
+	 * Reset the scholarships in the panel
+	 */
+	public void resetScholarships() {
+		center.removeAll();
+		center.repaint();
+		displayCenter();
+		y = 1;
+		
+	}
 	/**
 	 * displays the scholarship
 	 * if viewer is admin, show delete button for scholarship
