@@ -5,14 +5,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-import myJStuff.Colors;
-import myJStuff.MyButton;
-import myJStuff.MyLabel;
-import myJStuff.MyPanel;
-import myJStuff.Size;
+import myJStuff.*;
 import objects.*;
 
-public class ViewStudentsAppliedPanel extends MyPanel{
+public class ViewStudentsAppliedPanel extends MyScrollPanel{
 	/**
 	 * instance variables
 	 */
@@ -80,9 +76,6 @@ public class ViewStudentsAppliedPanel extends MyPanel{
 		center.add(lblName,"cell 4 0");
 		lblName = new MyLabel("Accept Student", Colors.grey, Size.defaultLblFontSize);
 		center.add(lblName,"cell 5 0");
-		
-		//addScrollToCenter();
-		
 	}
 	
 	/**

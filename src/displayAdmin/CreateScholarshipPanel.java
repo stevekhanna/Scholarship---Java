@@ -33,7 +33,6 @@ public class CreateScholarshipPanel extends MyPanel{
 	private JComboBox<Object> yosList;
 	private JComboBox<Object> facList;
 	private JComboBox<Object> tosList;
-
 	
 	private JLabel lblHeader;
 	

@@ -5,14 +5,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-import myJStuff.Colors;
-import myJStuff.MyButton;
-import myJStuff.MyLabel;
-import myJStuff.MyPanel;
-import myJStuff.Size;
+import myJStuff.*;
 import objects.*;
 
-public class ViewStudentsAcceptedPanel extends MyPanel{
+public class ViewStudentsAcceptedPanel extends MyScrollPanel{
 	/**
 	 * instance variables
 	 */

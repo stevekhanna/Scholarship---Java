@@ -81,18 +81,6 @@ public abstract class MyPanel {
 		contentPane.setBackground(color);
 	}
 	
-	protected void addScrollToCenter() {
-		JPanel newScroller = new JPanel();
-		newScroller.add(center);
-		JScrollPane scroller = new JScrollPane(newScroller);
-		//scroller.setPreferredSize(new Dimension(800,200));
-		//newScroller.setPreferredSize(new Dimension(800,200));
-		scroller.getViewport().getView().setBackground(Colors.defaultBackgroundColor);
-		newScroller.setBackground(Colors.defaultBackgroundColor);
-		
-	    contentPane.add(scroller);
-	}
-	
 	protected void setTheme(){
 		try {
 		    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
