@@ -3,6 +3,7 @@ package controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -142,7 +143,7 @@ public class StudentController extends MyController {
 		// Make sure current student is not null
 		if(currentStudent != null  && s!= null) {
 			// Check the student has the correct GPA req for the scholarship
-			if (currentStudent.getGpa()>= s.getGpaRequirement()) {
+			if (currentStudent.getGpa()>= s.getGpaRequirement() && !currentStudent.getScholarshipsAcceptedTo().contains(scholarshipID) &&!Arrays.stream(currentStudent.getScholarshipsWon()).anyMatch(i -> i == scholarshipID)) {
 				// Add the scholarship to the current student
 				if(currentStudent.addScholarship(scholarshipID)) {
 					// Add the Students UCID to the scholarship
