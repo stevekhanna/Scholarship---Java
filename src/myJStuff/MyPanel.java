@@ -85,7 +85,8 @@ public abstract class MyPanel {
 		JPanel newScroller = new JPanel();
 		newScroller.add(center);
 		JScrollPane scroller = new JScrollPane(newScroller);
-		//scroller.setPreferredSize(new Dimension(200,200));
+		//scroller.setPreferredSize(new Dimension(800,200));
+		//newScroller.setPreferredSize(new Dimension(800,200));
 		scroller.getViewport().getView().setBackground(Colors.defaultBackgroundColor);
 		newScroller.setBackground(Colors.defaultBackgroundColor);
 		

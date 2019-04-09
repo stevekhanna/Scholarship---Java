@@ -141,8 +141,7 @@ public class ScholarshipController extends MyController{
 		vsapp.setScholarship(currentScholarship);
 		for(Student s: students) {
 			if(scholar.getStudentsApplied().contains(s.getUCID())) {
-				vsapp.addStudent(s);
-				
+				vsapp.addStudent(s);		
 			}
 		}	
 		switchPanel(viewStudentsAppliedPanel);
@@ -152,9 +151,8 @@ public class ScholarshipController extends MyController{
 		vsacp.resetStudents();
 		vsacp.setScholarship(currentScholarship);
 		for(Student s: students) {
-			if(scholar.getStudentsApplied().contains(s.getUCID())) {
+			if(scholar.getStudentsAccepted().contains(s.getUCID())) {
 				vsacp.addStudent(s);
-				
 			}
 		}	
 		switchPanel(viewStudentsAcceptedPanel);
@@ -212,21 +210,8 @@ public class ScholarshipController extends MyController{
 		case"Search_AllScholarshipsPanel":
 			// Get the text of the search bar
 			String x = asp.getSearchResult();
-			// Try to find the scholarship
+			// Search for scholarships with the search string and display only those on the page
 			searchForScholarship(x);
-			// If the scholarship is not null display the scholarship page
-//			if(sr != null) {
-//				switchToViewScholarshipPanel(sr);
-//				asp.setErrorMessage("");
-//				asp.setSearchResult("");
-//			}else {
-//				//Display label saying could'nt find scholarship
-//				if(x.equals("")) {
-//					asp.setErrorMessage("Error, please enter a valid name");
-//				}else {
-//					asp.setErrorMessage("Error, could not find scholarship with name " + x);
-//				}
-//			}
 			break;
 		default:
 			break;

@@ -56,7 +56,7 @@ public class AllStudentsPanel extends MyPanel{
 	 */
 	private void displayCenter() {
 		JLabel lblName = new MyLabel("UCID", Colors.grey, Size.defaultLblFontSize);
-		center.add(lblName,"cell 0 0");
+		center.add(lblName,"cell 0 0,left");
 		lblName = new MyLabel("Name", Colors.grey, Size.defaultLblFontSize);
 		center.add(lblName,"cell 1 0");
 		lblName = new MyLabel("Account", Colors.grey, Size.defaultLblFontSize);
@@ -72,10 +72,10 @@ public class AllStudentsPanel extends MyPanel{
 	 */
 	public void addStudent(Student student) {
 		
-		JLabel lbl = new MyLabel(Integer.toString(student.getUCID()));
+		JLabel lbl = new MyLabel(Integer.toString(student.getUCID())+"           ");
 		center.add(lbl,String.format("cell 0 %d, left", studentRow));
 		
-		lbl = new MyLabel(student.getName());
+		lbl = new MyLabel(student.getName()+"        ");
 		center.add(lbl,String.format("cell 1 %d, left", studentRow));
 		
 		JButton btn = new MyButton("View Account", Size.defaultLblFontSize, Size.defaultBtnEditWidth);
