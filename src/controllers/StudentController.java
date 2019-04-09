@@ -210,6 +210,15 @@ public class StudentController extends MyController {
 		addScholarshipsAcceptedToPanel();
 		
 	}
+	private void decline(int sId) {
+		currentStudent.removeScholarshipFromAccept(sId);
+		scMap.get(sId).removeStudentFromAccepted(currentStudent.getUCID());
+		util.saveScholarship(scMap.get(sId));
+		util.saveStudent(currentStudent);
+		actp.resetScholarships();
+		addScholarshipsAcceptedToPanel();
+	}
+	
 	
 	/**
 	 * Find all of the scholarships that have the same type of study as the current student
@@ -314,6 +323,16 @@ public class StudentController extends MyController {
 			if(accSelectedOption == JOptionPane.YES_OPTION) {
 				int sID = Integer.parseInt(source.getActionCommand());
 				accept(sID);
+			}
+			break;
+		case "Decline_AcceptedToPanel":
+			Object[] declineOptions = { "YES", "NO" };
+			int decSelectedOption = JOptionPane.showOptionDialog(null, "Are you sure you want to decline this scholarship?", "Warning",
+					JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,
+					null, declineOptions, declineOptions[0]);
+			if(decSelectedOption == JOptionPane.YES_OPTION) {
+				int sID = Integer.parseInt(source.getActionCommand());
+				decline(sID);
 			}
 			break;
 		case "UpdatePassword_AccountPanel":
