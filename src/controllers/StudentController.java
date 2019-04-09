@@ -155,17 +155,45 @@ public class StudentController extends MyController {
 					// Add the scholarship to the appliedToPanel
 					atp.setTotalScholarships(currentStudent.getScholarshipsAppliedTo().size());
 					atp.addScholarship(s, currentStudent.getScholarshipsAppliedTo().size()-1);
-					System.out.println(s.getName()+" added to applied");	
+					System.out.println(s.getName()+" added to applied");
+					Object[] canApplyOptions = {"OK"};
+					int canApplySelectedOption = JOptionPane.showOptionDialog(null, "You have successfully applied for this scholarship", "SUCCESS",
+							JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE,
+							null, canApplyOptions, canApplyOptions[0]);
+					if(canApplySelectedOption == JOptionPane.YES_OPTION) {
+						
+					}
 					return true;
 				}else {
 					System.out.println(s.getName()+" failed");
+					Object[] canApplyOptions = {"OK"};
+					int canApplySelectedOption = JOptionPane.showOptionDialog(null, "Error: Could not apply for this scholarship", "ERROR",
+							JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE,
+							null, canApplyOptions, canApplyOptions[0]);
+					if(canApplySelectedOption == JOptionPane.YES_OPTION) {
+						
+					}
 					return false;
 				}
 			}else {
 				System.out.println(s.getName()+" failed");
+				Object[] canApplyOptions = {"OK"};
+				int canApplySelectedOption = JOptionPane.showOptionDialog(null, "Error: Could not apply for this scholarship", "ERROR",
+						JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE,
+						null, canApplyOptions, canApplyOptions[0]);
+				if(canApplySelectedOption == JOptionPane.YES_OPTION) {
+					
+				}
 				return false;
 			}
 		}else {
+			Object[] canApplyOptions = {"OK"};
+			int canApplySelectedOption = JOptionPane.showOptionDialog(null, "Error: Could not apply for this scholarship", "ERROR",
+					JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE,
+					null, canApplyOptions, canApplyOptions[0]);
+			if(canApplySelectedOption == JOptionPane.YES_OPTION) {
+				
+			}
 			return false;
 		}
 	}
@@ -275,9 +303,15 @@ public class StudentController extends MyController {
 			// Get the id of the scholarship from the button
 			int id = Integer.parseInt(source.getActionCommand());
 			// Try to apply the scholarship and display the result to the AppliedPanel
-			ap.success(applyToScholarship(id));
+
+			
+			if (applyToScholarship(id)) {
+				switchPanel(appliedToPanel);
+			}else {
+				sController.start(false, scMap);
+			}
 			// Switch to the Applied Panel=
-			switchPanel(appliedPanel);
+			
 			break;
 		case"AcceptedTo_StudentPanel":
 			switchPanel(acceptedToPanel);
