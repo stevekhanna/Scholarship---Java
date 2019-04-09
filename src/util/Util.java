@@ -96,7 +96,8 @@ public class Util {
 		for(Admin a : admins) {
 			if (a.getUCID() == id) {
 				//change that value
-				a = admin;
+				admins.set(admins.indexOf(a), admin);
+				//a = admin;
 				
 			}
 		}
@@ -150,7 +151,7 @@ public class Util {
 	 */
 	public void saveScholarship(Scholarship scholarship) {
 		int id = scholarship.getId();
-		scMap.put(id, scholarship);
+		scMap.replace(id, scholarship);
 		writeScholarships();
 	}
 }

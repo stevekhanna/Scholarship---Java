@@ -203,6 +203,7 @@ public class StudentController extends MyController {
 		currentStudent.addToWon(sId);
 		currentStudent.removeScholarship(sId);
 		scMap.get(sId).removeStudentFromAccepted(currentStudent.getUCID());
+		scMap.get(sId).addStudentToWon(currentStudent.getUCID());
 		util.saveScholarship(scMap.get(sId));
 		util.saveStudent(currentStudent);
 		actp.resetScholarships();
@@ -307,7 +308,7 @@ public class StudentController extends MyController {
 			break;
 		case "Accept_AcceptedToPanel":
 			Object[] acceptOptions = { "YES", "NO" };
-			int accSelectedOption = JOptionPane.showOptionDialog(null, "Are you sure you want to withdraw from this scholarship?", "Warning",
+			int accSelectedOption = JOptionPane.showOptionDialog(null, "Are you sure you want to accept this scholarship?", "Warning",
 					JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,
 					null, acceptOptions, acceptOptions[0]);
 			if(accSelectedOption == JOptionPane.YES_OPTION) {
