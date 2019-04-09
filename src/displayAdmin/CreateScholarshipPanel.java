@@ -3,6 +3,7 @@ package displayAdmin;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
@@ -14,9 +15,6 @@ public class CreateScholarshipPanel extends MyPanel{
 	 */
 	private JTextField fldName;
 	private JTextField fldGpa;
-	private JTextField fldFaculty;
-	private JTextField fldYearOfStudy;
-	private JTextField fldTypeOfStudy;
 	private JTextField fldDepartment;
 	private JTextField fldNumAllowed;
 	private JTextField fldDescription;
@@ -31,6 +29,11 @@ public class CreateScholarshipPanel extends MyPanel{
 	private JLabel lblEditNumAllowed;
 	private JLabel lblEditDescription;
 	private JLabel lblEditAmount;
+	
+	private JComboBox<Object> yosList;
+	private JComboBox<Object> facList;
+	private JComboBox<Object> tosList;
+
 	
 	private JLabel lblHeader;
 	
@@ -63,6 +66,9 @@ public class CreateScholarshipPanel extends MyPanel{
 	 */
 	private void displayCenter() {
 		
+		String[] diffFaculties = {"Arts","Science","Commerce","University"};
+		String[] diffYOS = {"1","2","3","4","5","6","7","8","9","10"};
+		String[] diffTOS = {"Bachelor", "Master's","PhD","Continuing Education"};
 		
 		lblEditName = new MyLabel("Scholarship Name:", Size.defaultLblFontSize);
 		center.add(lblEditName, "cell 0 0");
@@ -76,48 +82,55 @@ public class CreateScholarshipPanel extends MyPanel{
 		fldGpa = new MyTextField("",Size.defaultLblFontSize);
 		center.add(fldGpa,"cell 0 3");
 		
-		lblEditFaculty = new MyLabel("Faculty", Size.defaultLblFontSize);
-		center.add(lblEditFaculty, "cell 0 4");
+		lblEditFaculty = new MyLabel("Faculty:", Size.defaultLblFontSize);
+		center.add(lblEditFaculty, "cell 0 6");
 		
-		fldFaculty = new MyTextField("", Size.defaultLblFontSize);
-		center.add(fldFaculty, "cell 0 5");
+		facList = new MyComboBox(diffFaculties);
 		
-		lblEditYearOfStudy = new MyLabel("Year of Study", Size.defaultLblFontSize);
-		center.add(lblEditYearOfStudy, "cell 0 6");
+		facList.setSelectedIndex(0);
+		center.add(facList, "cell 0 7");
 		
-		fldYearOfStudy = new MyTextField("", Size.defaultLblFontSize);
-		center.add(fldYearOfStudy, "cell 0 7");
+		lblEditYearOfStudy = new MyLabel("Year of Study:", Size.defaultLblFontSize);
+		center.add(lblEditYearOfStudy, "cell 0 8");
 		
-		lblEditTypeOfStudy = new MyLabel("Type of Study", Size.defaultLblFontSize);
-		center.add(lblEditTypeOfStudy, "cell 0 8");
 		
-		fldTypeOfStudy = new MyTextField("", Size.defaultLblFontSize);
-		center.add(fldTypeOfStudy, "cell 0 9");
+		yosList = new MyComboBox(diffYOS);		
+		yosList.setSelectedIndex(0);
+		center.add(yosList, "cell 0 9");
 		
-		lblEditDepartment = new MyLabel("Department", Size.defaultLblFontSize);
+		
+		
+		lblEditTypeOfStudy = new MyLabel("Type of Study:", Size.defaultLblFontSize);
+		center.add(lblEditTypeOfStudy, "cell 2 6");
+		
+		tosList = new MyComboBox(diffTOS);		
+		tosList.setSelectedIndex(0);
+		center.add(tosList, "cell 2 7");
+		
+		lblEditDepartment = new MyLabel("Department:", Size.defaultLblFontSize);
 		center.add(lblEditDepartment, "cell 2 0");
 		
 
 		fldDepartment = new MyTextField("", Size.defaultLblFontSize);
 		center.add(fldDepartment, "cell 2 1");		
 		
-		lblEditNumAllowed = new MyLabel("Number of Scholarships", Size.defaultLblFontSize);
+		lblEditNumAllowed = new MyLabel("Number of Scholarships:", Size.defaultLblFontSize);
 		center.add(lblEditNumAllowed, "cell 2 2");
 		
 		fldNumAllowed = new MyTextField("", Size.defaultLblFontSize);
 		center.add(fldNumAllowed, "cell 2 3");
 		
-		lblEditDescription = new MyLabel("Description", Size.defaultLblFontSize);
-		center.add(lblEditDescription, "cell 2 4");
+		lblEditDescription = new MyLabel("Description:", Size.defaultLblFontSize);
+		center.add(lblEditDescription, "cell 0 4");
 		
 		fldDescription = new MyTextField("",Size.defaultLblFontSize);
-		center.add(fldDescription,"cell 2 5");
+		center.add(fldDescription,"cell 0 5");
 		
-		lblEditAmount = new MyLabel("Amount", Size.defaultLblFontSize);
-		center.add(lblEditAmount, "cell 2 6");
+		lblEditAmount = new MyLabel("Amount:", Size.defaultLblFontSize);
+		center.add(lblEditAmount, "cell 2 4");
 		
 		fldAmount = new MyTextField("",Size.defaultLblFontSize);
-		center.add(fldAmount,"cell 2 7");
+		center.add(fldAmount,"cell 2 5");
 		
 	}
 	
@@ -134,6 +147,7 @@ public class CreateScholarshipPanel extends MyPanel{
 		south.add(btnSave, "cell 1 0 , right");
 		btnSave.addActionListener(packageListener);
 		btnSave.setName("Create_CreateScholarshipPanel");
+		
 	}
 	
 	/**
@@ -166,11 +180,9 @@ public class CreateScholarshipPanel extends MyPanel{
 	 * @return faculty requirement as a string
 	 */
 	public String getFaculty() {
-		if(fldFaculty.getText().contains(",")) {
-			return "";
-		}else {
-			return fldFaculty.getText();
-		}
+		return String.valueOf(facList.getSelectedItem());
+		
+	
 	}
 	
 	/**
@@ -179,7 +191,7 @@ public class CreateScholarshipPanel extends MyPanel{
 	 */
 	public int getYearOfStudy() {
 		try {
-			return Integer.parseInt(fldYearOfStudy.getText());
+			return Integer.parseInt(String.valueOf(yosList.getSelectedItem()));
 		}catch(Exception e) {
 			return -1;
 		}
@@ -190,11 +202,7 @@ public class CreateScholarshipPanel extends MyPanel{
 	 * @return the type of study requirement as a string
 	 */
 	public String getTypeOfStudy() {
-		if(fldTypeOfStudy.getText().contains(",")) {
-			return "";
-		}else {
-			return fldTypeOfStudy.getText();
-		}
+		return String.valueOf(tosList.getSelectedItem());
 	}
 	
 	/**
@@ -254,9 +262,6 @@ public class CreateScholarshipPanel extends MyPanel{
 	public void clearAll() {
 		fldName.setText("");
 		fldGpa.setText("");
-		fldFaculty.setText("");
-		fldYearOfStudy.setText("");
-		fldTypeOfStudy.setText("");
 		fldDepartment.setText("");
 		fldNumAllowed.setText("");
 		fldDescription.setText("");
