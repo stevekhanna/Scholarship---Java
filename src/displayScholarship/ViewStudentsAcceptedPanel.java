@@ -98,8 +98,6 @@ public class ViewStudentsAcceptedPanel extends MyScrollPanel{
 		lbl = new MyLabel(student.getDepartment());
 		center.add(lbl,String.format("cell 3 %d, left", studentRow));
 
-		lbl = new MyLabel("420");
-		center.add(lbl,String.format("cell 4 %d, left", studentRow));
 		
 		JButton btn = new MyButton("Accept Student", Size.defaultLblFontSize, Size.defaultBtnEditWidth);
 		btn.setName("Accept_ViewStudentsAppliedPanel");

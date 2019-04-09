@@ -94,11 +94,17 @@ public class ViewStudentsAppliedPanel extends MyScrollPanel{
 		
 		lbl = new MyLabel(student.getDepartment());
 		center.add(lbl,String.format("cell 3 %d, left", studentRow));
+		int position = 0;
+		for(int i = 0; i<student.getScholarshipsAppliedTo().size(); i++) {
+			if(scholarship.getId()== student.getScholarshipsAppliedTo().get(i)) {
+				position = i;
+			}
+		}
 
-		lbl = new MyLabel("420");
-		center.add(lbl,String.format("cell 4 %d, left", studentRow));
+		lbl = new MyLabel((position+1)+"");
+		center.add(lbl,String.format("cell 4 %d, center", studentRow));
 		
-		JButton btn = new MyButton("Accept Student", Size.defaultLblFontSize, Size.defaultBtnEditWidth);
+		JButton btn = new MyButton("Accept Student", Size.defaultLblFontSize, Size.defaultBtnEditWidth+25);
 		btn.setName("Accept_ViewStudentsAppliedPanel");
 		btn.addActionListener(globalListener);
 		btn.setActionCommand(student.getUCID()+":"+scholarship.getId());
