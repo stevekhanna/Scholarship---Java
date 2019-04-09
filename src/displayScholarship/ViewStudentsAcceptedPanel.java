@@ -81,7 +81,7 @@ public class ViewStudentsAcceptedPanel extends MyPanel{
 		lblName = new MyLabel("Accept Student", Colors.grey, Size.defaultLblFontSize);
 		center.add(lblName,"cell 5 0");
 		
-		addScrollToCenter();
+		//addScrollToCenter();
 		
 	}
 	
@@ -123,6 +123,7 @@ public class ViewStudentsAcceptedPanel extends MyPanel{
 	 */
 	public void resetStudents() {
 		center.removeAll();
+		center.revalidate();
 		center.repaint();
 		displayCenter();
 	}

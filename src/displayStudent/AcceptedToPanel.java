@@ -23,8 +23,7 @@ private JButton btnBack;
 	private JLabel lblSuccess;
 	private int y=1;
 	private JLabel lblName;
-	
-	private int totalScholarships;
+
 	/**
 	 * class constructor
 	 * @param packageListener listener for the panel
@@ -59,7 +58,7 @@ private JButton btnBack;
 		lblName = new MyLabel("Department", Colors.grey, Size.defaultLblFontSize);
 		center.add(lblName,"cell 3 0");
 		
-		addScrollToCenter();
+		//addScrollToCenter();
 		
 	}
 	
@@ -74,18 +73,11 @@ private JButton btnBack;
 	}
 	
 	/**
-	 * setter for the number of scholarships to display
-	 * @param i amount of scholarships to display
-	 */
-	public void setTotalScholarships(int i) {
-		totalScholarships = i;
-	}
-	
-	/**
 	 * remove all scholarships from the panel
 	 */
 	public void resetScholarships() {
 		center.removeAll();
+		center.revalidate();
 		center.repaint();
 		displayCenter();
 		y = 1;
@@ -116,7 +108,12 @@ private JButton btnBack;
 			i++;
 		}
 		JButton btnAccept = new MyButton("Accept", Size.defaultLblFontSize, Size.defaultBtnEditWidth+25);
+		JButton btnDecline = new MyButton("Decline", Size.defaultLblFontSize, Size.defaultBtnEditWidth+25);
 		center.add(btnAccept,String.format("cell 6 %d, left",y));
+		center.add(btnDecline,String.format("cell 7 %d, left",y));
+		btnDecline.setName("Decline_AcceptedToPanel");
+		btnDecline.addActionListener(packageListener);
+		btnDecline.setActionCommand(scholarship.getId()+"");
 		btnAccept.setName("Accept_AcceptedToPanel");
 		btnAccept.addActionListener(packageListener);
 		btnAccept.setActionCommand(scholarship.getId()+"");

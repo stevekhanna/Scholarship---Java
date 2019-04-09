@@ -19,10 +19,6 @@ public class ViewStudentPanel extends MyPanel{
 	private ArrayList<JLabel> lblStudentAttribute = new ArrayList<JLabel>();
 	private JButton btnBack;
 	
-	private JLabel lblScholarshipsTitle;
-	private JLabel lblScholarships;
-	int row = 0;
-	
 	/**
 	 * class constructor
 	 * @param packageListener listener for the panel
@@ -65,13 +61,6 @@ public class ViewStudentPanel extends MyPanel{
 			JLabel name = new MyLabel(studentAttributeName[i]+": ");
 			center.add(name, String.format("cell 0 %d, right", i));
 		}
-		
-		lblScholarshipsTitle = new MyLabel("Scholarships:");
-		center.add(lblScholarshipsTitle,"cell 0 8,right");
-		
-		lblScholarships = new MyLabel("No Scholarships Applied To");
-		center.add(lblScholarships,"cell 1 8,left");
-		
 	}
 	
 	/**
@@ -89,7 +78,6 @@ public class ViewStudentPanel extends MyPanel{
 		lblStudentAttribute.get(4).setText(Integer.toString(student.getYearOfStudy()));
 		lblStudentAttribute.get(5).setText(student.getTypeOfStudy());
 		lblStudentAttribute.get(6).setText(student.getDepartment());
-		lblScholarships.setText(scholarships);
 	}
 
 }

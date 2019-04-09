@@ -60,7 +60,7 @@ private JButton btnBack;
 		lblName = new MyLabel("Priority", Colors.grey, Size.defaultLblFontSize);
 		center.add(lblName,"cell 3 0");
 		
-		addScrollToCenter();
+		//addScrollToCenter();
 		
 	}
 	
@@ -87,6 +87,7 @@ private JButton btnBack;
 	 */
 	public void resetScholarships() {
 		center.removeAll();
+		center.revalidate();
 		center.repaint();
 		displayCenter();
 		y = 1;

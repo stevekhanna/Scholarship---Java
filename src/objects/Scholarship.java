@@ -28,6 +28,7 @@ public class Scholarship {
 	
 	private List<Integer> studentsApplied;
 	private List<Integer> studentsAccepted;
+	private List<Integer> studentsWon;
 
 	/**
 	 * Default scholarship constructor
@@ -63,7 +64,7 @@ public class Scholarship {
 	 * This is used when a new scholarship is created
 	 */
 	public Scholarship(String name, String sId, String gReq, String faculty, String YOS, String TOS, String Dept,
-			String nums, String desc, String money,List<Integer> studentsApplied, List<Integer> studentsAccepted) {
+			String nums, String desc, String money,List<Integer> studentsApplied, List<Integer> studentsAccepted, List<Integer> studentsWon) {
 		this.name = name;
 		this.scholarshipId = Integer.parseInt(sId);
 		this.gpaRequirement = Double.parseDouble(gReq);
@@ -76,6 +77,7 @@ public class Scholarship {
 		this.money = Double.parseDouble(money);
 		this.studentsApplied= studentsApplied;
 		this.studentsAccepted = studentsAccepted;
+		this.studentsWon = studentsWon;
 
 	}
 	
@@ -213,6 +215,15 @@ public class Scholarship {
 			return false;
 		}
 	}
+	public boolean addStudentToWon(int id) {
+		if (studentsWon.contains(id)) {
+			return false;
+		}
+		else {
+			studentsWon.add(id);
+			return true;
+		}
+	}
 	/**
 	 * Remove student from scholarship
 	 * @param ucid of the student 
@@ -221,6 +232,7 @@ public class Scholarship {
 	public boolean removeStudentFromAccepted(int ucid) {
 		return (studentsAccepted.remove((Integer)ucid));
 	}
+	
 	
 	/**
 	 * List of students that have applied for this scholarship
@@ -232,6 +244,9 @@ public class Scholarship {
 	
 	public List<Integer> getStudentsAccepted() {
 		return studentsAccepted;
+	}
+	public List<Integer> getStudentsWon(){
+		return studentsWon;
 	}
 	
 	/**
@@ -262,9 +277,20 @@ public class Scholarship {
 			acceptedStudents = acceptedStudents.substring(0, acceptedStudents.length()-1);
 		}
 		
+		String wonStudents = "";
+		if(studentsWon.isEmpty()) {
+			wonStudents = "noneWon";
+		}else {
+			for(Integer i : studentsWon) {
+				wonStudents+=i+":";
+				
+			}
+			wonStudents = wonStudents.substring(0, wonStudents.length()-1);
+		}
+		
 		
 		String returnString = name + "," + scholarshipId + "," + gpaRequirement + "," + faculty + "," + yearOfStudy + ","
-				+ typeOfStudy + "," + Department + "," + numAllowed + "," + description + "," + money +","+appliedStudents+","+acceptedStudents;
+				+ typeOfStudy + "," + Department + "," + numAllowed + "," + description + "," + money +","+appliedStudents+","+acceptedStudents+","+wonStudents;
 		
 		return (returnString);
 	}

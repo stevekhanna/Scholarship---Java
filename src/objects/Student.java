@@ -178,19 +178,24 @@ public class Student extends User{
 	public boolean removeScholarship(int id){
 		return scholarshipsAppliedTo.remove((Integer) id);
 	}
+	public boolean removeScholarshipFromAccept(int id){
+		return scholarshipsAcceptedTo.remove((Integer) id);
+	}
 	public boolean addToWon(int id) {
 		if(Arrays.stream(scholarshipsWon).anyMatch(i -> i == id)) {
 			return false;
 		}
 		if(scholarshipsWon[0]<=0) {
 			scholarshipsWon[0] = id;
+			scholarshipsAcceptedTo.remove(scholarshipsAcceptedTo.indexOf(id));
 			return true;
 		}else if(scholarshipsWon[1]<=0){
 			scholarshipsWon[1] = id;
+			scholarshipsAcceptedTo.remove(scholarshipsAcceptedTo.indexOf(id));
+			return true;
 		}else {
 			return false;
 		}
-		return false;
 	}
 	/**
 	 * toString method to format everything properly to write to the file
@@ -224,6 +229,9 @@ public class Student extends User{
 		}
 		if(scholarshipsWon[0]==0 && scholarshipsWon[1] ==0) {
 			schWon="noneWon";
+		}
+		if(scholarshipsWon[0]>0&& scholarshipsWon[1]>0) {
+			acceptedToSch = "noneAccepted";
 		}
 		
 		String returnString = getUCID()+","+getEmail()+","+getPassword()+","+getName()

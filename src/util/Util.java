@@ -25,9 +25,9 @@ public class Util {
 	private final String scholarshipFile = FileLocations.scholarshipFile;
 	
 	
-	private final String studentFormat = "UCID,Email,Password,Name,Faculty,GPA,Year of study,Type of study,Department,Applied to";
+	private final String studentFormat = "UCID,Email,Password,Name,Faculty,GPA,Year of study,Type of study,Department,Applied to,Accepted to,Won";
 	private final String adminFormat = "UCID,Email,Password,Name";
-	private final String scholarshipFormat = "Name,ID,GPA,Faculty,Year of Study,Type of study,Department,Numbers allowed,Description,Money,Students applied";
+	private final String scholarshipFormat = "Name,ID,GPA,Faculty,Year of Study,Type of study,Department,Numbers allowed,Description,Money,Students applied,Students accepted,Students Won";
 	
 	public Util(List<Student> students, List<Admin> admins, HashMap<Integer, Scholarship> scMap) {
 		this.students = students;
@@ -62,7 +62,7 @@ public class Util {
 		for(Student s: students) {
 			if (s.getUCID() == student.getUCID()) {
 				//change that value
-				s = student;
+				students.set(students.indexOf(s), student);
 			}
 		}
 		writeStudents();
@@ -96,7 +96,8 @@ public class Util {
 		for(Admin a : admins) {
 			if (a.getUCID() == id) {
 				//change that value
-				a = admin;
+				admins.set(admins.indexOf(a), admin);
+				//a = admin;
 				
 			}
 		}
@@ -150,7 +151,7 @@ public class Util {
 	 */
 	public void saveScholarship(Scholarship scholarship) {
 		int id = scholarship.getId();
-		scMap.put(id, scholarship);
+		scMap.replace(id, scholarship);
 		writeScholarships();
 	}
 }

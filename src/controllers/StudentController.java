@@ -3,6 +3,7 @@ package controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -79,7 +80,6 @@ public class StudentController extends MyController {
 		acp = new AccountPanel(this);
 		actp = new AcceptedToPanel(this);
 		atp.setTotalScholarships(currentStudent.getScholarshipsAppliedTo().size());
-		actp.setTotalScholarships(currentStudent.getScholarshipsAcceptedTo().size());
 		
 		studentPanel = sp.getContentPane();
 		appliedPanel = ap.getContentPane();
@@ -142,7 +142,8 @@ public class StudentController extends MyController {
 		// Make sure current student is not null
 		if(currentStudent != null  && s!= null) {
 			// Check the student has the correct GPA req for the scholarship
-			if (currentStudent.getGpa()>= s.getGpaRequirement()) {
+			if (currentStudent.getGpa()>= s.getGpaRequirement() && !currentStudent.getScholarshipsAcceptedTo().contains(scholarshipID) &&!Arrays.stream(currentStudent.getScholarshipsWon()).anyMatch(i -> i == scholarshipID)
+					&& Arrays.stream(currentStudent.getScholarshipsWon()).anyMatch(i -> i <= 0)) {
 				// Add the scholarship to the current student
 				if(currentStudent.addScholarship(scholarshipID)) {
 					// Add the Students UCID to the scholarship
@@ -154,17 +155,45 @@ public class StudentController extends MyController {
 					// Add the scholarship to the appliedToPanel
 					atp.setTotalScholarships(currentStudent.getScholarshipsAppliedTo().size());
 					atp.addScholarship(s, currentStudent.getScholarshipsAppliedTo().size()-1);
-					System.out.println(s.getName()+" added to applied");	
+					System.out.println(s.getName()+" added to applied");
+					Object[] canApplyOptions = {"OK"};
+					int canApplySelectedOption = JOptionPane.showOptionDialog(null, "You have successfully applied for this scholarship", "SUCCESS",
+							JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE,
+							null, canApplyOptions, canApplyOptions[0]);
+					if(canApplySelectedOption == JOptionPane.YES_OPTION) {
+						
+					}
 					return true;
 				}else {
 					System.out.println(s.getName()+" failed");
+					Object[] canApplyOptions = {"OK"};
+					int canApplySelectedOption = JOptionPane.showOptionDialog(null, "Error: Could not apply for this scholarship", "ERROR",
+							JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE,
+							null, canApplyOptions, canApplyOptions[0]);
+					if(canApplySelectedOption == JOptionPane.YES_OPTION) {
+						
+					}
 					return false;
 				}
 			}else {
 				System.out.println(s.getName()+" failed");
+				Object[] canApplyOptions = {"OK"};
+				int canApplySelectedOption = JOptionPane.showOptionDialog(null, "Error: Could not apply for this scholarship", "ERROR",
+						JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE,
+						null, canApplyOptions, canApplyOptions[0]);
+				if(canApplySelectedOption == JOptionPane.YES_OPTION) {
+					
+				}
 				return false;
 			}
 		}else {
+			Object[] canApplyOptions = {"OK"};
+			int canApplySelectedOption = JOptionPane.showOptionDialog(null, "Error: Could not apply for this scholarship", "ERROR",
+					JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE,
+					null, canApplyOptions, canApplyOptions[0]);
+			if(canApplySelectedOption == JOptionPane.YES_OPTION) {
+				
+			}
 			return false;
 		}
 	}
@@ -198,7 +227,9 @@ public class StudentController extends MyController {
 		
 	}
 	private void accept(int sId) {
-		currentStudent.addToWon(sId);
+		if(currentStudent.addToWon(sId)) {
+			scMap.get(sId).addStudentToWon(currentStudent.getUCID());
+		}
 		currentStudent.removeScholarship(sId);
 		scMap.get(sId).removeStudentFromAccepted(currentStudent.getUCID());
 		util.saveScholarship(scMap.get(sId));
@@ -207,6 +238,15 @@ public class StudentController extends MyController {
 		addScholarshipsAcceptedToPanel();
 		
 	}
+	private void decline(int sId) {
+		currentStudent.removeScholarshipFromAccept(sId);
+		scMap.get(sId).removeStudentFromAccepted(currentStudent.getUCID());
+		util.saveScholarship(scMap.get(sId));
+		util.saveStudent(currentStudent);
+		actp.resetScholarships();
+		addScholarshipsAcceptedToPanel();
+	}
+	
 	
 	/**
 	 * Find all of the scholarships that have the same type of study as the current student
@@ -263,9 +303,15 @@ public class StudentController extends MyController {
 			// Get the id of the scholarship from the button
 			int id = Integer.parseInt(source.getActionCommand());
 			// Try to apply the scholarship and display the result to the AppliedPanel
-			ap.success(applyToScholarship(id));
+
+			
+			if (applyToScholarship(id)) {
+				switchPanel(appliedToPanel);
+			}else {
+				sController.start(false, scMap);
+			}
 			// Switch to the Applied Panel=
-			switchPanel(appliedPanel);
+			
 			break;
 		case"AcceptedTo_StudentPanel":
 			switchPanel(acceptedToPanel);
@@ -305,12 +351,22 @@ public class StudentController extends MyController {
 			break;
 		case "Accept_AcceptedToPanel":
 			Object[] acceptOptions = { "YES", "NO" };
-			int accSelectedOption = JOptionPane.showOptionDialog(null, "Are you sure you want to withdraw from this scholarship?", "Warning",
+			int accSelectedOption = JOptionPane.showOptionDialog(null, "Are you sure you want to accept this scholarship?", "Warning",
 					JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,
 					null, acceptOptions, acceptOptions[0]);
 			if(accSelectedOption == JOptionPane.YES_OPTION) {
 				int sID = Integer.parseInt(source.getActionCommand());
 				accept(sID);
+			}
+			break;
+		case "Decline_AcceptedToPanel":
+			Object[] declineOptions = { "YES", "NO" };
+			int decSelectedOption = JOptionPane.showOptionDialog(null, "Are you sure you want to decline this scholarship?", "Warning",
+					JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,
+					null, declineOptions, declineOptions[0]);
+			if(decSelectedOption == JOptionPane.YES_OPTION) {
+				int sID = Integer.parseInt(source.getActionCommand());
+				decline(sID);
 			}
 			break;
 		case "UpdatePassword_AccountPanel":
