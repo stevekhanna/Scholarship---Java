@@ -151,8 +151,10 @@ public class ScholarshipController extends MyController{
 	private void switchToViewStudentsAcceptedPanel(Scholarship scholar) {
 		vsacp.resetStudents();
 		vsacp.setScholarship(currentScholarship);
+		System.out.println("switchToViewStudetns");
 		for(Student s: students) {
 			if(scholar.getStudentsApplied().contains(s.getUCID())) {
+				System.out.println(s.toString());
 				vsacp.addStudent(s);
 				
 			}
