@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
+import displayScholarship.ViewReadOnlyScholarshipPanel;
 import displayStudent.*;
 import myJStuff.Colors;
 import myJStuff.MyController;
@@ -39,6 +40,7 @@ public class StudentController extends MyController {
 	private AcceptedToPanel actp;
 	private AccountPanel acp;
 	private WonScholarshipsPanel wscp;
+	private ViewReadOnlyScholarshipPanel vrop;
 	
 	private Util util;
 	
@@ -55,6 +57,9 @@ public class StudentController extends MyController {
 	private JPanel accountPanel;
 	private JPanel acceptedToPanel;
 	private JPanel wonScholarshipsPanel;
+	private JPanel readOnlyScholarshipPanel;
+	
+	
 	/**
 	 * Constructor
 	 * @param frame - JFrame
@@ -82,6 +87,7 @@ public class StudentController extends MyController {
 		acp = new AccountPanel(this);
 		actp = new AcceptedToPanel(this);
 		wscp = new WonScholarshipsPanel(this);
+		vrop = new ViewReadOnlyScholarshipPanel(this);
 		atp.setTotalScholarships(currentStudent.getScholarshipsAppliedTo().size());
 		
 		studentPanel = sp.getContentPane();
@@ -90,6 +96,7 @@ public class StudentController extends MyController {
 		accountPanel = acp.getContentPane();
 		acceptedToPanel = actp.getContentPane();
 		wonScholarshipsPanel = wscp.getContentPane();
+		readOnlyScholarshipPanel = vrop.getContentPane();
 		
 		addScholarshipsToAppliedPanel();
 		addScholarshipsAcceptedToPanel();
@@ -243,7 +250,7 @@ public class StudentController extends MyController {
 
 	@Override
 	/**
-	 * ActionListener that does something when a button is pressed that is assigned top this action listener
+	 * ActionListener that does something when a button is pressed that is assigned to this action listener
 	 * Any buttons that are assigned to the package listener
 	 */
 	public void actionPerformed(ActionEvent e) {
@@ -388,7 +395,14 @@ public class StudentController extends MyController {
 			switchToStudentPanel();
 			break;
 		case "ViewReadOnly_WonScholarshipPanel":
-			
+			int sid = Integer.parseInt(source.getActionCommand());
+			Scholarship scholarship = scMap.get(sid);
+			vrop.displayScholarship(scholarship);
+			switchPanel(readOnlyScholarshipPanel);
+			break;
+		case "Back_ViewReadOnlyScholarshipPanel":
+			switchToStudentPanel();
+			break;
 		default:
 			break;
 		}
