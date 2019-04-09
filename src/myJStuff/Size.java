@@ -8,7 +8,7 @@ package myJStuff;
 public class Size {
 	
 
-	public final static int screenWidth = 950;
+	public final static int screenWidth = 1100;
 	public final static int screenHeight = 600;
 	
 	public static final int defaultBtnWidth = 325;

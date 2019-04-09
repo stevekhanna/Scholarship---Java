@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 import myJStuff.*;
 import objects.Student;
 
-public class AllStudentsPanel extends MyPanel{
+public class AllStudentsPanel extends MyScrollPanel{
 	/**
 	 * instance variables
 	 */
@@ -61,9 +61,6 @@ public class AllStudentsPanel extends MyPanel{
 		center.add(lblName,"cell 1 0");
 		lblName = new MyLabel("Account", Colors.grey, Size.defaultLblFontSize);
 		center.add(lblName,"cell 2 0");
-		
-		addScrollToCenter();
-	
 	}
 	
 	/**
@@ -78,7 +75,7 @@ public class AllStudentsPanel extends MyPanel{
 		lbl = new MyLabel(student.getName()+"        ");
 		center.add(lbl,String.format("cell 1 %d, left", studentRow));
 		
-		JButton btn = new MyButton("View Account", Size.defaultLblFontSize, Size.defaultBtnEditWidth);
+		JButton btn = new MyButton("View", Size.defaultLblFontSize, Size.defaultBtnEditWidth);
 		center.add(btn,String.format("cell 2 %d, left", studentRow));
 		btn.setName("ViewStudent_AllStudentsPanel");
 		btn.addActionListener(packageListener);

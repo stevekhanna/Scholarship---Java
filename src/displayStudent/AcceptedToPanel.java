@@ -15,7 +15,7 @@ import objects.Scholarship;
  * @author Steve Khanna, Pierce de Jong
  *
  */
-public class AcceptedToPanel extends MyPanel{
+public class AcceptedToPanel extends MyScrollPanel{
 private JButton btnBack;
 	/**
 	 * instance variables

@@ -10,7 +10,7 @@ import javax.swing.JTextField;
 import myJStuff.*;
 import objects.Scholarship;
 
-public class AllScholarshipsPanel extends MyPanel{
+public class AllScholarshipsPanel extends MyScrollPanel{
 	
 	/**
 	 * instance variables
