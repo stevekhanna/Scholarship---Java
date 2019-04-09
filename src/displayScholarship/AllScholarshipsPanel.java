@@ -112,6 +112,14 @@ public class AllScholarshipsPanel extends MyScrollPanel{
 		lblName = new MyLabel("Amount", Colors.grey, Size.defaultLblFontSize);
 		center.add(lblName,"cell 4 0");
 		
+		if (isAdmin) {
+			lblName = new MyLabel("Applied", Colors.grey, Size.defaultLblFontSize);
+			center.add(lblName,"cell 5 0");
+			lblName = new MyLabel("Accepted", Colors.grey, Size.defaultLblFontSize);
+			center.add(lblName,"cell 6 0");
+		}
+		
+		
 		//addScrollToCenter();
 	}
 	
@@ -136,12 +144,19 @@ public class AllScholarshipsPanel extends MyScrollPanel{
 		String faculty = scholarship.getFaculty();
 		String amount = Double.toString(scholarship.getMoney());
 		String dept = scholarship.getDepartment();
+		String  numApplied = String.valueOf(scholarship.getStudentsApplied().size());
+		String  numAccepted = String.valueOf(scholarship.getStudentsAccepted().size());
 		ArrayList<String> labelName = new ArrayList<String>();
 		labelName.add(name);
 		labelName.add(gPA);
-		labelName.add(faculty);
+		labelName.add(faculty +"  ");
 		labelName.add(dept);
-		labelName.add(amount);
+		labelName.add(amount + "  ");
+		if(isAdmin) {
+			
+			labelName.add(numApplied);
+			labelName.add(numAccepted);		
+		}
 		JLabel lbl;
 		int i = 0;
 		for(String lblNm: labelName) {
@@ -154,14 +169,15 @@ public class AllScholarshipsPanel extends MyScrollPanel{
 		btnView.setActionCommand(Integer.toString(scholarship.getId()));
 		btnView.setName("ViewScholarship_AllScholarshipsPanel");
 		btnView.addActionListener(packageListener);
-		center.add(btnView, String.format("cell 5 %d, center",y));
+		center.add(btnView, String.format("cell 7 %d, center",y));
 		
 		if(isAdmin) {
 			JButton btnDelete = new MyButton("Delete", Size.defaultLblFontSize, Size.defaultBtnEditWidth);
 			btnDelete.setActionCommand(Integer.toString(scholarship.getId()));
 			btnDelete.setName("DeleteScholarship_AllScholarshipsPanel");
 			btnDelete.addActionListener(globalLisenter);
-			center.add(btnDelete, String.format("cell 6 %d, center",y));		
+			center.add(btnDelete, String.format("cell 8 %d, center",y));
+			//center.add
 		}
 
 		y++;
