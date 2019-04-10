@@ -75,7 +75,7 @@ public class AllScholarshipsPanel extends MyScrollPanel{
 
 		
 		fldSearch = new MyTextField("", Size.defaultBtnFontSize);
-		south.add(fldSearch, "cell 1 1, center");
+		south.add(fldSearch, "cell 1 1, right");
 		
 		lblSearchError = new MyLabel("", Size.defaultLblFontSize);
 		south.add(lblSearchError, "cell 1 0, center");	
@@ -143,14 +143,17 @@ public class AllScholarshipsPanel extends MyScrollPanel{
 		String gPA = Double.toString(scholarship.getGpaRequirement());
 		String faculty = scholarship.getFaculty();
 		String amount = Double.toString(scholarship.getMoney());
-		String dept = scholarship.getDepartment();
 		String  numApplied = String.valueOf(scholarship.getStudentsApplied().size());
 		String  numAccepted = String.valueOf(scholarship.getStudentsAccepted().size());
 		ArrayList<String> labelName = new ArrayList<String>();
 		labelName.add(name);
 		labelName.add(gPA);
 		labelName.add(faculty +"  ");
-		labelName.add(dept);
+		if(scholarship.getDepartment().equals("NA")) {
+			labelName.add("");
+		}else {
+			labelName.add(scholarship.getDepartment());			
+		}
 		labelName.add(amount + "  ");
 		if(isAdmin) {
 			

@@ -25,6 +25,7 @@ public class ViewScholarshipPanel extends MyPanel{
 	private JButton btnEdit;
 	private JButton btnApplied;
 	private JButton btnAccepted;
+	private JButton btnWon;
 
 	/**
 	 * class constructor
@@ -70,17 +71,21 @@ public class ViewScholarshipPanel extends MyPanel{
 		btnAccepted.setName("ViewStudentsAccepted_ViewScholarshipPanel");
 		btnAccepted.addActionListener(packageListener);
 		south.add(btnAccepted,"cell 3 0");
+		btnWon = new MyButton("Confirmed Students",Size.defaultBtnFontSize);
+		btnWon.setName("ViewStudentsWon_ViewScholarshipPanel");
+		btnWon.addActionListener(packageListener);
+		south.add(btnWon,"cell 4 0");
 		
 		if(!isAdmin) {
 			btnApply = new MyButton("Apply",Size.defaultBtnFontSize,Size.defaultBtnEditWidth);
 			btnApply.setName("Apply_ViewScholarshipPanel");
 			btnApply.addActionListener(globalListener);
-			south.add(btnApply, "cell 4 0, right");
+			south.add(btnApply, "cell 5 0, right");
 		}else {
 			btnEdit = new MyButton("Edit",Size.defaultBtnFontSize,Size.defaultBtnEditWidth);
 			btnEdit.setName("EditScholarship_ViewScholarshipPanel");
 			btnEdit.addActionListener(packageListener);
-			south.add(btnEdit, "cell 4 0, right");
+			south.add(btnEdit, "cell 5 0, right");
 		}
 		
 	}
@@ -109,10 +114,12 @@ public class ViewScholarshipPanel extends MyPanel{
 			btnApply.setActionCommand(Integer.toString(scholarship.getId()));
 			btnApplied.setVisible(false);
 			btnAccepted.setVisible(false);
+			btnWon.setVisible(false);
 		}else {
 			btnEdit.setActionCommand(Integer.toString(scholarship.getId()));
 			btnApplied.setVisible(true);
 			btnAccepted.setVisible(true);
+			btnWon.setVisible(true);
 		}
 		lblTitle.setText(scholarship.getName());
 		String x = scholarship.returnFull();

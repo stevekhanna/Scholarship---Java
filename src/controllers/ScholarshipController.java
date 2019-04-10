@@ -23,6 +23,7 @@ public class ScholarshipController extends MyController{
 	private JPanel editScholarshipPanel;
 	private JPanel viewStudentsAppliedPanel;
 	private JPanel viewStudentsAcceptedPanel;
+	private JPanel viewStudentsWonPanel;
 	
 	/**
 	 * This is all of the panels that are in the displaySchoalrship
@@ -32,6 +33,7 @@ public class ScholarshipController extends MyController{
 	private EditScholarshipPanel esp;
 	private ViewStudentsAppliedPanel vsapp;
 	private ViewStudentsAcceptedPanel vsacp;
+	private ViewStudentsWonPanel vswp;
 	
 	private List<Student> students;
 	/**
@@ -70,6 +72,7 @@ public class ScholarshipController extends MyController{
 		esp = new EditScholarshipPanel(this,globalListener);
 		vsapp = new ViewStudentsAppliedPanel(this, globalListener);
 		vsacp = new ViewStudentsAcceptedPanel(this, globalListener);
+		vswp = new ViewStudentsWonPanel(this,globalListener);
 		
 		// Get the content panes
 		viewScholarshipPanel = vsp.getContentPane();
@@ -77,6 +80,7 @@ public class ScholarshipController extends MyController{
 		editScholarshipPanel = esp.getContentPane();
 		viewStudentsAppliedPanel = vsapp.getContentPane();
 		viewStudentsAcceptedPanel = vsacp.getContentPane();
+		viewStudentsWonPanel = vswp.getContentPane();
 		
 		// Add all the scholarships to the allScholarshipsPanel
 		scholarshipLoop(scMap);
@@ -158,6 +162,17 @@ public class ScholarshipController extends MyController{
 		switchPanel(viewStudentsAcceptedPanel);
 	}
 	
+	private void switchToViewStudentsWonPanel(Scholarship scholar) {
+		vswp.resetStudents();
+		vswp.setScholarship(currentScholarship);
+		for(Student s: students) {
+			if(scholar.getStudentsWon().contains(s.getUCID())) {
+				vswp.addStudent(s);
+			}
+		}	
+		switchPanel(viewStudentsWonPanel);
+	}
+	
 	/**
 	 * Get edit panel
 	 * Used to get the info for editing a panel
@@ -201,7 +216,13 @@ public class ScholarshipController extends MyController{
 		case "ViewStudentsAccepted_ViewScholarshipPanel":
 			switchToViewStudentsAcceptedPanel(currentScholarship);
 			break;
+		case "ViewStudentsWon_ViewScholarshipPanel":
+			switchToViewStudentsWonPanel(currentScholarship);
+			break;
 		case "Back_ViewStudentsAppliedPanel":
+			switchPanel(viewScholarshipPanel);
+			break;
+		case "Back_ViewStudentsWonPanel":
 			switchPanel(viewScholarshipPanel);
 			break;
 		case "Back_ViewStudentsAcceptedPanel":
