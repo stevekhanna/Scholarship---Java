@@ -2,21 +2,17 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.UIManager;
 
 import displayScholarship.ViewReadOnlyScholarshipPanel;
 import displayStudent.*;
-import myJStuff.Colors;
 import myJStuff.MyController;
 import objects.*;
 import util.*;
@@ -152,33 +148,36 @@ public class StudentController extends MyController {
 		Scholarship s = scMap.get(scholarshipID);
 		// Make sure current student is not null
 		if(currentStudent != null  && s!= null) {
-			// Check the student has the correct GPA req for the scholarship
-			if (currentStudent.getGpa()>= s.getGpaRequirement() && !currentStudent.getScholarshipsAcceptedTo().contains(scholarshipID) &&!Arrays.stream(currentStudent.getScholarshipsWon()).anyMatch(i -> i == scholarshipID)
-					&& Arrays.stream(currentStudent.getScholarshipsWon()).anyMatch(i -> i <= 0)) {
-				// Add the scholarship to the current student
-				if(currentStudent.addScholarship(scholarshipID)) {
-					// Add the Students UCID to the scholarship
-					s.addStudentToApplied(currentStudent.getUCID());
-					// Save the Student to the util file
-					util.saveStudent(currentStudent);
-					// Save the scholarships to the util file
-					util.saveScholarship(s);
-					// Add the scholarship to the appliedToPanel
-					atp.setTotalScholarships(currentStudent.getScholarshipsAppliedTo().size());
-					atp.addScholarship(s, currentStudent.getScholarshipsAppliedTo().size()-1);
-					System.out.println(s.getName()+" added to applied");
-					Object[] canApplyOptions = {"OK"};
-					int canApplySelectedOption = JOptionPane.showOptionDialog(null, "You have successfully applied for this scholarship", "SUCCESS",
-							JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE,
-							null, canApplyOptions, canApplyOptions[0]);
-					if(canApplySelectedOption == JOptionPane.YES_OPTION) {
-						
-					}
-					return true;
+			// Check if the student has already been accepted or won the scholarship
+			if (currentStudent.getScholarshipsAcceptedTo().contains(s.getId()) || Arrays.stream(currentStudent.getScholarshipsWon()).anyMatch(i -> i == scholarshipID)) {
+				Object[] canApplyOptions = {"OK"};
+				int canApplySelectedOption = JOptionPane.showOptionDialog(null, "Can not apply for scholarships you have been accepted to or already won", "ERROR",
+						JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE,
+						null, canApplyOptions, canApplyOptions[0]);
+				if(canApplySelectedOption == JOptionPane.YES_OPTION) {
+					
+				}
+				return false;
+			// Student has already won 2 scholarships
+			}else if(!Arrays.stream(currentStudent.getScholarshipsWon()).anyMatch(i -> i <= 0)) {
+				Object[] canApplyOptions = {"OK"};
+				int canApplySelectedOption = JOptionPane.showOptionDialog(null, "You have already won two scholarships", "ERROR",
+						JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE,
+						null, canApplyOptions, canApplyOptions[0]);
+				if(canApplySelectedOption == JOptionPane.YES_OPTION) {
+					
+				}
+				return false;
+			// Check if the Scholarship is university wide or only for a specific Faculty
+			}else if(s.getFaculty().equals("University")) {
+					return addScholarshipToApplied(s);
+			// Check if the Scholarship is the same Faculty as the current student
+			}else if(s.getFaculty().equals(currentStudent.getFaculty())) {
+				if(s.getDepartment().equals("NA") || s.getDepartment().equals(currentStudent.getDepartment())) {
+					return addScholarshipToApplied(s);
 				}else {
-					System.out.println(s.getName()+" failed");
 					Object[] canApplyOptions = {"OK"};
-					int canApplySelectedOption = JOptionPane.showOptionDialog(null, "Error: Could not apply for this scholarship", "ERROR",
+					int canApplySelectedOption = JOptionPane.showOptionDialog(null, "You can not apply for scholarships outside of your department", "ERROR",
 							JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE,
 							null, canApplyOptions, canApplyOptions[0]);
 					if(canApplySelectedOption == JOptionPane.YES_OPTION) {
@@ -186,10 +185,96 @@ public class StudentController extends MyController {
 					}
 					return false;
 				}
+			// Can not apply for this scholarship outside of your faculty
 			}else {
-				System.out.println(s.getName()+" failed");
 				Object[] canApplyOptions = {"OK"};
-				int canApplySelectedOption = JOptionPane.showOptionDialog(null, "Error: Could not apply for this scholarship", "ERROR",
+				int canApplySelectedOption = JOptionPane.showOptionDialog(null, "Can not apply for scholarships outside of your faculty", "ERROR",
+						JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE,
+						null, canApplyOptions, canApplyOptions[0]);
+				if(canApplySelectedOption == JOptionPane.YES_OPTION) {
+					
+				}
+				return false;
+			}	
+//			// Check the student has the correct GPA req for the scholarship
+//			if (currentStudent.getGpa()>= s.getGpaRequirement() && !currentStudent.getScholarshipsAcceptedTo().contains(scholarshipID) &&!Arrays.stream(currentStudent.getScholarshipsWon()).anyMatch(i -> i == scholarshipID)
+//					&& Arrays.stream(currentStudent.getScholarshipsWon()).anyMatch(i -> i <= 0)) {
+//				// Add the scholarship to the current student
+//				if(currentStudent.addScholarship(scholarshipID)) {
+//					// Add the Students UCID to the scholarship
+//					s.addStudentToApplied(currentStudent.getUCID());
+//					// Save the Student to the util file
+//					util.saveStudent(currentStudent);
+//					// Save the scholarships to the util file
+//					util.saveScholarship(s);
+//					// Add the scholarship to the appliedToPanel
+//					atp.setTotalScholarships(currentStudent.getScholarshipsAppliedTo().size());
+//					atp.addScholarship(s, currentStudent.getScholarshipsAppliedTo().size()-1);
+//					System.out.println(s.getName()+" added to applied");
+//					Object[] canApplyOptions = {"OK"};
+//					int canApplySelectedOption = JOptionPane.showOptionDialog(null, "You have successfully applied for this scholarship", "SUCCESS",
+//							JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE,
+//							null, canApplyOptions, canApplyOptions[0]);
+//					if(canApplySelectedOption == JOptionPane.YES_OPTION) {
+//						
+//					}
+//					return true;
+//				}else {
+//					System.out.println(s.getName()+" failed");
+//					Object[] canApplyOptions = {"OK"};
+//					int canApplySelectedOption = JOptionPane.showOptionDialog(null, "Error: Could not apply for this scholarship", "ERROR",
+//							JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE,
+//							null, canApplyOptions, canApplyOptions[0]);
+//					if(canApplySelectedOption == JOptionPane.YES_OPTION) {
+//						
+//					}
+//					return false;
+//				}
+//			}else {
+//				System.out.println(s.getName()+" failed");
+//				Object[] canApplyOptions = {"OK"};
+//				int canApplySelectedOption = JOptionPane.showOptionDialog(null, "Error: Could not apply for this scholarship", "ERROR",
+//						JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE,
+//						null, canApplyOptions, canApplyOptions[0]);
+//				if(canApplySelectedOption == JOptionPane.YES_OPTION) {
+//					
+//				}
+//				return false;
+//			}
+		}else {
+			Object[] canApplyOptions = {"OK"};
+			int canApplySelectedOption = JOptionPane.showOptionDialog(null, "Error: Could not apply for this scholarship", "ERROR",
+					JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE,
+					null, canApplyOptions, canApplyOptions[0]);
+			if(canApplySelectedOption == JOptionPane.YES_OPTION) {
+				
+			}
+			return false;
+		}
+	}
+	
+	private boolean addScholarshipToApplied(Scholarship s) {
+		if(s.getGpaRequirement()<=currentStudent.getGpa()) {
+			if(currentStudent.addScholarshipToApplied(s.getId()) & s.addStudentToApplied(currentStudent.getUCID())) {
+				// Save the Student to the util file
+				util.saveStudent(currentStudent);
+				// Save the scholarships to the util file
+				util.saveScholarship(s);
+				// Add the scholarship to the appliedToPanel
+				atp.setTotalScholarships(currentStudent.getScholarshipsAppliedTo().size());
+				atp.addScholarship(s, currentStudent.getScholarshipsAppliedTo().size()-1);
+				System.out.println(s.getName()+" added to applied");
+				Object[] canApplyOptions = {"OK"};
+				int canApplySelectedOption = JOptionPane.showOptionDialog(null, "You have successfully applied for this scholarship", "SUCCESS",
+						JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE,
+						null, canApplyOptions, canApplyOptions[0]);
+				if(canApplySelectedOption == JOptionPane.YES_OPTION) {
+					
+				}
+				return true;
+			}else {
+				Object[] canApplyOptions = {"OK"};
+				int canApplySelectedOption = JOptionPane.showOptionDialog(null, "You have already applied to this scholarship", "ERROR",
 						JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE,
 						null, canApplyOptions, canApplyOptions[0]);
 				if(canApplySelectedOption == JOptionPane.YES_OPTION) {
@@ -199,7 +284,7 @@ public class StudentController extends MyController {
 			}
 		}else {
 			Object[] canApplyOptions = {"OK"};
-			int canApplySelectedOption = JOptionPane.showOptionDialog(null, "Error: Could not apply for this scholarship", "ERROR",
+			int canApplySelectedOption = JOptionPane.showOptionDialog(null, "Your GPA is not high enough to apply fir this scholarship", "ERROR",
 					JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE,
 					null, canApplyOptions, canApplyOptions[0]);
 			if(canApplySelectedOption == JOptionPane.YES_OPTION) {
@@ -319,7 +404,7 @@ public class StudentController extends MyController {
 			if (applyToScholarship(id)) {
 				switchPanel(appliedToPanel);
 			}else {
-				sController.start(false, scMap);
+				sController.switchToViewScholarshipPanel(scMap.get(id));
 			}
 			// Switch to the Applied Panel=
 			

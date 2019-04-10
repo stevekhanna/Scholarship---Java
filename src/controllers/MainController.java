@@ -79,6 +79,8 @@ public class MainController implements ActionListener{
 		System.out.print("Check Student Login:  ");
 		String email=lController.getLoginStudentPanel().getEmail();
 		String password = lController.getLoginStudentPanel().getPassword();
+		if(!email.contains("@ucalgary.ca"))
+			email+="@ucalgary.ca";
 		for( Student s : students) {
 			if (s.getEmail().equalsIgnoreCase(email) && s.getPassword().equals(password)) {
 				System.out.println("Success");
@@ -99,6 +101,8 @@ public class MainController implements ActionListener{
 		System.out.print("Check Admin Login:  ");
 		String email=lController.getLoginAdminPanel().getEmail();
 		String password = lController.getLoginAdminPanel().getPassword();
+		if(!email.contains("@ucalgary.ca"))
+			email+="@ucalgary.ca";
 		for( Admin s : admins) {
 			if (s.getEmail().equalsIgnoreCase(email) && s.getPassword().equals(password)) {
 				System.out.println("Success");
