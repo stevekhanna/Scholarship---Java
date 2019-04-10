@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
+import displayScholarship.ViewReadOnlyScholarshipPanel;
 import displayStudent.*;
 import myJStuff.Colors;
 import myJStuff.MyController;
@@ -38,6 +39,8 @@ public class StudentController extends MyController {
 	private AppliedToPanel atp;
 	private AcceptedToPanel actp;
 	private AccountPanel acp;
+	private WonScholarshipsPanel wscp;
+	private ViewReadOnlyScholarshipPanel vrop;
 	
 	private Util util;
 	
@@ -53,6 +56,10 @@ public class StudentController extends MyController {
 	private JPanel appliedToPanel;
 	private JPanel accountPanel;
 	private JPanel acceptedToPanel;
+	private JPanel wonScholarshipsPanel;
+	private JPanel readOnlyScholarshipPanel;
+	
+	
 	/**
 	 * Constructor
 	 * @param frame - JFrame
@@ -79,6 +86,8 @@ public class StudentController extends MyController {
 		atp = new AppliedToPanel(this);
 		acp = new AccountPanel(this);
 		actp = new AcceptedToPanel(this);
+		wscp = new WonScholarshipsPanel(this);
+		vrop = new ViewReadOnlyScholarshipPanel(this);
 		atp.setTotalScholarships(currentStudent.getScholarshipsAppliedTo().size());
 		
 		studentPanel = sp.getContentPane();
@@ -86,6 +95,8 @@ public class StudentController extends MyController {
 		appliedToPanel = atp.getContentPane();
 		accountPanel = acp.getContentPane();
 		acceptedToPanel = actp.getContentPane();
+		wonScholarshipsPanel = wscp.getContentPane();
+		readOnlyScholarshipPanel = vrop.getContentPane();
 		
 		addScholarshipsToAppliedPanel();
 		addScholarshipsAcceptedToPanel();
@@ -267,7 +278,7 @@ public class StudentController extends MyController {
 
 	@Override
 	/**
-	 * ActionListener that does something when a button is pressed that is assigned top this action listener
+	 * ActionListener that does something when a button is pressed that is assigned to this action listener
 	 * Any buttons that are assigned to the package listener
 	 */
 	public void actionPerformed(ActionEvent e) {
@@ -393,6 +404,38 @@ public class StudentController extends MyController {
 				util.saveStudent(currentStudent);
 				acp.resetPasswordFields();
 			}
+			break;
+		case "WonScholarships_StudentPanel":
+			wscp.resetScholarships();
+			boolean j = false;
+			for(int i = 0; i< 2; i ++) {
+				if(currentStudent.getScholarshipsWon()[i]>0 ) {
+					wscp.addScholarship(scMap.get(currentStudent.getScholarshipsWon()[i]));
+					j = true;
+				}
+			}
+			if (j) {
+				switchPanel(wonScholarshipsPanel);
+			} else {
+				Object[] noScholarshipsWon = { "OK" };
+				int nsw = JOptionPane.showOptionDialog(null, "No scholarships won", "Error",
+						JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE,
+						null, noScholarshipsWon, noScholarshipsWon[0]);
+				if(nsw == JOptionPane.YES_OPTION) {
+				}
+			}//will have a dialog box saying unavailable
+			break;
+		case "Back_WonScholarshipsPanel":
+			switchToStudentPanel();
+			break;
+		case "ViewReadOnly_WonScholarshipPanel":
+			int sid = Integer.parseInt(source.getActionCommand());
+			Scholarship scholarship = scMap.get(sid);
+			vrop.displayScholarship(scholarship);
+			switchPanel(readOnlyScholarshipPanel);
+			break;
+		case "Back_ViewReadOnlyScholarshipPanel":
+			switchToStudentPanel();
 			break;
 		default:
 			break;
