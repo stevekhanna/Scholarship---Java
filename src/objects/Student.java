@@ -130,7 +130,7 @@ public class Student extends User{
 	 * @param id of the scholarship to add
 	 * @return boolean if successful or not
 	 */
-	public boolean addScholarship(int id) {
+	public boolean addScholarshipToApplied(int id) {
 		if (scholarshipsAppliedTo.contains(id)) {
 			return false;
 		}

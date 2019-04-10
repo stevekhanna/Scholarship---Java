@@ -133,7 +133,7 @@ public class ScholarshipController extends MyController{
 	 * Switch the JPaenl to the ViewScholarshipPanel
 	 * @param scholarship - the scholarship to view
 	 */
-	private void switchToViewScholarshipPanel(Scholarship scholarship) {
+	public void switchToViewScholarshipPanel(Scholarship scholarship) {
 		// Display the scholarship
 		vsp.displayScholarship(scholarship);
 		// IF the current user is an admin display all students that have applied

@@ -1,5 +1,5 @@
 Name,ID,GPA,Faculty,Year of Study,Type of study,Department,Numbers allowed,Description,Money,Students applied,Students accepted,Students Won
-Google,1,3.57,Arts,3,Bachelor,GRST,10,This is a generic scholarship,75000.0,noneApplied,30009006,noneWon
+Google,1,3.57,Arts,3,Bachelor,GRST,10,This is a generic scholarship,75000.0,noneApplied,noneAccepted,30009006
 RBC,2,3.8,Arts,3,Bachelor,GRST,3,RBC's Student Scholarship,1000.0,30009006,noneAccepted,noneWon
 Tesla,3,3.6,Science,2,Bachelor,CPSC,1,Tesla's Student scholarship,11000.0,30009006,noneAccepted,noneWon
 Alberta Bright Minds,4,3.7,Science,3,Bachelor,CPSC,5,For all the bright minds,25000.0,30009006,noneAccepted,noneWon
