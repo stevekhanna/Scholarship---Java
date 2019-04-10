@@ -5,14 +5,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-import myJStuff.Colors;
-import myJStuff.MyButton;
-import myJStuff.MyLabel;
-import myJStuff.MyPanel;
-import myJStuff.Size;
+import myJStuff.*;
 import objects.*;
 
-public class ViewStudentsAppliedPanel extends MyPanel{
+public class ViewStudentsAppliedPanel extends MyScrollPanel{
 	/**
 	 * instance variables
 	 */
@@ -80,9 +76,6 @@ public class ViewStudentsAppliedPanel extends MyPanel{
 		center.add(lblName,"cell 4 0");
 		lblName = new MyLabel("Accept Student", Colors.grey, Size.defaultLblFontSize);
 		center.add(lblName,"cell 5 0");
-		
-		//addScrollToCenter();
-		
 	}
 	
 	/**
@@ -101,11 +94,17 @@ public class ViewStudentsAppliedPanel extends MyPanel{
 		
 		lbl = new MyLabel(student.getDepartment());
 		center.add(lbl,String.format("cell 3 %d, left", studentRow));
+		int position = 0;
+		for(int i = 0; i<student.getScholarshipsAppliedTo().size(); i++) {
+			if(scholarship.getId()== student.getScholarshipsAppliedTo().get(i)) {
+				position = i;
+			}
+		}
 
-		lbl = new MyLabel("420");
-		center.add(lbl,String.format("cell 4 %d, left", studentRow));
+		lbl = new MyLabel((position+1)+"");
+		center.add(lbl,String.format("cell 4 %d, center", studentRow));
 		
-		JButton btn = new MyButton("Accept Student", Size.defaultLblFontSize, Size.defaultBtnEditWidth);
+		JButton btn = new MyButton("Accept Student", Size.defaultLblFontSize, Size.defaultBtnEditWidth+25);
 		btn.setName("Accept_ViewStudentsAppliedPanel");
 		btn.addActionListener(globalListener);
 		btn.setActionCommand(student.getUCID()+":"+scholarship.getId());

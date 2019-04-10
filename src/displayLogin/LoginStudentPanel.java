@@ -89,6 +89,11 @@ public class LoginStudentPanel extends MyPanel{
 		center.add(fldPassword, "cell 0 3, center");
 	}
 	
+	public void resetFields() {
+		fldUsername.setText("");
+		fldPassword.setText("");
+	}
+	
 	/**
 	 * get the email from the text field
 	 * @return the email string

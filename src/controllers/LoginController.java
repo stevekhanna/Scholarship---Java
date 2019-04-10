@@ -90,6 +90,7 @@ public class LoginController extends MyController {
 			switchPanel(panelHome); 
 			break;
 		case "LoginAdmin_HomePanel":
+			lap.resetFields();
 			switchPanel(panelLoginAdmin); 
 			break;
 		case "Back_AboutPanel":
@@ -99,6 +100,7 @@ public class LoginController extends MyController {
 			switchPanel(panelAbout); 
 			break;
 		case "LoginStudent_HomePanel":
+			lsp.resetFields();
 			switchPanel(panelLoginStudent);
 			break;
 		default:

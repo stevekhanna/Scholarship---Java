@@ -68,8 +68,10 @@ public class MainController implements ActionListener{
 		frame.setBounds(250, 100, width, height);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(true);
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setMinimumSize(new Dimension(300,300));
 		frame.setVisible(true);
+		
 	}
 	
 	

@@ -2,10 +2,11 @@ package displayLogin;
 
 import myJStuff.*;
 
+import java.awt.Font;
 import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
-
+import javax.swing.JTextArea;
 import javax.swing.JButton;
 
 public class AboutPanel extends MyPanel{
@@ -32,7 +33,12 @@ public class AboutPanel extends MyPanel{
 	private void displayNorth(){
 		lblAbout = new MyLabel("About", Size.defaultLblTitleFontSize);
 		north.add(lblAbout, "cell 0 0");
+		JTextArea ta = new JTextArea("This software is a system that awards scholarships to students, based on the administrator's needs. ");
+		
+		north.add(ta, "cell 0 1");
+		
 	}
+	
 	
 	/**
 	 * shows the bottom part of the About panel.

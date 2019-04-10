@@ -5,14 +5,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-import myJStuff.Colors;
-import myJStuff.MyButton;
-import myJStuff.MyLabel;
-import myJStuff.MyPanel;
-import myJStuff.Size;
+import myJStuff.*;
 import objects.*;
 
-public class ViewStudentsAcceptedPanel extends MyPanel{
+public class ViewStudentsAcceptedPanel extends MyScrollPanel{
 	/**
 	 * instance variables
 	 */
@@ -102,8 +98,6 @@ public class ViewStudentsAcceptedPanel extends MyPanel{
 		lbl = new MyLabel(student.getDepartment());
 		center.add(lbl,String.format("cell 3 %d, left", studentRow));
 
-		lbl = new MyLabel("420");
-		center.add(lbl,String.format("cell 4 %d, left", studentRow));
 		
 		JButton btn = new MyButton("Accept Student", Size.defaultLblFontSize, Size.defaultBtnEditWidth);
 		btn.setName("Accept_ViewStudentsAppliedPanel");

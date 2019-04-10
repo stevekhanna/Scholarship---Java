@@ -37,7 +37,8 @@ public abstract class MyPanel {
 	
 	
 	// Height and width of the screen
-	protected static final int width = 900;
+	
+	protected static final int width = 1000;
 	protected static final int height = 600;
 	
 	protected EmptyBorder emptyBorder = new EmptyBorder(5, 5, 5, 5);
@@ -79,18 +80,6 @@ public abstract class MyPanel {
 		west.setBackground(color);
 		center.setBackground(color);
 		contentPane.setBackground(color);
-	}
-	
-	protected void addScrollToCenter() {
-		JPanel newScroller = new JPanel();
-		newScroller.add(center);
-		JScrollPane scroller = new JScrollPane(newScroller);
-		//scroller.setPreferredSize(new Dimension(800,200));
-		//newScroller.setPreferredSize(new Dimension(800,200));
-		scroller.getViewport().getView().setBackground(Colors.defaultBackgroundColor);
-		newScroller.setBackground(Colors.defaultBackgroundColor);
-		
-	    contentPane.add(scroller);
 	}
 	
 	protected void setTheme(){
