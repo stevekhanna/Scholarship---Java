@@ -66,7 +66,7 @@ public class StudentPanel extends MyPanel{
 	 * method displays the options the student can access
 	 */
 	private void displayCenter() {
-		btnAllScholarships = new MyButton("All Scholarships", Size.defaultBtnFontSize);
+		btnAllScholarships = new MyButton("Apply to a  Scholarship", Size.defaultBtnFontSize);
 		center.add(btnAllScholarships, "cell 0 0, center");
 		btnAllScholarships.addActionListener(packageListener);
 		btnAllScholarships.setName("AllScholarships_StudentPanel");
@@ -81,15 +81,15 @@ public class StudentPanel extends MyPanel{
 		btnAcceptedTo.addActionListener(packageListener);
 		btnAcceptedTo.setName("AcceptedTo_StudentPanel");
 		
-		btnAccount = new MyButton("My Account", Size.defaultBtnFontSize);
-		center.add(btnAccount, "cell 0 3, center");
-		btnAccount.addActionListener(packageListener);
-		btnAccount.setName("Account_StudentPanel");
-		
 		btnWonScholarships = new MyButton("Won Scholarships", Size.defaultBtnFontSize);
-		center.add(btnWonScholarships, "cell 0 4, center");
+		center.add(btnWonScholarships, "cell 0 3, center");
 		btnWonScholarships.addActionListener(packageListener);
 		btnWonScholarships.setName("WonScholarships_StudentPanel");
+		
+		btnAccount = new MyButton("My Account", Size.defaultBtnFontSize);
+		center.add(btnAccount, "cell 0 4, center");
+		btnAccount.addActionListener(packageListener);
+		btnAccount.setName("Account_StudentPanel");
 	}
 	/**
 	 * Method to display button button at the south of the screen

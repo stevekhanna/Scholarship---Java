@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 import myJStuff.*;
 import objects.*;
 
-public class ViewStudentsAcceptedPanel extends MyScrollPanel{
+public class ViewStudentsWonPanel extends MyScrollPanel{
 	/**
 	 * instance variables
 	 */
@@ -27,8 +27,8 @@ public class ViewStudentsAcceptedPanel extends MyScrollPanel{
 	 * class constructor
 	 * @param packageListener listener for buttons
 	 */
-	public ViewStudentsAcceptedPanel(ActionListener packageListener, ActionListener globalListener) {
-		contentPane.setName("View Students Accepted Panel");
+	public ViewStudentsWonPanel(ActionListener packageListener, ActionListener globalListener) {
+		contentPane.setName("View Students Won Panel");
 		this.packageListener = packageListener;
 		this.globalListener = globalListener;
 		
@@ -43,10 +43,10 @@ public class ViewStudentsAcceptedPanel extends MyScrollPanel{
 	 * displayNorth method displays heading of the panel
 	 */
 	private void displayNorth() {
-		lblTitle = new MyLabel("Scholarship Name", Size.defaultLblSubTitleFontSize);
+		lblTitle = new MyLabel("Scholarship", Size.defaultLblSubTitleFontSize);
 		north.add(lblTitle,"cell 0 0, center");
 		
-		lblSubTitle = new MyLabel("Students that have been accepted", Size.defaultLblFontSize);
+		lblSubTitle = new MyLabel("Students that have accepted and confirmed this scholarship", Size.defaultLblFontSize);
 		north.add(lblSubTitle,"cell 0 1, center");
 	}
 	
@@ -56,7 +56,7 @@ public class ViewStudentsAcceptedPanel extends MyScrollPanel{
 	private void displaySouth() {
 		btnBack = new MyButton("Back", Size.defaultBtnFontSize,Size.defaultBtnEditWidth);
 		south.add(btnBack,"cell 0 0, left");
-		btnBack.setName("Back_ViewStudentsAppliedPanel");
+		btnBack.setName("Back_ViewStudentsWonPanel");
 		btnBack.addActionListener(packageListener);
 	}
 	
@@ -72,11 +72,6 @@ public class ViewStudentsAcceptedPanel extends MyScrollPanel{
 		center.add(lblName,"cell 2 0");
 		lblName = new MyLabel("Department", Colors.grey, Size.defaultLblFontSize);
 		center.add(lblName,"cell 3 0");
-		lblName = new MyLabel("Priority", Colors.grey, Size.defaultLblFontSize);
-		center.add(lblName,"cell 4 0");
-		
-		//addScrollToCenter();
-		
 	}
 	
 	/**

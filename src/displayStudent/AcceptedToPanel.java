@@ -41,7 +41,7 @@ private JButton btnBack;
 	 * displays heading of the panel
 	 */
 	private void displayNorth() {
-		lblSuccess = new MyLabel("Scholarships you have applied to", Size.defaultLblFontSize);
+		lblSuccess = new MyLabel("Scholarships you have been accepted to", Size.defaultLblSubTitleFontSize);
 		north.add(lblSuccess, "cell 0 0,center");
 	}
 	
@@ -49,11 +49,11 @@ private JButton btnBack;
 	 * displays attribute names
 	 */
 	private void displayCenter() {
-		lblName = new MyLabel("Priority", Colors.grey, Size.defaultLblFontSize);
-		center.add(lblName,"cell 0 0");
 		lblName = new MyLabel("Name", Colors.grey, Size.defaultLblFontSize);
-		center.add(lblName,"cell 1 0");
+		center.add(lblName,"cell 0 0");
 		lblName = new MyLabel("Amount", Colors.grey, Size.defaultLblFontSize);
+		center.add(lblName,"cell 1 0");
+		lblName = new MyLabel("Faculty", Colors.grey, Size.defaultLblFontSize);
 		center.add(lblName,"cell 2 0");
 		lblName = new MyLabel("Department", Colors.grey, Size.defaultLblFontSize);
 		center.add(lblName,"cell 3 0");
@@ -91,14 +91,15 @@ private JButton btnBack;
 	 */
 	public void addScholarship(Scholarship scholarship, int priority) {
 		
-	    String name = scholarship.getName();
-		String money = Double.toString(scholarship.getMoney());
-		String toS = scholarship.getDepartment();
 		ArrayList<String> labelName = new ArrayList<String>();
-		labelName.add(""+(priority+1));
-		labelName.add(name);
-		labelName.add(money);
-		labelName.add(toS);
+		labelName.add(scholarship.getName());
+		labelName.add(scholarship.getMoney()+"");
+		labelName.add(scholarship.getFaculty());
+		if(scholarship.getDepartment().equals("NA")) {
+			labelName.add("");
+		}else {
+			labelName.add(scholarship.getDepartment());			
+		}
 		JLabel lbl;
 		int i = 0;
 		for(String lblNm: labelName) {

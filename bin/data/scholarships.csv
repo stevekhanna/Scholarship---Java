@@ -1,8 +1,8 @@
-Name,ID,GPA,Faculty,Year of Study,Type of study,Department,Numbers allowed,Description,Money,Students applied,
-Google,1,3.57,Arts,3,Bachelor,GRST,10,This is a generic scholarship,75000,noneApplied,noneAccepted,noneWon
-RBC,2,3.8,Arts,3,Bachelor,GRST,3,RBC's Student Scholarship,1000,noneApplied,noneAccepted,noneWon
-Tesla,3,3.6,Science,2,Bachelor,CPSC,1,Tesla's Student scholarship,11000,noneApplied,noneAccepted,noneWon
-Alberta Bright Minds,4,3.7,Science,3,Bachelor,CPSC,5,For all the bright minds,25000,noneApplied,noneAccepted,noneWon
-PhD Research Scholarship,5,3.7,Science,3,PhD,CPSC,3,For all the bright minds,25000,noneApplied,noneAccepted,noneWon
-Astro Physics Scholarship,6,3.1,Science,3,Bachelor,ASPH,2,Eyes High,1000,noneApplied,noneAccepted,noneWon
-Test,7,2.5,University,2,Bachelor,NA,10,This is a test,300000,noneApplied,noneAccepted,noneWon
+Name,ID,GPA,Faculty,Year of Study,Type of study,Department,Numbers allowed,Description,Money,Students applied,Students accepted,Students Won
+Google,1,3.57,Arts,3,Bachelor,GRST,10,This is a generic scholarship,75000.0,noneApplied,30009006,noneWon
+RBC,2,3.8,Arts,3,Bachelor,GRST,3,RBC's Student Scholarship,1000.0,30009006,noneAccepted,noneWon
+Tesla,3,3.6,Science,2,Bachelor,CPSC,1,Tesla's Student scholarship,11000.0,30009006,noneAccepted,noneWon
+Alberta Bright Minds,4,3.7,Science,3,Bachelor,CPSC,5,For all the bright minds,25000.0,30009006,noneAccepted,noneWon
+PhD Research Scholarship,5,3.7,Science,3,PhD,CPSC,3,For all the bright minds,25000.0,noneApplied,noneAccepted,noneWon
+Astro Physics Scholarship,6,3.1,Science,3,Bachelor,ASPH,2,Eyes High,1000.0,30009006,noneAccepted,noneWon
+Test,7,2.5,University,2,Bachelor,NA,10,This is a test,300000.0,30009006,noneAccepted,noneWon
