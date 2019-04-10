@@ -72,8 +72,6 @@ public class ViewStudentsAcceptedPanel extends MyScrollPanel{
 		center.add(lblName,"cell 2 0");
 		lblName = new MyLabel("Department", Colors.grey, Size.defaultLblFontSize);
 		center.add(lblName,"cell 3 0");
-		lblName = new MyLabel("Priority", Colors.grey, Size.defaultLblFontSize);
-		center.add(lblName,"cell 4 0");
 		
 		//addScrollToCenter();
 		
