@@ -1,6 +1,7 @@
 UCID,Email,Password,Name,Faculty,GPA,Year of study,Type of study,Department,Applied to,Accepted to,Won
-12345678,student@ucalgary.ca,password,STUDENT ACCOUNT,Arts,3.5,3,Bachelor,GRST,noneApplied,noneAccepted,noneWon
-11111111,q,q,Q Student,Arts,4.0,3,Bachelor,GRST,1:2,noneAccepted,7:0
-30004567,steve,steve,Steve Khanna,Science,3.6,4,Bachelor,CPSC,noneApplied,noneAccepted,noneWon
-18009006,pierce,pierce,Pierce de Jong,Science,3.9,3,Bachelor,CPSC,noneApplied,noneAccepted,noneWon
-87654321,name,name,Name,Science,3.7,5,PhD,CPSC,noneApplied,noneAccepted,noneWon
+12345678,student@ucalgary.ca,password,Test Account,	Arts,3.5,3,Bachelor,ENGL,noneApplied,noneAccepted,noneWon
+30004567,steve@ucalgary.ca,steve,Steve Khanna,		Science,3.6,4,Bachelor,CPSC,noneApplied,noneAccepted,noneWon
+30009006,pierce@ucalgary.ca,pierce,Pierce de Jong,	Arts,4.0,4,Bachelor,GRST,noneApplied,noneAccepted,noneWon
+18007346,montek@ucalgary.ca,montek,Montek,			Science,3.5,3,Bachelor,CPSC,noneApplied,noneAccepted,noneWon
+63209006,tran@ucalgary.ca,tran,Tran,				Arts,3.0,2,Bachelor,HTST,noneApplied,noneAccepted,noneWon
+64329006,khoa@ucalgary.ca,khoa,Khoa,				Science,2.8,2,Bachelor,ENGG,noneApplied,noneAccepted,noneWon

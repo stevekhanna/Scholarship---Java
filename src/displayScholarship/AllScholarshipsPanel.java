@@ -75,7 +75,7 @@ public class AllScholarshipsPanel extends MyScrollPanel{
 
 		
 		fldSearch = new MyTextField("", Size.defaultBtnFontSize);
-		south.add(fldSearch, "cell 1 1, center");
+		south.add(fldSearch, "cell 1 1, right");
 		
 		lblSearchError = new MyLabel("", Size.defaultLblFontSize);
 		south.add(lblSearchError, "cell 1 0, center");	
