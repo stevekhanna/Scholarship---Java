@@ -259,12 +259,28 @@ public class AdminController extends MyController {
 	}
 	
 	private void acceptStudent(Student student, Scholarship scholarship){
-		student.addToAccept(scholarship.getId());
-		scholarship.addStudentToAccepted(student.getUCID());
-		util.saveStudent(student);
-		util.saveScholarship(scholarship);
-		sController.start(true, scMap);
-	
+		if(scholarship.getNumAllowed()> scholarship.getStudentsAccepted().size()+scholarship.getStudentsWon().size()) {
+			student.addToAccept(scholarship.getId());
+			scholarship.addStudentToAccepted(student.getUCID());
+			util.saveStudent(student);
+			util.saveScholarship(scholarship);
+			Object[] canApplyOptions = {"OK"};
+			int canApplySelectedOption = JOptionPane.showOptionDialog(null, "Students has been accpeted to the scholarship", "SUCCESS",
+					JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE,
+					null, canApplyOptions, canApplyOptions[0]);
+			if(canApplySelectedOption == JOptionPane.YES_OPTION) {
+				
+			}
+			sController.switchToViewScholarshipPanel(scholarship);
+		}else {
+			Object[] canApplyOptions = {"OK"};
+			int canApplySelectedOption = JOptionPane.showOptionDialog(null, "Max number of students have been accepted", "ERROR",
+					JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE,
+					null, canApplyOptions, canApplyOptions[0]);
+			if(canApplySelectedOption == JOptionPane.YES_OPTION) {
+				
+			}
+		}
 	}
 	
 	private void switchToAccountPanel(){
