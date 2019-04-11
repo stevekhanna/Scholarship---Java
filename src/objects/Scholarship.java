@@ -28,7 +28,7 @@ public class Scholarship {
 	
 	private List<Integer> studentsApplied;
 	private List<Integer> studentsAccepted;
-	private List<Integer> studentsWon;
+	private List<Integer> studentsWon = new ArrayList<Integer>();
 
 	/**
 	 * Default scholarship constructor
