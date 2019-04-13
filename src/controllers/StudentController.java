@@ -284,7 +284,7 @@ public class StudentController extends MyController {
 			}
 		}else {
 			Object[] canApplyOptions = {"OK"};
-			int canApplySelectedOption = JOptionPane.showOptionDialog(null, "Your GPA is not high enough to apply fir this scholarship", "ERROR",
+			int canApplySelectedOption = JOptionPane.showOptionDialog(null, "Your GPA is not high enough to apply for this scholarship", "ERROR",
 					JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE,
 					null, canApplyOptions, canApplyOptions[0]);
 			if(canApplySelectedOption == JOptionPane.YES_OPTION) {
