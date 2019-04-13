@@ -1,5 +1,10 @@
 package util;
-
+/**
+ * 
+ * @author Steve Khanna
+ * File Locations for ease of access
+ * This is done to make changes to the file location(if any) are quick
+ */
 public class FileLocations{
 	
 	

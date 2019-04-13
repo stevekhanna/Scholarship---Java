@@ -15,14 +15,15 @@ import objects.Scholarship;
  *
  */
 public class WonScholarshipsPanel extends MyPanel{
+	/**
+	 * instance variables
+	 */
 	private JButton btnBack;
 	private MyLabel lblWon;
 	private MyLabel lblName;
 	private int y = 1;
 	
-	/**
-	 * instance variables
-	 */
+	
 	
 
 	/**

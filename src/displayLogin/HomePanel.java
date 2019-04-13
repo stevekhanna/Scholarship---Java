@@ -68,11 +68,6 @@ public class HomePanel extends MyPanel{
 		btnLoginStudent.addActionListener(packageListener);
 		btnLoginStudent.setName("LoginStudent_HomePanel");
 		
-		btnSignup = new MyButton("Sign up");
-		//center.add(btnSignup, "cell 0 2, center");
-		btnSignup.addActionListener(packageListener);
-		btnSignup.setName("Signup_HomePanel");
-
 		btnAbout = new MyButton("About");
 		center.add(btnAbout, "cell 0 3, center");
 		btnAbout.addActionListener(packageListener);

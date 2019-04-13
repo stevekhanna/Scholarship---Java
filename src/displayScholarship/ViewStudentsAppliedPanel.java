@@ -61,7 +61,7 @@ public class ViewStudentsAppliedPanel extends MyScrollPanel{
 	}
 	
 	/**
-	 * empty method
+	 * displayCenter method displays middle of the the panel 
 	 */
 	private void displayCenter() {
 		JLabel lblName = new MyLabel("Name", Colors.grey, Size.defaultLblFontSize);

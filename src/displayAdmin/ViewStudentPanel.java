@@ -69,7 +69,6 @@ public class ViewStudentPanel extends MyPanel{
 	 * @param scholarships the list of scholarships the student has applied to
 	 */
 	public void setStudent(Student student, String scholarships) {
-		// The labels text should be set here.
 		lblName.setText(student.getName());
 		lblStudentAttribute.get(0).setText(Integer.toString(student.getUCID()));
 		lblStudentAttribute.get(1).setText(student.getEmail());

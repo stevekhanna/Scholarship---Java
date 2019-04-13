@@ -82,17 +82,26 @@ public class AllScholarshipsPanel extends MyScrollPanel{
 		
 		
 	}
-	
+	/**
+	 * 
+	 * @param error 
+	 */
 	public void setErrorMessage(String error) {
 		lblSearchError.setText(error);
 	}
 	
-	
+	/**
+	 * 
+	 * @return String: containing the search result
+	 */
 	public String getSearchResult() {
 		return fldSearch.getText();
 	}
 	
-	
+	/**
+	 * 
+	 * @param search
+	 */
 	public void setSearchResult(String search) {
 		fldSearch.setText(search);
 	}
@@ -118,9 +127,6 @@ public class AllScholarshipsPanel extends MyScrollPanel{
 			lblName = new MyLabel("Accepted", Colors.grey, Size.defaultLblFontSize);
 			center.add(lblName,"cell 6 0");
 		}
-		
-		
-		//addScrollToCenter();
 	}
 	
 	/**
@@ -180,9 +186,7 @@ public class AllScholarshipsPanel extends MyScrollPanel{
 			btnDelete.setName("DeleteScholarship_AllScholarshipsPanel");
 			btnDelete.addActionListener(globalLisenter);
 			center.add(btnDelete, String.format("cell 8 %d, center",y));
-			//center.add
 		}
-
 		y++;
 	}
 }

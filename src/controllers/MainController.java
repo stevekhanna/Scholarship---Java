@@ -74,7 +74,10 @@ public class MainController implements ActionListener{
 		
 	}
 	
-	
+	/**
+	 * Checks if login is correct for student
+	 * @return boolean: if correct or not
+	 */
 	private boolean checkStudentLogin() {
 		System.out.print("Check Student Login:  ");
 		String email=lController.getLoginStudentPanel().getEmail();
@@ -140,7 +143,6 @@ public class MainController implements ActionListener{
 			}
 			break;
 		case"Scholarships_AdminPanel":
-			//spc.start(true,scMap);
 			break;
 		case"Logout_AdminPanel":
 			currentAdmin=null;

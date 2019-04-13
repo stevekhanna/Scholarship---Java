@@ -14,7 +14,7 @@ import objects.*;
  * 
  * @authors Steve Khanna Pierce de Jong
  * Load Data class contains methods that initializes all necessary data
- * read from txt files and makes it available for other classes to use
+ * read from csv files and makes it available for other classes to use
  *
  */
 public class LoadData{

@@ -61,6 +61,9 @@ public class Scholarship {
 	 * @param nums
 	 * @param desc
 	 * @param money
+	 * @param studentsApplied
+	 * @param studentsAccepted
+	 * @param studentsWon
 	 * This is used when a new scholarship is created
 	 */
 	public Scholarship(String name, String sId, String gReq, String faculty, String YOS, String TOS, String Dept,
@@ -215,6 +218,11 @@ public class Scholarship {
 			return false;
 		}
 	}
+	/**
+	 * Add student to the won list
+	 * @param id of the student
+	 * @return boolean: if successful or not
+	 */
 	public boolean addStudentToWon(int id) {
 		if (studentsWon.contains(id)) {
 			return false;
