@@ -196,51 +196,6 @@ public class StudentController extends MyController {
 				}
 				return false;
 			}	
-//			// Check the student has the correct GPA req for the scholarship
-//			if (currentStudent.getGpa()>= s.getGpaRequirement() && !currentStudent.getScholarshipsAcceptedTo().contains(scholarshipID) &&!Arrays.stream(currentStudent.getScholarshipsWon()).anyMatch(i -> i == scholarshipID)
-//					&& Arrays.stream(currentStudent.getScholarshipsWon()).anyMatch(i -> i <= 0)) {
-//				// Add the scholarship to the current student
-//				if(currentStudent.addScholarship(scholarshipID)) {
-//					// Add the Students UCID to the scholarship
-//					s.addStudentToApplied(currentStudent.getUCID());
-//					// Save the Student to the util file
-//					util.saveStudent(currentStudent);
-//					// Save the scholarships to the util file
-//					util.saveScholarship(s);
-//					// Add the scholarship to the appliedToPanel
-//					atp.setTotalScholarships(currentStudent.getScholarshipsAppliedTo().size());
-//					atp.addScholarship(s, currentStudent.getScholarshipsAppliedTo().size()-1);
-//					System.out.println(s.getName()+" added to applied");
-//					Object[] canApplyOptions = {"OK"};
-//					int canApplySelectedOption = JOptionPane.showOptionDialog(null, "You have successfully applied for this scholarship", "SUCCESS",
-//							JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE,
-//							null, canApplyOptions, canApplyOptions[0]);
-//					if(canApplySelectedOption == JOptionPane.YES_OPTION) {
-//						
-//					}
-//					return true;
-//				}else {
-//					System.out.println(s.getName()+" failed");
-//					Object[] canApplyOptions = {"OK"};
-//					int canApplySelectedOption = JOptionPane.showOptionDialog(null, "Error: Could not apply for this scholarship", "ERROR",
-//							JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE,
-//							null, canApplyOptions, canApplyOptions[0]);
-//					if(canApplySelectedOption == JOptionPane.YES_OPTION) {
-//						
-//					}
-//					return false;
-//				}
-//			}else {
-//				System.out.println(s.getName()+" failed");
-//				Object[] canApplyOptions = {"OK"};
-//				int canApplySelectedOption = JOptionPane.showOptionDialog(null, "Error: Could not apply for this scholarship", "ERROR",
-//						JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE,
-//						null, canApplyOptions, canApplyOptions[0]);
-//				if(canApplySelectedOption == JOptionPane.YES_OPTION) {
-//					
-//				}
-//				return false;
-//			}
 		}else {
 			Object[] canApplyOptions = {"OK"};
 			int canApplySelectedOption = JOptionPane.showOptionDialog(null, "Error: Could not apply for this scholarship", "ERROR",
@@ -369,7 +324,7 @@ public class StudentController extends MyController {
 	public void actionPerformed(ActionEvent e) {
 		String name="";
 		JButton source = new JButton();
-		JComboBox sourceBox = new JComboBox();
+		JComboBox<Object> sourceBox = new JComboBox<Object>();
 		try {
 			source = (JButton)e.getSource();
 			name = source.getName();
@@ -508,7 +463,7 @@ public class StudentController extends MyController {
 						null, noScholarshipsWon, noScholarshipsWon[0]);
 				if(nsw == JOptionPane.YES_OPTION) {
 				}
-			}//will have a dialog box saying unavailable
+			}
 			break;
 		case "Back_WonScholarshipsPanel":
 			switchToStudentPanel();

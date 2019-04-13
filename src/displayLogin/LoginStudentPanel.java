@@ -13,7 +13,7 @@ public class LoginStudentPanel extends MyPanel{
 	/**
 	 * Instance variables.
 	 */	
-	//north panel label
+	//north panel labels
 	private JLabel lblLogin;
 	private JLabel lblEmail;
 	private JLabel lblPassword;

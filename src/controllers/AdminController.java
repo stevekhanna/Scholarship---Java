@@ -310,15 +310,10 @@ public class AdminController extends MyController {
 			switchPanel(createScholarshipPanel);
 			break;
 		case "Create_CreateScholarshipPanel":
-			
-			// STEVE CREATE THE SCHOLARSHIP ADD IT TO THE MAP AND SAVE IT IN THE UTIL
 			if(createScholarship()) {
 				sController.setStudents(students);
 				sController.start(true, scMap);
 			}
-			// IF IT WORKS START THE CONTROLLER BELOW
-			// sController.start(true, scMap);
-			// ELSE DO NOTHING FOR NOW AND STAY ON THE CREATE SCREEN
 			break;
 		case"ViewStudent_AllStudentsPanel":
 			// Get the ucid of the student from the button that was pressed

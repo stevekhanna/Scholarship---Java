@@ -39,8 +39,6 @@ public class AboutPanel extends MyPanel{
 		
 		JLabel auth = new MyLabel("<html><div style -'text-align:center;'><br>Written by:<br>Pierce de Jong, Steve Khanna, Montek Parmar, Nguyen Tran, Khoa Nguyen</html>");
 		north.add(auth, "cell 0 3, center");
-		
-		//ta.set
 		north.add(ta, "cell 0 1, center");
 		
 	}

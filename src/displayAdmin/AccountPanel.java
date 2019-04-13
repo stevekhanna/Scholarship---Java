@@ -22,7 +22,10 @@ public class AccountPanel extends MyPanel {
 	private JPasswordField fldConfirmPassword;
 
 
-	
+	/**
+	 * Constructor
+	 * @param packageListener
+	 */
 	public AccountPanel(ActionListener packageListener) {
 		this.packageListener = packageListener;
 		contentPane.setName("Account Panel");
@@ -31,18 +34,23 @@ public class AccountPanel extends MyPanel {
 		displaySouth();
 		displayCenter();
 	}
-
+	/**
+	 * displayNorth method displays top of the the panel 
+	 */
 	private void displayNorth() {
 		lblName = new MyLabel("Name", Size.defaultLblTitleFontSize);
 		north.add(lblName, "cell 0 1,center");
 	}
-	
+	/**
+	 * displayCenter method displays middle of the the panel 
+	 */
 	private void displayCenter() {
-		// TODO Auto-generated method stub
-		//center.setLayout(new MigLayout("", "[]", "[]"));
 	}
 	
-	
+	/**
+	 * Displays every student in the csv file
+	 * @param admin - accessing the csv
+	 */
 	public void displayStudent(Admin admin) {
 		center.removeAll();
 		center.repaint();
@@ -65,11 +73,17 @@ public class AccountPanel extends MyPanel {
 		center.add(fldConfirmPassword, "cell 1 8,span");
 		
 	}
-	
+	/**
+	 * Deprecated method to get the new Password: in plaintext
+	 * @return
+	 */
 	public String getNewPassword() {
 		return fldPassword.getText();
 	}
-	
+	/**
+	 * Deprecated method to get the Password: in plaintext
+	 * @return
+	 */
 	public String getConfirmPassword() {
 		return fldConfirmPassword.getText();
 	}
@@ -78,7 +92,9 @@ public class AccountPanel extends MyPanel {
 		fldPassword.setText("");
 		fldConfirmPassword.setText("");
 	}
-
+	/**
+	 * displaySouth method displays bottom of the the panel 
+	 */
 	private void displaySouth() {
 		btnBack = new MyButton("Back", Size.defaultBtnFontSize,Size.defaultBtnEditWidth);
 		south.add(btnBack, "cell 0 0");

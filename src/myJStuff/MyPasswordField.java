@@ -3,7 +3,11 @@ package myJStuff;
 import java.awt.Dimension;
 
 import javax.swing.JPasswordField;
-
+/**
+ * Custom password field class to ensure password is plain text and not a hash
+ * @author Pierce
+ *
+ */
 public class MyPasswordField extends JPasswordField{
 	
 	private static final long serialVersionUID = 1L;

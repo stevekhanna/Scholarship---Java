@@ -5,11 +5,13 @@ import javax.swing.border.EmptyBorder;
 
 import java.awt.Color;
 import java.awt.Dimension;
-
+/**
+ * Custom combo box class to ensure that all components match the colour scheme
+ * @author Steve Khanna
+ *
+ */
 public class MyComboBox extends JComboBox<Object> {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	public MyComboBox(Object[] arr) {

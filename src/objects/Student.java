@@ -113,6 +113,11 @@ public class Student extends User{
 	public int[] getScholarshipsWon() {
 		return scholarshipsWon;
 	}
+	/**
+	 * Method to add scholarship to the accepted list
+	 * @param id of scholarship
+	 * @return boolean: if successful or not
+	 */
 	public boolean addToAccept(int id) {
 		if(scholarshipsAcceptedTo.contains(id)) {
 			return false;

@@ -52,7 +52,7 @@ public class AllStudentsPanel extends MyScrollPanel{
 	}
 	
 	/**
-	 * empty method
+	 * displayCenter method displays middle of the the panel 
 	 */
 	private void displayCenter() {
 		JLabel lblName = new MyLabel("UCID", Colors.grey, Size.defaultLblFontSize);

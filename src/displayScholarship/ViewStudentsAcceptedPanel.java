@@ -61,7 +61,7 @@ public class ViewStudentsAcceptedPanel extends MyScrollPanel{
 	}
 	
 	/**
-	 * empty method
+	 * displayCenter method displays in the middle of the panel
 	 */
 	private void displayCenter() {
 		JLabel lblName = new MyLabel("Name", Colors.grey, Size.defaultLblFontSize);
@@ -96,7 +96,10 @@ public class ViewStudentsAcceptedPanel extends MyScrollPanel{
 		
 		studentRow++;
 	}
-	
+	/**
+	 * 
+	 * @param s: the scholarship to set
+	 */
 	public void setScholarship(Scholarship s) {
 		scholarship = s;
 		lblTitle.setText(s.getName());
