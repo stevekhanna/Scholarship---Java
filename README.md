@@ -1,5 +1,5 @@
 # U of C Scholarship Management System
-SENG 300 Final Project: Team 05
+**SENG 300 Final Project: Team 05**
 
 **Authors:** Pierce de Jong, Steve Khanna, Montek Parmar, Nguyen Tran, Khoa Nguyen
 
